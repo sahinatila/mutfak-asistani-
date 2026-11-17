@@ -1027,13 +1027,8 @@
   //  Şimdilik üyeler bu bilgisayardaki tarayıcıda tutuluyor.
   //  Uygulamayı internete koyunca gerçek bir üyelik sistemine ve Google ile girişe geçeceğiz.
   // =====================================================================
-  var aboneler = oku("ma_aboneler", null);
-  if (!aboneler) {
-    // İlk abonemiz 🙂
-    aboneler = [{ ad: "Şahin Atila", eposta: "sahinatila1789@gmail.com", tarih: "2026-11-17" }];
-    yaz("ma_aboneler", aboneler);
-    yaz("ma_kullanici", "sahinatila1789@gmail.com");
-  }
+  // Her ziyaretçi kendi üyeliğini açar; kimse otomatik olarak giriş yapmış gelmez.
+  var aboneler = oku("ma_aboneler", []);
   var aktifEposta = oku("ma_kullanici", null);
 
   function aktifKullanici() {
