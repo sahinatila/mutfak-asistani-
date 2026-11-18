@@ -749,6 +749,8 @@
   var YIYECEK_ALANLARI = [
     { id: "buzdolabi", baslik: "🧊 Buzdolabım", aciklama: "Buzdolabındaki her şey. Miktarı istersen yaz, istersen yazma: \"az kıyma\" bile olur.",
       ornek: "yarım kilo kıyma, 6 domates, 10 yumurta, az süt, beyaz peynir, 3 sivri biber" },
+    { id: "icecekler", baslik: "🥤 İçeceklerim", aciklama: "Dolaptaki ya da kenardaki içecekler: su, kola, soda, meyve suyu, ayran...",
+      ornek: "1 damacana su, 6 soda, 2 litre kola, fanta, 1 kutu meyve suyu, 4 ayran, çay, kahve" },
     { id: "dondurucu", baslik: "❄️ Derin Dondurucum", aciklama: "Dondurucuda neler var? Kendi bildiğin isimlerle yaz.",
       ornek: "2 paket kıyma, bir tabak tavuk, kurban eti, menemenlik sos, hıngel, bezelye" },
     { id: "kiler", baslik: "🥫 Kilerim", aciklama: "Kuru gıdalar, konserveler, sebze dolabı...",
@@ -860,7 +862,7 @@
     yaz("ma_gecmis", gecmis);
   }
   // Ürün notlarındaki değişiklikleri bulur: "1 damacana su eklendi" gibi
-  var ALAN_ADLARI = { buzdolabi: "Buzdolabım", dondurucu: "Derin Dondurucum", kiler: "Kilerim", pisirme: "Pişirme Ekipmanlarım", karistirma: "Karıştırma Ekipmanlarım" };
+  var ALAN_ADLARI = { buzdolabi: "Buzdolabım", icecekler: "İçeceklerim", dondurucu: "Derin Dondurucum", kiler: "Kilerim", pisirme: "Pişirme Ekipmanlarım", karistirma: "Karıştırma Ekipmanlarım" };
   var urunAnlikGoruntu = {};
   function alanUrunleri(alanId) {
     var m = {};
@@ -935,6 +937,21 @@
   function notuDuzenle(alanId) {
     var urunler = notuAnla(notlar[alanId] || "");
     if (!urunler.length) return;
+    var duzeltmeler = [];
+    urunler.forEach(function (u) { var eski = urunuDuzelt(u); if (eski) duzeltmeler.push(eski + " → " + basHarfBuyuk(u.ad)); });
+    // Aynı ürün iki kez yazılmışsa birini sil (miktarı yazılmış olanı tut)
+    var gorulen = {}, tekrarlar = [];
+    urunler = urunler.filter(function (u) {
+      var k = normalIsim(u.ad), onceki = gorulen[k];
+      if (!onceki) { gorulen[k] = u; return true; }
+      if (tekrarlar.indexOf(basHarfBuyuk(u.ad)) < 0) tekrarlar.push(basHarfBuyuk(u.ad));
+      if (!onceki.miktar && u.miktar) { onceki.ham = u.ham; onceki.miktar = u.miktar; onceki.az = u.az; }
+      return false;
+    });
+    var bilgi = [];
+    if (duzeltmeler.length) bilgi.push("✏️ Yazımı düzelttim: " + duzeltmeler.join(", "));
+    if (tekrarlar.length) bilgi.push("🧹 Tekrar yazılanları sildim: " + tekrarlar.join(", "));
+    if (bilgi.length) mesaj(bilgi.join(" · "));
     var yeni = reyonlaraAyir(urunler, function (u) { return u.ad; }, ekipmanAlaniMi(alanId))
       .map(function (g) { return g.urunler.map(satiriGuzellestir).join(", "); }).join(", ");
     if (yeni === notlar[alanId]) return;
@@ -1272,7 +1289,7 @@
 
   function listeyeElleEkle() {
     var kutu = document.getElementById("listeyeElleKutu");
-    notuAnla(kutu.value).forEach(function (u) { listeyeEkle(u.ham, u.ad, "Kendi notum"); });
+    notuAnla(kutu.value).forEach(function (u) { urunuDuzelt(u); listeyeEkle(u.ham, u.ad, "Kendi notum"); });
     kutu.value = "";
     hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster();
   }
