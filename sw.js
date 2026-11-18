@@ -4,10 +4,11 @@
 //  Dosyaları güncellediğinde aşağıdaki SURUM numarasını 1 artır
 //  (ör. "v1" → "v2"), yoksa telefonlar eski hali göstermeye devam eder.
 // =====================================================================
-var SURUM = "mutfak-v1";
+var SURUM = "mutfak-v4";
 var DOSYALAR = [
   "./",
   "./index.html",
+  "./gizlilik.html",
   "./anlama.js",
   "./tarifler.js",
   "./manifest.json",

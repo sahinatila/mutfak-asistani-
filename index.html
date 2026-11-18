@@ -431,6 +431,7 @@
         <a class="btn whatsapp-renk" href="https://wa.me/905541939113?text=Merhaba%2C%20Mutfak%20Asistan%C4%B1%20hakk%C4%B1nda%20yaz%C4%B1yorum."
            target="_blank" rel="noopener">💬 WhatsApp'tan yaz</a>
       </div>
+      <p class="aciklama" style="text-align:center;margin:4px 0 20px">🔒 <a href="gizlilik.html" style="color:var(--ana)">Gizlilik Politikası</a> · <a href="#" onclick="silmeAc();return false" style="color:var(--ana)">Verilerimi sil</a></p>
     </div>
   </section>
 
@@ -524,6 +525,37 @@
     <button class="btn ikincil" onclick="menuyuTemizle()">✕</button>
   </div></div>
 
+  <!-- Hesabı ve verileri silme -->
+  <div class="perde" id="silmePerdesi">
+    <div class="pencere">
+      <button class="kapat" onclick="silmeKapat()">×</button>
+      <h3>🗑️ Hesabımı ve verilerimi sil</h3>
+      <p class="aciklama" style="font-size:14px;line-height:1.55">Bu cihazdaki tüm Mutfak Asistanı bilgileri <b>kalıcı olarak</b> silinir:</p>
+      <ul class="aciklama" style="font-size:14px;margin:0 0 10px;padding-left:20px">
+        <li>Üyeliğin (ad ve e-posta)</li>
+        <li>Buzdolabı, kiler, dondurucu ve ekipman notların</li>
+        <li>Alışveriş listen, menün, sofra planın ve hatırlatmaların</li>
+        <li>Paylaştığın tarifler ve mektupların</li>
+      </ul>
+      <p class="aciklama" style="font-size:14px">Bilgilerin sadece bu cihazda durduğu için başka hiçbir yerde kopyası kalmaz. Bu işlem geri alınamaz.</p>
+      <button class="btn kirmizi" style="width:100%;padding:12px;font-size:16px" onclick="hepsiniSil()">Evet, hepsini kalıcı olarak sil</button>
+      <button class="btn ikincil" style="width:100%;padding:10px;margin-top:8px" onclick="silmeKapat()">Vazgeç</button>
+    </div>
+  </div>
+
+  <!-- Sesle ekleme öncesi bilgilendirme (ilk kullanımda bir kez) -->
+  <div class="perde" id="sesPerdesi">
+    <div class="pencere">
+      <button class="kapat" onclick="sesBilgiKapat(false)">×</button>
+      <h3>🎤 Sesle eklemeden önce</h3>
+      <p class="aciklama" style="font-size:14px;line-height:1.55">Söylediklerin yazıya çevrilirken telefonunun ya da tarayıcının ses tanıma hizmeti kullanılır. Bu hizmet çoğu cihazda <b>Google</b>'a aittir ve sesi yazıya çevirmek için Google'a gönderebilir.<br><br>
+      <b>Mutfak Asistanı sesini kaydetmez, saklamaz, dinlemez ve kimseyle paylaşmaz.</b> Cihazın destekliyorsa ses tamamen telefonunun içinde işlenir.<br><br>
+      İstemezsen sesle ekleme yerine yazarak da ekleyebilirsin. <a href="gizlilik.html#tr" target="_blank" rel="noopener" style="color:var(--ana)">Ayrıntılar</a></p>
+      <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="sesBilgiKapat(true)">Anladım, sesle ekle</button>
+      <button class="btn ikincil" style="width:100%;padding:10px;margin-top:8px" onclick="sesBilgiKapat(false)">Vazgeç, yazarak eklerim</button>
+    </div>
+  </div>
+
   <!-- Üyelik penceresi -->
   <div class="perde" id="uyelikPerdesi">
     <div class="pencere">
@@ -538,6 +570,7 @@
       <input type="text" id="uyeEposta" placeholder="E-posta adresin" inputmode="email" autocomplete="email">
       <div class="hata" id="uyeHata"></div>
       <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="uyeOl()">Devam et</button>
+      <p class="aciklama" style="margin:10px 0 0;text-align:center">Devam ederek <a href="gizlilik.html" target="_blank" rel="noopener" style="color:var(--ana)">Gizlilik Politikası</a>'nı kabul etmiş olursun. Bilgilerin sadece bu cihazda saklanır.</p>
     </div>
   </div>
 
@@ -700,14 +733,31 @@
 
   // Sesle ekleme: tarayıcının konuşma tanıma özelliği (Chrome ve Edge'de çalışır)
   var aktifDinleme = null;
+  var bekleyenSes = null;
+  // İlk kullanımda kullanıcıya sesin nasıl işlendiğini anlat, onay alınca devam et
+  function sesBilgiKapat(onay) {
+    document.getElementById("sesPerdesi").classList.remove("acik");
+    var b = bekleyenSes; bekleyenSes = null;
+    if (onay && b) { yaz("ma_ses_onay", true); sesleEkle(b.alanId, b.buton); }
+  }
   function sesleEkle(alanId, buton) {
     var Tanima = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!Tanima) { mesaj("Tarayıcın sesle yazmayı desteklemiyor. Chrome veya Edge kullan."); return; }
     if (aktifDinleme) { aktifDinleme.stop(); return; }
+    if (!oku("ma_ses_onay", false)) {
+      bekleyenSes = { alanId: alanId, buton: buton };
+      document.getElementById("sesPerdesi").classList.add("acik");
+      return;
+    }
 
     var tanima = new Tanima();
     tanima.lang = "tr-TR";
     tanima.interimResults = false;
+    // Destekleyen cihazlarda sesi internete göndermeden, cihazın içinde yazıya çevir
+    var cihazdaMi = false;
+    if ("processLocally" in tanima && !sesleEkle.yerelOlmuyor) {
+      try { tanima.processLocally = true; cihazdaMi = true; } catch (h) {}
+    }
     aktifDinleme = tanima;
     buton.classList.add("dinliyor");
     buton.textContent = "🔴 Dinliyorum... (bitince dur)";
@@ -720,6 +770,10 @@
       mesaj("Eklendi: " + soylenen);
     };
     tanima.onerror = function (olay) {
+      // Cihazda Türkçe ses paketi yoksa bir dahakine normal yoldan dene
+      if (cihazdaMi && (olay.error === "language-not-supported" || olay.error === "service-not-allowed")) {
+        sesleEkle.yerelOlmuyor = true; mesaj("Tekrar bas, bu sefer çalışacak."); return;
+      }
       mesaj(olay.error === "not-allowed" ? "Mikrofon izni verilmedi." : "Ses anlaşılamadı, tekrar dene.");
     };
     tanima.onend = function () {
@@ -1056,7 +1110,8 @@
     if (k) {
       btn.innerHTML = '<span class="avatar">' + esc(basHarfler(k)) + '</span><span class="kad">' + esc(k.ad || k.eposta.split("@")[0]) + '</span>';
       menuKutu.innerHTML = '<b>' + esc(k.ad || "Üye") + '</b><div class="eposta">' + esc(k.eposta) + '</div>' +
-        '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>';
+        '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>' +
+        '<button class="btn ikincil" style="width:100%;margin-top:8px;font-size:13px" onclick="silmeAc()">🗑️ Hesabımı ve verilerimi sil</button>';
       document.getElementById("anaButon").textContent = "Mutfağıma git →";
       document.getElementById("hosgeldin").innerHTML = "Hoş geldin <b>" + esc((k.ad || "").split(" ")[0] || k.eposta) + "</b> 👋";
     } else {
@@ -1105,6 +1160,32 @@
     kullaniciGoster(); bolumAc("anasayfa");
     mesaj("Çıkış yaptın. Görüşmek üzere 👋");
   }
+
+  // ---------- Hesabı ve tüm verileri silme (Google Play şartı) ----------
+  function silmeAc() {
+    document.getElementById("kullaniciMenu").classList.remove("acik");
+    document.getElementById("silmePerdesi").classList.add("acik");
+  }
+  function silmeKapat() { document.getElementById("silmePerdesi").classList.remove("acik"); }
+  function hepsiniSil() {
+    try {
+      var silinecek = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var a = localStorage.key(i);
+        if (a.indexOf("ma_") === 0 || a === "urunler" || a === "alisveris" || a === "dolap") silinecek.push(a);
+      }
+      silinecek.forEach(function (a) { localStorage.removeItem(a); });
+    } catch (e) {}
+    try { sessionStorage.setItem("ma_silindi", "1"); } catch (e) {}
+    location.reload();
+  }
+  // Silme sonrası sayfa yeniden açılınca bilgi ver
+  try {
+    if (sessionStorage.getItem("ma_silindi")) {
+      sessionStorage.removeItem("ma_silindi");
+      setTimeout(function () { mesaj("Hesabın ve tüm verilerin silindi."); }, 300);
+    }
+  } catch (e) {}
 
   // ---------- Ana sayfadaki "ailemize katıl" kartı ----------
   function aileKartiniGoster() {
