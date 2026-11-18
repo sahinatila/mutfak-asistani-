@@ -66,6 +66,8 @@
 
   .etiket { display: inline-block; padding: 4px 10px; border-radius: 14px; font-size: 13px; margin: 3px 3px 3px 0; }
   .etiket small { opacity: .75; }
+  .reyon-baslik { font-size: 12px; font-weight: 700; color: var(--soluk); margin: 10px 0 2px; text-transform: uppercase; letter-spacing: .03em; }
+  .reyon-baslik:first-child { margin-top: 4px; }
   .var { background: var(--var-zemin); color: var(--var-yazi); }
   .yok { background: var(--yok-zemin); color: var(--yok-yazi); }
   .az { background: var(--az-zemin); color: var(--az-yazi); }
@@ -484,6 +486,8 @@
     <div class="ipucu" id="tarifOzet"></div>
     <input type="search" id="tarifArama" placeholder="🔍 Tarif ara (ör. köfte, patlıcan)">
     <div class="filtre" id="kategoriFiltre"></div>
+    <p class="aciklama" style="margin:4px 2px 0"><b>Koleksiyonlar</b></p>
+    <div class="filtre" id="koleksiyonFiltre"></div>
     <div class="filtre">
       <button id="sadeceYapabilir">✅ Sadece şimdi yapabileceklerim</button>
     </div>
@@ -737,6 +741,7 @@
 
   <script src="anlama.js"></script>
   <script src="tarifler.js"></script>
+<script src="kategoriler.js"></script>
   <script>
   // =====================================================================
   //  1) BÖLÜMLER: Ürünlerim sekmesindeki not defterleri
@@ -908,14 +913,36 @@
     }).join("");
   }
 
+  function ekipmanAlaniMi(alanId) { return EKIPMAN_ALANLARI.some(function (a) { return a.id === alanId; }); }
   function alaniGoster(alanId) {
     var urunler = notuAnla(notlar[alanId] || "");
     document.getElementById("sayac-" + alanId).textContent = urunler.length ? urunler.length + " kalem anladık 👇" : "";
-    document.getElementById("anlasilan-" + alanId).innerHTML = urunler.map(function (u) {
-      return '<span class="etiket ' + (u.az ? "az" : "notr") + '">' + esc(u.ad) +
-        (u.miktar ? ' <small>· ' + esc(u.miktar) + '</small>' : '') + (u.az ? ' ⚠️' : '') + '</span>';
+    // Market reyonları gibi: kategori kategori, alfabetik, baş harfi büyük
+    document.getElementById("anlasilan-" + alanId).innerHTML = reyonlaraAyir(urunler, function (u) { return u.ad; }, ekipmanAlaniMi(alanId)).map(function (g) {
+      return '<div class="reyon-baslik">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + ' · ' + g.urunler.length + '</div>' +
+        g.urunler.map(function (u) {
+          return '<span class="etiket ' + (u.az ? "az" : "notr") + '">' + esc(basHarfBuyuk(u.ad)) +
+            (u.miktar ? ' <small>· ' + esc(u.miktar) + '</small>' : '') + (u.az ? ' ⚠️' : '') + '</span>';
+        }).join("");
     }).join("");
   }
+  // Yazılan satırdaki ürün adını büyük harfle başlatır, miktarı olduğu gibi bırakır: "1 tabak tavuk incik" → "1 tabak Tavuk İncik"
+  function satiriGuzellestir(u) {
+    var kucuk = u.ham.toLocaleLowerCase("tr"), i = kucuk.indexOf(u.ad);
+    return i < 0 ? u.ham : u.ham.slice(0, i) + basHarfBuyuk(u.ad) + u.ham.slice(i + u.ad.length);
+  }
+  // Not defterini düzenler: kategorilere göre gruplar, alfabetik dizer, baş harfleri büyütür
+  function notuDuzenle(alanId) {
+    var urunler = notuAnla(notlar[alanId] || "");
+    if (!urunler.length) return;
+    var yeni = reyonlaraAyir(urunler, function (u) { return u.ad; }, ekipmanAlaniMi(alanId))
+      .map(function (g) { return g.urunler.map(satiriGuzellestir).join(", "); }).join(", ");
+    if (yeni === notlar[alanId]) return;
+    notlar[alanId] = yeni;
+    var kutu = document.getElementById("not-" + alanId); if (kutu) kutu.value = yeni;
+    hepsiniKaydet(); alaniGoster(alanId);
+  }
+  function tumNotlariDuzenle() { TUM_ALANLAR.forEach(function (a) { notuDuzenle(a.id); }); }
 
   // Yazarken her harfte değil, yazmayı bırakınca (0,3 sn sonra) kaydedip gösteriyoruz
   var yazmaZamanlayicilari = {};
@@ -962,6 +989,7 @@
       notaEkle(alanId, soylenen);
       document.getElementById("not-" + alanId).value = notlar[alanId];
       hepsiniKaydet(); alaniGoster(alanId);
+      notuDuzenle(alanId);
       urunDegisiklikleriniKaydet();
       mesaj("Eklendi: " + soylenen);
     };
@@ -1025,6 +1053,29 @@
     if (uyeTarifleri.length !== once) yaz("ma_uye_tarifleri", uyeTarifleri);
   })();
 
+  // Koleksiyonlar (yemek.com'daki "tüm tarif kategorileri" gibi): tarifin adına ve malzemelerine bakılarak otomatik bulunur
+  var KOLEKSIYONLAR = [
+    { ad: "Köfte Tarifleri", ikon: "🧆", kural: function (t, a, m) { return /köfte/.test(a); } },
+    { ad: "Tavuk Yemekleri", ikon: "🍗", kural: function (t, a, m) { return /tavuk|piliç|(^|[ ,])hindi([ ,]|$)/.test(a + " " + m.replace(/tavuk suyu|et suyu/g, "")); } },
+    { ad: "Et Yemekleri", ikon: "🥩", kural: function (t, a, m) { return /(^|[ ,])(et|eti|kuşbaşı|kuzu|dana|biftek|antrikot|ciğer|kavurma|pirzola|incik)([ ,]|$)/.test(m) || /kebab|kebap|tandır/.test(a); } },
+    { ad: "Kıymalı Tarifler", ikon: "🍖", kural: function (t, a, m) { return /kıyma/.test(m); } },
+    { ad: "Sebze Yemekleri", ikon: "🥬", kural: function (t, a, m) { return (t.kat === "Zeytinyağlı" || t.kat === "Ana Yemek") && !etliMi(m); } },
+    { ad: "Vejetaryen", ikon: "🌱", kural: function (t, a, m) { return t.kat !== "İçecekler" && !etliMi(m); } },
+    { ad: "Börek & Hamur İşi", ikon: "🥟", kural: function (t, a, m) { return /börek|böreği|gözleme|poğaça|pişi|mantı|pide|pizza/.test(a); } },
+    { ad: "Kurabiye & Kek", ikon: "🍪", kural: function (t, a, m) { return /kurabiye|kek|kraker/.test(a); } },
+    { ad: "Limonatalar", ikon: "🍋", kural: function (t, a, m) { return /limonata/.test(a); } },
+    { ad: "Kahveler", ikon: "☕", kural: function (t, a, m) { return t.kat === "İçecekler" && /kahve/.test(m); } },
+    { ad: "Şerbet, Hoşaf & Komposto", ikon: "🍹", kural: function (t, a, m) { return /şerbet|hoşaf|komposto/.test(a); } },
+    { ad: "Pratik (30 dk ve altı)", ikon: "⏱️", kural: function (t) { var d = /^(\d+)\s*dk$/.exec((t.sure || "").trim()); return !!d && +d[1] <= 30; } },
+    { ad: "Fırın Tarifleri", ikon: "🔥", kural: function (t, a) { return (t.e || []).indexOf("fırın") >= 0 || /fırında/.test(a); } },
+    { ad: "Airfryer Tarifleri", ikon: "🍟", kural: function (t, a) { return (t.e || []).indexOf("airfryer") >= 0 || /airfryer/.test(a); } }
+  ];
+  function etliMi(m) { return /kıyma|tavuk|piliç|(^|[ ,])hindi([ ,]|$)|sucuk|salam|sosis|pastırma|balık|hamsi|levrek|somon|karides|kalamar|midye|ton balığı|(^|[ ,])(et|eti|kuşbaşı|kuzu|dana|ciğer|kavurma|incik|biftek)([ ,]|$)/.test(m); }
+  function koleksiyonlariBul(t) {
+    var a = (t.ad || "").toLocaleLowerCase("tr"), m = (t.m || []).join(", ").toLocaleLowerCase("tr");
+    return KOLEKSIYONLAR.filter(function (k) { return k.kural(t, a, m); }).map(function (k) { return k.ad; });
+  }
+
   // Tarifleri hazırlıyoruz (malzeme satırlarını anlıyoruz). Hazır tarifler + üye tarifleri.
   var HAZIR_TARIFLER = [];
   function tarifleriHazirla() {
@@ -1035,14 +1086,15 @@
         if (satir.charAt(0) === "#") gruplar.push({ baslik: satir.slice(1).trim(), malzemeler: [] });
         else gruplar[gruplar.length - 1].malzemeler.push(tarifSatiri(satir));
       });
-      return { no: no, id: t.id || null, ekleyen: t.ekleyen || null, ekleyenEposta: t.ekleyenEposta || null,
-        ad: t.ad, kat: t.kat, kisi: t.kisi, sure: t.sure, gruplar: gruplar, yapilis: t.y,
+      return { no: no, id: t.id || null, ekleyen: t.ekleyen || null, ekleyenEposta: t.ekleyenEposta || null, koleksiyonlar: koleksiyonlariBul(t),
+        ad: t.ad, kat: ({ "Balık": "Deniz Mahsulleri", "Atıştırmalık": "Aperatifler" })[t.kat] || t.kat, kisi: t.kisi, sure: t.sure, gruplar: gruplar, yapilis: t.y,
         ekipman: (t.e || []).map(function (e) { return { ad: e, bilgi: isimBilgisi(e) }; }) };
     });
   }
   tarifleriHazirla();
 
   var seciliKategori = "Tümü";
+  var seciliKoleksiyon = null;
   var sadeceYapabilir = false;
   var acikTarifler = {};
 
@@ -1082,6 +1134,11 @@
       return '<button class="' + (k === seciliKategori ? "aktif" : "") + '" data-kategori="' + esc(k) + '">' + esc(k) + '</button>';
     }).join("");
     document.getElementById("sadeceYapabilir").classList.toggle("aktif", sadeceYapabilir);
+    document.getElementById("koleksiyonFiltre").innerHTML = KOLEKSIYONLAR.map(function (k) {
+      var sayi = HAZIR_TARIFLER.filter(function (t) { return t.koleksiyonlar.indexOf(k.ad) >= 0; }).length;
+      if (!sayi) return "";
+      return '<button class="' + (k.ad === seciliKoleksiyon ? "aktif" : "") + '" data-koleksiyon="' + esc(k.ad) + '">' + k.ikon + ' ' + esc(k.ad) + ' <small>' + sayi + '</small></button>';
+    }).join("");
   }
 
   function tarifleriGoster() {
@@ -1102,6 +1159,7 @@
 
     sonuc = sonuc.filter(function (s) {
       if (seciliKategori !== "Tümü" && s.t.kat !== seciliKategori) return false;
+      if (seciliKoleksiyon && s.t.koleksiyonlar.indexOf(seciliKoleksiyon) < 0) return false;
       if (sadeceYapabilir && s.d.eksikler.length > 0) return false;
       if (arama && normalIsim(s.t.ad).indexOf(arama) < 0 &&
           !s.t.gruplar.some(function (g) { return g.malzemeler.some(function (m) { return normalIsim(m.metin).indexOf(arama) >= 0; }); }))
@@ -1225,12 +1283,16 @@
       alan.innerHTML = '<p class="bos">Listen boş. Tariflerden "Eksikleri listeye ekle" diyebilirsin.</p>';
       return;
     }
-    alan.innerHTML = liste.map(function (x, i) {
-      return '<div class="satir"><label>' +
-        '<input type="checkbox" data-alindi="' + i + '"' + (x.alindi ? " checked" : "") + '>' +
-        '<span><span class="' + (x.alindi ? "alindi-yazi" : "") + '">' + esc(x.metin) + '</span><br>' +
-        '<span class="kaynak">' + esc(x.kaynaklar.join(" · ")) + '</span></span></label>' +
-        '<button class="sil" data-listeden-sil="' + i + '" title="Sil">✕</button></div>';
+    var sirali = liste.map(function (x, i) { return { x: x, i: i }; });
+    alan.innerHTML = reyonlaraAyir(sirali, function (o) { return o.x.anahtar || o.x.metin; }, false).map(function (g) {
+      return '<div class="reyon-baslik">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + '</div>' + g.urunler.map(function (o) {
+        var x = o.x, i = o.i, u = notuAnla(x.metin)[0];
+        return '<div class="satir"><label>' +
+          '<input type="checkbox" data-alindi="' + i + '"' + (x.alindi ? " checked" : "") + '>' +
+          '<span><span class="' + (x.alindi ? "alindi-yazi" : "") + '">' + esc(u ? satiriGuzellestir(u) : x.metin) + '</span><br>' +
+          '<span class="kaynak">' + esc(x.kaynaklar.join(" · ")) + '</span></span></label>' +
+          '<button class="sil" data-listeden-sil="' + i + '" title="Sil">✕</button></div>';
+      }).join("");
     }).join("");
   }
 
@@ -1243,7 +1305,7 @@
       notaEkle(kilere ? "kiler" : "buzdolabi", x.metin.toLocaleLowerCase("tr"));
     });
     liste = liste.filter(function (x) { return !x.alindi; });
-    hepsiniKaydet(); alanlariDoldur(); eksikListesiniGoster(); tavsiyeleriGoster();
+    hepsiniKaydet(); tumNotlariDuzenle(); alanlariDoldur(); eksikListesiniGoster(); tavsiyeleriGoster();
     urunDegisiklikleriniKaydet();
     mesaj(alinanlar.length + " ürün buzdolabına / kilere eklendi 🧺");
   }
@@ -1523,8 +1585,9 @@
   }
 
   // ---------- Misafir modu ----------
+  var acilisTamam = false;
   function misafirUyarisiGerekirseGoster() {
-    if (!misafirMi()) return;
+    if (!acilisTamam || !misafirMi()) return;
     try { if (sessionStorage.getItem("ma_misafir_uyarildi")) return; sessionStorage.setItem("ma_misafir_uyarildi", "1"); } catch (e) { return; }
     setTimeout(function () { document.getElementById("misafirPerdesi").classList.add("acik"); }, 900);
   }
@@ -1766,7 +1829,8 @@
   // =====================================================================
   //  7) ÜYE TARİFLERİ: üyeler kendi tariflerini ekleyebilir
   // =====================================================================
-  var KATEGORILER = ["Çorba", "Ana Yemek", "Meze", "Ara Sıcak", "Atıştırmalık", "Balık", "Zeytinyağlı", "Salata", "Pilav & Makarna", "Hamur İşi", "Kahvaltılık", "Dünya Mutfağı", "Tatlı", "Diğer"];
+  var KATEGORILER = ["Çorba", "Ana Yemek", "Meze", "Ara Sıcak", "Aperatifler", "Deniz Mahsulleri", "Zeytinyağlı", "Salata", "Pilav & Makarna", "Hamur İşi", "Kahvaltılık", "Dünya Mutfağı", "Tatlı", "İçecekler", "Diğer"];
+
 
   var duzenlenenTarifId = null;
   function tarifDuzenle(id) {
@@ -2249,7 +2313,8 @@
     else if (d.mektupTuru) { seciliMektupTuru = d.mektupTuru; mektupBolumunuGoster(); }
     else if (d.bolum) bolumAc(d.bolum);
     else if (d.ses) sesleEkle(d.ses, b);
-    else if (d.kategori) { seciliKategori = d.kategori; kategoriFiltresiniCiz(); tarifleriGoster(); }
+    else if (d.kategori) { seciliKategori = d.kategori; seciliKoleksiyon = null; kategoriFiltresiniCiz(); tarifleriGoster(); }
+    else if (d.koleksiyon) { seciliKoleksiyon = seciliKoleksiyon === d.koleksiyon ? null : d.koleksiyon; seciliKategori = "Tümü"; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (b.id === "sadeceYapabilir") { sadeceYapabilir = !sadeceYapabilir; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (d.tarifAc !== undefined) {
       acikTarifler[d.tarifAc] = !acikTarifler[d.tarifAc];
@@ -2269,7 +2334,11 @@
   });
 
   document.addEventListener("change", function (e) {
-    if (e.target.dataset && e.target.dataset.alan) urunDegisiklikleriniKaydet();
+    if (e.target.dataset && e.target.dataset.alan) {
+      notlar[e.target.dataset.alan] = e.target.value;
+      notuDuzenle(e.target.dataset.alan);
+      urunDegisiklikleriniKaydet();
+    }
   });
   document.addEventListener("visibilitychange", function () { if (document.hidden) urunDegisiklikleriniKaydet(); });
   document.addEventListener("input", function (e) {
@@ -2305,6 +2374,7 @@
   anaSayfaModlariniGoster();
   kullaniciGoster();
   hepsiniKaydet();
+  acilisTamam = true;   // bundan sonraki kayıtlar kullanıcının kendi hareketidir
   </script>
 <script>
   // PWA: service worker'ı kaydet (çevrimdışı çalışma için)

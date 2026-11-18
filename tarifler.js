@@ -4,8 +4,10 @@
 //
 //  ad   : Yemeğin adı
 //  kat  : Kategori (Çorba, Ana Yemek, Zeytinyağlı, Pilav & Makarna, Hamur İşi,
-//         Kahvaltılık, Salata, Meze, Ara Sıcak, Atıştırmalık, Balık,
-//         Dünya Mutfağı, Tatlı)
+//         Kahvaltılık, Salata, Meze, Ara Sıcak, Aperatifler, Deniz Mahsulleri,
+//         Dünya Mutfağı, Tatlı, İçecekler)
+//         Ayrıca "Köfte Tarifleri", "Tavuk Yemekleri" gibi koleksiyonlar
+//         tarifin adına ve malzemelerine bakılarak otomatik bulunur.
 //  kisi : Kaç kişilik
 //  sure : Yaklaşık süre
 //  m    : Malzemeler. "#" ile başlayan satır ara başlıktır (ör. "#Beğendisi için").
@@ -371,7 +373,7 @@ var TARIFLER = [
         "Sarımsaklı yoğurtla karıştırıp servis et."] },
 
   // ------------------------- PATATES -------------------------
-  { ad: "Patates Kızartması", kat: "Atıştırmalık", kisi: 4, sure: "25 dk",
+  { ad: "Patates Kızartması", kat: "Aperatifler", kisi: 4, sure: "25 dk",
     m: ["5 tane patates", "Sıvı yağ (kızartmak için)|yağ", "Tuz"],
     y: ["Patatesleri soyup parmak şeklinde doğra, soğuk suda 10 dakika beklet ve kurula.",
         "Kızgın yağda altın rengi olana kadar kızart, tuzla."] },
@@ -383,7 +385,7 @@ var TARIFLER = [
         "Sarımsağı az yağda çevir, rendelenmiş domates ve salçayı ekleyip sos kıvamına getir.",
         "Kızarmış patatesleri sosla harmanlayıp sıcak servis et."] },
 
-  { ad: "Airfryer Baharatlı Patates", kat: "Atıştırmalık", kisi: 3, sure: "25 dk",
+  { ad: "Airfryer Baharatlı Patates", kat: "Aperatifler", kisi: 3, sure: "25 dk",
     m: ["4 tane patates", "2 yemek kaşığı zeytinyağı|zeytinyağı/yağ", "1 tatlı kaşığı toz biber", "Kekik", "Tuz"],
     y: ["Patatesleri elma dilim doğra.",
         "Yağ ve baharatlarla harmanla.",
@@ -443,7 +445,7 @@ var TARIFLER = [
         "Soğuyunca ceviz ve istersen tahinle servis et."] },
 
   // ------------------------- YÖRESEL -------------------------
-  { ad: "Hamsili Pilav", kat: "Ana Yemek", kisi: 6, sure: "1 saat 15 dk",
+  { ad: "Hamsili Pilav", kat: "Deniz Mahsulleri", kisi: 6, sure: "1 saat 15 dk",
     m: ["1 kg hamsi", "2 su bardağı pirinç", "2 yemek kaşığı tereyağı", "1 tane kuru soğan", "2 yemek kaşığı dolmalık fıstık|fıstık",
         "2 yemek kaşığı kuş üzümü|üzüm", "Yarım demet dereotu", "Tuz", "Karabiber", "Yenibahar"],
     y: ["Hamsileri temizleyip kılçıklarını ayıkla.",
@@ -453,7 +455,7 @@ var TARIFLER = [
     e: ["fırın"] },
 
   // ------------------------- BALIK -------------------------
-  { ad: "Fırında Levrek", kat: "Balık", kisi: 4, sure: "35 dk",
+  { ad: "Fırında Levrek", kat: "Deniz Mahsulleri", kisi: 4, sure: "35 dk",
     m: ["4 tane levrek", "2 tane domates", "1 tane kuru soğan", "2 tane sivri biber", "1 tane limon",
         "4 yemek kaşığı zeytinyağı", "Yarım demet maydanoz", "Tuz", "Karabiber"],
     y: ["Temizlenmiş balıkların içine ve üzerine tuz, karabiber ve limon sür.",
@@ -461,20 +463,20 @@ var TARIFLER = [
         "Zeytinyağı gezdirip 200 derece fırında 20-25 dakika pişir; maydanozla servis et."],
     e: ["fırın"] },
 
-  { ad: "Hamsi Tava", kat: "Balık", kisi: 4, sure: "25 dk",
+  { ad: "Hamsi Tava", kat: "Deniz Mahsulleri", kisi: 4, sure: "25 dk",
     m: ["1 kg hamsi", "1 su bardağı mısır unu", "Sıvı yağ (kızartmak için)|yağ", "1 tane limon", "1 tane kuru soğan", "Tuz"],
     y: ["Hamsileri temizleyip yıka, tuzla.",
         "Mısır ununa bulayıp tavaya yelpaze şeklinde diz.",
         "Kızgın yağda iki tarafını çıtır olana kadar kızart; soğan ve limonla servis et."] },
 
-  { ad: "Fırında Somon", kat: "Balık", kisi: 4, sure: "25 dk",
+  { ad: "Fırında Somon", kat: "Deniz Mahsulleri", kisi: 4, sure: "25 dk",
     m: ["4 dilim somon", "1 tane limon", "2 diş sarımsak", "2 yemek kaşığı zeytinyağı", "Yarım demet dereotu", "Tuz", "Karabiber"],
     y: ["Somonları yağlı kâğıt serili tepsiye diz.",
         "Zeytinyağı, ezilmiş sarımsak, limon suyu ve dereotunu karıştırıp üzerine sür.",
         "200 derece fırında 15-18 dakika pişir."],
     e: ["fırın"] },
 
-  { ad: "Karides Güveç", kat: "Ara Sıcak", kisi: 4, sure: "25 dk",
+  { ad: "Karides Güveç", kat: "Deniz Mahsulleri", kisi: 4, sure: "25 dk",
     m: ["400 gr karides", "2 tane domates", "2 tane sivri biber", "3 diş sarımsak", "2 yemek kaşığı tereyağı",
         "1 su bardağı rendelenmiş kaşar|kaşar", "Pul biber", "Tuz"],
     y: ["Karidesleri tereyağında sarımsakla 2-3 dakika sotele.",
@@ -575,7 +577,7 @@ var TARIFLER = [
         "Kekin üzerine çatalla delikler açıp sosun yarısını dök, keserek kalan sosla servis et."],
     e: ["fırın", "mikser"] },
 
-  { ad: "Mini Pizza", kat: "Atıştırmalık", kisi: 6, sure: "45 dk",
+  { ad: "Mini Pizza", kat: "Aperatifler", kisi: 6, sure: "45 dk",
     m: ["3 su bardağı un", "1 paket kuru maya|maya", "1 su bardağı ılık su", "2 yemek kaşığı zeytinyağı", "2 yemek kaşığı domates salçası|salça",
         "200 gr kaşar|kaşar", "100 gr sucuk|sucuk", "1 tane sivri biber", "Kekik", "Tuz"],
     y: ["Un, maya, su, zeytinyağı ve tuzla hamur yoğurup 30 dakika mayalandır.",
@@ -716,7 +718,7 @@ var TARIFLER = [
         "İnce kıyılmış maydanoz ve taze soğanı karıştır.",
         "Elinle sıkarak şekil ver; marul, limon ve lavaşla servis et."] },
 
-  { ad: "Kalamar Tava", kat: "Ara Sıcak", kisi: 4, sure: "25 dk",
+  { ad: "Kalamar Tava", kat: "Deniz Mahsulleri", kisi: 4, sure: "25 dk",
     m: ["500 gr kalamar", "1 su bardağı un", "1 su bardağı soğuk maden suyu|maden suyu/su", "1 tane yumurta",
         "Sıvı yağ (kızartmak için)|yağ", "Tuz", "#Tarator sosu için", "Yarım su bardağı ceviz", "2 dilim bayat ekmek|ekmek",
         "2 diş sarımsak", "1 yemek kaşığı sirke", "3 yemek kaşığı zeytinyağı"],
@@ -747,7 +749,7 @@ var TARIFLER = [
         "Yumurta, rendelenmiş kaşar, yeşillikler ve baharatlarla yoğur.",
         "Köfte şekli verip galeta ununa bula, kızart."] },
 
-  { ad: "Midye Tava", kat: "Ara Sıcak", kisi: 4, sure: "25 dk",
+  { ad: "Midye Tava", kat: "Deniz Mahsulleri", kisi: 4, sure: "25 dk",
     m: ["500 gr ayıklanmış midye|midye", "1 su bardağı un", "1 su bardağı soğuk bira veya maden suyu|maden suyu/su", "Sıvı yağ (kızartmak için)|yağ",
         "Tuz", "Tarator sosu (isteğe göre)|tarator"],
     y: ["Un, maden suyu ve tuzla akışkan bir hamur hazırla.",
@@ -755,27 +757,27 @@ var TARIFLER = [
         "Kızgın yağda hızlıca kızart, taratorla servis et."] },
 
   // ========================= ATIŞTIRMALIKLAR =========================
-  { ad: "Karışık Kanepe", kat: "Atıştırmalık", kisi: 8, sure: "20 dk",
+  { ad: "Karışık Kanepe", kat: "Aperatifler", kisi: 8, sure: "20 dk",
     m: ["1 tane baget ekmek|ekmek", "200 gr labne|labne/krem peynir", "100 gr füme et veya hindi|füme et/hindi/salam", "1 tane salatalık",
         "10 tane zeytin", "6 tane çeri domates|domates", "Yarım demet dereotu"],
     y: ["Ekmeği ince dilimleyip tavada ya da fırında hafifçe kızart.",
         "Üzerine labne sür.",
         "Salatalık, füme et, zeytin ve domatesle farklı kombinasyonlar yapıp dereotuyla süsle."] },
 
-  { ad: "Bruşetta", kat: "Atıştırmalık", kisi: 6, sure: "15 dk",
+  { ad: "Bruşetta", kat: "Aperatifler", kisi: 6, sure: "15 dk",
     m: ["1 tane baget ekmek|ekmek", "4 tane domates", "2 diş sarımsak", "3 yemek kaşığı zeytinyağı", "Taze fesleğen veya kekik|fesleğen/kekik", "Tuz"],
     y: ["Ekmeği dilimleyip kızart, sıcakken sarımsakla ov.",
         "Küp doğranmış domatesi zeytinyağı, fesleğen ve tuzla karıştır.",
         "Ekmeklerin üzerine paylaştırıp hemen servis et."] },
 
-  { ad: "Mini Sandviç", kat: "Atıştırmalık", kisi: 8, sure: "15 dk",
+  { ad: "Mini Sandviç", kat: "Aperatifler", kisi: 8, sure: "15 dk",
     m: ["1 paket sandviç ekmeği|ekmek", "200 gr kaşar|kaşar", "150 gr hindi füme veya salam|hindi/salam/füme et", "1 tane domates",
         "1 tane salatalık", "Marul yaprağı|marul", "2 yemek kaşığı mayonez"],
     y: ["Ekmeklere ince mayonez sür.",
         "Kaşar, füme, domates, salatalık ve marulu kat kat diz.",
         "Kapatıp dörde keserek kürdanla tuttur."] },
 
-  { ad: "Tuzlu Kurabiye", kat: "Atıştırmalık", kisi: 10, sure: "40 dk",
+  { ad: "Tuzlu Kurabiye", kat: "Aperatifler", kisi: 10, sure: "40 dk",
     m: ["125 gr tereyağı|tereyağı", "Yarım su bardağı sıvı yağ|yağ", "Yarım su bardağı yoğurt", "1 tane yumurta", "3 su bardağı un",
         "1 paket kabartma tozu", "1 tatlı kaşığı tuz|tuz", "Çörek otu ve susam (üzeri için)|çörek otu/susam"],
     y: ["Tereyağı, yağ, yoğurt ve yumurtanın beyazını karıştır; un, kabartma tozu ve tuzu ekleyerek ele yapışmayan bir hamur yoğur.",
@@ -783,7 +785,7 @@ var TARIFLER = [
         "Üzerine sarı sür, çörek otu ve susam serp; 180 derece fırında 20 dakika pişir."],
     e: ["fırın"] },
 
-  { ad: "Un Kurabiyesi", kat: "Atıştırmalık", kisi: 10, sure: "35 dk",
+  { ad: "Un Kurabiyesi", kat: "Aperatifler", kisi: 10, sure: "35 dk",
     m: ["250 gr tereyağı|tereyağı", "1 su bardağı pudra şekeri|pudra şekeri/şeker", "3 su bardağı un", "1 paket vanilin|vanilin/vanilya",
         "Pudra şekeri (üzeri için)|pudra şekeri"],
     y: ["Oda sıcaklığındaki tereyağını pudra şekeriyle krema kıvamına gelene kadar çırp.",
@@ -791,7 +793,7 @@ var TARIFLER = [
         "Şekil verip 170 derece fırında rengini çok almadan 15-18 dakika pişir; soğuyunca pudra şekeri ele."],
     e: ["fırın"] },
 
-  { ad: "Damla Çikolatalı Kurabiye", kat: "Atıştırmalık", kisi: 10, sure: "30 dk",
+  { ad: "Damla Çikolatalı Kurabiye", kat: "Aperatifler", kisi: 10, sure: "30 dk",
     m: ["125 gr tereyağı|tereyağı", "Yarım su bardağı toz şeker|şeker", "Yarım su bardağı esmer şeker|esmer şeker/şeker", "1 tane yumurta",
         "2 su bardağı un", "1 çay kaşığı kabartma tozu", "1 paket vanilin|vanilin/vanilya", "1 su bardağı damla çikolata|damla çikolata/çikolata"],
     y: ["Tereyağı ve şekerleri çırp, yumurta ve vanilini ekle.",
@@ -799,7 +801,7 @@ var TARIFLER = [
         "Tepsiye aralıklı bırakıp 180 derece fırında 10-12 dakika pişir; ortası yumuşak kalmalı."],
     e: ["fırın"] },
 
-  { ad: "Susamlı Çubuk Kraker", kat: "Atıştırmalık", kisi: 8, sure: "40 dk",
+  { ad: "Susamlı Çubuk Kraker", kat: "Aperatifler", kisi: 8, sure: "40 dk",
     m: ["2,5 su bardağı un|un", "Yarım su bardağı sıvı yağ|yağ", "Yarım su bardağı ılık su", "1 paket kabartma tozu", "1 tane yumurta",
         "Susam|susam", "Tuz"],
     y: ["Un, yağ, su, kabartma tozu ve tuzla yumuşak bir hamur yoğur.",
@@ -807,18 +809,103 @@ var TARIFLER = [
         "Yumurta sarısı sürüp susam serp; 190 derece fırında kızarana kadar pişir."],
     e: ["fırın"] },
 
-  { ad: "Karamelli Patlamış Mısır", kat: "Atıştırmalık", kisi: 4, sure: "15 dk",
+  { ad: "Karamelli Patlamış Mısır", kat: "Aperatifler", kisi: 4, sure: "15 dk",
     m: ["1 su bardağı cinlik mısır|mısır", "2 yemek kaşığı sıvı yağ|yağ", "Yarım su bardağı şeker", "2 yemek kaşığı tereyağı", "1 tutam tuz|tuz"],
     y: ["Mısırları yağla kapaklı tencerede patlat.",
         "Ayrı bir tavada şekeri eritip karamel yap, tereyağı ve tuzu ekle.",
         "Sıcak karamelle mısırları hızla harmanlayıp yağlı kâğıda yay."] },
 
-  { ad: "Cevizli Hurma Topları", kat: "Atıştırmalık", kisi: 6, sure: "15 dk",
+  { ad: "Cevizli Hurma Topları", kat: "Aperatifler", kisi: 6, sure: "15 dk",
     m: ["1 su bardağı çekirdeksiz hurma|hurma", "1 su bardağı ceviz", "2 yemek kaşığı kakao", "Hindistan cevizi (üzeri için)|hindistan cevizi"],
     y: ["Hurma ve cevizi rondodan geçirip yapışkan bir karışım elde et.",
         "Kakaoyu ekleyip ceviz büyüklüğünde toplar yap.",
         "Hindistan cevizine bulayıp buzdolabında sertleştir. Şekersiz, sağlıklı bir atıştırmalık."],
-    e: ["mutfak robotu"] }
+    e: ["mutfak robotu"] },
+
+  // ------------------------- İÇECEKLER -------------------------
+  { ad: "Ayran", kat: "İçecekler", kisi: 2, sure: "5 dk",
+    m: ["1 su bardağı yoğurt", "1 su bardağı soğuk su|su", "1 tutam tuz|tuz"],
+    y: ["Yoğurdu bir kaba al, tuzu ekle.", "Soğuk suyu azar azar ekleyerek köpürene kadar çırp.", "Bardaklara paylaştır, istersen buz ekle."] },
+
+  { ad: "Ev Yapımı Limonata", kat: "İçecekler", kisi: 6, sure: "20 dk + 2 saat bekleme",
+    m: ["4 tane limon", "1 su bardağı toz şeker|şeker", "6 su bardağı su", "Birkaç dal taze nane|nane"],
+    y: ["Limonları yıka, kabuklarını rendele, suyunu sık.", "Rendelenmiş kabukları şekerle ovarak 10 dakika beklet, kokusunu şekere versin.",
+        "Şekere limon suyunu ve suyu ekle, şeker eriyene kadar karıştır.", "Süzüp buzdolabında en az 2 saat soğut, nane yaprağıyla servis et."] },
+
+  { ad: "Naneli Limonata", kat: "İçecekler", kisi: 6, sure: "15 dk",
+    m: ["4 tane limon", "1 demet taze nane|nane", "1 su bardağı toz şeker|şeker", "6 su bardağı soğuk su|su", "Buz"],
+    y: ["Limon suyunu, naneyi ve şekeri blenderda 1 dakika çek.", "Soğuk suyu ekleyip karıştır, süz.", "Buzla dolu bardaklara dökerek servis et."],
+    e: ["blender"] },
+
+  { ad: "Çilekli Limonata", kat: "İçecekler", kisi: 6, sure: "15 dk",
+    m: ["1 su bardağı çilek", "3 tane limon", "1 çay bardağı toz şeker|şeker", "5 su bardağı soğuk su|su", "Buz"],
+    y: ["Çilekleri yıkayıp saplarını ayıkla.", "Çilek, limon suyu ve şekeri blenderda püre haline getir.", "Soğuk suyla karıştır, süz ve buzla servis et."],
+    e: ["blender"] },
+
+  { ad: "Zencefilli Ballı Limonata", kat: "İçecekler", kisi: 4, sure: "15 dk",
+    m: ["3 tane limon", "1 parça taze zencefil (2 cm)|zencefil", "3 yemek kaşığı bal", "4 su bardağı su"],
+    y: ["Zencefili soyup ince rendele.", "Limon suyu, zencefil ve balı bir çay bardağı ılık suda erit.", "Kalan soğuk suyu ekle, süz ve soğutarak servis et."] },
+
+  { ad: "Karpuzlu Limonata", kat: "İçecekler", kisi: 4, sure: "10 dk",
+    m: ["3 su bardağı çekirdeksiz karpuz|karpuz", "2 tane limon", "2 yemek kaşığı toz şeker|şeker", "1 su bardağı soğuk su|su", "Buz"],
+    y: ["Karpuz, limon suyu ve şekeri blenderda çek.", "Soğuk suyu ekleyip süz.", "Buzla, istersen nane yaprağıyla servis et."],
+    e: ["blender"] },
+
+  { ad: "Karışık Meyve Kompostosu", kat: "İçecekler", kisi: 6, sure: "30 dk + soğuma",
+    m: ["2 tane elma", "1 tane ayva", "2 tane armut", "1 su bardağı toz şeker|şeker", "6 su bardağı su", "3-4 tane karanfil", "1 çubuk tarçın"],
+    y: ["Meyveleri yıka, çekirdeklerini çıkarıp iri doğra.", "Su, şeker, karanfil ve tarçını kaynat.",
+        "Önce ayvayı ekle, 5 dakika sonra elma ve armudu ekle.", "Meyveler yumuşayana kadar kısık ateşte 15 dakika pişir.", "Soğuyunca buzdolabında dinlendirip servis et."] },
+
+  { ad: "Üzüm Hoşafı", kat: "İçecekler", kisi: 6, sure: "20 dk + soğuma",
+    m: ["1 su bardağı kuru üzüm", "5 su bardağı su", "Yarım su bardağı toz şeker|şeker", "2 tane karanfil"],
+    y: ["Üzümleri yıkayıp yarım saat suda beklet.", "Suyu, şekeri ve karanfili kaynat.", "Üzümleri ekleyip 10 dakika kısık ateşte pişir.", "Soğuduktan sonra buzdolabında soğutarak servis et."] },
+
+  { ad: "Kuru Kayısı Hoşafı", kat: "İçecekler", kisi: 6, sure: "25 dk + soğuma",
+    m: ["1,5 su bardağı kuru kayısı", "5 su bardağı su", "Yarım su bardağı toz şeker|şeker", "Yarım limon suyu|limon"],
+    y: ["Kayısıları yıkayıp 1 saat suda beklet.", "Suyu ve şekeri kaynat, kayısıları ekle.", "15 dakika kısık ateşte pişir, son dakikada limon suyunu ekle.", "Soğutarak servis et."] },
+
+  { ad: "Türk Kahvesi", kat: "İçecekler", kisi: 1, sure: "5 dk",
+    m: ["1 kahve fincanı soğuk su|su", "1 tatlı kaşığı Türk kahvesi|türk kahvesi/kahve", "Şeker (isteğe göre)|şeker"],
+    y: ["Cezveye suyu, kahveyi ve istersen şekeri koy, iyice karıştır.", "Kısık ateşte, karıştırmadan ısıt.",
+        "Köpük kabarmaya başlayınca biraz köpüğü fincana al.", "Kahveyi bir kez daha kabartıp yavaşça fincana dök. Yanında su ve lokumla ikram et."],
+    e: ["cezve"] },
+
+  { ad: "Ev Usulü Latte", kat: "İçecekler", kisi: 1, sure: "5 dk",
+    m: ["1 tatlı kaşığı hazır kahve|hazır kahve/kahve", "1 su bardağı süt", "Yarım çay bardağı sıcak su|su", "Şeker ya da bal (isteğe göre)|şeker"],
+    y: ["Kahveyi sıcak suda erit.", "Sütü ısıt, kavanoza koyup kapağını kapatarak 30 saniye çalkala ya da mikserle köpürt.", "Kahvenin üzerine sütü dök, köpüğü kaşıkla en üste al."] },
+
+  { ad: "Soğuk Kahve (Ice Latte)", kat: "İçecekler", kisi: 1, sure: "5 dk",
+    m: ["1 tatlı kaşığı hazır kahve|hazır kahve/kahve", "2 yemek kaşığı sıcak su|su", "1 su bardağı soğuk süt|süt", "Buz", "1 tatlı kaşığı şeker|şeker"],
+    y: ["Kahveyi ve şekeri sıcak suda erit.", "Bardağı buzla doldur, soğuk sütü dök.", "Kahveyi üzerine gezdir, karıştırarak iç."] },
+
+  { ad: "Dalgona Kahve", kat: "İçecekler", kisi: 2, sure: "10 dk",
+    m: ["2 yemek kaşığı hazır kahve|hazır kahve/kahve", "2 yemek kaşığı toz şeker|şeker", "2 yemek kaşığı sıcak su|su", "2 su bardağı süt", "Buz"],
+    y: ["Kahve, şeker ve sıcak suyu mikserle 3-4 dakika, açık kahverengi ve kremsi olana kadar çırp.", "Bardaklara buz ve süt koy.", "Çırptığın kahve köpüğünü kaşıkla üzerine yerleştir."],
+    e: ["mikser"] },
+
+  { ad: "Salep", kat: "İçecekler", kisi: 4, sure: "15 dk",
+    m: ["4 su bardağı süt", "2 yemek kaşığı salep tozu|salep", "3 yemek kaşığı toz şeker|şeker", "Tarçın"],
+    y: ["Salep tozunu ve şekeri soğuk sütle karıştır, topak kalmasın.", "Sürekli karıştırarak orta ateşte koyulaşana kadar pişir.", "Fincanlara dök, üzerine tarçın serperek sıcak servis et."] },
+
+  { ad: "Ev Usulü Boza", kat: "İçecekler", kisi: 8, sure: "1 saat + 1-2 gün mayalanma",
+    m: ["1 su bardağı ince bulgur|bulgur", "8 su bardağı su", "1,5 su bardağı toz şeker|şeker", "1 tatlı kaşığı kuru maya|maya", "Tarçın ve leblebi (servis için)|leblebi"],
+    y: ["Bulguru suyla birlikte iyice yumuşayıp lapa olana kadar kısık ateşte pişir.", "Blenderdan geçirip süzgeçten süz, ılınmaya bırak.",
+        "Ilık karışıma şekeri ve mayayı ekleyip karıştır.", "Üzerini örtüp oda sıcaklığında 1-2 gün mayalandır, hafif ekşimsi tat gelince buzdolabına al.",
+        "Tarçın ve leblebiyle servis et."],
+    e: ["blender"] },
+
+  { ad: "Vişne Şerbeti", kat: "İçecekler", kisi: 6, sure: "25 dk + soğuma",
+    m: ["2 su bardağı vişne", "1 su bardağı toz şeker|şeker", "6 su bardağı su", "2 tane karanfil"],
+    y: ["Vişneleri yıkayıp çekirdeklerini çıkar.", "Su, şeker ve karanfili kaynat, vişneleri ekle.", "10 dakika pişir, süz ve soğut.", "Buzla servis et."] },
+
+  { ad: "Osmanlı Şerbeti", kat: "İçecekler", kisi: 6, sure: "20 dk + soğuma",
+    m: ["6 su bardağı su", "1 su bardağı toz şeker|şeker", "2 çubuk tarçın", "4-5 tane karanfil", "1 tane limon", "1 yemek kaşığı bal"],
+    y: ["Su, şeker, tarçın ve karanfili 10 dakika kaynat.", "Ocaktan alıp limon dilimlerini ekle, 15 dakika demlendir.", "Süz, balı ekleyip karıştır.", "Soğutarak, buzla servis et."] },
+
+  { ad: "Gül Şerbeti", kat: "İçecekler", kisi: 6, sure: "15 dk + soğuma",
+    m: ["2 yemek kaşığı gül reçeli|reçel", "5 su bardağı soğuk su|su", "Yarım limon suyu|limon", "2 yemek kaşığı toz şeker|şeker"],
+    y: ["Gül reçelini ve şekeri bir bardak ılık suda erit.", "Kalan soğuk suyu ve limon suyunu ekle.", "Buzdolabında soğutup servis et."] }
+
 ];
 
 // =====================================================================
