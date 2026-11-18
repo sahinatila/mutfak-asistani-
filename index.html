@@ -47,7 +47,7 @@
   .aciklama { color: var(--soluk); font-size: 13px; margin: 0 0 10px; }
   .ipucu { background: var(--kart); border-left: 4px solid var(--ana); padding: 12px 14px; border-radius: 10px; font-size: 14px; margin-bottom: 14px; }
 
-  textarea, input[type=text], input[type=number], input[type=search] {
+  textarea, input[type=text], input[type=number], input[type=search], input[type=tel], input[type=email], input[type=password] {
     width: 100%; padding: 12px; font-size: 15px; border: 2px solid var(--cizgi); border-radius: 10px;
     background: var(--kutu); color: var(--yazi); font-family: inherit;
   }
@@ -143,6 +143,15 @@
   .menu-sec { display:block; width:100%; text-align:left; background:none; border:none; color:var(--yazi); padding:9px 6px; border-radius:8px; font-size:14px; cursor:pointer; }
   .menu-sec:hover { background: var(--temel-zemin); }
   .menu-ayrac { border-top:1px solid var(--cizgi); margin:6px 0; }
+  .gece-gunduz { display:flex; gap:8px; margin:8px 0 16px; }
+  .gece-gunduz button { flex:1; padding:12px; border-radius:12px; border:2px solid var(--cizgi); background:var(--kutu); color:var(--yazi); font-size:15px; cursor:pointer; }
+  .gece-gunduz button.aktif { border-color:var(--ana); background:var(--ana); color:#fff; }
+  .renk-secenek { display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:10px 12px; margin-bottom:8px; border-radius:12px; border:2px solid var(--cizgi); background:var(--kutu); color:var(--yazi); cursor:pointer; }
+  .renk-secenek.aktif { border-color:var(--ana); box-shadow:0 0 0 2px var(--ana) inset; }
+  .renk-secenek .ornek { display:flex; flex-shrink:0; border-radius:10px; overflow:hidden; border:1px solid var(--cizgi); }
+  .renk-secenek .ornek span { width:22px; height:36px; display:block; }
+  .renk-secenek b { display:block; font-size:14px; }
+  .renk-secenek small { color:var(--soluk); font-size:12px; }
   .kayit-kart { border:1px solid var(--cizgi); border-radius:12px; padding:10px 12px; margin-bottom:10px; }
   .kayit-kart b { display:block; }
   .kayit-kart ul { margin:6px 0; padding-left:18px; font-size:14px; }
@@ -167,7 +176,7 @@
 
   /* ---------- AİLE KARTI ---------- */
   .aile { margin-top: 30px; padding: 26px; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap;
-    background: linear-gradient(135deg, var(--ana), #a29bfe); color: white; }
+    background: linear-gradient(135deg, var(--ana), var(--ana-acik, #a29bfe)); color: white; }
   .aile h3 { font-size: 24px; margin-bottom: 6px; }
   .aile p { margin: 0; opacity: .92; }
   .aile .btn { background: white; color: var(--ana); font-size: 16px; padding: 12px 22px; font-weight: bold; }
@@ -267,9 +276,9 @@
             <path d="M68 150 Q110 120 150 150 T230 150 V162 H68 Z" fill="#8fd18f"/>
             <line x1="145" y1="40" x2="145" y2="170" stroke="#fff" stroke-width="6"/>
             <!-- üst dolaplar -->
-            <rect x="290" y="30" width="270" height="90" rx="8" fill="#6c5ce7"/>
-            <line x1="380" y1="36" x2="380" y2="114" stroke="#5641d8" stroke-width="4"/>
-            <line x1="470" y1="36" x2="470" y2="114" stroke="#5641d8" stroke-width="4"/>
+            <rect x="290" y="30" width="270" height="90" rx="8" fill="#6c5ce7" style="fill:var(--ana)"/>
+            <line x1="380" y1="36" x2="380" y2="114" stroke="#5641d8" stroke-width="4" style="stroke:var(--ana-koyu)"/>
+            <line x1="470" y1="36" x2="470" y2="114" stroke="#5641d8" stroke-width="4" style="stroke:var(--ana-koyu)"/>
             <circle cx="370" cy="96" r="4" fill="#fff"/><circle cx="390" cy="96" r="4" fill="#fff"/>
             <circle cx="460" cy="96" r="4" fill="#fff"/><circle cx="480" cy="96" r="4" fill="#fff"/>
             <!-- raf ve kavanozlar -->
@@ -573,6 +582,18 @@
       <h3>🛒 Alışveriş listelerim</h3>
       <p class="aciklama">Kaydettiğin listeler tarihleriyle burada durur. Alışveriş Listelerim sayfasında "📌 Listeyi tarihle kaydet" ile yeni liste ekleyebilirsin.</p>
       <div id="listelerIcerik"></div>
+    </div>
+  </div>
+
+  <!-- Kullanıcı ayarları -->
+  <div class="perde" id="ayarlarPerdesi">
+    <div class="pencere" style="max-width:460px;max-height:92vh;overflow:auto">
+      <button class="kapat" onclick="perdeKapat('ayarlarPerdesi')">×</button>
+      <h3>⚙️ Kullanıcı ayarları</h3>
+      <p class="aciklama" style="margin-top:12px"><b>Gece / gündüz</b></p>
+      <div class="gece-gunduz" id="geceGunduz"></div>
+      <p class="aciklama"><b>Uygulama teması</b> · Renkler hemen değişir.</p>
+      <div id="renkSecenekleri"></div>
     </div>
   </div>
 
@@ -1178,6 +1199,7 @@
         '<button class="menu-sec" onclick="hesapDuzenleAc()">✏️ Hesabımı düzenle</button>' +
         '<button class="menu-sec" onclick="tariflerimAc()">🍲 Tariflerim</button>' +
         '<button class="menu-sec" onclick="kayitliListelerAc()">🛒 Alışveriş listelerim</button>' +
+        '<button class="menu-sec" onclick="ayarlarAc()">⚙️ Kullanıcı ayarları</button>' +
         '<div class="menu-ayrac"></div>' +
         '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>' +
         '<button class="menu-sec" style="margin-top:6px" onclick="silmeAc(\'veri\')">🧹 Verilerimi sil</button>' +
@@ -1832,10 +1854,83 @@
     window.scrollTo(0, 0);
   }
 
-  function temaDegistir() {
-    var koyu = !document.body.classList.contains("koyu");
+  function temaDegistir() { geceGunduzSec(!document.body.classList.contains("koyu")); }
+  function geceGunduzSec(koyu) {
     document.body.classList.toggle("koyu", koyu);
     yaz("ma_tema", koyu ? "koyu" : "acik");
+    renkleriUygula();
+    if (document.getElementById("ayarlarPerdesi").classList.contains("acik")) ayarlariGoster();
+  }
+
+  // ---------- Uygulama temaları (renk kombinasyonları) ----------
+  // ana: başlık ve düğmeler · vurgu: ikinci renk · koyuAna: gece modunda başlık rengi · zemin: gündüz arka planı
+  var RENK_TEMALARI = [
+    { id: "klasik",     ad: "KLASİK (varsayılan)", renkler: "Mor & Yeşil",                    ana: "#6c5ce7", vurgu: "#00b894" },
+    { id: "avangart",   ad: "AVANGART",   renkler: "Koyu Mor & Altın Sarısı",                ana: "#3B0764", vurgu: "#D4A24C", koyuAna: "#8B5CF6" },
+    { id: "dingin",     ad: "DİNGİN",     renkler: "Krem/Bej & Vizon Grisi",                 ana: "#5C534A", vurgu: "#B59F84", koyuAna: "#A08F7D", zemin: "#FBF8F3", ornekZemin: "#FBF8F3" },
+    { id: "guven",      ad: "GÜVEN",      renkler: "Lacivert & Turuncu",                     ana: "#0B1B3F", vurgu: "#FF6B00", koyuAna: "#3B6FD8" },
+    { id: "kurumsal",   ad: "KURUMSAL",   renkler: "Kraliyet Mavisi & Zümrüt Yeşili",        ana: "#2563EB", vurgu: "#00C48C" },
+    { id: "minimalist", ad: "MİNİMALİST", renkler: "Saf Beyaz & Kömür Siyahı",               ana: "#121212", vurgu: "#4B5563", koyuAna: "#6B7280", zemin: "#FFFFFF", ornekZemin: "#FFFFFF" },
+    { id: "modern",     ad: "MODERN",     renkler: "Petrol Mavisi (Teal) & Mercan",          ana: "#0D9488", vurgu: "#FF6F61" },
+    { id: "oyuncu",     ad: "OYUNCU",     renkler: "Koyu Kömür & Neon Yeşil",                ana: "#121318", vurgu: "#1FCB86", koyuAna: "#16A974", ornekVurgu: "#3BF2A0" },
+    { id: "spor",       ad: "SPOR",       renkler: "Zümrüt Yeşili & Açık Gri",               ana: "#10B981", vurgu: "#059669", zemin: "#F3F4F6", ornekZemin: "#F3F4F6" }
+  ];
+  // Varsayılan en üstte, gerisi Türkçe alfabetik sırada
+  RENK_TEMALARI = [RENK_TEMALARI[0]].concat(RENK_TEMALARI.slice(1).sort(function (a, b) { return a.ad.localeCompare(b.ad, "tr"); }));
+
+  function koyulastir(hex, oran) {
+    var n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+    var f = function (x) { return Math.max(0, Math.round(x * (1 - oran))).toString(16).padStart(2, "0"); };
+    return "#" + f(r) + f(g) + f(b);
+  }
+  // iki rengi karıştır: oran = ikinci rengin payı (0-1)
+  function karistir(r1, r2, oran) {
+    var a = parseInt(r1.slice(1), 16), b = parseInt(r2.slice(1), 16);
+    var k = function (sh) { return Math.round(((a >> sh) & 255) * (1 - oran) + ((b >> sh) & 255) * oran).toString(16).padStart(2, "0"); };
+    return "#" + k(16) + k(8) + k(0);
+  }
+  function renkleriUygula() {
+    var id = oku("ma_renk", "klasik");
+    var t = RENK_TEMALARI.find(function (x) { return x.id === id; }) || RENK_TEMALARI[0];
+    var st = document.body.style, koyu = document.body.classList.contains("koyu");
+    ["--ana", "--ana-koyu", "--ana-acik", "--yesil", "--zemin", "--kart", "--kutu", "--cizgi"].forEach(function (v) { st.removeProperty(v); });
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (t.id === "klasik") { if (meta) meta.setAttribute("content", "#6c5ce7"); return; }
+    var ana = koyu && t.koyuAna ? t.koyuAna : t.ana;
+    st.setProperty("--ana", ana);
+    st.setProperty("--ana-koyu", koyulastir(ana, .15));
+    st.setProperty("--ana-acik", t.vurgu);
+    st.setProperty("--yesil", t.vurgu);
+    // Arka plan, kartlar ve çizgiler de temanın rengine bürünür
+    if (koyu) {
+      st.setProperty("--zemin", karistir(ana, "#111216", .90));
+      st.setProperty("--kart",  karistir(ana, "#1d1f26", .86));
+      st.setProperty("--kutu",  karistir(ana, "#17181d", .88));
+      st.setProperty("--cizgi", karistir(ana, "#33363f", .75));
+    } else {
+      st.setProperty("--zemin", t.zemin || karistir(ana, "#ffffff", .90));
+      st.setProperty("--kart",  t.zemin === "#FFFFFF" ? "#FAFAFA" : karistir(ana, "#ffffff", .985));
+      st.setProperty("--kutu",  karistir(ana, "#ffffff", .96));
+      st.setProperty("--cizgi", karistir(ana, "#ffffff", .82));
+    }
+    if (meta) meta.setAttribute("content", ana);
+  }
+  function renkSec(id) { yaz("ma_renk", id); renkleriUygula(); ayarlariGoster(); }
+
+  function ayarlarAc() { ayarlariGoster(); menudenAc("ayarlarPerdesi"); }
+  function ayarlariGoster() {
+    var koyu = document.body.classList.contains("koyu");
+    document.getElementById("geceGunduz").innerHTML =
+      '<button class="' + (!koyu ? "aktif" : "") + '" onclick="geceGunduzSec(false)">☀️ Gündüz</button>' +
+      '<button class="' + (koyu ? "aktif" : "") + '" onclick="geceGunduzSec(true)">🌙 Gece</button>';
+    var secili = oku("ma_renk", "klasik");
+    document.getElementById("renkSecenekleri").innerHTML = RENK_TEMALARI.map(function (t) {
+      var z = t.ornekZemin;
+      return '<button class="renk-secenek' + (t.id === secili ? " aktif" : "") + '" onclick="renkSec(\'' + t.id + '\')">' +
+        '<span class="ornek"><span style="background:' + t.ana + '"></span><span style="background:' + (t.ornekVurgu || t.vurgu) + '"></span>' +
+        (z ? '<span style="background:' + z + '"></span>' : '') + '</span>' +
+        '<span><b>' + t.ad + (t.id === secili ? " ✓" : "") + '</b><small>' + t.renkler + '</small></span></button>';
+    }).join("");
   }
 
   function alanlariDoldur() {
@@ -1924,6 +2019,7 @@
   var kayitliTema = oku("ma_tema", null);
   var koyuMu = kayitliTema ? kayitliTema === "koyu" : window.matchMedia("(prefers-color-scheme: dark)").matches;
   document.body.classList.toggle("koyu", koyuMu);
+  renkleriUygula();
 
   alanKartlariniCiz(YIYECEK_ALANLARI, "yiyecekAlanlari");
   alanKartlariniCiz(EKIPMAN_ALANLARI, "ekipmanAlanlari");
