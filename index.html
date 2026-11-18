@@ -602,6 +602,47 @@
     </div>
   </div>
 
+  <!-- Misafire üyelik daveti -->
+  <div class="perde" id="misafirPerdesi">
+    <div class="pencere" style="text-align:center">
+      <button class="kapat" onclick="perdeKapat('misafirPerdesi')">×</button>
+      <img src="ikonlar/icon-192.png" alt="" style="width:72px;height:72px;border-radius:18px;margin:4px auto 10px;display:block">
+      <h3 style="font-size:20px">Merhaba, ben senin Mutfak Asistanın! 👩‍🍳</h3>
+      <p class="aciklama" style="font-size:15px;line-height:1.6;margin:10px 0">Dolabını düzenlemene, "bugün ne pişirsem?" derdine ve alışverişine yardım etmek için buradayım.</p>
+      <div style="background:var(--az-zemin);color:var(--az-yazi);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.55;margin:0 0 12px">
+        <b>Küçük bir uyarı:</b> Misafir olarak geziyorsun. Uygulamayı kapattığında eklediğin malzemeler, listeler ve menün <b>silinecek</b>. Sonra seni çok özleriz 🥲
+      </div>
+      <p class="aciklama" style="font-size:14px;margin:0 0 14px">Üye olursan dolabını hatırlarım, her gün sana daha iyi tarifler öneririm. Söz, 10 saniye sürer!</p>
+      <button class="btn" style="width:100%;padding:13px;font-size:16px" onclick="perdeKapat('misafirPerdesi');uyelikAc()">🚀 Hızlı ve ücretsiz üye ol</button>
+      <button class="btn ikincil" style="width:100%;padding:10px;margin-top:8px" onclick="perdeKapat('misafirPerdesi')">Şimdilik misafir olarak devam et</button>
+    </div>
+  </div>
+
+  <!-- Dışa aktar -->
+  <div class="perde" id="disaPerdesi">
+    <div class="pencere">
+      <button class="kapat" onclick="perdeKapat('disaPerdesi')">×</button>
+      <h3>📤 Bilgilerimi dışa aktar</h3>
+      <p class="aciklama" style="font-size:14px;line-height:1.55">Dolabın, ekipmanların, alışveriş listelerin, menün, tariflerin ve hareket geçmişin tek bir metin belgesine (.txt) yedeklenir. Telefon değiştirirsen bu dosyayla hepsini geri yüklersin.</p>
+      <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="yedegiIndir()">📱 Telefona indir</button>
+      <button class="btn ikincil" style="width:100%;padding:12px;font-size:16px;margin-top:8px" onclick="yedegiMaileAt()">✉️ Kendime mail at</button>
+      <p class="aciklama" style="margin-top:10px;font-size:12px">Şifren dosyaya yazılmaz.</p>
+    </div>
+  </div>
+
+  <!-- İçe aktar -->
+  <div class="perde" id="icePerdesi">
+    <div class="pencere">
+      <button class="kapat" onclick="perdeKapat('icePerdesi')">×</button>
+      <h3>📥 Bilgilerimi içe aktar</h3>
+      <p class="aciklama" style="font-size:14px;line-height:1.55">Daha önce dışa aktardığın <b>Mutfak Asistanı yedek dosyasını</b> (.txt) seç. Dolabın, listelerin, menün ve tariflerin geri yüklenir.</p>
+      <div style="background:var(--az-zemin);color:var(--az-yazi);border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px">Bu cihazdaki dolap, liste ve menü bilgilerinin yerine yedektekiler gelir. Tariflerin ve kayıtlı listelerin ise eklenir.</div>
+      <input type="file" id="yedekDosyasi" accept=".txt,text/plain" style="display:none" onchange="yedegiOku(this)">
+      <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="document.getElementById('yedekDosyasi').click()">📂 Dosya seç</button>
+      <div class="hata" id="iceHata"></div>
+    </div>
+  </div>
+
   <!-- Hareket geçmişi -->
   <div class="perde" id="gecmisPerdesi">
     <div class="pencere" style="max-width:520px;max-height:92vh;overflow:auto">
@@ -651,16 +692,16 @@
     <div class="pencere">
       <button class="kapat" onclick="uyelikKapat()">×</button>
       <h3>Mutfak Asistanı ailesine katıl</h3>
-      <p class="aciklama">Sadece e-postan yeter. Daha önce üye olduysan aynı e-postayla giriş yaparsın.</p>
+      <p class="aciklama">Hızlı ve ücretsiz. Daha önce üye olduysan aynı e-posta ve şifreyle giriş yaparsın.</p>
       <button class="google-btn" disabled title="Uygulamayı internete koyduğumuzda açılacak">
         <b style="color:#4285f4">G</b> Google hesabınla devam et <small>(yakında)</small>
       </button>
       <div class="ayrac">ya da</div>
-      <input type="text" id="uyeAd" placeholder="Adın soyadın (isteğe bağlı)">
+      <input type="text" id="uyeAd" placeholder="Kullanıcı adın (ör. Ayşe)" autocomplete="nickname">
       <input type="text" id="uyeEposta" placeholder="E-posta adresin" inputmode="email" autocomplete="email">
-      <input type="password" id="uyeSifre" placeholder="Şifren" autocomplete="current-password" style="display:none">
+      <input type="password" id="uyeSifre" placeholder="Şifren (en az 6 karakter)" autocomplete="current-password">
       <div class="hata" id="uyeHata"></div>
-      <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="uyeOl()">Devam et</button>
+      <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="uyeOl()">🚀 Üye ol / Giriş yap</button>
       <p class="aciklama" style="margin:10px 0 0;text-align:center">Devam ederek <a href="gizlilik.html" target="_blank" rel="noopener" style="color:var(--ana)">Gizlilik Politikası</a>'nı kabul etmiş olursun. Bilgilerin sadece bu cihazda saklanır.</p>
     </div>
   </div>
@@ -732,12 +773,42 @@
   // =====================================================================
   //  2) VERİLER: tarayıcıya kaydedilir, sayfa kapansa da kalır
   // =====================================================================
+  // Misafirin yaptıkları sadece bu oturumda tutulur (uygulama kapanınca silinir); üyeninkiler kalıcıdır.
+  var MISAFIR_ANAHTARLARI = ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar"];
+  function misafirMi() {
+    try { return !JSON.parse(localStorage.getItem("ma_kullanici") || "null"); } catch (e) { return true; }
+  }
+  function depo(anahtar) {
+    return (MISAFIR_ANAHTARLARI.indexOf(anahtar) >= 0 && misafirMi()) ? sessionStorage : localStorage;
+  }
   function oku(anahtar, varsayilan) {
-    try { var v = localStorage.getItem(anahtar); return v ? JSON.parse(v) : varsayilan; }
+    try { var v = depo(anahtar).getItem(anahtar); return v ? JSON.parse(v) : varsayilan; }
     catch (e) { return varsayilan; }
   }
   function yaz(anahtar, deger) {
-    try { localStorage.setItem(anahtar, JSON.stringify(deger)); } catch (e) {}
+    try { depo(anahtar).setItem(anahtar, JSON.stringify(deger)); } catch (e) {}
+  }
+  function sil(anahtar) { try { depo(anahtar).removeItem(anahtar); } catch (e) {} }
+  // Misafir üye olunca, oturumda yaptıklarını hesabına taşı
+  function misafirVerisiniTasi() {
+    MISAFIR_ANAHTARLARI.forEach(function (a) {
+      try {
+        var m = sessionStorage.getItem(a); if (!m) return;
+        var misafir = JSON.parse(m), kalici = JSON.parse(localStorage.getItem(a) || "null");
+        if (a === "ma_notlar" && kalici) {
+          Object.keys(misafir).forEach(function (alan) {
+            if (!misafir[alan]) return;
+            kalici[alan] = kalici[alan] ? kalici[alan].replace(/[,\s]+$/, "") + ", " + misafir[alan] : misafir[alan];
+          });
+          localStorage.setItem(a, JSON.stringify(kalici));
+        } else if (Array.isArray(misafir) && Array.isArray(kalici)) {
+          localStorage.setItem(a, JSON.stringify(kalici.concat(misafir)));
+        } else if (!kalici || (Array.isArray(kalici) && !kalici.length)) {
+          localStorage.setItem(a, m);
+        }
+        sessionStorage.removeItem(a);
+      } catch (e) {}
+    });
   }
 
   var notlar = oku("ma_notlar", {});          // { buzdolabi: "...", kiler: "...", ... }
@@ -763,6 +834,7 @@
 
   function hepsiniKaydet() {
     yaz("ma_notlar", notlar); yaz("ma_liste", liste); yaz("ma_hatirlatma", hatirlatma); yaz("ma_menu", menu);
+    misafirUyarisiGerekirseGoster();
   }
 
   // Bir not defterinin sonuna ürün ekler ("..., yeni ürün")
@@ -777,6 +849,7 @@
   var gecmis = oku("ma_gecmis", []);
   var GECMIS_EN_FAZLA = 1000;
   function hareketEkle(ikon, metin) {
+    if (misafirMi()) return;   // misafirin hareketleri kaydedilmez
     gecmis.unshift({ id: "h" + Date.now() + Math.random().toString(36).slice(2, 6), z: new Date().toISOString(), ikon: ikon, metin: metin, eposta: aktifEposta || null });
     if (gecmis.length > GECMIS_EN_FAZLA) gecmis.length = GECMIS_EN_FAZLA;
     yaz("ma_gecmis", gecmis);
@@ -1254,6 +1327,8 @@
         '<button class="menu-sec" onclick="kayitliListelerAc()">🛒 Alışveriş listelerim</button>' +
         '<button class="menu-sec" onclick="ayarlarAc()">⚙️ Kullanıcı ayarları</button>' +
         '<button class="menu-sec" onclick="gecmisAc()">🕘 Hareket geçmişi</button>' +
+        '<button class="menu-sec" onclick="disaAktarAc()">📤 Bilgilerimi dışa aktar</button>' +
+        '<button class="menu-sec" onclick="iceAktarAc()">📥 Bilgilerimi içe aktar</button>' +
         '<div class="menu-ayrac"></div>' +
         '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>' +
         '<button class="menu-sec" style="margin-top:6px" onclick="silmeAc(\'veri\')">🧹 Verilerimi sil</button>' +
@@ -1284,47 +1359,40 @@
   function uyeOl() {
     var ad = document.getElementById("uyeAd").value.trim();
     var eposta = document.getElementById("uyeEposta").value.trim().toLocaleLowerCase("tr");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta)) {
-      document.getElementById("uyeHata").textContent = "Geçerli bir e-posta adresi yaz (ör. isim@gmail.com).";
-      return;
-    }
+    var sifre = document.getElementById("uyeSifre").value;
+    var hata = document.getElementById("uyeHata");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta)) { hata.textContent = "Geçerli bir e-posta adresi yaz (ör. isim@gmail.com)."; return; }
     var k = aboneler.find(function (a) { return a.eposta === eposta; });
-    // Bu hesaba şifre konduysa önce şifreyi kontrol et
-    if (k && k.sifre && !uyeOl.sifreTamam) {
-      var sifreKutu = document.getElementById("uyeSifre");
-      if (sifreKutu.style.display === "none" || !sifreKutu.value) {
-        sifreKutu.style.display = "block"; sifreKutu.focus();
-        document.getElementById("uyeHata").textContent = "Bu hesabın şifresi var, şifreni yaz.";
-        return;
+    if (!k) {
+      if (!ad) { hata.textContent = "Kendine bir kullanıcı adı seç 🙂"; return; }
+      if (sifre.length < 6) { hata.textContent = "Şifren en az 6 karakter olsun."; return; }
+    } else if (k.sifre && !sifre) { hata.textContent = "Bu hesabın şifresi var, şifreni yaz."; return; }
+    if (sifre && sifre.length < 6 && !(k && k.sifre)) { hata.textContent = "Şifren en az 6 karakter olsun."; return; }
+    (sifre ? sifreOzeti(eposta, sifre) : Promise.resolve(null)).then(function (ozet) {
+      var not;
+      if (k) {
+        if (k.sifre && ozet !== k.sifre) { hata.textContent = "Şifre yanlış, tekrar dene."; return; }
+        if (!k.sifre && ozet) k.sifre = ozet;      // eski şifresiz hesaba şifre eklenir
+        if (ad) k.ad = ad;
+        not = k.askida ? "Hesabın askıda (" + askidaKalanGun(k) + " gün kaldı). Geri getirmek için sağ üstteki adına dokun ♻️"
+                       : "Tekrar hoş geldin " + (k.ad || "") + " 👋";
+      } else {
+        aboneler.push({ ad: ad, eposta: eposta, sifre: ozet, tarih: new Date().toISOString().slice(0, 10) });
+        not = "Aramıza hoş geldin " + ad + "! 🎉 Artık her şeyini hatırlayacağım.";
       }
-      sifreOzeti(eposta, sifreKutu.value).then(function (ozet) {
-        if (ozet !== k.sifre) { document.getElementById("uyeHata").textContent = "Şifre yanlış, tekrar dene."; return; }
-        uyeOl.sifreTamam = true; uyeOl();
-      });
-      return;
-    }
-    uyeOl.sifreTamam = false;
-    document.getElementById("uyeSifre").value = ""; document.getElementById("uyeSifre").style.display = "none";
-    if (k) {
-      if (ad) k.ad = ad;
-      mesaj(k.askida
-        ? "Hesabın askıda (" + askidaKalanGun(k) + " gün kaldı). Geri getirmek için sağ üstteki adına dokun ♻️"
-        : "Tekrar hoş geldin " + (k.ad || "") + " 👋");
-    } else {
-      aboneler.push({ ad: ad, eposta: eposta, tarih: new Date().toISOString().slice(0, 10) });
-      mesaj("Aramıza hoş geldin! 🎉");
-    }
-    aktifEposta = eposta;
-    yaz("ma_aboneler", aboneler); yaz("ma_kullanici", aktifEposta);
-    document.getElementById("uyeAd").value = ""; document.getElementById("uyeEposta").value = "";
-    uyelikKapat(); kullaniciGoster();
+      localStorage.setItem("ma_aboneler", JSON.stringify(aboneler));
+      if (misafirMi()) hepsiniKaydet();   // yazılıp henüz kaydedilmemiş notlar da taşınsın
+      misafirVerisiniTasi();
+      localStorage.setItem("ma_kullanici", JSON.stringify(eposta));
+      try { sessionStorage.setItem("ma_acilis_mesaji", not); } catch (e) {}
+      location.reload();   // hesabın kalıcı verileriyle yeniden aç
+    });
   }
 
   function cikisYap() {
-    aktifEposta = null; yaz("ma_kullanici", null);
-    document.getElementById("kullaniciMenu").classList.remove("acik");
-    kullaniciGoster(); bolumAc("anasayfa");
-    mesaj("Çıkış yaptın. Görüşmek üzere 👋");
+    localStorage.setItem("ma_kullanici", "null");
+    try { sessionStorage.setItem("ma_acilis_mesaji", "Çıkış yaptın. Görüşmek üzere 👋"); } catch (e) {}
+    location.reload();
   }
 
   // ---------- Ortak: pencere kapatma ----------
@@ -1454,6 +1522,114 @@
     yaz("ma_kayitli_listeler", kayitliListeler); kayitliListeleriGoster();
   }
 
+  // ---------- Misafir modu ----------
+  function misafirUyarisiGerekirseGoster() {
+    if (!misafirMi()) return;
+    try { if (sessionStorage.getItem("ma_misafir_uyarildi")) return; sessionStorage.setItem("ma_misafir_uyarildi", "1"); } catch (e) { return; }
+    setTimeout(function () { document.getElementById("misafirPerdesi").classList.add("acik"); }, 900);
+  }
+  function misafirSeridiGoster() {
+    var serit = document.getElementById("misafirSeridi");
+    if (!misafirMi()) { if (serit) serit.remove(); return; }
+    if (serit) return;
+    serit = document.createElement("div");
+    serit.id = "misafirSeridi";
+    serit.style.cssText = "background:var(--az-zemin);color:var(--az-yazi);font-size:13px;text-align:center;padding:8px 12px";
+    serit.innerHTML = '👋 Misafir olarak geziyorsun, uygulamayı kapatınca yaptıkların silinir. <a href="#" onclick="uyelikAc();return false" style="color:inherit;font-weight:700">Ücretsiz üye ol →</a>';
+    document.querySelector("header").insertAdjacentElement("afterend", serit);
+  }
+
+  // ---------- Bilgilerimi dışa / içe aktar (yedek) ----------
+  var YEDEK_ISARETI = "=====MUTFAK-ASISTANI-YEDEK-VERISI (bu satırın altını değiştirme)=====";
+  function disaAktarAc() { menudenAc("disaPerdesi"); }
+  function iceAktarAc() { document.getElementById("iceHata").textContent = ""; menudenAc("icePerdesi"); }
+  function yedekVerisi() {
+    var k = aktifKullanici() || {};
+    return {
+      surum: 1, tarih: new Date().toISOString(),
+      profil: { ad: k.ad || "", eposta: k.eposta || "", tel: k.tel || "", adres: k.adres || "" },
+      notlar: notlar, liste: liste, hatirlatma: hatirlatma, menu: menu, sofra: sofra, mektuplar: mektuplar,
+      tarifler: uyeTarifleri.filter(function (t) { return t.ekleyenEposta === aktifEposta; }),
+      kayitliListeler: kayitliListeler.filter(function (l) { return l.eposta === aktifEposta; }),
+      gecmis: gecmis.filter(function (h) { return h.eposta === aktifEposta; }),
+      ayarlar: { tema: oku("ma_tema", null), renk: oku("ma_renk", "klasik") }
+    };
+  }
+  function yedekMetni() {
+    var v = yedekVerisi(), sat = [];
+    sat.push("🍳 MUTFAK ASİSTANI YEDEĞİ");
+    sat.push("Kimin: " + (v.profil.ad || "") + " <" + v.profil.eposta + ">");
+    sat.push("Tarih: " + tarihYazisi(v.tarih));
+    sat.push("Geri yüklemek için: Mutfak Asistanı → adına dokun → 📥 Bilgilerimi içe aktar → bu dosyayı seç.");
+    sat.push("");
+    TUM_ALANLAR.forEach(function (a) { if ((notlar[a.id] || "").trim()) sat.push(a.baslik + ": " + notlar[a.id].trim()); });
+    if (liste.length) sat.push("🛒 Alışveriş listesi: " + liste.map(function (x) { return x.metin; }).join(", "));
+    if (menu.length) sat.push("🍽️ Menüm: " + menu.join(", "));
+    if (v.tarifler.length) sat.push("🍲 Tariflerim: " + v.tarifler.map(function (t) { return t.ad; }).join(", "));
+    if (v.kayitliListeler.length) sat.push("📌 Kayıtlı listeler: " + v.kayitliListeler.length + " adet");
+    sat.push("");
+    sat.push(YEDEK_ISARETI);
+    sat.push(JSON.stringify(v));
+    return sat.join("\n");
+  }
+  function yedekDosyaAdi() { return "mutfak-asistani-yedek-" + new Date().toISOString().slice(0, 10) + ".txt"; }
+  function yedekDosyasi() { return new File([yedekMetni()], yedekDosyaAdi(), { type: "text/plain" }); }
+  function yedegiIndir() {
+    var url = URL.createObjectURL(yedekDosyasi());
+    var a = document.createElement("a"); a.href = url; a.download = yedekDosyaAdi();
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+    hareketEkle("📤", "Bilgiler dışa aktarıldı (telefona indirildi)");
+    perdeKapat("disaPerdesi"); mesaj("Yedek dosyan indirildi 📱 İndirilenler klasörüne bak.");
+  }
+  function yedegiMaileAt() {
+    var dosya = yedekDosyasi();
+    // Telefonda: paylaş menüsü açılır, Gmail'i seçip kendine gönderirsin (dosya ekli gelir)
+    if (navigator.canShare && navigator.canShare({ files: [dosya] })) {
+      navigator.share({ files: [dosya], title: "Mutfak Asistanı yedeğim", text: "Mutfak Asistanı yedek dosyam" })
+        .then(function () { hareketEkle("✉️", "Bilgiler dışa aktarıldı (paylaşıldı)"); perdeKapat("disaPerdesi"); mesaj("Yedek gönderildi ✉️"); })
+        .catch(function () {});
+      return;
+    }
+    // Paylaşma desteklenmiyorsa: dosyayı indir, e-posta taslağını aç
+    yedegiIndir();
+    var k = aktifKullanici() || {};
+    location.href = "mailto:" + encodeURIComponent(k.eposta || "") + "?subject=" + encodeURIComponent("Mutfak Asistanı yedeğim") +
+      "&body=" + encodeURIComponent("İndirilen " + yedekDosyaAdi() + " dosyasını bu e-postaya ekleyip kendine gönder.");
+  }
+  function yedegiOku(input) {
+    var dosya = input.files && input.files[0]; input.value = "";
+    if (!dosya) return;
+    var hata = document.getElementById("iceHata");
+    dosya.text().then(function (metin) {
+      var i = metin.indexOf(YEDEK_ISARETI);
+      if (i < 0) { hata.textContent = "Bu bir Mutfak Asistanı yedek dosyası değil gibi görünüyor."; return; }
+      var v;
+      try { v = JSON.parse(metin.slice(i + YEDEK_ISARETI.length).trim()); } catch (e) { hata.textContent = "Dosya bozulmuş, okunamadı."; return; }
+      if (!v || !v.notlar) { hata.textContent = "Dosyada bilgi bulunamadı."; return; }
+      notlar = v.notlar || {}; liste = v.liste || []; hatirlatma = v.hatirlatma || hatirlatma; menu = v.menu || [];
+      hepsiniKaydet();
+      if (v.sofra) yaz("ma_sofra", v.sofra);
+      if (v.mektuplar) yaz("ma_mektuplar", v.mektuplar);
+      (v.tarifler || []).forEach(function (t) {
+        if (!uyeTarifleri.some(function (x) { return x.id === t.id; })) { t.ekleyenEposta = aktifEposta; uyeTarifleri.push(t); }
+      });
+      yaz("ma_uye_tarifleri", uyeTarifleri);
+      (v.kayitliListeler || []).forEach(function (l) {
+        if (!kayitliListeler.some(function (x) { return x.id === l.id; })) { l.eposta = aktifEposta; kayitliListeler.push(l); }
+      });
+      yaz("ma_kayitli_listeler", kayitliListeler);
+      (v.gecmis || []).forEach(function (h) { if (!gecmis.some(function (x) { return x.id === h.id; })) { h.eposta = aktifEposta; gecmis.push(h); } });
+      gecmis.sort(function (a, b) { return a.z < b.z ? 1 : -1; }); yaz("ma_gecmis", gecmis);
+      var k = aktifKullanici();
+      if (k && v.profil) { ["ad", "tel", "adres"].forEach(function (f) { if (!k[f] && v.profil[f]) k[f] = v.profil[f]; }); yaz("ma_aboneler", aboneler); }
+      if (v.ayarlar) { if (v.ayarlar.tema) yaz("ma_tema", v.ayarlar.tema); if (v.ayarlar.renk) yaz("ma_renk", v.ayarlar.renk); }
+      hareketEkle("📥", "Bilgiler içe aktarıldı (" + tarihYazisi(v.tarih) + " tarihli yedek)");
+      try { sessionStorage.setItem("ma_acilis_mesaji", "Bilgilerin geri yüklendi 🎉"); } catch (e) {}
+      location.reload();
+    }).catch(function () { hata.textContent = "Dosya okunamadı."; });
+  }
+
   // ---------- Hareket geçmişi penceresi ----------
   function gecmisAc() { urunDegisiklikleriniKaydet(); document.getElementById("gecmisArama").value = ""; gecmisiGoster(); menudenAc("gecmisPerdesi"); }
   function gunBasligi(d) {
@@ -1510,7 +1686,7 @@
   // Hesap kalır; notlar, listeler, menü, sofra, tarifler ve mektuplar silinir
   function verileriSil() {
     ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_gecmis", "urunler", "alisveris", "dolap"]
-      .forEach(function (a) { try { localStorage.removeItem(a); } catch (e) {} });
+      .forEach(function (a) { sil(a); });
     if (aktifEposta) {
       yaz("ma_uye_tarifleri", uyeTarifleri.filter(function (t) { return t.ekleyenEposta !== aktifEposta; }));
       yaz("ma_kayitli_listeler", kayitliListeler.filter(function (l) { return l.eposta !== aktifEposta; }));
@@ -1552,9 +1728,9 @@
     k.askida = new Date().toISOString();
     yaz("ma_aboneler", aboneler);
     silmeKapat();
-    aktifEposta = null; yaz("ma_kullanici", null);
-    kullaniciGoster(); bolumAc("anasayfa");
-    mesaj("Hesabın " + ASKI_GUN + " gün askıya alındı. Bu sürede giriş yapıp geri getirebilirsin.");
+    localStorage.setItem("ma_kullanici", "null");
+    try { sessionStorage.setItem("ma_acilis_mesaji", "Hesabın " + ASKI_GUN + " gün askıya alındı. Bu sürede giriş yapıp geri getirebilirsin."); } catch (e) {}
+    location.reload();
   }
   function hesabiGeriGetir() {
     var k = aktifKullanici(); if (!k) return;
@@ -2116,6 +2292,11 @@
   document.body.classList.toggle("koyu", koyuMu);
   renkleriUygula();
   urunAnlikGoruntuAl();
+  misafirSeridiGoster();
+  try {
+    var acilisMesaji = sessionStorage.getItem("ma_acilis_mesaji");
+    if (acilisMesaji) { sessionStorage.removeItem("ma_acilis_mesaji"); setTimeout(function () { mesaj(acilisMesaji); }, 300); }
+  } catch (e) {}
 
   alanKartlariniCiz(YIYECEK_ALANLARI, "yiyecekAlanlari");
   alanKartlariniCiz(EKIPMAN_ALANLARI, "ekipmanAlanlari");
