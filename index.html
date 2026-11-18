@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mutfak Asistanı</title>
+  <!-- PWA: uygulama gibi kurulabilsin ve çevrimdışı açılsın -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6c5ce7">
+  <meta name="description" content="Evdeki malzemelere göre tarif öneren, menü ve alışveriş listesi hazırlayan mutfak asistanı.">
+  <link rel="icon" type="image/png" sizes="192x192" href="ikonlar/icon-192.png">
+  <link rel="apple-touch-icon" href="ikonlar/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
 <style>
   /* ---------- RENKLER (koyu ve açık tema) ---------- */
   :root {
@@ -1545,5 +1553,11 @@
   kullaniciGoster();
   hepsiniKaydet();
   </script>
+<script>
+  // PWA: service worker'ı kaydet (çevrimdışı çalışma için)
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js"); });
+  }
+</script>
 </body>
 </html>

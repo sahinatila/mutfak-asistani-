@@ -1,0 +1,20 @@
+{
+  "name": "Mutfak Asistanı",
+  "short_name": "Mutfak Asistanı",
+  "description": "Evdeki malzemelere göre tarif öneren, menü ve alışveriş listesi hazırlayan mutfak asistanı.",
+  "lang": "tr",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f0f2f5",
+  "theme_color": "#6c5ce7",
+  "categories": ["food", "lifestyle", "productivity"],
+  "icons": [
+    { "src": "ikonlar/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "ikonlar/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "ikonlar/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
