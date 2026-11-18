@@ -151,6 +151,11 @@
   .renk-secenek .ornek { display:flex; flex-shrink:0; border-radius:10px; overflow:hidden; border:1px solid var(--cizgi); }
   .renk-secenek .ornek span { width:22px; height:36px; display:block; }
   .renk-secenek b { display:block; font-size:14px; }
+  .gecmis-gun { font-weight:700; font-size:13px; color:var(--soluk); margin:14px 0 6px; text-transform:uppercase; letter-spacing:.03em; }
+  .gecmis-satir { display:flex; align-items:center; gap:10px; padding:8px 6px; border-bottom:1px solid var(--cizgi); font-size:14px; }
+  .gecmis-satir .saat { color:var(--soluk); font-size:12px; width:40px; flex-shrink:0; }
+  .gecmis-satir .metin { flex:1; }
+  .gecmis-satir button { background:none; border:none; color:var(--soluk); font-size:18px; cursor:pointer; padding:0 4px; }
   .renk-secenek small { color:var(--soluk); font-size:12px; }
   .kayit-kart { border:1px solid var(--cizgi); border-radius:12px; padding:10px 12px; margin-bottom:10px; }
   .kayit-kart b { display:block; }
@@ -597,6 +602,18 @@
     </div>
   </div>
 
+  <!-- Hareket geçmişi -->
+  <div class="perde" id="gecmisPerdesi">
+    <div class="pencere" style="max-width:520px;max-height:92vh;overflow:auto">
+      <button class="kapat" onclick="perdeKapat('gecmisPerdesi')">×</button>
+      <h3>🕘 Hareket geçmişi</h3>
+      <p class="aciklama">Eklediğin ürünler, baktığın tarifler ve yaptığın değişiklikler, en yenisi en üstte.</p>
+      <input type="search" id="gecmisArama" placeholder="Geçmişte ara (ör. yumurta)" style="margin-bottom:10px">
+      <button class="btn kirmizi" style="width:100%" onclick="gecmisiTemizle()">🗑️ Tüm geçmişi sil</button>
+      <div id="gecmisIcerik"></div>
+    </div>
+  </div>
+
   <!-- Hesabı ve verileri silme -->
   <div class="perde" id="silmePerdesi">
     <div class="pencere">
@@ -754,6 +771,37 @@
     notlar[alanId] = mevcut ? mevcut.replace(/[,\s]+$/, "") + ", " + metin : metin;
   }
 
+  // =====================================================================
+  //  HAREKET GEÇMİŞİ (Chrome geçmişi gibi)
+  // =====================================================================
+  var gecmis = oku("ma_gecmis", []);
+  var GECMIS_EN_FAZLA = 1000;
+  function hareketEkle(ikon, metin) {
+    gecmis.unshift({ id: "h" + Date.now() + Math.random().toString(36).slice(2, 6), z: new Date().toISOString(), ikon: ikon, metin: metin, eposta: aktifEposta || null });
+    if (gecmis.length > GECMIS_EN_FAZLA) gecmis.length = GECMIS_EN_FAZLA;
+    yaz("ma_gecmis", gecmis);
+  }
+  // Ürün notlarındaki değişiklikleri bulur: "1 damacana su eklendi" gibi
+  var ALAN_ADLARI = { buzdolabi: "Buzdolabım", dondurucu: "Derin Dondurucum", kiler: "Kilerim", pisirme: "Pişirme Ekipmanlarım", karistirma: "Karıştırma Ekipmanlarım" };
+  var urunAnlikGoruntu = {};
+  function alanUrunleri(alanId) {
+    var m = {};
+    notuAnla(notlar[alanId] || "").forEach(function (u) { m[normalIsim(u.ad)] = u.ham.trim(); });
+    return m;
+  }
+  function urunAnlikGoruntuAl() { Object.keys(ALAN_ADLARI).forEach(function (a) { urunAnlikGoruntu[a] = alanUrunleri(a); }); }
+  function urunDegisiklikleriniKaydet() {
+    Object.keys(ALAN_ADLARI).forEach(function (a) {
+      var eski = urunAnlikGoruntu[a] || {}, yeni = alanUrunleri(a), yer = ALAN_ADLARI[a];
+      Object.keys(yeni).forEach(function (k) {
+        if (!(k in eski)) hareketEkle("➕", yeni[k] + " eklendi · " + yer);
+        else if (eski[k] !== yeni[k]) hareketEkle("✏️", eski[k] + " → " + yeni[k] + " olarak değişti · " + yer);
+      });
+      Object.keys(eski).forEach(function (k) { if (!(k in yeni)) hareketEkle("➖", eski[k] + " çıkarıldı · " + yer); });
+      urunAnlikGoruntu[a] = yeni;
+    });
+  }
+
   // HTML'ye kullanıcı yazısı koyarken güvenli hale getirir
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -841,6 +889,7 @@
       notaEkle(alanId, soylenen);
       document.getElementById("not-" + alanId).value = notlar[alanId];
       hepsiniKaydet(); alaniGoster(alanId);
+      urunDegisiklikleriniKaydet();
       mesaj("Eklendi: " + soylenen);
     };
     tanima.onerror = function (olay) {
@@ -1054,7 +1103,8 @@
   function menuDegistir(no) {
     var ad = HAZIR_TARIFLER[no].ad;
     var i = menu.indexOf(ad);
-    if (i >= 0) menu.splice(i, 1); else menu.push(ad);
+    if (i >= 0) { menu.splice(i, 1); hareketEkle("🍽️", ad + " menüden çıkarıldı"); }
+    else { menu.push(ad); hareketEkle("🍽️", ad + " menüye eklendi"); }
     hepsiniKaydet(); menuGoster(); tarifleriGoster();
   }
 
@@ -1085,6 +1135,7 @@
       if (var_olan.kaynaklar.indexOf(kaynak) < 0) var_olan.kaynaklar.push(kaynak);
     } else {
       liste.push({ metin: metin, anahtar: anahtar, kaynaklar: [kaynak], alindi: false });
+      hareketEkle("🛒", metin + " alışveriş listesine eklendi");
     }
   }
 
@@ -1120,6 +1171,7 @@
     });
     liste = liste.filter(function (x) { return !x.alindi; });
     hepsiniKaydet(); alanlariDoldur(); eksikListesiniGoster(); tavsiyeleriGoster();
+    urunDegisiklikleriniKaydet();
     mesaj(alinanlar.length + " ürün buzdolabına / kilere eklendi 🧺");
   }
 
@@ -1139,6 +1191,7 @@
     window.open("https://wa.me/?text=" + encodeURIComponent("🛒 Alışveriş listem\n" + metin), "_blank");
   }
   function listeyiTemizle() {
+    if (liste.length) hareketEkle("🧹", "Alışveriş listesi temizlendi (" + liste.length + " ürün)");
     liste = []; hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster(); mesaj("Liste temizlendi.");
   }
 
@@ -1200,6 +1253,7 @@
         '<button class="menu-sec" onclick="tariflerimAc()">🍲 Tariflerim</button>' +
         '<button class="menu-sec" onclick="kayitliListelerAc()">🛒 Alışveriş listelerim</button>' +
         '<button class="menu-sec" onclick="ayarlarAc()">⚙️ Kullanıcı ayarları</button>' +
+        '<button class="menu-sec" onclick="gecmisAc()">🕘 Hareket geçmişi</button>' +
         '<div class="menu-ayrac"></div>' +
         '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>' +
         '<button class="menu-sec" style="margin-top:6px" onclick="silmeAc(\'veri\')">🧹 Verilerimi sil</button>' +
@@ -1371,6 +1425,7 @@
     if (!kalemler.length) { mesaj("Listende ürün yok."); return; }
     kayitliListeler.unshift({ id: "l" + Date.now(), eposta: k.eposta, tarih: new Date().toISOString(), kalemler: kalemler });
     yaz("ma_kayitli_listeler", kayitliListeler);
+    hareketEkle("📌", "Alışveriş listesi kaydedildi (" + kalemler.length + " ürün)");
     mesaj("Liste kaydedildi: " + tarihYazisi(kayitliListeler[0].tarih) + " 📌");
   }
   function kayitliListelerAc() { kayitliListeleriGoster(); menudenAc("listelerPerdesi"); }
@@ -1399,6 +1454,35 @@
     yaz("ma_kayitli_listeler", kayitliListeler); kayitliListeleriGoster();
   }
 
+  // ---------- Hareket geçmişi penceresi ----------
+  function gecmisAc() { urunDegisiklikleriniKaydet(); document.getElementById("gecmisArama").value = ""; gecmisiGoster(); menudenAc("gecmisPerdesi"); }
+  function gunBasligi(d) {
+    var bugun = new Date(); bugun.setHours(0, 0, 0, 0);
+    var g = new Date(d); g.setHours(0, 0, 0, 0);
+    var fark = Math.round((bugun - g) / 86400000);
+    var tarih = new Date(d).toLocaleDateString("tr-TR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    return fark === 0 ? "Bugün · " + tarih : fark === 1 ? "Dün · " + tarih : tarih;
+  }
+  function gecmisiGoster() {
+    var ara = (document.getElementById("gecmisArama").value || "").trim().toLocaleLowerCase("tr");
+    var benim = gecmis.filter(function (h) { return (h.eposta === aktifEposta || !h.eposta) && (!ara || h.metin.toLocaleLowerCase("tr").indexOf(ara) >= 0); });
+    if (!benim.length) { document.getElementById("gecmisIcerik").innerHTML = '<p class="aciklama" style="margin-top:14px">' + (ara ? "Aramana uyan hareket yok." : "Henüz bir hareket yok.") + '</p>'; return; }
+    var html = "", sonGun = "";
+    benim.forEach(function (h) {
+      var gun = gunBasligi(h.z);
+      if (gun !== sonGun) { html += '<div class="gecmis-gun">' + gun + '</div>'; sonGun = gun; }
+      html += '<div class="gecmis-satir"><span class="saat">' + new Date(h.z).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }) + '</span>' +
+        '<span>' + h.ikon + '</span><span class="metin">' + esc(h.metin) + '</span>' +
+        '<button title="Bu hareketi sil" onclick="hareketSil(\'' + h.id + '\')">×</button></div>';
+    });
+    document.getElementById("gecmisIcerik").innerHTML = html;
+  }
+  function hareketSil(id) { gecmis = gecmis.filter(function (h) { return h.id !== id; }); yaz("ma_gecmis", gecmis); gecmisiGoster(); }
+  function gecmisiTemizle() {
+    gecmis = gecmis.filter(function (h) { return h.eposta && h.eposta !== aktifEposta; });
+    yaz("ma_gecmis", gecmis); gecmisiGoster(); mesaj("Geçmiş temizlendi.");
+  }
+
   // ---------- Hesabı ve tüm verileri silme (Google Play şartı) ----------
   // tur: "veri" → hesap kalır, içerik silinir · "hesap" → her şey silinir
   var silmeTuru = "hesap";
@@ -1425,7 +1509,7 @@
   function silmeOnayla() { if (silmeTuru === "veri") verileriSil(); else hesabiTamamenSil(aktifEposta, true); }
   // Hesap kalır; notlar, listeler, menü, sofra, tarifler ve mektuplar silinir
   function verileriSil() {
-    ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "urunler", "alisveris", "dolap"]
+    ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_gecmis", "urunler", "alisveris", "dolap"]
       .forEach(function (a) { try { localStorage.removeItem(a); } catch (e) {} });
     if (aktifEposta) {
       yaz("ma_uye_tarifleri", uyeTarifleri.filter(function (t) { return t.ekleyenEposta !== aktifEposta; }));
@@ -1447,10 +1531,11 @@
         return t;
       });
     kayitliListeler = kayitliListeler.filter(function (l) { return l.eposta !== eposta; });
+    gecmis = gecmis.filter(function (h) { return h.eposta !== eposta; }); yaz("ma_gecmis", gecmis);
     yaz("ma_aboneler", aboneler); yaz("ma_uye_tarifleri", uyeTarifleri); yaz("ma_kayitli_listeler", kayitliListeler);
     if (aktifEposta === eposta) { aktifEposta = null; yaz("ma_kullanici", null); }
     if (cihazVerisi) {
-      ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_ses_onay", "urunler", "alisveris", "dolap"]
+      ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_ses_onay", "ma_gecmis", "urunler", "alisveris", "dolap"]
         .forEach(function (a) { try { localStorage.removeItem(a); } catch (e) {} });
       try { sessionStorage.setItem("ma_silindi", "hesap"); } catch (e) {}
       location.reload();
@@ -1567,6 +1652,7 @@
     yaz("ma_uye_tarifleri", uyeTarifleri);
     ["yeniTarifAd", "yeniTarifMalzeme", "yeniTarifYapilis", "yeniTarifSure"].forEach(function (id) { document.getElementById(id).value = ""; });
     tarifleriHazirla(); tarifPenceresiKapat(); aileKartiniGoster();
+    hareketEkle("🍲", ad + " tarifi " + (eski ? "düzenlenip tekrar kontrole gönderildi" : "paylaşıldı (onay bekliyor)"));
     tariflerimAc("bekliyor");
     mesaj("Tarifin alındı, eline sağlık! Kontrol edildikten sonra tarif kitabına eklenecek 👩‍🍳");
   }
@@ -1989,7 +2075,11 @@
     else if (d.ses) sesleEkle(d.ses, b);
     else if (d.kategori) { seciliKategori = d.kategori; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (b.id === "sadeceYapabilir") { sadeceYapabilir = !sadeceYapabilir; kategoriFiltresiniCiz(); tarifleriGoster(); }
-    else if (d.tarifAc !== undefined) { acikTarifler[d.tarifAc] = !acikTarifler[d.tarifAc]; tarifleriGoster(); }
+    else if (d.tarifAc !== undefined) {
+      acikTarifler[d.tarifAc] = !acikTarifler[d.tarifAc];
+      if (acikTarifler[d.tarifAc] && HAZIR_TARIFLER[+d.tarifAc]) hareketEkle("📖", HAZIR_TARIFLER[+d.tarifAc].ad + " tarifine bakıldı");
+      tarifleriGoster();
+    }
     else if (d.eksikEkle !== undefined) tarifEksikleriniEkle(+d.eksikEkle);
     else if (d.menu !== undefined) menuDegistir(+d.menu);
     else if (d.alindi !== undefined) { liste[+d.alindi].alindi = b.checked; hepsiniKaydet(); eksikListesiniGoster(); }
@@ -2002,7 +2092,12 @@
     else if (d.tavsiye) { listeyeEkle(d.tavsiye, d.tavsiye, "Tavsiye"); hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster(); mesaj(d.tavsiye + " listene eklendi"); }
   });
 
+  document.addEventListener("change", function (e) {
+    if (e.target.dataset && e.target.dataset.alan) urunDegisiklikleriniKaydet();
+  });
+  document.addEventListener("visibilitychange", function () { if (document.hidden) urunDegisiklikleriniKaydet(); });
   document.addEventListener("input", function (e) {
+    if (e.target.id === "gecmisArama") gecmisiGoster();
     if (e.target.dataset && e.target.dataset.alan) notDegisti(e);
     if (e.target.id === "tarifArama") tarifleriGoster();
     if (e.target.id === "hatirlatmaNotu") { hatirlatma.not = e.target.value; hepsiniKaydet(); }
@@ -2020,6 +2115,7 @@
   var koyuMu = kayitliTema ? kayitliTema === "koyu" : window.matchMedia("(prefers-color-scheme: dark)").matches;
   document.body.classList.toggle("koyu", koyuMu);
   renkleriUygula();
+  urunAnlikGoruntuAl();
 
   alanKartlariniCiz(YIYECEK_ALANLARI, "yiyecekAlanlari");
   alanKartlariniCiz(EKIPMAN_ALANLARI, "ekipmanAlanlari");
