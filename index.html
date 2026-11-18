@@ -594,11 +594,28 @@
     </div>
   </div>
 
-  <!-- Kullanıcı ayarları -->
+  <!-- Ayarlar: görünüm, yedekleme ve hesap/veri silme tek yerde -->
+  <div class="perde" id="ayarMenuPerdesi">
+    <div class="pencere" style="max-width:420px">
+      <button class="kapat" onclick="perdeKapat('ayarMenuPerdesi')">×</button>
+      <h3>⚙️ Ayarlar</h3>
+      <p class="aciklama" style="margin:14px 0 4px"><b>Görünüm</b></p>
+      <button class="menu-sec" onclick="ayardanAc(ayarlarAc)">🎨 Gece / gündüz ve tema</button>
+      <p class="aciklama" style="margin:14px 0 4px"><b>Yedekleme</b></p>
+      <button class="menu-sec" onclick="ayardanAc(disaAktarAc)">📤 Bilgilerimi dışa aktar</button>
+      <button class="menu-sec" onclick="ayardanAc(iceAktarAc)">📥 Bilgilerimi içe aktar</button>
+      <p class="aciklama" style="margin:14px 0 4px"><b>Hesap ve veriler</b></p>
+      <button class="menu-sec" onclick="ayardanAc(function(){silmeAc('veri')})">🧹 Verilerimi sil</button>
+      <div id="ayarHesapDugmesi"></div>
+      <p class="aciklama" style="margin:14px 0 0;text-align:center"><a href="gizlilik.html" style="color:var(--ana)">🔒 Gizlilik Politikası</a></p>
+    </div>
+  </div>
+
+  <!-- Görünüm ve tema -->
   <div class="perde" id="ayarlarPerdesi">
     <div class="pencere" style="max-width:460px;max-height:92vh;overflow:auto">
       <button class="kapat" onclick="perdeKapat('ayarlarPerdesi')">×</button>
-      <h3>⚙️ Kullanıcı ayarları</h3>
+      <h3>🎨 Görünüm ve tema</h3>
       <p class="aciklama" style="margin-top:12px"><b>Gece / gündüz</b></p>
       <div class="gece-gunduz" id="geceGunduz"></div>
       <p class="aciklama"><b>Uygulama teması</b> · Renkler hemen değişir.</p>
@@ -747,14 +764,12 @@
   //  1) BÖLÜMLER: Ürünlerim sekmesindeki not defterleri
   // =====================================================================
   var YIYECEK_ALANLARI = [
-    { id: "buzdolabi", baslik: "🧊 Buzdolabım", aciklama: "Buzdolabındaki her şey. Miktarı istersen yaz, istersen yazma: \"az kıyma\" bile olur.",
-      ornek: "yarım kilo kıyma, 6 domates, 10 yumurta, az süt, beyaz peynir, 3 sivri biber" },
-    { id: "icecekler", baslik: "🥤 İçeceklerim", aciklama: "Dolaptaki ya da kenardaki içecekler: su, kola, soda, meyve suyu, ayran...",
-      ornek: "1 damacana su, 6 soda, 2 litre kola, fanta, 1 kutu meyve suyu, 4 ayran, çay, kahve" },
+    { id: "buzdolabi", baslik: "🧊 Buzdolabım", aciklama: "Buzdolabındaki her şey, içecekler ve atıştırmalıklar dahil. Miktarı istersen yaz, istersen yazma: \"az kıyma\" bile olur.",
+      ornek: "yarım kilo kıyma, 6 domates, 10 yumurta, az süt, beyaz peynir, 2 litre kola, 6 soda, ayran, nutella" },
     { id: "dondurucu", baslik: "❄️ Derin Dondurucum", aciklama: "Dondurucuda neler var? Kendi bildiğin isimlerle yaz.",
       ornek: "2 paket kıyma, bir tabak tavuk, kurban eti, menemenlik sos, hıngel, bezelye" },
-    { id: "kiler", baslik: "🥫 Kilerim", aciklama: "Kuru gıdalar, konserveler, sebze dolabı...",
-      ornek: "pirinç, bulgur, kırmızı mercimek, yarım paket un, salça, sıvı yağ, 5 patates, soğan, çiğdem" }
+    { id: "kiler", baslik: "🥫 Kilerim", aciklama: "Kuru gıdalar, konserveler, sebze dolabı, içecekler ve atıştırmalıklar...",
+      ornek: "pirinç, bulgur, kırmızı mercimek, yarım paket un, salça, sıvı yağ, 5 patates, 1 damacana su, çay, çekirdek, cips" }
   ];
   var EKIPMAN_ALANLARI = [
     { id: "pisirme", baslik: "🔥 Pişirme Ekipmanlarım", aciklama: "Tarif önerirken fırın, airfryer gibi aletlerin olup olmadığına bakarız.",
@@ -819,6 +834,8 @@
   }
 
   var notlar = oku("ma_notlar", {});          // { buzdolabi: "...", kiler: "...", ... }
+  // Kısa süre ayrı duran "İçeceklerim" defteri artık Buzdolabım'ın içinde
+  if (notlar.icecekler) { notlar.buzdolabi = [notlar.buzdolabi, notlar.icecekler].filter(Boolean).join(", "); delete notlar.icecekler; yaz("ma_notlar", notlar); }
   var liste = oku("ma_liste", []);            // [{ metin, anahtar, kaynaklar: [], alindi }]
   var hatirlatma = oku("ma_hatirlatma", { not: "", gunler: [] });
   var menu = oku("ma_menu", []);              // seçilen tariflerin adları
@@ -862,7 +879,7 @@
     yaz("ma_gecmis", gecmis);
   }
   // Ürün notlarındaki değişiklikleri bulur: "1 damacana su eklendi" gibi
-  var ALAN_ADLARI = { buzdolabi: "Buzdolabım", icecekler: "İçeceklerim", dondurucu: "Derin Dondurucum", kiler: "Kilerim", pisirme: "Pişirme Ekipmanlarım", karistirma: "Karıştırma Ekipmanlarım" };
+  var ALAN_ADLARI = { buzdolabi: "Buzdolabım", dondurucu: "Derin Dondurucum", kiler: "Kilerim", pisirme: "Pişirme Ekipmanlarım", karistirma: "Karıştırma Ekipmanlarım" };
   var urunAnlikGoruntu = {};
   function alanUrunleri(alanId) {
     var m = {};
@@ -1404,16 +1421,13 @@
         '<button class="menu-sec" onclick="hesapDuzenleAc()">✏️ Hesabımı düzenle</button>' +
         '<button class="menu-sec" onclick="tariflerimAc()">🍲 Tariflerim</button>' +
         '<button class="menu-sec" onclick="kayitliListelerAc()">🛒 Alışveriş listelerim</button>' +
-        '<button class="menu-sec" onclick="ayarlarAc()">⚙️ Kullanıcı ayarları</button>' +
         '<button class="menu-sec" onclick="gecmisAc()">🕘 Hareket geçmişi</button>' +
-        '<button class="menu-sec" onclick="disaAktarAc()">📤 Bilgilerimi dışa aktar</button>' +
-        '<button class="menu-sec" onclick="iceAktarAc()">📥 Bilgilerimi içe aktar</button>' +
+        '<button class="menu-sec" onclick="ayarMenusuAc()">⚙️ Ayarlar' + (k.askida ? ' <small style="color:var(--yesil)">· ♻️ hesabın askıda</small>' : '') + '</button>' +
         '<div class="menu-ayrac"></div>' +
-        '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>' +
-        '<button class="menu-sec" style="margin-top:6px" onclick="silmeAc(\'veri\')">🧹 Verilerimi sil</button>' +
-        (k.askida
-          ? '<button class="menu-sec" style="color:var(--yesil);font-weight:600" onclick="hesabiGeriGetir()">♻️ Hesabımı geri getir (' + askidaKalanGun(k) + ' gün kaldı)</button>'
-          : '<button class="menu-sec" style="color:var(--kirmizi)" onclick="silmeAc(\'hesap\')">🗑️ Hesabımı sil</button>');
+        '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>';
+      document.getElementById("ayarHesapDugmesi").innerHTML = k.askida
+        ? '<button class="menu-sec" style="color:var(--yesil);font-weight:600" onclick="perdeKapat(\'ayarMenuPerdesi\');hesabiGeriGetir()">♻️ Hesabımı geri getir (' + askidaKalanGun(k) + ' gün kaldı)</button>'
+        : '<button class="menu-sec" style="color:var(--kirmizi)" onclick="ayardanAc(function(){silmeAc(\'hesap\')})">🗑️ Hesabımı sil</button>';
       document.getElementById("anaButon").textContent = "Mutfağıma git →";
       document.getElementById("hosgeldin").innerHTML = "Hoş geldin <b>" + esc((k.ad || "").split(" ")[0] || k.eposta) + "</b> 👋";
     } else {
@@ -2261,6 +2275,9 @@
   function renkSec(id) { yaz("ma_renk", id); renkleriUygula(); ayarlariGoster(); }
 
   function ayarlarAc() { ayarlariGoster(); menudenAc("ayarlarPerdesi"); }
+  function ayarMenusuAc() { menudenAc("ayarMenuPerdesi"); }
+  // Ayarlar penceresinden bir alt pencere aç (Ayarlar kapanır, alt pencere açılır)
+  function ayardanAc(fn) { perdeKapat("ayarMenuPerdesi"); fn(); }
   function ayarlariGoster() {
     var koyu = document.body.classList.contains("koyu");
     document.getElementById("geceGunduz").innerHTML =
