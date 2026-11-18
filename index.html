@@ -140,6 +140,15 @@
   .pencere { background: var(--kart); border-radius: 18px; padding: 26px; width: 100%; max-width: 400px; position: relative; }
   .pencere h3 { margin: 0 0 6px; font-size: 22px; }
   .pencere input { margin-bottom: 12px; }
+  .menu-sec { display:block; width:100%; text-align:left; background:none; border:none; color:var(--yazi); padding:9px 6px; border-radius:8px; font-size:14px; cursor:pointer; }
+  .menu-sec:hover { background: var(--temel-zemin); }
+  .menu-ayrac { border-top:1px solid var(--cizgi); margin:6px 0; }
+  .kayit-kart { border:1px solid var(--cizgi); border-radius:12px; padding:10px 12px; margin-bottom:10px; }
+  .kayit-kart b { display:block; }
+  .kayit-kart ul { margin:6px 0; padding-left:18px; font-size:14px; }
+  .durum { display:inline-block; font-size:12px; padding:2px 8px; border-radius:10px; }
+  .durum.bekliyor { background: var(--az-zemin); color: var(--az-yazi); }
+  .durum.onayli { background: var(--var-zemin); color: var(--var-yazi); }
   .pencere .kapat { position: absolute; right: 14px; top: 10px; background: none; border: none; font-size: 22px; color: var(--soluk); cursor: pointer; }
   .google-btn { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid var(--cizgi); background: var(--kutu); color: var(--yazi);
     font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
@@ -431,7 +440,7 @@
         <a class="btn whatsapp-renk" href="https://wa.me/905541939113?text=Merhaba%2C%20Mutfak%20Asistan%C4%B1%20hakk%C4%B1nda%20yaz%C4%B1yorum."
            target="_blank" rel="noopener">💬 WhatsApp'tan yaz</a>
       </div>
-      <p class="aciklama" style="text-align:center;margin:4px 0 20px">🔒 <a href="gizlilik.html" style="color:var(--ana)">Gizlilik Politikası</a> · <a href="#" onclick="silmeAc();return false" style="color:var(--ana)">Verilerimi sil</a></p>
+      <p class="aciklama" style="text-align:center;margin:4px 0 20px">🔒 <a href="gizlilik.html" style="color:var(--ana)">Gizlilik Politikası</a> · <a href="#" onclick="silmeAc('veri');return false" style="color:var(--ana)">Verilerimi sil</a></p>
     </div>
   </section>
 
@@ -484,6 +493,7 @@
         <button class="btn yesil" onclick="alinanlariUrunlereEkle()">✓ Alınanları ürünlerime ekle</button>
         <button class="btn ikincil" onclick="listeyiKopyala()">📋 Kopyala</button>
         <button class="btn ikincil" onclick="whatsappPaylas()">💬 WhatsApp'ta paylaş</button>
+        <button class="btn ikincil" onclick="listeyiTarihleKaydet()">📌 Listeyi tarihle kaydet</button>
         <button class="btn ikincil" onclick="listeyiTemizle()">🗑️ Temizle</button>
       </div>
     </div>
@@ -525,20 +535,62 @@
     <button class="btn ikincil" onclick="menuyuTemizle()">✕</button>
   </div></div>
 
+  <!-- Hesabımı düzenle -->
+  <div class="perde" id="hesapPerdesi">
+    <div class="pencere" style="max-height:92vh;overflow:auto">
+      <button class="kapat" onclick="perdeKapat('hesapPerdesi')">×</button>
+      <h3>✏️ Hesabımı düzenle</h3>
+      <p class="aciklama">Hepsi isteğe bağlı. Bilgilerin sadece bu cihazda saklanır.</p>
+      <label class="aciklama">E-posta</label>
+      <input type="text" id="hesapEposta" disabled>
+      <input type="text" id="hesapAd" placeholder="Ad soyad" autocomplete="name">
+      <input type="tel" id="hesapTel" placeholder="Telefon" autocomplete="tel">
+      <textarea id="hesapAdres" placeholder="Adres" style="min-height:70px;margin-bottom:12px"></textarea>
+      <label class="aciklama" id="hesapSifreBilgi">Şifre koyarsan, girişte e-postanla birlikte şifren de sorulur.</label>
+      <input type="password" id="hesapSifre" placeholder="Yeni şifre (boş bırakırsan değişmez)" autocomplete="new-password">
+      <input type="password" id="hesapSifre2" placeholder="Yeni şifre tekrar" autocomplete="new-password">
+      <label class="aciklama" id="hesapSifreKaldirSatir" style="display:none"><input type="checkbox" id="hesapSifreKaldir" style="width:auto;margin:0 6px 0 0">Şifremi kaldır</label>
+      <div class="hata" id="hesapHata"></div>
+      <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="hesapKaydet()">Kaydet</button>
+    </div>
+  </div>
+
+  <!-- Tariflerim -->
+  <div class="perde" id="tariflerimPerdesi">
+    <div class="pencere" style="max-width:520px;max-height:92vh;overflow:auto">
+      <button class="kapat" onclick="perdeKapat('tariflerimPerdesi')">×</button>
+      <h3>🍲 Tariflerim</h3>
+      <div class="filtre" id="tariflerimSekme"></div>
+      <div id="tariflerimIcerik"></div>
+      <button class="btn" style="width:100%;margin-top:6px" onclick="perdeKapat('tariflerimPerdesi');tarifPenceresiAc()">＋ Yeni tarif ekle</button>
+    </div>
+  </div>
+
+  <!-- Kayıtlı alışveriş listelerim -->
+  <div class="perde" id="listelerPerdesi">
+    <div class="pencere" style="max-width:520px;max-height:92vh;overflow:auto">
+      <button class="kapat" onclick="perdeKapat('listelerPerdesi')">×</button>
+      <h3>🛒 Alışveriş listelerim</h3>
+      <p class="aciklama">Kaydettiğin listeler tarihleriyle burada durur. Alışveriş Listelerim sayfasında "📌 Listeyi tarihle kaydet" ile yeni liste ekleyebilirsin.</p>
+      <div id="listelerIcerik"></div>
+    </div>
+  </div>
+
   <!-- Hesabı ve verileri silme -->
   <div class="perde" id="silmePerdesi">
     <div class="pencere">
       <button class="kapat" onclick="silmeKapat()">×</button>
-      <h3>🗑️ Hesabımı ve verilerimi sil</h3>
-      <p class="aciklama" style="font-size:14px;line-height:1.55">Bu cihazdaki tüm Mutfak Asistanı bilgileri <b>kalıcı olarak</b> silinir:</p>
+      <h3 id="silmeBaslik">🗑️ Hesabımı sil</h3>
+      <p class="aciklama" style="font-size:14px;line-height:1.55" id="silmeGiris">Bu cihazdaki tüm Mutfak Asistanı bilgileri <b>kalıcı olarak</b> silinir:</p>
       <ul class="aciklama" style="font-size:14px;margin:0 0 10px;padding-left:20px">
-        <li>Üyeliğin (ad ve e-posta)</li>
+        <li id="silmeUyelikSatiri">Üyeliğin (ad, e-posta, telefon, adres, şifre)</li>
         <li>Buzdolabı, kiler, dondurucu ve ekipman notların</li>
-        <li>Alışveriş listen, menün, sofra planın ve hatırlatmaların</li>
-        <li>Paylaştığın tarifler ve mektupların</li>
+        <li>Alışveriş listen, kayıtlı listelerin, menün, sofra planın ve hatırlatmaların</li>
+        <li id="silmeTarifSatiri">Paylaştığın tarifler ve mektupların</li>
       </ul>
-      <p class="aciklama" style="font-size:14px">Bilgilerin sadece bu cihazda durduğu için başka hiçbir yerde kopyası kalmaz. Bu işlem geri alınamaz.</p>
-      <button class="btn kirmizi" style="width:100%;padding:12px;font-size:16px" onclick="hepsiniSil()">Evet, hepsini kalıcı olarak sil</button>
+      <p class="aciklama" style="font-size:14px" id="silmeNot">Bilgilerin sadece bu cihazda durduğu için başka hiçbir yerde kopyası kalmaz. Bu işlem geri alınamaz.</p>
+      <button class="btn" style="width:100%;padding:12px;font-size:16px;margin-bottom:8px" onclick="askiyaAl()" id="askiyaDugme">⏸️ Hesabımı askıya al (30 gün)</button>
+      <button class="btn kirmizi" style="width:100%;padding:12px;font-size:16px" onclick="silmeOnayla()" id="silmeDugme">Evet, kalıcı olarak sil</button>
       <button class="btn ikincil" style="width:100%;padding:10px;margin-top:8px" onclick="silmeKapat()">Vazgeç</button>
     </div>
   </div>
@@ -568,6 +620,7 @@
       <div class="ayrac">ya da</div>
       <input type="text" id="uyeAd" placeholder="Adın soyadın (isteğe bağlı)">
       <input type="text" id="uyeEposta" placeholder="E-posta adresin" inputmode="email" autocomplete="email">
+      <input type="password" id="uyeSifre" placeholder="Şifren" autocomplete="current-password" style="display:none">
       <div class="hata" id="uyeHata"></div>
       <button class="btn" style="width:100%;padding:12px;font-size:16px" onclick="uyeOl()">Devam et</button>
       <p class="aciklama" style="margin:10px 0 0;text-align:center">Devam ederek <a href="gizlilik.html" target="_blank" rel="noopener" style="color:var(--ana)">Gizlilik Politikası</a>'nı kabul etmiş olursun. Bilgilerin sadece bu cihazda saklanır.</p>
@@ -817,11 +870,23 @@
   // =====================================================================
   // Üyelerin eklediği tarifler (tarayıcıda saklanıyor)
   var uyeTarifleri = oku("ma_uye_tarifleri", []);
+  // Onaylanmayan (hata bulunan) tarif, RED_GUN gün içinde düzenlenmezse silinir
+  var RED_GUN = 30;
+  function redKalanGun(t) {
+    var gecen = (Date.now() - new Date(t.redTarihi || t.tarih).getTime()) / 86400000;
+    return Math.max(0, Math.ceil(RED_GUN - gecen));
+  }
+  (function suresiDolanRedleriSil() {
+    var once = uyeTarifleri.length;
+    uyeTarifleri = uyeTarifleri.filter(function (t) { return !(t.durum === "reddedildi" && redKalanGun(t) === 0); });
+    if (uyeTarifleri.length !== once) yaz("ma_uye_tarifleri", uyeTarifleri);
+  })();
 
   // Tarifleri hazırlıyoruz (malzeme satırlarını anlıyoruz). Hazır tarifler + üye tarifleri.
   var HAZIR_TARIFLER = [];
   function tarifleriHazirla() {
-    HAZIR_TARIFLER = TARIFLER.concat(uyeTarifleri).map(function (t, no) {
+    var onayliUyeTarifleri = uyeTarifleri.filter(function (t) { return t.durum !== "bekliyor" && t.durum !== "reddedildi"; });
+    HAZIR_TARIFLER = TARIFLER.concat(onayliUyeTarifleri).map(function (t, no) {
       var gruplar = [{ baslik: "", malzemeler: [] }];
       t.m.forEach(function (satir) {
         if (satir.charAt(0) === "#") gruplar.push({ baslik: satir.slice(1).trim(), malzemeler: [] });
@@ -1110,8 +1175,15 @@
     if (k) {
       btn.innerHTML = '<span class="avatar">' + esc(basHarfler(k)) + '</span><span class="kad">' + esc(k.ad || k.eposta.split("@")[0]) + '</span>';
       menuKutu.innerHTML = '<b>' + esc(k.ad || "Üye") + '</b><div class="eposta">' + esc(k.eposta) + '</div>' +
+        '<button class="menu-sec" onclick="hesapDuzenleAc()">✏️ Hesabımı düzenle</button>' +
+        '<button class="menu-sec" onclick="tariflerimAc()">🍲 Tariflerim</button>' +
+        '<button class="menu-sec" onclick="kayitliListelerAc()">🛒 Alışveriş listelerim</button>' +
+        '<div class="menu-ayrac"></div>' +
         '<button class="btn kirmizi" style="width:100%" onclick="cikisYap()">Çıkış yap</button>' +
-        '<button class="btn ikincil" style="width:100%;margin-top:8px;font-size:13px" onclick="silmeAc()">🗑️ Hesabımı ve verilerimi sil</button>';
+        '<button class="menu-sec" style="margin-top:6px" onclick="silmeAc(\'veri\')">🧹 Verilerimi sil</button>' +
+        (k.askida
+          ? '<button class="menu-sec" style="color:var(--yesil);font-weight:600" onclick="hesabiGeriGetir()">♻️ Hesabımı geri getir (' + askidaKalanGun(k) + ' gün kaldı)</button>'
+          : '<button class="menu-sec" style="color:var(--kirmizi)" onclick="silmeAc(\'hesap\')">🗑️ Hesabımı sil</button>');
       document.getElementById("anaButon").textContent = "Mutfağıma git →";
       document.getElementById("hosgeldin").innerHTML = "Hoş geldin <b>" + esc((k.ad || "").split(" ")[0] || k.eposta) + "</b> 👋";
     } else {
@@ -1141,9 +1213,27 @@
       return;
     }
     var k = aboneler.find(function (a) { return a.eposta === eposta; });
+    // Bu hesaba şifre konduysa önce şifreyi kontrol et
+    if (k && k.sifre && !uyeOl.sifreTamam) {
+      var sifreKutu = document.getElementById("uyeSifre");
+      if (sifreKutu.style.display === "none" || !sifreKutu.value) {
+        sifreKutu.style.display = "block"; sifreKutu.focus();
+        document.getElementById("uyeHata").textContent = "Bu hesabın şifresi var, şifreni yaz.";
+        return;
+      }
+      sifreOzeti(eposta, sifreKutu.value).then(function (ozet) {
+        if (ozet !== k.sifre) { document.getElementById("uyeHata").textContent = "Şifre yanlış, tekrar dene."; return; }
+        uyeOl.sifreTamam = true; uyeOl();
+      });
+      return;
+    }
+    uyeOl.sifreTamam = false;
+    document.getElementById("uyeSifre").value = ""; document.getElementById("uyeSifre").style.display = "none";
     if (k) {
       if (ad) k.ad = ad;
-      mesaj("Tekrar hoş geldin " + (k.ad || "") + " 👋");
+      mesaj(k.askida
+        ? "Hesabın askıda (" + askidaKalanGun(k) + " gün kaldı). Geri getirmek için sağ üstteki adına dokun ♻️"
+        : "Tekrar hoş geldin " + (k.ad || "") + " 👋");
     } else {
       aboneler.push({ ad: ad, eposta: eposta, tarih: new Date().toISOString().slice(0, 10) });
       mesaj("Aramıza hoş geldin! 🎉");
@@ -1161,36 +1251,226 @@
     mesaj("Çıkış yaptın. Görüşmek üzere 👋");
   }
 
+  // ---------- Ortak: pencere kapatma ----------
+  function perdeKapat(id) { document.getElementById(id).classList.remove("acik"); }
+  function menudenAc(id) {
+    document.getElementById("kullaniciMenu").classList.remove("acik");
+    document.getElementById(id).classList.add("acik");
+  }
+
+  // Şifre asla açık saklanmaz: e-postayla karıştırılıp özetlenir (SHA-256)
+  function sifreOzeti(eposta, sifre) {
+    var veri = new TextEncoder().encode("mutfak-asistani|" + eposta + "|" + sifre);
+    return crypto.subtle.digest("SHA-256", veri).then(function (b) {
+      return Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join("");
+    });
+  }
+
+  // ---------- Hesabımı düzenle ----------
+  function hesapDuzenleAc() {
+    var k = aktifKullanici(); if (!k) return;
+    document.getElementById("hesapEposta").value = k.eposta;
+    document.getElementById("hesapAd").value = k.ad || "";
+    document.getElementById("hesapTel").value = k.tel || "";
+    document.getElementById("hesapAdres").value = k.adres || "";
+    document.getElementById("hesapSifre").value = ""; document.getElementById("hesapSifre2").value = "";
+    document.getElementById("hesapSifreKaldir").checked = false;
+    document.getElementById("hesapSifreKaldirSatir").style.display = k.sifre ? "block" : "none";
+    document.getElementById("hesapSifreBilgi").textContent = k.sifre
+      ? "Hesabında şifre var. Değiştirmek istersen yenisini yaz."
+      : "Şifre koyarsan, girişte e-postanla birlikte şifren de sorulur.";
+    document.getElementById("hesapHata").textContent = "";
+    menudenAc("hesapPerdesi");
+  }
+  function hesapKaydet() {
+    var k = aktifKullanici(); if (!k) return;
+    var s1 = document.getElementById("hesapSifre").value, s2 = document.getElementById("hesapSifre2").value;
+    var hata = document.getElementById("hesapHata");
+    if (s1 || s2) {
+      if (s1.length < 6) { hata.textContent = "Şifre en az 6 karakter olmalı."; return; }
+      if (s1 !== s2) { hata.textContent = "İki şifre aynı değil."; return; }
+    }
+    k.ad = document.getElementById("hesapAd").value.trim();
+    k.tel = document.getElementById("hesapTel").value.trim();
+    k.adres = document.getElementById("hesapAdres").value.trim();
+    var bitir = function (not) {
+      yaz("ma_aboneler", aboneler); perdeKapat("hesapPerdesi"); kullaniciGoster();
+      mesaj(not || "Bilgilerin kaydedildi ✅");
+    };
+    if (document.getElementById("hesapSifreKaldir").checked && !s1) { delete k.sifre; bitir("Şifren kaldırıldı."); return; }
+    if (s1) { sifreOzeti(k.eposta, s1).then(function (o) { k.sifre = o; bitir("Bilgilerin ve şifren kaydedildi 🔒"); }); return; }
+    bitir();
+  }
+
+  // ---------- Tariflerim: onaylı / onay bekleyen ----------
+  var tariflerimSekmesi = "onayli";
+  function tariflerimAc(sekme) {
+    if (sekme) tariflerimSekmesi = sekme;
+    tariflerimGoster();
+    menudenAc("tariflerimPerdesi");
+  }
+  function tariflerimGoster() {
+    var benim = uyeTarifleri.filter(function (t) { return t.ekleyenEposta === aktifEposta; });
+    var onayli = benim.filter(function (t) { return t.durum !== "bekliyor" && t.durum !== "reddedildi"; });
+    var bekleyen = benim.filter(function (t) { return t.durum === "bekliyor" || t.durum === "reddedildi"; });
+    document.getElementById("tariflerimSekme").innerHTML =
+      '<button class="' + (tariflerimSekmesi === "onayli" ? "aktif" : "") + '" onclick="tariflerimSekmesi=\'onayli\';tariflerimGoster()">✅ Onaylı tarifler (' + onayli.length + ')</button>' +
+      '<button class="' + (tariflerimSekmesi === "bekliyor" ? "aktif" : "") + '" onclick="tariflerimSekmesi=\'bekliyor\';tariflerimGoster()">⏳ Onay bekleyen (' + bekleyen.length + ')</button>';
+    var gosterilen = tariflerimSekmesi === "onayli" ? onayli : bekleyen;
+    var bilgi = tariflerimSekmesi === "bekliyor"
+      ? '<p class="aciklama">Eklediğin tarifler önce kontrol edilir, onaylanınca tarif kitabımıza katılır. Hata bulunan tarif onaylanmaz; ' + RED_GUN + ' gün içinde düzenlenmezse silinir.</p>'
+      : '<p class="aciklama">Bu tarifler tarif kitabımızda herkesle birlikte görünür.</p>';
+    document.getElementById("tariflerimIcerik").innerHTML = bilgi + (gosterilen.length ? gosterilen.map(function (t) {
+      return '<div class="kayit-kart"><b>' + esc(t.ad) + '</b>' +
+        (t.durum === "reddedildi"
+          ? '<span class="durum" style="background:var(--yok-zemin);color:var(--yok-yazi)">❌ Onaylanmadı · ' + redKalanGun(t) + ' gün içinde düzenle</span> '
+          : '<span class="durum ' + (t.durum === "bekliyor" ? "bekliyor" : "onayli") + '">' + (t.durum === "bekliyor" ? "⏳ Onay bekliyor" : "✅ Onaylı") + '</span> ') +
+        (t.durum === "reddedildi" && t.redNedeni ? '<p class="aciklama" style="margin:6px 0">Neden: ' + esc(t.redNedeni) + '</p>' : '') +
+        '<span class="aciklama">' + esc(t.kat) + ' · ' + esc(String(t.kisi)) + ' kişilik' + (t.tarih ? ' · ' + esc(t.tarih) : '') + '</span>' +
+        '<ul>' + t.m.filter(function (x) { return x.charAt(0) !== "#"; }).slice(0, 6).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") +
+        (t.m.length > 6 ? "<li>…</li>" : "") + '</ul>' +
+        '<div class="arac" style="margin:0">' +
+        (t.durum === "bekliyor" || t.durum === "reddedildi" ? '<button class="btn" style="font-size:13px" onclick="tarifDuzenle(\'' + esc(t.id) + '\')">✏️ Düzenle</button>' : '') +
+        '<button class="btn ikincil" style="font-size:13px" onclick="tarifSil(\'' + esc(t.id) + '\')">🗑️ Sil</button></div></div>';
+    }).join("") : '<p class="aciklama">Burada henüz tarif yok.</p>');
+  }
+
+  // ---------- Alışveriş listelerimi tarihle kaydet ----------
+  var kayitliListeler = oku("ma_kayitli_listeler", []);
+  function tarihYazisi(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", weekday: "long" }) +
+      ", " + d.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+  }
+  function listeyiTarihleKaydet() {
+    var k = aktifKullanici();
+    if (!k) { mesaj("Listeni kaydetmek için önce ailemize katıl 🙂"); uyelikAc(); return; }
+    var kalemler = liste.map(function (x) { return { metin: x.metin, alindi: !!x.alindi }; });
+    if (!kalemler.length) { mesaj("Listende ürün yok."); return; }
+    kayitliListeler.unshift({ id: "l" + Date.now(), eposta: k.eposta, tarih: new Date().toISOString(), kalemler: kalemler });
+    yaz("ma_kayitli_listeler", kayitliListeler);
+    mesaj("Liste kaydedildi: " + tarihYazisi(kayitliListeler[0].tarih) + " 📌");
+  }
+  function kayitliListelerAc() { kayitliListeleriGoster(); menudenAc("listelerPerdesi"); }
+  function kayitliListeleriGoster() {
+    var benim = kayitliListeler.filter(function (l) { return l.eposta === aktifEposta; });
+    document.getElementById("listelerIcerik").innerHTML = benim.length ? benim.map(function (l) {
+      return '<div class="kayit-kart"><b>🗓️ ' + esc(tarihYazisi(l.tarih)) + '</b>' +
+        '<span class="aciklama">' + l.kalemler.length + ' ürün</span>' +
+        '<ul>' + l.kalemler.map(function (x) { return "<li>" + (x.alindi ? "<s>" + esc(x.metin) + "</s>" : esc(x.metin)) + "</li>"; }).join("") + '</ul>' +
+        '<div class="arac" style="margin:0">' +
+        '<button class="btn" style="font-size:13px" onclick="kayitliListeyiYukle(\'' + l.id + '\')">↩️ Bu listeyi kullan</button>' +
+        '<button class="btn ikincil" style="font-size:13px" onclick="kayitliListeyiSil(\'' + l.id + '\')">🗑️ Sil</button></div></div>';
+    }).join("") : '<p class="aciklama">Henüz kaydedilmiş liste yok.</p>';
+  }
+  function kayitliListeyiYukle(id) {
+    var l = kayitliListeler.find(function (x) { return x.id === id; }); if (!l) return;
+    l.kalemler.forEach(function (x) {
+      var u = notuAnla(x.metin)[0];
+      listeyeEkle(x.metin, u ? u.ad : x.metin, "Kayıtlı liste");
+    });
+    hepsiniKaydet(); eksikListesiniGoster(); perdeKapat("listelerPerdesi"); bolumAc("alisveris");
+    mesaj("Liste alışveriş listene eklendi 🛒");
+  }
+  function kayitliListeyiSil(id) {
+    kayitliListeler = kayitliListeler.filter(function (x) { return x.id !== id; });
+    yaz("ma_kayitli_listeler", kayitliListeler); kayitliListeleriGoster();
+  }
+
   // ---------- Hesabı ve tüm verileri silme (Google Play şartı) ----------
-  function silmeAc() {
+  // tur: "veri" → hesap kalır, içerik silinir · "hesap" → her şey silinir
+  var silmeTuru = "hesap";
+  var ASKI_GUN = 30;
+  function silmeAc(tur) {
+    silmeTuru = (tur === "hesap" && aktifKullanici()) ? "hesap" : "veri";
+    var veri = silmeTuru === "veri";
+    document.getElementById("askiyaDugme").style.display = veri ? "none" : "";
+    document.getElementById("silmeDugme").textContent = veri ? "Evet, kalıcı olarak sil" : "🗑️ Hesabımı tamamen sil";
+    document.getElementById("silmeTarifSatiri").innerHTML = veri
+      ? "Paylaştığın tarifler ve mektupların"
+      : "Onay bekleyen tariflerin ve mektupların. <b>Onaylı tariflerin</b> tarif kitabımızda isimsiz olarak kalır.";
+    document.getElementById("silmeNot").innerHTML = veri
+      ? "Bilgilerin sadece bu cihazda durduğu için başka hiçbir yerde kopyası kalmaz. Bu işlem geri alınamaz."
+      : "<b>Askıya alırsan</b> hesabın " + ASKI_GUN + " gün bekler; bu sürede giriş yapıp geri getirebilirsin, getirmezsen tamamen silinir.<br><b>Tamamen silersen</b> hemen silinir, geri alınamaz.";
+    document.getElementById("silmeBaslik").textContent = veri ? "🧹 Verilerimi sil" : "🗑️ Hesabımı sil";
+    document.getElementById("silmeGiris").innerHTML = veri
+      ? "Hesabın kalır, ama şu bilgilerin <b>kalıcı olarak</b> silinir:"
+      : "Hesabın ve bu cihazdaki tüm Mutfak Asistanı bilgileri <b>kalıcı olarak</b> silinir:";
+    document.getElementById("silmeUyelikSatiri").style.display = veri ? "none" : "";
     document.getElementById("kullaniciMenu").classList.remove("acik");
     document.getElementById("silmePerdesi").classList.add("acik");
   }
-  function silmeKapat() { document.getElementById("silmePerdesi").classList.remove("acik"); }
-  function hepsiniSil() {
-    try {
-      var silinecek = [];
-      for (var i = 0; i < localStorage.length; i++) {
-        var a = localStorage.key(i);
-        if (a.indexOf("ma_") === 0 || a === "urunler" || a === "alisveris" || a === "dolap") silinecek.push(a);
-      }
-      silinecek.forEach(function (a) { localStorage.removeItem(a); });
-    } catch (e) {}
-    try { sessionStorage.setItem("ma_silindi", "1"); } catch (e) {}
+  function silmeOnayla() { if (silmeTuru === "veri") verileriSil(); else hesabiTamamenSil(aktifEposta, true); }
+  // Hesap kalır; notlar, listeler, menü, sofra, tarifler ve mektuplar silinir
+  function verileriSil() {
+    ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "urunler", "alisveris", "dolap"]
+      .forEach(function (a) { try { localStorage.removeItem(a); } catch (e) {} });
+    if (aktifEposta) {
+      yaz("ma_uye_tarifleri", uyeTarifleri.filter(function (t) { return t.ekleyenEposta !== aktifEposta; }));
+      yaz("ma_kayitli_listeler", kayitliListeler.filter(function (l) { return l.eposta !== aktifEposta; }));
+    }
+    try { sessionStorage.setItem("ma_silindi", "veri"); } catch (e) {}
     location.reload();
   }
+  function silmeKapat() { document.getElementById("silmePerdesi").classList.remove("acik"); }
+  // Hesabı tamamen sil: üyelik, onay bekleyen tarifler ve kayıtlı listeler gider.
+  // Onaylı tarifler arşivde kalır ama isimsiz olur. cihazVerisi=true ise bu cihazdaki notlar da silinir.
+  function hesabiTamamenSil(eposta, cihazVerisi) {
+    if (!eposta) return;
+    aboneler = aboneler.filter(function (a) { return a.eposta !== eposta; });
+    uyeTarifleri = uyeTarifleri
+      .filter(function (t) { return !(t.ekleyenEposta === eposta && (t.durum === "bekliyor" || t.durum === "reddedildi")); })
+      .map(function (t) {
+        if (t.ekleyenEposta === eposta) { t.ekleyen = "Mutfak Asistanı ailesi"; t.ekleyenEposta = null; }
+        return t;
+      });
+    kayitliListeler = kayitliListeler.filter(function (l) { return l.eposta !== eposta; });
+    yaz("ma_aboneler", aboneler); yaz("ma_uye_tarifleri", uyeTarifleri); yaz("ma_kayitli_listeler", kayitliListeler);
+    if (aktifEposta === eposta) { aktifEposta = null; yaz("ma_kullanici", null); }
+    if (cihazVerisi) {
+      ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_ses_onay", "urunler", "alisveris", "dolap"]
+        .forEach(function (a) { try { localStorage.removeItem(a); } catch (e) {} });
+      try { sessionStorage.setItem("ma_silindi", "hesap"); } catch (e) {}
+      location.reload();
+    }
+  }
+
+  // ---------- Hesabı askıya alma (30 gün) ----------
+  function askidaKalanGun(k) {
+    var gecen = (Date.now() - new Date(k.askida).getTime()) / 86400000;
+    return Math.max(0, Math.ceil(ASKI_GUN - gecen));
+  }
+  function askiyaAl() {
+    var k = aktifKullanici(); if (!k) return;
+    k.askida = new Date().toISOString();
+    yaz("ma_aboneler", aboneler);
+    silmeKapat();
+    aktifEposta = null; yaz("ma_kullanici", null);
+    kullaniciGoster(); bolumAc("anasayfa");
+    mesaj("Hesabın " + ASKI_GUN + " gün askıya alındı. Bu sürede giriş yapıp geri getirebilirsin.");
+  }
+  function hesabiGeriGetir() {
+    var k = aktifKullanici(); if (!k) return;
+    delete k.askida; yaz("ma_aboneler", aboneler);
+    document.getElementById("kullaniciMenu").classList.remove("acik");
+    kullaniciGoster(); mesaj("Hesabın geri geldi, tekrar hoş geldin! 🎉");
+  }
+  // Açılışta: süresi dolan askıdaki hesapları tamamen sil
+  aboneler.filter(function (a) { return a.askida && askidaKalanGun(a) === 0; })
+    .forEach(function (a) { hesabiTamamenSil(a.eposta, false); });
   // Silme sonrası sayfa yeniden açılınca bilgi ver
   try {
     if (sessionStorage.getItem("ma_silindi")) {
+      var neSilindi = sessionStorage.getItem("ma_silindi");
       sessionStorage.removeItem("ma_silindi");
-      setTimeout(function () { mesaj("Hesabın ve tüm verilerin silindi."); }, 300);
+      setTimeout(function () { mesaj(neSilindi === "veri" ? "Verilerin silindi, hesabın duruyor." : "Hesabın ve tüm verilerin silindi."); }, 300);
     }
   } catch (e) {}
 
   // ---------- Ana sayfadaki "ailemize katıl" kartı ----------
   function aileKartiniGoster() {
     var k = aktifKullanici();
-    var uyeTarifSayisi = uyeTarifleri.length;
+    var uyeTarifSayisi = uyeTarifleri.filter(function (t) { return t.durum !== "bekliyor" && t.durum !== "reddedildi"; }).length;
     document.getElementById("aileKarti").innerHTML = k
       ? '<div><h3>Mutfak Asistanı ailesindesin ❤️</h3>' +
         '<p>' + aboneler.length + ' üyeyiz. Ailemizin paylaştığı tarif sayısı: ' + uyeTarifSayisi + '. Senin de bir tarifin var mı?</p></div>' +
@@ -1205,8 +1485,22 @@
   // =====================================================================
   var KATEGORILER = ["Çorba", "Ana Yemek", "Meze", "Ara Sıcak", "Atıştırmalık", "Balık", "Zeytinyağlı", "Salata", "Pilav & Makarna", "Hamur İşi", "Kahvaltılık", "Dünya Mutfağı", "Tatlı", "Diğer"];
 
+  var duzenlenenTarifId = null;
+  function tarifDuzenle(id) {
+    var t = uyeTarifleri.find(function (x) { return x.id === id; }); if (!t) return;
+    perdeKapat("tariflerimPerdesi");
+    tarifPenceresiAc();
+    duzenlenenTarifId = id;
+    document.getElementById("yeniTarifAd").value = t.ad;
+    document.getElementById("yeniTarifKat").value = t.kat;
+    document.getElementById("yeniTarifKisi").value = t.kisi;
+    document.getElementById("yeniTarifSure").value = t.sure === "—" ? "" : t.sure;
+    document.getElementById("yeniTarifMalzeme").value = t.m.join("\n");
+    document.getElementById("yeniTarifYapilis").value = t.y.join("\n");
+  }
   function tarifPenceresiAc() {
     if (!aktifKullanici()) { mesaj("Tarif eklemek için önce ailemize katıl 🙂"); uyelikAc(); return; }
+    duzenlenenTarifId = null;
     document.getElementById("yeniTarifKat").innerHTML = KATEGORILER.map(function (k) {
       return "<option" + (k === "Ana Yemek" ? " selected" : "") + ">" + k + "</option>";
     }).join("");
@@ -1231,7 +1525,7 @@
     var hata = !ad ? "Yemeğin adını yaz." : malzemeler.length === 0 ? "En az bir malzeme yaz." : "";
     if (hata) { document.getElementById("tarifHata").textContent = hata; return; }
 
-    uyeTarifleri.push({
+    var yeni = {
       id: "u" + Date.now(),
       ad: ad,
       kat: document.getElementById("yeniTarifKat").value,
@@ -1241,14 +1535,18 @@
       y: adimlar.length ? adimlar : ["Yapılışı henüz eklenmedi."],
       ekleyen: k.ad || k.eposta.split("@")[0],
       ekleyenEposta: k.eposta,
-      tarih: new Date().toISOString().slice(0, 10)
-    });
+      tarih: new Date().toISOString().slice(0, 10),
+      durum: "bekliyor"   // yapay zekâ kontrolü: hata yoksa "onayli", hata varsa "reddedildi"
+    };
+    var eski = duzenlenenTarifId && uyeTarifleri.find(function (x) { return x.id === duzenlenenTarifId; });
+    if (eski) { yeni.id = eski.id; uyeTarifleri[uyeTarifleri.indexOf(eski)] = yeni; }  // düzenlenince tekrar kontrole girer
+    else uyeTarifleri.push(yeni);
+    duzenlenenTarifId = null;
     yaz("ma_uye_tarifleri", uyeTarifleri);
     ["yeniTarifAd", "yeniTarifMalzeme", "yeniTarifYapilis", "yeniTarifSure"].forEach(function (id) { document.getElementById(id).value = ""; });
     tarifleriHazirla(); tarifPenceresiKapat(); aileKartiniGoster();
-    bolumAc("tarifler");
-    document.getElementById("tarifArama").value = ad; tarifleriGoster();
-    mesaj("Tarifin eklendi, eline sağlık! 👩‍🍳");
+    tariflerimAc("bekliyor");
+    mesaj("Tarifin alındı, eline sağlık! Kontrol edildikten sonra tarif kitabına eklenecek 👩‍🍳");
   }
 
   function tarifSil(id) {
@@ -1256,6 +1554,7 @@
     yaz("ma_uye_tarifleri", uyeTarifleri);
     acikTarifler = {};
     tarifleriHazirla(); tarifleriGoster(); aileKartiniGoster();
+    if (document.getElementById("tariflerimPerdesi").classList.contains("acik")) tariflerimGoster();
     mesaj("Tarifin silindi.");
   }
 
