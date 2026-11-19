@@ -238,6 +238,11 @@
 
   #mesajKutusu { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--yazi); color: var(--zemin);
     padding: 12px 20px; border-radius: 12px; font-size: 14px; z-index: 20; display: none; box-shadow: 0 4px 16px rgba(0,0,0,.25); }
+  #yazimOneri { position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%); width: min(92vw, 420px); background: var(--kart);
+    color: var(--yazi); border: 2px solid var(--ana); border-radius: 14px; padding: 12px 14px; z-index: 21; display: none;
+    box-shadow: 0 6px 24px rgba(0,0,0,.25); font-size: 14px; line-height: 1.5; }
+  #yazimOneri .dugmeler { display: flex; gap: 8px; margin-top: 10px; }
+  #yazimOneri .dugmeler button { flex: 1; padding: 9px; }
 </style>
 </head>
 <body>
@@ -755,6 +760,7 @@
   </a>
 
   <div id="mesajKutusu"></div>
+  <div id="yazimOneri"></div>
 
   <script src="anlama.js"></script>
   <script src="tarifler.js"></script>
@@ -910,7 +916,7 @@
     var k = document.getElementById("mesajKutusu");
     k.textContent = yazi; k.style.display = "block";
     clearTimeout(k._zaman);
-    k._zaman = setTimeout(function () { k.style.display = "none"; }, 2500);
+    k._zaman = setTimeout(function () { k.style.display = "none"; }, Math.max(2500, Math.min(8000, yazi.length * 60)));
   }
 
   // =====================================================================
@@ -937,7 +943,7 @@
     var urunler = notuAnla(notlar[alanId] || "");
     document.getElementById("sayac-" + alanId).textContent = urunler.length ? urunler.length + " kalem anladık 👇" : "";
     // Market reyonları gibi: kategori kategori, alfabetik, baş harfi büyük
-    document.getElementById("anlasilan-" + alanId).innerHTML = reyonlaraAyir(urunler, function (u) { return u.ad; }, ekipmanAlaniMi(alanId)).map(function (g) {
+    document.getElementById("anlasilan-" + alanId).innerHTML = reyonlaraAyir(urunler, reyonAdi, ekipmanAlaniMi(alanId)).map(function (g) {
       return '<div class="reyon-baslik">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + ' · ' + g.urunler.length + '</div>' +
         g.urunler.map(function (u) {
           return '<span class="etiket ' + (u.az ? "az" : "notr") + '">' + esc(basHarfBuyuk(u.ad)) +
@@ -950,31 +956,85 @@
     var kucuk = u.ham.toLocaleLowerCase("tr"), i = kucuk.indexOf(u.ad);
     return i < 0 ? u.ham : u.ham.slice(0, i) + basHarfBuyuk(u.ad) + u.ham.slice(i + u.ad.length);
   }
+  // Ekipman satırı: önce alet, sonra adet ve açıklama → "Kek Kalıbı 3 adet değişik boylarda"
+  function ekipmanSatiri(u) {
+    var m = (u.miktar || "").replace(/(^| )(çeşitli|değişik|farklı|muhtelif)(?! (boy|boyut|ebat|renk))/g, "$1$2 boylarda");
+    return basHarfBuyuk(u.ad) + (m ? " " + m : "");
+  }
   // Not defterini düzenler: kategorilere göre gruplar, alfabetik dizer, baş harfleri büyütür
   function notuDuzenle(alanId) {
     var urunler = notuAnla(notlar[alanId] || "");
     if (!urunler.length) return;
-    var duzeltmeler = [];
-    urunler.forEach(function (u) { var eski = urunuDuzelt(u); if (eski) duzeltmeler.push(eski + " → " + basHarfBuyuk(u.ad)); });
+    var ekipman = ekipmanAlaniMi(alanId), yiyecekler = [];
+    // Yazım hatası olabilecekleri kendiliğinden DEĞİŞTİRMİYORUZ, kullanıcıya soruyoruz
+    // Tek fark Türkçe harflerse (İngilizce klavye: ketcap, sut, kasar) bu bellidir, kendiliğinden düzeltiriz.
+    var reddedilen = oku("ma_yazim_red", []), oneriler = [], harfDuzeltme = [];
+    urunler.forEach(function (u) {
+      var yeni = yazimDuzelt(u.ad, ekipman);
+      if (yeni === u.ad || reddedilen.indexOf(u.ad) >= 0) return;
+      if (_harfsiz(yeni) === _harfsiz(u.ad)) { var eski = urunuDuzelt(u, ekipman); if (eski && harfDuzeltme.indexOf(eski) < 0) harfDuzeltme.push(eski + " → " + basHarfBuyuk(u.ad)); return; }
+      if (!oneriler.some(function (o) { return o.eski === u.ad; })) oneriler.push({ eski: u.ad, yeni: yeni });
+    });
+    if (oneriler.length) yazimOnerisiGoster(alanId, oneriler);
+    // Ekipman defterine yenecek bir şey yazılırsa (sıvı yağ, ceviz...) kabul etme
+    if (ekipman) urunler = urunler.filter(function (u) {
+      var yiyecek = reyonBul(u.ad, true).ad === "Diğer" && reyonBul(u.ad, false).ad !== "Diğer";
+      if (yiyecek) yiyecekler.push(basHarfBuyuk(u.ad));
+      return !yiyecek;
+    });
     // Aynı ürün iki kez yazılmışsa birini sil (miktarı yazılmış olanı tut)
     var gorulen = {}, tekrarlar = [];
     urunler = urunler.filter(function (u) {
-      var k = normalIsim(u.ad), onceki = gorulen[k];
+      var k = normalIsim(reyonAdi(u)), onceki = gorulen[k];
       if (!onceki) { gorulen[k] = u; return true; }
       if (tekrarlar.indexOf(basHarfBuyuk(u.ad)) < 0) tekrarlar.push(basHarfBuyuk(u.ad));
       if (!onceki.miktar && u.miktar) { onceki.ham = u.ham; onceki.miktar = u.miktar; onceki.az = u.az; }
       return false;
     });
     var bilgi = [];
-    if (duzeltmeler.length) bilgi.push("✏️ Yazımı düzelttim: " + duzeltmeler.join(", "));
+    if (harfDuzeltme.length) bilgi.push("✏️ Türkçe harfleri düzelttim: " + harfDuzeltme.join(", "));
     if (tekrarlar.length) bilgi.push("🧹 Tekrar yazılanları sildim: " + tekrarlar.join(", "));
+    if (yiyecekler.length) bilgi.push("🚫 Bunlar ekipman değil, yiyecek olduğu için çıkardım: " + yiyecekler.join(", ") + ". Ürünlerim'e yazabilirsin.");
     if (bilgi.length) mesaj(bilgi.join(" · "));
-    var yeni = reyonlaraAyir(urunler, function (u) { return u.ad; }, ekipmanAlaniMi(alanId))
-      .map(function (g) { return g.urunler.map(satiriGuzellestir).join(", "); }).join(", ");
+    var yeni = reyonlaraAyir(urunler, reyonAdi, ekipman)
+      .map(function (g) { return g.urunler.map(ekipman ? ekipmanSatiri : satiriGuzellestir).join(", "); }).join(", ");
     if (yeni === notlar[alanId]) return;
     notlar[alanId] = yeni;
     var kutu = document.getElementById("not-" + alanId); if (kutu) kutu.value = yeni;
     hepsiniKaydet(); alaniGoster(alanId);
+  }
+  // "sut → Süt mü demek istedin?" kartı. Evet: düzelt. Hayır: bir daha sorma.
+  var bekleyenOneri = null;
+  function yazimOnerisiGoster(alanId, oneriler) {
+    var k = document.getElementById("yazimOneri");
+    var anahtar = alanId + "|" + oneriler.map(function (o) { return o.eski; }).join(",");
+    // Aynı kart zaten açıksa yeniden çizme (yoksa butona basarken kart yenilenir ve tık kaybolur)
+    if (bekleyenOneri && bekleyenOneri.anahtar === anahtar && k.style.display === "block") return;
+    bekleyenOneri = { alanId: alanId, oneriler: oneriler, anahtar: anahtar };
+    k.innerHTML = '✏️ <b>Bunu mu demek istedin?</b><br>' + oneriler.map(function (o) {
+      return '"' + esc(o.eski) + '" → <b>' + esc(basHarfBuyuk(o.yeni)) + '</b>';
+    }).join("<br>") + '<div class="dugmeler"><button class="btn" onclick="yazimOnerisiCevap(true)">Evet, düzelt</button>' +
+      '<button class="btn ikincil" onclick="yazimOnerisiCevap(false)">Hayır, doğru yazdım</button></div>';
+    k.style.display = "block";
+  }
+  function yazimOnerisiCevap(evet) {
+    var b = bekleyenOneri; bekleyenOneri = null;
+    document.getElementById("yazimOneri").style.display = "none";
+    if (!b) return;
+    if (!evet) { yaz("ma_yazim_red", oku("ma_yazim_red", []).concat(b.oneriler.map(function (o) { return o.eski; }))); return; }
+    var metin = notlar[b.alanId] || "";
+    function kacis(x) { return x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+    b.oneriler.forEach(function (o) {
+      // Hem küçük ("sut") hem baş harfi büyük ("Sut", "İrmil") yazılışı yakala
+      [o.eski, basHarfBuyuk(o.eski)].forEach(function (aranan) {
+        var kalip = new RegExp("(^|[\\s,;(])" + kacis(aranan) + "(?=$|[\\s,;)])", "gi");
+        metin = metin.replace(kalip, function (m, on) { return on + o.yeni; });
+      });
+    });
+    notlar[b.alanId] = metin;
+    var kutu = document.getElementById("not-" + b.alanId); if (kutu) kutu.value = metin;
+    hepsiniKaydet(); notuDuzenle(b.alanId); urunDegisiklikleriniKaydet();
+    mesaj("✏️ Düzelttim");
   }
   function tumNotlariDuzenle() { TUM_ALANLAR.forEach(function (a) { notuDuzenle(a.id); }); }
 
@@ -1306,7 +1366,7 @@
 
   function listeyeElleEkle() {
     var kutu = document.getElementById("listeyeElleKutu");
-    notuAnla(kutu.value).forEach(function (u) { urunuDuzelt(u); listeyeEkle(u.ham, u.ad, "Kendi notum"); });
+    notuAnla(kutu.value).forEach(function (u) { listeyeEkle(u.ham, u.ad, "Kendi notum"); });
     kutu.value = "";
     hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster();
   }

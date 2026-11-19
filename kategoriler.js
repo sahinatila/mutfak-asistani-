@@ -7,7 +7,7 @@
 
 var YIYECEK_REYONLARI = [
   { ad: "Sebze", ikon: "🥕", urunler: ["domates", "salatalık", "hıyar", "biber", "sivri biber", "dolmalık biber", "kapya", "çarliston", "patlıcan", "kabak",
-    "patates", "soğan", "kuru soğan", "taze soğan", "yeşil soğan", "sarımsak", "havuç", "marul", "kıvırcık", "roka", "maydanoz", "dereotu", "nane", "tere",
+    "patates", "soğan", "kuru soğan", "taze soğan", "yeşil soğan", "sarımsak", "havuç", "marul", "kıvırcık", "roka", "maydanoz", "dereotu", "taze nane", "tere",
     "ıspanak", "pırasa", "lahana", "karnabahar", "brokoli", "kereviz", "turp", "pancar", "fasulye", "taze fasulye", "bezelye", "bamya", "enginar",
     "semizotu", "mantar", "mısır", "bakla", "börülce", "zencefil", "limon", "pazı", "menemenlik sos"] },
   { ad: "Meyve", ikon: "🍎", urunler: ["elma", "armut", "muz", "portakal", "mandalina", "greyfurt", "üzüm", "çilek", "kiraz", "vişne", "şeftali", "kayısı",
@@ -22,30 +22,30 @@ var YIYECEK_REYONLARI = [
     "fındık ezmesi", "fıstık ezmesi", "çikolata kreması", "kaymak", "menemen"] },
   { ad: "Ekmek & Unlu Mamul", ikon: "🥖", urunler: ["ekmek", "simit", "gevrek", "pide", "bazlama", "lavaş", "tortilla", "galeta", "poğaça", "tost ekmeği", "yufka", "milföy"] },
   { ad: "Bakliyat & Tahıl", ikon: "🌾", urunler: ["pirinç", "bulgur", "mercimek", "kırmızı mercimek", "yeşil mercimek", "nohut", "kuru fasulye", "barbunya",
-    "un", "irmik", "yulaf", "mısır unu", "pirinç unu", "galeta unu", "kinoa", "chia", "susam", "çörek otu"] },
+    "un", "patlamış mısır", "patlayan mısır", "popcorn mısırı", "cin mısır", "irmik", "yulaf", "mısır unu", "pirinç unu", "galeta unu", "kinoa", "chia", "susam", "çörek otu"] },
   { ad: "Makarna & Hamur", ikon: "🍝", urunler: ["makarna", "spagetti", "erişte", "şehriye", "mantı", "hıngel", "lazanya", "noodle", "tel şehriye", "arpa şehriye"] },
   { ad: "Yağlar", ikon: "🫒", urunler: ["yağ", "sıvı yağ", "ayçiçek yağı", "zeytinyağı", "mısır yağı", "fındık yağı", "kızartma yağı"] },
   { ad: "Soslar & Salçalar", ikon: "🥫", urunler: ["salça", "domates salçası", "biber salçası", "nar ekşisi", "ketçap", "mayonez", "hardal", "sirke", "elma sirkesi",
     "üzüm sirkesi", "soya sosu", "acı sos", "barbekü sos", "limon sosu", "tavuk suyu", "et suyu", "bulyon", "domates sosu", "pesto"] },
-  { ad: "Baharatlar", ikon: "🧂", urunler: ["tuz", "karabiber", "pul biber", "toz biber", "isot", "isot biber", "kimyon", "kekik", "kuru nane", "tarçın",
+  { ad: "Baharatlar", ikon: "🧂", urunler: ["tuz", "karabiber", "pul biber", "toz biber", "isot", "isot biber", "kimyon", "kekik", "nane", "kuru nane", "sarımsak tozu", "soğan tozu", "tarçın",
     "zerdeçal", "sumak", "köri", "yenibahar", "karanfil", "defne", "biberiye", "fesleğen", "muskat", "zencefil tozu", "limon tuzu", "köfte baharatı"] },
   { ad: "Konserve & Turşu", ikon: "🫙", urunler: ["konserve", "ton balığı", "turşu", "közlenmiş biber", "mısır konservesi", "bezelye konservesi", "nohut konservesi",
     "fasulye konservesi", "domates konservesi", "kapari", "zeytin ezmesi"] },
   { ad: "Şeker & Pastacılık", ikon: "🍰", urunler: ["şeker", "toz şeker", "pudra şekeri", "esmer şeker", "kakao", "vanilya", "vanilin", "kabartma tozu",
     "karbonat", "maya", "kuru maya", "yaş maya", "nişasta", "mısır nişastası", "jelatin", "bitter çikolata", "damla çikolata", "hindistan cevizi", "krem şanti"] },
   { ad: "Atıştırmalık & Kuruyemiş", ikon: "🍿", urunler: ["ceviz", "fındık", "badem", "fıstık", "yer fıstığı", "antep fıstığı", "kaju", "çekirdek", "çiğdem",
-    "ayçekirdeği", "kabak çekirdeği", "leblebi", "kuru üzüm", "kuru kayısı", "kuru incir", "hurma", "cips", "kraker", "mısır cipsi", "bisküvi", "çikolata", "gofret", "patlamış mısır", "lokum"] },
+    "ayçekirdeği", "kabak çekirdeği", "leblebi", "kuru üzüm", "kuru kayısı", "kuru incir", "hurma", "cips", "kraker", "mısır cipsi", "bisküvi", "çikolata", "gofret", "lokum"] },
   { ad: "İçecekler", ikon: "🥤", urunler: ["su", "damacana su", "maden suyu", "soda", "meyve suyu", "portakal suyu", "kola", "gazoz", "çay", "kahve", "türk kahvesi",
-    "hazır kahve", "bitki çayı", "ıhlamur", "salep", "boza", "şalgam", "fanta", "sprite", "pepsi", "ice tea", "soğuk çay", "limonata",
+    "hazır kahve", "granül kahve", "filtre kahve", "çekirdek kahve", "kahve çekirdeği", "öğütülmüş kahve", "espresso", "bitki çayı", "yeşil çay", "siyah çay", "poşet çay", "adaçayı", "papatya çayı", "kuşburnu çayı", "kuşburnu", "ıhlamur", "salep", "boza", "şalgam", "fanta", "sprite", "pepsi", "ice tea", "soğuk çay", "limonata",
     "enerji içeceği", "mineralli su", "vişne suyu", "şeftali suyu", "kayısı suyu", "karışık meyve suyu", "ayran", "sıcak çikolata", "nescafe"] },
   { ad: "Dondurulmuş", ikon: "🧊", urunler: ["dondurma", "dondurulmuş", "donuk", "buz", "patates kızartması", "nugget", "pizza"] }
 ];
 
 var EKIPMAN_REYONLARI = [
-  { ad: "Pişirme Aletleri", ikon: "🔥", urunler: ["fırın", "ocak", "airfryer", "mikrodalga", "tost makinesi", "waffle makinesi", "ızgara", "mangal", "semaver", "çaydanlık", "çay makinesi", "kahve makinesi", "su ısıtıcısı", "kettle", "fritöz"] },
+  { ad: "Pişirme Aletleri", ikon: "🔥", urunler: ["fırın", "ocak", "airfryer", "mikrodalga", "tost makinesi", "waffle makinesi", "ızgara", "mangal", "semaver", "çaydanlık", "fritöz"] },
   { ad: "Tencere & Tava", ikon: "🍲", urunler: ["tencere", "tava", "düdüklü", "düdüklü tencere", "wok", "cezve", "güveç", "sahan", "kazan", "kızartma tavası", "krep tavası"] },
   { ad: "Fırın Kapları", ikon: "🥧", urunler: ["tepsi", "fırın tepsisi", "borcam", "kek kalıbı", "muffin kalıbı", "tart kalıbı", "pizza taşı", "fırın kabı", "kalıp"] },
-  { ad: "Elektrikli Aletler", ikon: "🔌", urunler: ["mikser", "el mikseri", "blender", "el blenderı", "mutfak robotu", "rondo", "doğrayıcı", "meyve sıkacağı", "katı meyve sıkacağı", "tartı", "mutfak tartısı"] },
+  { ad: "Elektrikli Aletler", ikon: "🔌", urunler: ["mikser", "el mikseri", "blender", "el blenderı", "mutfak robotu", "rondo", "doğrayıcı", "meyve sıkacağı", "katı meyve sıkacağı", "espresso makinesi", "elektrikli cezve", "kahve makinesi", "türk kahvesi makinesi", "filtre kahve makinesi", "çay makinesi", "su ısıtıcısı", "kettle", "tartı", "mutfak tartısı"] },
   { ad: "El Aletleri", ikon: "🥄", urunler: ["kaşık", "tahta kaşık", "silikon kaşık", "kepçe", "spatula", "çırpma teli", "rende", "bıçak", "kesme tahtası", "oklava",
     "süzgeç", "kevgir", "maşa", "soyacak", "havan", "huni", "ölçü kabı", "makas", "açacak", "konserve açacağı", "sarımsak ezici"] }
 ];
@@ -101,6 +101,9 @@ _reyonHazirla(YIYECEK_REYONLARI); _reyonHazirla(EKIPMAN_REYONLARI);
 // bu yüzden önce SONDAN eşleşen en uzun kelimeye bakılır, sonra başka yerde geçene.
 function reyonBul(ad, ekipmanMi) {
   var n = normalIsim(ekipmanMi ? ad : markaCoz(ad)), enIyi = null, enIyiPuan = -1;
+  // Her türlü kahve ve çay (bitki çayları dahil) içecektir: "kahve çekirdeği" kuruyemiş değildir
+  if (!ekipmanMi && /(^| )(kahve|çay|espresso|latte|cappuccino|ıhlamur|adaçay)( |$)/.test(n) && !/(tabağ|bardağ|kaşığ|fincan)/.test(n))
+    return YIYECEK_REYONLARI.filter(function (r) { return r.ad === "İçecekler"; })[0];
   (ekipmanMi ? EKIPMAN_REYONLARI : YIYECEK_REYONLARI).forEach(function (r) {
     r._anahtar.forEach(function (k) {
       var puan = -1;
@@ -111,6 +114,11 @@ function reyonBul(ad, ekipmanMi) {
     });
   });
   return enIyi || { ad: "Diğer", ikon: "📦" };
+}
+
+// Ürünün reyonunu bulurken miktara da bak: "1 demet nane" tazedir (Sebze), sadece "nane" baharattır
+function reyonAdi(u) {
+  return /(^| )(demet|bağ)( |$)/.test(u.miktar || "") && !/^taze /.test(u.ad) ? "taze " + u.ad : u.ad;
 }
 
 // Her kelimenin ilk harfini büyüt (Türkçe: i → İ)
@@ -147,7 +155,26 @@ var EK_KELIMELER = ["taze", "kuru", "yeşil", "kırmızı", "siyah", "beyaz", "s
   "toz", "sıvı", "rendelenmiş", "dilimli", "doğranmış", "donuk", "dondurulmuş", "haşlanmış", "közlenmiş", "çiğ", "pişmiş",
   "kemiksiz", "kemikli", "derisiz", "yerli", "ithal", "laktozsuz", "şekersiz", "tuzsuz", "tuzlu", "ekşi", "çeşni", "suyu", "sosu", "yağı", "unu",
   "pepsi", "fanta", "sprite", "nutella", "gevreği", "kuskus", "granola", "puding", "jöle", "sütlaç", "aşure", "lahmacun", "döner",
+  "çeşitli", "değişik", "farklı", "muhtelif", "granül", "filtre", "öğütülmüş", "çekirdek", "patlayan", "patlamış", "tozu", "demet", "poşet", "bitki",
+  "elektrikli", "espresso", "makinesi", "makine", "dijital", "ankastre", "setüstü", "döküm", "granit", "teflon", "çelik", "paslanmaz", "cam", "porselen",
+  "seramik", "bakır", "emaye", "alüminyum", "silikon", "ahşap", "tahta", "plastik", "yanmaz", "büyüklü", "küçüklü", "kapaklı", "kulplu", "derin", "yassı",
+  "yuvarlak", "kare", "dikdörtgen", "oval", "yapışmaz", "set", "takım", "boy", "boyda", "boylarda", "boyutlarda", "ebatlarda", "eski", "yeni", "lüks",
   "deterjan", "peçete", "havlu", "kağıt", "streç", "folyo", "pişirme", "çöp", "torbası", "sabun", "bulaşık", "mama", "bebek", "köz", "közde"];
+
+// Sık kullanılan Türkçe kelimeler: bunlar zaten doğru, asla "düzeltilmez" (kalın → kalıp, açık → acı olmasın)
+var TURKCE_KELIMELER = ("açık kapalı kalın ince iri ufak minik kocaman uzun kısa geniş dar yüksek alçak hafif ağır derin sığ sıcak soğuk ılık " +
+  "güzel çirkin iyi kötü yeni eski taze bayat kırık bozuk sağlam temiz kirli dolu boş yarı tek çift az çok bol hepsi her biri bazı " +
+  "renkli kırmızı siyah beyaz gri mavi yeşil sarı turuncu mor pembe kahverengi lacivert gümüş altın bakır bronz şeffaf mat parlak " +
+  "doğal katkısız organik yerli yöresel ithal hazır paketli açıkta dökme sade karışık meyveli kakaolu fındıklı cevizli bademli fıstıklı " +
+  "kepekli çavdar buğday glutensiz laktozsuz şekersiz tuzsuz yağsız light diyet ev köy çiftlik market pazar fırından günlük haftalık " +
+  "ekşi tatlı acı tuzlu baharatlı sulu kuru yaş pişmiş çiğ dondurulmuş donuk soğutulmuş kurutulmuş tütsülenmiş füme marine " +
+  "kullanılmış sıfır ikinci el yedek eski model büyük küçük orta normal standart özel profesyonel endüstriyel elektrikli şarjlı pilli " +
+  "manuel otomatik dijital analog ankastre setüstü solo mini midi maksi jumbo dev minyatür kare yuvarlak oval dikdörtgen üçgen " +
+  "kapaklı kapaksız kulplu kulpsuz saplı sapsız ayaklı katlanır çıkarılabilir yapışmaz yanmaz kırılmaz paslanmaz çelik döküm granit " +
+  "teflon seramik porselen cam kristal plastik silikon tahta ahşap bambu mermer taş toprak emaye alüminyum krom metal kağıt karton " +
+  "set takım parça adet tane çeşit çeşitli değişik farklı muhtelif benzer aynı başka diğer ayrı ayrıca hem veya ile için gibi kadar " +
+  "baharat sebze meyve kuruyemiş içecek atıştırmalık yiyecek gıda malzeme ürün yemek tatlı tuzlu çerez sos ekipman alet kap kase tabak bardak " +
+  "var yok lazım gerek bitti bitiyor azaldı kaldı alınacak alındı lazım acil sonra şimdi bugün yarın").split(" ");
 
 function _harfsiz(s) {
   return s.replace(/ı/g, "i").replace(/ş/g, "s").replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ö/g, "o").replace(/ç/g, "c").replace(/â/g, "a");
@@ -171,34 +198,49 @@ function _mesafe(a, b, sinir) {
   return d[a.length][b.length];
 }
 
-var _SOZLUK = null, _SOZLUK_HARFSIZ = null;
-function _sozlukKur() {
+var _SOZLUK = null, _SOZLUK_HARFSIZ = null, _SOZLUK_SET = null, _SOZLUKLER = {};
+// Yiyecek ve ekipman için ayrı sözlük: ekipman defterinde bir kelime yiyeceğe "düzeltilmez"
+function _sozlukSec(ekipmanMi) {
+  var k = ekipmanMi ? "ekipman" : "yiyecek";
+  if (!_SOZLUKLER[k]) { _sozlukKur(ekipmanMi); _SOZLUKLER[k] = { s: _SOZLUK, h: _SOZLUK_HARFSIZ, set: _SOZLUK_SET }; }
+  _SOZLUK = _SOZLUKLER[k].s; _SOZLUK_HARFSIZ = _SOZLUKLER[k].h; _SOZLUK_SET = _SOZLUKLER[k].set;
+}
+function _sozlukKur(ekipmanMi) {
   var kelimeler = new Set();
   function ekle(yazi) {
     (yazi || "").toLocaleLowerCase("tr").split(/[\s\/,()]+/).forEach(function (w) {
       w = w.replace(/[^a-zçğıöşüâî]/g, ""); if (w.length >= 2) kelimeler.add(w);
     });
   }
-  YIYECEK_REYONLARI.concat(EKIPMAN_REYONLARI).forEach(function (r) { r.urunler.forEach(ekle); });
+  (ekipmanMi ? EKIPMAN_REYONLARI : YIYECEK_REYONLARI).forEach(function (r) { r.urunler.forEach(ekle); });
+  var reyonKelimeleri = new Set(kelimeler);
+  EK_KELIMELER.forEach(ekle);
+  TURKCE_KELIMELER.forEach(ekle);
+  if (!ekipmanMi) _sozlukKurYiyecek(ekle);
+  // Miktar kelimeleri (kırk, altı, kalıp...) "bilinir" ama hiçbir yazım hatası onlara çevrilmez
+  var hedefler = Array.from(kelimeler), bilinen = new Set(hedefler);
+  if (typeof MIKTAR_KELIMELERI !== "undefined") MIKTAR_KELIMELERI.forEach(function (w) { bilinen.add(w); });
+  _SOZLUK = hedefler.filter(function (w) { return reyonKelimeleri.has(w) || !(typeof MIKTAR_SET !== "undefined" && MIKTAR_SET.has(w)); });
+  _SOZLUK_HARFSIZ = {};
+  _SOZLUK.forEach(function (w) { var h = _harfsiz(w); (_SOZLUK_HARFSIZ[h] = _SOZLUK_HARFSIZ[h] || []).push(w); });
+  _SOZLUK_SET = bilinen;
+}
+function _sozlukKurYiyecek(ekle) {
   if (typeof ES_ANLAMLAR !== "undefined") Object.keys(ES_ANLAMLAR).forEach(function (k) { ekle(k); ES_ANLAMLAR[k].forEach(ekle); });
   if (typeof ISTISNALAR !== "undefined") ISTISNALAR.forEach(ekle);
   if (typeof TARIFLER !== "undefined") TARIFLER.forEach(function (t) {
     ekle(t.ad); (t.m || []).forEach(function (s) { var p = s.split("|"); ekle(p[0]); if (p[1]) ekle(p[1]); });
   });
-  EK_KELIMELER.forEach(ekle);
   Object.keys(MARKALAR).forEach(ekle);
-  _SOZLUK = Array.from(kelimeler);
-  _SOZLUK_HARFSIZ = {};
-  _SOZLUK.forEach(function (w) { var h = _harfsiz(w); (_SOZLUK_HARFSIZ[h] = _SOZLUK_HARFSIZ[h] || []).push(w); });
-  _SOZLUK_SET = new Set(_SOZLUK);
 }
-var _SOZLUK_SET = null;
 
 // Tek kelimeyi düzelt; düzeltemezse aynısını döndür
 function _bilinir(w) { return _SOZLUK_SET.has(w) || _SOZLUK_SET.has(kok(w)); }
-function kelimeDuzelt(w) {
-  if (!_SOZLUK) _sozlukKur();
+function kelimeDuzelt(w, ekipmanMi) {
+  _sozlukSec(!!ekipmanMi);
   if (w.length < 3 || /\d/.test(w) || _bilinir(w)) return w;
+  // Çekim eki almış kelimeler ("boylarda", "kenarındaki") büyük ihtimalle doğru yazılmış bir açıklamadır: dokunma
+  if (/(larda|lerde|ları|leri|daki|deki|taki|teki|ında|inde|unda|ünde)$/.test(w)) return w;
   // Ekli kelime: "peynirli", "cikolatalı", "şekersiz" → kökü düzelt, eki koru
   var ek = /(lı|li|lu|lü|sız|siz|suz|süz|lık|lik|luk|lük)$/.exec(w);
   if (ek && w.length - 3 >= 3) {
@@ -225,31 +267,33 @@ function _duzelt(w) {
   if (hk && hk.length === 1) return hk[0];
   // 2) Harf hatası: domatez → domates, kıyam → kıyma, patetes → patates
   if (w.length < 4) return null;   // çok kısa kelimelerde tahmin yapma
-  var sinir = w.length <= 4 ? 1 : 2, enIyi = null, enAz = sinir + 1, esit = false, wh = _harfsiz(w);
+  var sinir = w.length >= 9 ? 2 : 1, enIyi = null, enAz = sinir + 1, esit = false, wh = _harfsiz(w);
   _SOZLUK.forEach(function (k) {
     var kh = _harfsiz(k);
     if (k.length < 3 || kh[0] !== wh[0]) return;   // ilk harfte pek yanlış yapılmaz: börek ≠ çörek
+    // Sadece ek farkı ("baharat" ↔ "baharatı", "kalıp" ↔ "kalıbı") yazım hatası değildir
+    if ((kh.indexOf(wh) === 0 || wh.indexOf(kh) === 0) && Math.abs(kh.length - wh.length) <= 2 && Math.min(kh.length, wh.length) >= 4) return;
     var d = _mesafe(wh, kh, sinir);
     if (d < enAz) { enAz = d; enIyi = k; esit = false; }
     else if (d === enAz && k !== enIyi) esit = true;
   });
-  if (enIyi && enAz <= sinir && !esit && !(enAz === 2 && w.length < 6)) return enIyi;
+  if (enIyi && enAz <= sinir && !esit) return enIyi;
   return null;
 }
 
 // Ürün adını kelime kelime düzelt: "taze sut" → "taze süt"
-function yazimDuzelt(ad) {
+function yazimDuzelt(ad, ekipmanMi) {
   return (ad || "").split(/(\s+)/).map(function (w) {
     if (!w.trim()) return w;
     var kucuk = w.toLocaleLowerCase("tr");
-    var d = kelimeDuzelt(kucuk);
+    var d = kelimeDuzelt(kucuk, ekipmanMi);
     return d === kucuk ? w : d;
   }).join("");
 }
 
 // Notuna yazılmış bir ürünün (notuAnla çıktısı) adını düzeltir. Düzelttiyse eski adı döndürür.
-function urunuDuzelt(u) {
-  var yeni = yazimDuzelt(u.ad);
+function urunuDuzelt(u, ekipmanMi) {
+  var yeni = yazimDuzelt(u.ad, ekipmanMi);
   if (yeni === u.ad) return null;
   var eski = u.ad, i = u.ham.toLocaleLowerCase("tr").indexOf(eski);
   u.ham = i < 0 ? yeni : u.ham.slice(0, i) + yeni + u.ham.slice(i + eski.length);
