@@ -505,6 +505,15 @@
     <div id="bugunBildirim"></div>
 
     <div class="kart">
+      <h3>⚠️ Az Olan Ürünlerim</h3>
+      <p class="aciklama">Ürünlerim'de "az" diye yazdıkların burada. Tek tuşla alışveriş listene ekle ya da tek tek dokun.</p>
+      <div id="azOlanListesi"></div>
+      <div class="arac" id="azOlanArac">
+        <button class="btn" onclick="azOlanlariListeyeEkle()">🛒 Hepsini alışveriş listeme ekle</button>
+      </div>
+    </div>
+
+    <div class="kart">
       <h3>🧾 Menüdeki Eksiklerim</h3>
       <p class="aciklama">Tariflerden eklediğin eksikler burada. Aldıklarını işaretle, sonra tek tuşla ürünlerine ekle.</p>
       <div class="arac">
@@ -1450,6 +1459,48 @@
       : eksikler.map(function (ad) {
           return '<button class="etiket yok" style="border:none;cursor:pointer" data-tavsiye="' + esc(ad) + '">＋ ' + esc(ad) + '</button>';
         }).join("");
+    azOlanlariGoster();
+  }
+
+  // ---------- Az olan ürünlerim ----------
+  // Ürünlerim'de "az süt", "az kıyma" gibi yazılanları bulur
+  function azOlanUrunler() {
+    var listedekiler = liste.filter(function (x) { return !x.alindi; }).map(function (x) { return isimBilgisi(x.anahtar); });
+    return evdekiYiyecekler().filter(function (u) { return u.az; }).map(function (u) {
+      var alan = YIYECEK_ALANLARI.find(function (a) { return a.id === u.yer; });
+      return { ad: basHarfBuyuk(u.ad), anahtar: u.ad, yer: alan ? alan.baslik : "",
+        listede: listedekiler.some(function (l) { return eslesir(l, u.bilgi); }) };
+    });
+  }
+  function azOlanlariGoster() {
+    var alan = document.getElementById("azOlanListesi");
+    if (!alan) return;
+    var azlar = azOlanUrunler();
+    var eklenecek = azlar.filter(function (u) { return !u.listede; }).length;
+    document.getElementById("azOlanArac").style.display = eklenecek ? "" : "none";
+    if (azlar.length === 0) {
+      alan.innerHTML = '<p class="bos">Az olan ürünün yok. Ürünlerim\'de bir şey azaldıysa başına "az" yaz (ör. <i>az süt</i>), burada görünsün.</p>';
+      return;
+    }
+    alan.innerHTML = azlar.map(function (u) {
+      return u.listede
+        ? '<span class="etiket var" title="' + esc(u.yer) + '">✓ ' + esc(u.ad) + ' <small>· listede</small></span>'
+        : '<button class="etiket az" style="border:none;cursor:pointer" title="' + esc(u.yer) + '" data-az-ekle="' + esc(u.anahtar) + '">＋ ' + esc(u.ad) + ' <small>· ' + esc(u.yer.replace(/^\S+\s/, "")) + '</small></button>';
+    }).join("");
+  }
+  function azOlaniListeyeEkle(anahtar) {
+    var u = azOlanUrunler().find(function (x) { return x.anahtar === anahtar; });
+    if (!u) return;
+    listeyeEkle(u.ad, u.anahtar, "Az kalan · " + u.yer.replace(/^\S+\s/, ""));
+    hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster();
+    mesaj(u.ad + " listene eklendi 🛒");
+  }
+  function azOlanlariListeyeEkle() {
+    var eklenecekler = azOlanUrunler().filter(function (u) { return !u.listede; });
+    if (eklenecekler.length === 0) { mesaj("Az olan ürünlerin zaten listende 👍"); return; }
+    eklenecekler.forEach(function (u) { listeyeEkle(u.ad, u.anahtar, "Az kalan · " + u.yer.replace(/^\S+\s/, "")); });
+    hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster();
+    mesaj(eklenecekler.length + " az olan ürün alışveriş listene eklendi 🛒");
   }
 
   // =====================================================================
@@ -2424,6 +2475,7 @@
       if (i >= 0) hatirlatma.gunler.splice(i, 1); else hatirlatma.gunler.push(g);
       hepsiniKaydet(); hatirlatmaGoster();
     }
+    else if (d.azEkle) { azOlaniListeyeEkle(d.azEkle); }
     else if (d.tavsiye) { listeyeEkle(d.tavsiye, d.tavsiye, "Tavsiye"); hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster(); mesaj(d.tavsiye + " listene eklendi"); }
   });
 
