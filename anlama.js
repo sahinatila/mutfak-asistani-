@@ -15,7 +15,9 @@ var MIKTAR_KELIMELERI = [
   "bolca", "tam", "kilo", "kg", "kilogram", "gr", "g", "gram", "litre", "lt", "l", "ml", "paket", "pk",
   "adet", "tane", "tabak", "kase", "şişe", "kavanoz", "kutu", "poşet", "demet", "bağ", "diş", "dilim",
   "avuç", "bardak", "kaşık", "büyük", "küçük", "orta", "boy", "kalıp", "parça", "porsiyon", "torba",
-  "tutam", "kangal", "baş", "dal", "file", "koli", "teneke", "bidon", "sap"
+  "tutam", "kangal", "baş", "dal", "file", "koli", "teneke", "bidon", "sap",
+  // Açıklama kelimeleri: "3 adet çeşitli kek kalıbı" → ürün "kek kalıbı", açıklama "3 adet çeşitli"
+  "çeşitli", "değişik", "farklı", "muhtelif", "boylarda", "boyutlarda", "ebatlarda", "boyda", "boyutta", "ebatta", "renklerde", "adetlik"
 ];
 var MIKTAR_SET = new Set(MIKTAR_KELIMELERI);
 
@@ -97,6 +99,8 @@ function satiriAnla(ham) {
   var metin = kucult(ham);
   var parantez = (metin.match(/\(([^)]*)\)/) || [])[1] || "";
   metin = metin.replace(/\([^)]*\)/g, " ").replace(/[.!?:"]+/g, " ");
+  // "4lü", "4 lü", "4'lü" hepsi aynı: "4'lü" (ürün adının parçası olarak kalır: "4'lü ocak")
+  metin = metin.replace(/(\d+)\s*['’]?\s*(lı|li|lu|lü|lık|lik|luk|lük)(?=\s|$)/g, "$1'$2");
   var t = metin.split(/\s+/).filter(Boolean);
   var miktar = [];
   var i = 0, j = t.length;

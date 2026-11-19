@@ -1150,7 +1150,7 @@
   // Koleksiyonlar (yemek.com'daki "tüm tarif kategorileri" gibi): tarifin adına ve malzemelerine bakılarak otomatik bulunur
   var KOLEKSIYONLAR = [
     { ad: "Köfte Tarifleri", ikon: "🧆", kural: function (t, a, m) { return /köfte/.test(a); } },
-    { ad: "Tavuk Yemekleri", ikon: "🍗", kural: function (t, a, m) { return /tavuk|piliç|(^|[ ,])hindi([ ,]|$)/.test(a + " " + m.replace(/tavuk suyu|et suyu/g, "")); } },
+    { ad: "Tavuk Yemekleri", ikon: "🍗", kural: function (t, a, m) { return t.kat !== "Tatlı" && /tavuk|piliç|(^|[ ,])hindi([ ,]|$)/.test(a + " " + m.replace(/tavuk suyu|et suyu/g, "")); } },
     { ad: "Et Yemekleri", ikon: "🥩", kural: function (t, a, m) { return /(^|[ ,])(et|eti|kuşbaşı|kuzu|dana|biftek|antrikot|ciğer|kavurma|pirzola|incik)([ ,]|$)/.test(m) || /kebab|kebap|tandır/.test(a); } },
     { ad: "Kıymalı Tarifler", ikon: "🍖", kural: function (t, a, m) { return /kıyma/.test(m); } },
     { ad: "Sebze Yemekleri", ikon: "🥬", kural: function (t, a, m) { return (t.kat === "Zeytinyağlı" || t.kat === "Ana Yemek") && !etliMi(m); } },
