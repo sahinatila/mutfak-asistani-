@@ -66,6 +66,36 @@
 
   .etiket { display: inline-block; padding: 4px 10px; border-radius: 14px; font-size: 13px; margin: 3px 3px 3px 0; }
   .etiket small { opacity: .75; }
+  .etiket.sktli { cursor: pointer; }
+  .skt-rozet { font-size: 11px; font-weight: 700; margin-left: 4px; padding: 1px 6px; border-radius: 8px; background: var(--az-zemin); color: var(--az-yazi); }
+  .skt-rozet.gecti { background: var(--yok-zemin); color: var(--yok-yazi); }
+  .skt-kart { border-left: 4px solid var(--turuncu); }
+  .skt-kart h3 { margin: 0 0 6px; }
+  .skt-kart .dugmeler { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .skt-satir { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--cizgi); font-size: 14px; }
+  .skt-satir:last-child { border-bottom: none; }
+  .unutulan { background: var(--temel-zemin); border-radius: 12px; padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+  .unutulan .btn.ikincil { background: var(--kart); }
+  .plan-kart { border-left: 4px solid var(--ana); }
+  .secim.acik { flex-direction: column; align-items: stretch; }
+  .secim-ust { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
+  .secim:not(.acik) .secim-ust { display: contents; }
+  .onizleme { border-top: 1px dashed var(--cizgi); margin-top: 10px; padding-top: 10px; }
+  .btn.genislet { min-width: 44px; }
+  .plan-kart h3 { margin: 0 0 6px; }
+  .plan-secim { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+  .plan-mod { border-top: 1px solid var(--cizgi); margin-top: 14px; padding-top: 12px; font-size: 15px; line-height: 1.4; }
+  .plan-alinacak { background: var(--temel-zemin); border-radius: 12px; padding: 12px 14px; margin: 0 0 14px; font-size: 14px; }
+  .plan-secim select { width: auto; padding: 6px 8px; margin-left: 4px; }
+  .plan-ozet { background: var(--temel-zemin); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+  .plan-dugmeler { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .plan-gun { padding: 12px 14px; }
+  .plan-gun.bugun { border: 2px solid var(--ana); }
+  .plan-gun-baslik { font-weight: 700; margin-bottom: 4px; }
+  .plan-satir { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--cizgi); font-size: 14px; }
+  .plan-tarif { cursor: pointer; flex: 1; }
+  .plan-tarif:hover { color: var(--ana); }
+  .plan-degistir { background: var(--temel-zemin); border: none; border-radius: 8px; padding: 4px 8px; cursor: pointer; font-size: 15px; }
   .reyon-baslik { font-size: 12px; font-weight: 700; color: var(--soluk); margin: 10px 0 2px; text-transform: uppercase; letter-spacing: .03em; }
   .reyon-baslik:first-child { margin-top: 4px; }
   .var { background: var(--var-zemin); color: var(--var-yazi); }
@@ -104,6 +134,22 @@
     padding: 12px 16px; display: none; z-index: 10; box-shadow: 0 -4px 14px rgba(0,0,0,.12); }
   #menuCubugu .ic { max-width: 760px; margin: 0 auto; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
   #menuCubugu input { width: 70px; padding: 8px; }
+  #menuPaneli { display: none; max-width: 760px; margin: 0 auto 10px; max-height: 55vh; overflow: auto; }
+  #menuPaneli.acik { display: block; }
+  #menuIcerik { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  body.menu-paneli-acik .whatsapp-sabit { display: none; }
+  body.menu-paneli-acik #menuIcerik { visibility: hidden; }
+  .menu-kalem { border-bottom: 1px solid var(--cizgi); padding: 10px 2px; }
+  .menu-kalem-ust { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .menu-kalem-ust b { cursor: pointer; }
+  .menu-kalem .eksikler { font-size: 13px; margin-top: 4px; }
+  .pisirme { border-top: 2px solid var(--ana); margin-top: 14px; padding-top: 12px; }
+  .pisirme-adim { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--cizgi); font-size: 14px; }
+  .pisirme-adim .zaman { min-width: 74px; text-align: center; }
+  .pisirme-adim .zaman b { display: block; font-size: 17px; color: var(--ana); }
+  .pisirme-adim .zaman small { color: var(--soluk); font-size: 11px; }
+  .pisirme-adim.bitti span { text-decoration: line-through; opacity: .6; }
+  .pisirme-adim details { margin: 4px 0 0 26px; }
 
   /* ---------- ÜST KÖŞE: KULLANICI ---------- */
   .sag-ust { display: flex; gap: 8px; align-items: center; position: relative; }
@@ -427,6 +473,9 @@
         </div>
       </div>
 
+      <div id="sktKartiAna" style="max-width:1100px;margin:0 auto;padding:0 16px"></div>
+      <div id="planKartiAna" style="max-width:1100px;margin:18px auto 0;padding:0 16px"></div>
+
       <div class="ozellikler">
         <div class="ozellik"><div class="ikon">✍️</div><h3>Yaz ya da söyle</h3>
           <p>Form doldurmak yok. "Yarım kilo kıyma, az süt, gevrek" yaz ya da sesle söyle, biz anlarız.</p></div>
@@ -468,11 +517,19 @@
   <!-- ===================== ÜRÜNLERİM ===================== -->
   <section id="urunler" class="bolum">
     <div class="ipucu">✍️ Form yok! Not defterine yazar gibi yaz, araya virgül koy yeter.
-      <br><small>Örnek: <i>yarım kilo kıyma, 5 büyük boy patates, az süt, 10 yumurta, gevrek</i></small></div>
+      <br><small>Örnek: <i>yarım kilo kıyma, 5 büyük boy patates, az süt, 10 yumurta, gevrek</i></small>
+      <br><small>📅 Bir ürüne dokun: son kullanma tarihini gör, değiştir ya da "açıldı" diye işaretle.</small></div>
     <h2 class="buyuk">Ürünlerim</h2>
+    <div id="sktKartiUrunler"></div>
     <div id="yiyecekAlanlari"></div>
     <h2 class="buyuk">Ekipmanlarım</h2>
     <div id="ekipmanAlanlari"></div>
+  </section>
+
+  <!-- ===================== MENÜ PLANI ===================== -->
+  <section id="plan" class="bolum">
+    <h2 class="buyuk">📅 Menü planım</h2>
+    <div id="planIcerik"></div>
   </section>
 
   <!-- ===================== SOFRA PLANLA ===================== -->
@@ -548,10 +605,9 @@
   <section id="online" class="bolum">
     <h2 class="buyuk">Online Alışveriş</h2>
     <div class="kart">
-      <h3>🚧 Yakında</h3>
-      <p>Burada alışveriş listendeki ürünlerin farklı marketlerdeki fiyatlarını karşılaştırıp sana en uygun yolu göstereceğiz.
-         Bunun için marketlerle anlaşmalar yapmayı planlıyoruz.</p>
-      <p class="aciklama">Şimdilik listeni kopyalayıp kullandığın market uygulamasına yapıştırabilir ya da paylaşabilirsin.</p>
+      <h3>🛒 Listeni marketine taşı</h3>
+      <p>Alışveriş listeni tek dokunuşla kopyala, kullandığın market uygulamasına ya da sitesine yapıştır.
+         Evdekilerle paylaşmak istersen WhatsApp'tan gönder.</p>
       <div class="arac">
         <button class="btn" onclick="listeyiKopyala()">📋 Listemi kopyala</button>
         <button class="btn ikincil" onclick="whatsappPaylas()">💬 WhatsApp'ta paylaş</button>
@@ -560,8 +616,9 @@
   </section>
 
   <!-- Menü çubuğu: tarif seçince altta çıkar -->
-  <div id="menuCubugu"><div class="ic">
+  <div id="menuCubugu"><div id="menuPaneli"></div><div class="ic">
     <b>🍽️ Menüm:</b> <span id="menuIcerik" style="flex:1"></span>
+    <button class="btn ikincil" id="menuGitBtn" data-menu-git="1">📋 Menüme git ▲</button>
     <label>Kişi: <input type="number" id="kisiSayisi" min="1" value="4"></label>
     <button class="btn" onclick="menuEksikleriniEkle()">Eksikleri listeye ekle</button>
     <button class="btn ikincil" onclick="menuyuTemizle()">✕</button>
@@ -622,6 +679,33 @@
       <button class="menu-sec" onclick="ayardanAc(function(){silmeAc('veri')})">🧹 Verilerimi sil</button>
       <div id="ayarHesapDugmesi"></div>
       <p class="aciklama" style="margin:14px 0 0;text-align:center"><a href="gizlilik.html" style="color:var(--ana)">🔒 Gizlilik Politikası</a></p>
+    </div>
+  </div>
+
+  <!-- Tarifin ayrıntısı: sayfayı değiştirmeden açılır -->
+  <div class="perde" id="tarifDetayPerdesi">
+    <div class="pencere" style="max-width:520px;max-height:90vh;overflow:auto">
+      <button class="kapat" onclick="perdeKapat('tarifDetayPerdesi')">×</button>
+      <div id="tarifDetayIcerik"></div>
+    </div>
+  </div>
+
+  <!-- Menü planında tarif değiştir -->
+  <div class="perde" id="planSecPerdesi">
+    <div class="pencere" style="max-width:440px;max-height:90vh;overflow:auto">
+      <button class="kapat" onclick="perdeKapat('planSecPerdesi')">×</button>
+      <h3>🔄 Başka yemek seç</h3>
+      <p class="aciklama" id="planSecBaslik" style="margin:0 0 10px"></p>
+      <input type="search" id="planSecArama" placeholder="🔍 Tarif ara">
+      <div id="planSecListe"></div>
+    </div>
+  </div>
+
+  <!-- Son kullanma tarihi -->
+  <div class="perde" id="sktPerdesi">
+    <div class="pencere" style="max-width:420px">
+      <button class="kapat" onclick="perdeKapat('sktPerdesi')">×</button>
+      <div id="sktIcerik"></div>
     </div>
   </div>
 
@@ -728,10 +812,6 @@
       <button class="kapat" onclick="uyelikKapat()">×</button>
       <h3>Mutfak Asistanı ailesine katıl</h3>
       <p class="aciklama">Hızlı ve ücretsiz. Daha önce üye olduysan aynı e-posta ve şifreyle giriş yaparsın.</p>
-      <button class="google-btn" disabled title="Uygulamayı internete koyduğumuzda açılacak">
-        <b style="color:#4285f4">G</b> Google hesabınla devam et <small>(yakında)</small>
-      </button>
-      <div class="ayrac">ya da</div>
       <input type="text" id="uyeAd" placeholder="Kullanıcı adın (ör. Ayşe)" autocomplete="nickname">
       <input type="text" id="uyeEposta" placeholder="E-posta adresin" inputmode="email" autocomplete="email">
       <input type="password" id="uyeSifre" placeholder="Şifren (en az 6 karakter)" autocomplete="current-password">
@@ -811,7 +891,7 @@
   //  2) VERİLER: tarayıcıya kaydedilir, sayfa kapansa da kalır
   // =====================================================================
   // Misafirin yaptıkları sadece bu oturumda tutulur (uygulama kapanınca silinir); üyeninkiler kalıcıdır.
-  var MISAFIR_ANAHTARLARI = ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar"];
+  var MISAFIR_ANAHTARLARI = ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_skt", "ma_plan", "ma_pisirme"];
   function misafirMi() {
     try { return !JSON.parse(localStorage.getItem("ma_kullanici") || "null"); } catch (e) { return true; }
   }
@@ -883,6 +963,233 @@
   }
 
   // =====================================================================
+  //  SON KULLANMA TAKİBİ
+  //  Notlar serbest yazı olduğu için her ürünün tarih bilgisi ayrı tutulur:
+  //  ma_skt = { "buzdolabi|süt": { e: eklendiği gün, d: son dokunulan gün, a: açıldığı gün, s: elle girilen SKT, h: son hatırlatma } }
+  // =====================================================================
+  var sktKayit = oku("ma_skt", {});
+  var GUN = 86400000, SKT_YAKLASTI = 3;
+  function sktAnahtar(alanId, ad) { return alanId + "|" + normalIsim(ad); }
+  function gunBasi(t) { var d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
+
+  // Varsayılan raf ömrü (gün). acik: ürün açıldıysa. null: takip etmeyiz.
+  function sktKurali(alanId, u) {
+    var n = normalIsim(u.ad);
+    var reyon = reyonBul(reyonAdi(u), false).ad;
+    var sonKelime = n.split(" ").pop();
+    if (alanId === "dondurucu") return { kapali: 365, not: "Derin dondurucuda 1 yıl" };
+    if (/^(süt|ayran|kefir)$/.test(n) || /(^| )(süt|ayran|kefir)$/.test(n) && reyon === "Süt Ürünleri") return { kapali: 7, not: "Süt 1 hafta" };
+    if (sonKelime === "yumurta") return { kapali: 14, not: "Yumurta 2 hafta" };
+    switch (reyon) {
+      case "Sebze": case "Meyve": return { kapali: 7, not: "Meyve ve sebze 1 hafta" };
+      case "Et, Tavuk & Balık": return { kapali: 3, not: "Buzdolabında çiğ et 3 gün. Dondurucuya koyarsan 1 yıl" };
+      case "Şarküteri": return { kapali: 14, not: "Şarküteri 2 hafta" };
+      case "Süt Ürünleri": return { kapali: 30, not: "Süt ürünleri ve peynirler 1 ay" };
+      case "Kahvaltılık": return { kapali: 90, not: "Kahvaltılıklar 3 ay" };
+      case "Ekmek & Unlu Mamul": return { kapali: 4, not: "Ekmek 4 gün" };
+      case "Bakliyat & Tahıl": case "Makarna & Hamur": return { kapali: 180, not: "Bakliyat, tahıl ve makarna 6 ay", hatirlat: 30 };
+      case "Yağlar": case "Şeker & Pastacılık": return { kapali: 365, not: "1 yıl" };
+      case "Baharatlar": return { kapali: 365, not: "Baharatlar 1 yıl" };
+      case "Soslar & Salçalar": return { kapali: 365, acik: 60, not: "Soslar kapalıysa 1 yıl, açıldıysa 2 ay" };
+      case "Konserve & Turşu": return { kapali: 730, not: "Konserveler 2 yıl" };
+      case "Atıştırmalık & Kuruyemiş": return { kapali: 90, not: "Atıştırmalıklar 3 ay" };
+      case "İçecekler":
+        if (/(^| )(su|çay|kahve)$/.test(n) || /(kahve|çay)/.test(n)) return { kapali: 365, not: "Çay, kahve ve su 1 yıl" };
+        return { kapali: 365, acik: 7, not: "İçecekler kapalıysa 1 yıl, açıldıysa 1 hafta" };
+      case "Dondurulmuş": return { kapali: 365, not: "Dondurulmuş ürünler 1 yıl" };
+    }
+    return null;
+  }
+
+  // Ürünün SKT durumu: { skt (zaman), kalan (gün), kural, kayit }
+  function sktDurumu(alanId, u) {
+    var kural = sktKurali(alanId, u);
+    var k = sktKayit[sktAnahtar(alanId, u.ad)] || { e: Date.now(), d: Date.now() };
+    var skt;
+    if (k.s) skt = new Date(k.s + "T00:00:00").getTime();
+    else if (!kural) return null;
+    else if (k.a && kural.acik) skt = gunBasi(k.a) + kural.acik * GUN;
+    else skt = gunBasi(k.e) + kural.kapali * GUN;
+    return { skt: skt, kalan: Math.round((skt - gunBasi(Date.now())) / GUN), kural: kural, kayit: k };
+  }
+  function sktRozeti(d) {
+    if (d.kalan < 0) return '<span class="skt-rozet gecti">⛔ SKT geçti</span>';
+    if (d.kalan === 0) return '<span class="skt-rozet">⏰ bugün</span>';
+    if (d.kalan <= SKT_YAKLASTI) return '<span class="skt-rozet">⏰ ' + d.kalan + ' gün</span>';
+    return '';
+  }
+  function sktTarihYazisi(t) { return new Date(t).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }); }
+
+  // Notlardaki ürünlerle tarih kayıtlarını eşitle: yeni ürüne bugünü yaz, değişene "dokunuldu" de, silineni unut
+  function sktEsitle() {
+    var simdi = Date.now(), gorulen = {};
+    YIYECEK_ALANLARI.forEach(function (a) {
+      notuAnla(notlar[a.id] || "").forEach(function (u) {
+        var key = sktAnahtar(a.id, u.ad), k = sktKayit[key], ham = u.ham.trim();
+        gorulen[key] = true;
+        if (!k) sktKayit[key] = { e: simdi, d: simdi, t: ham };
+        else if (k.t !== ham) { k.d = simdi; k.t = ham; }
+      });
+    });
+    Object.keys(sktKayit).forEach(function (key) { if (!gorulen[key]) delete sktKayit[key]; });
+    yaz("ma_skt", sktKayit);
+    sktKartlariniGoster();
+  }
+  // Alışverişten yeni gelen ürünün tarihi baştan başlar
+  function sktYenidenAlindi(anahtarlar) {
+    var simdi = Date.now();
+    anahtarlar.forEach(function (key) { var k = sktKayit[key]; if (k) { k.e = simdi; k.d = simdi; k.a = null; k.s = null; k.h = null; } });
+    yaz("ma_skt", sktKayit); sktKartlariniGoster();
+  }
+
+  function sktUrunuBul(key) {
+    var alanId = key.split("|")[0];
+    var u = notuAnla(notlar[alanId] || "").filter(function (x) { return sktAnahtar(alanId, x.ad) === key; })[0];
+    return u ? { alanId: alanId, u: u } : null;
+  }
+
+  // Ürüne dokununca açılan pencere
+  var sktAcikAnahtar = null;
+  function sktAc(key) {
+    var b = sktUrunuBul(key); if (!b) return;
+    if (!sktKayit[key]) sktEsitle();
+    sktAcikAnahtar = key;
+    var d = sktDurumu(b.alanId, b.u), k = sktKayit[key] || {};
+    var kural = d ? d.kural : sktKurali(b.alanId, b.u);
+    var tarihDegeri = d ? isoGun(d.skt) : "";
+    var durum = !d ? "Bu ürün için tahmini süre yok. İstersen tarihi kendin gir."
+      : d.kalan < 0 ? "⛔ Son kullanma tarihi " + (-d.kalan) + " gün önce geçti."
+      : d.kalan === 0 ? "⏰ Son kullanma tarihi bugün." : "Son kullanma tarihine " + d.kalan + " gün var.";
+    document.getElementById("sktIcerik").innerHTML =
+      '<h3>' + esc(basHarfBuyuk(b.u.ad)) + '</h3>' +
+      '<p class="aciklama" style="margin:0 0 12px">' + esc(ALAN_ADLARI[b.alanId]) + ' · ' + esc(sktTarihYazisi(k.e || Date.now())) + ' tarihinde eklendi</p>' +
+      '<p style="margin:0 0 10px"><b>' + durum + '</b></p>' +
+      '<label class="aciklama" for="sktTarih" style="display:block"><b>Son kullanma tarihi</b>' + (k.s ? ' (sen girdin)' : kural ? ' (tahmini: ' + esc(kural.not) + ')' : '') + '</label>' +
+      '<input type="date" id="sktTarih" value="' + tarihDegeri + '" style="display:block;width:100%;margin-top:6px">' +
+      (kural && kural.acik ? '<label style="display:flex;gap:8px;align-items:center;margin:4px 0 12px;font-size:15px"><input type="checkbox" id="sktAcildi"' + (k.a ? ' checked' : '') + '> Açıldı' +
+        (k.a ? ' <small class="aciklama">(' + esc(sktTarihYazisi(k.a)) + ')</small>' : '') + '</label>' : '') +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '<button class="btn" data-skt-kaydet="1">Kaydet</button>' +
+        '<button class="btn ikincil" data-skt-bitti="' + esc(key) + '">🧺 Bitti, listeden kaldır</button>' +
+      '</div>';
+    menudenAc("sktPerdesi");
+  }
+  function sktKaydet() {
+    var key = sktAcikAnahtar, k = sktKayit[key], b = sktUrunuBul(key);
+    if (!k || !b) { perdeKapat("sktPerdesi"); return; }
+    var acildiKutu = document.getElementById("sktAcildi"), girilen = document.getElementById("sktTarih").value;
+    if (acildiKutu && acildiKutu.checked && !k.a) { k.a = Date.now(); k.s = null; }   // yeni açıldı: süre baştan hesaplanır
+    else {
+      if (acildiKutu && !acildiKutu.checked) k.a = null;
+      k.s = null;
+      var tahmin = sktDurumu(b.alanId, b.u);
+      if (girilen && (!tahmin || girilen !== isoGun(tahmin.skt))) k.s = girilen;   // tarihi elle değiştirdiyse onu kullan
+    }
+    k.d = Date.now();
+    yaz("ma_skt", sktKayit);
+    perdeKapat("sktPerdesi");
+    alaniGoster(b.alanId); sktKartlariniGoster();
+    mesaj("📅 " + basHarfBuyuk(b.u.ad) + " kaydedildi");
+  }
+  function isoGun(t) { var d = new Date(t); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  // Ürünü notlardan çıkar
+  function sktBitti(key) {
+    var b = sktUrunuBul(key); if (!b) return;
+    notlar[b.alanId] = notuAnla(notlar[b.alanId] || "").filter(function (x) { return sktAnahtar(b.alanId, x.ad) !== key; })
+      .map(function (x) { return x.ham.trim(); }).join(", ");
+    var kutu = document.getElementById("not-" + b.alanId); if (kutu) kutu.value = notlar[b.alanId];
+    hepsiniKaydet(); alaniGoster(b.alanId); urunDegisiklikleriniKaydet();
+    perdeKapat("sktPerdesi");
+    mesaj("🧺 " + basHarfBuyuk(b.u.ad) + " listeden kaldırıldı");
+  }
+
+  // Bir süredir dokunulmayan ürün: kuru gıdalar ayda bir, uzun ömürlüler 2 ayda bir hatırlatılır
+  function unutulanUrun() {
+    var simdi = Date.now(), aday = null;
+    YIYECEK_ALANLARI.forEach(function (a) {
+      notuAnla(notlar[a.id] || "").forEach(function (u) {
+        var d = sktDurumu(a.id, u); if (!d || d.kalan <= SKT_YAKLASTI) return;   // tarihi yaklaşanlar zaten üstte
+        var aralik = a.id === "dondurucu" ? 365 : d.kural && d.kural.hatirlat ? d.kural.hatirlat : d.kural && d.kural.kapali >= 90 ? 60 : 0;
+        if (!aralik) return;
+        var son = Math.max(d.kayit.d || 0, d.kayit.h || 0), gecen = (simdi - son) / GUN;
+        if (gecen >= aralik && (!aday || son < aday.son)) aday = { alanId: a.id, u: u, son: son, gecen: Math.floor(gecen) };
+      });
+    });
+    return aday;
+  }
+  // Bu ürünü kullanan, eksiği en az tarif
+  function urunuKullananTarif(alanId, u) {
+    var evdekiler = evdekiYiyecekler(), ekipmanlar = evdekiEkipmanlar(), bilgi = isimBilgisi(u.ad), enIyi = null;
+    HAZIR_TARIFLER.forEach(function (t) {
+      var kullanir = t.gruplar.some(function (g) { return g.malzemeler.some(function (m) { return m.bilgiler.some(function (x) { return eslesir(bilgi, x); }); }); });
+      if (!kullanir) return;
+      var d = tarifDurumu(t, evdekiler, ekipmanlar);
+      // Adında ürün geçen tarif ("Mercimek Çorbası") daha akla yatkın: bir eksik kadar avantaj ver
+      var puan = d.eksikler.length * 10 - d.varSayisi - ((" " + normalIsim(t.ad) + " ").indexOf(" " + (bilgi.son || bilgi.tam)) >= 0 ? 12 : 0);
+      if (!enIyi || puan < enIyi.puan) enIyi = { t: t, d: d, puan: puan };
+    });
+    return enIyi;
+  }
+  function unutulanHalaVar(key, tarif) {
+    var k = sktKayit[key]; if (k) { k.h = Date.now(); yaz("ma_skt", sktKayit); }
+    sktKartlariniGoster();
+    if (tarif) tarifDetayAc(tarif);
+  }
+  function tarifeGit(ad) {
+    bolumAc("tarifler"); seciliKategori = "Tümü"; seciliKoleksiyon = null; sadeceYapabilir = false; kategoriFiltresiniCiz();
+    document.getElementById("tarifArama").value = ad;
+    var ilk = HAZIR_TARIFLER.find(function (t) { return t.ad === ad; });
+    if (ilk) acikTarifler[ilk.no] = true;
+    tarifleriGoster();
+  }
+
+  // "Önce bunları kullan" kartı: ana sayfada ve Ürünlerim'in başında
+  function sktKartlariniGoster() {
+    var acil = [];
+    YIYECEK_ALANLARI.forEach(function (a) {
+      notuAnla(notlar[a.id] || "").forEach(function (u) {
+        var d = sktDurumu(a.id, u);
+        if (d && d.kalan <= SKT_YAKLASTI) acil.push({ alanId: a.id, u: u, d: d });
+      });
+    });
+    acil.sort(function (x, y) { return x.d.kalan - y.d.kalan; });
+    var html = "";
+    if (acil.length) {
+      // Bu ürünlerden en çoğunu kullanan, eksiği az tarifler
+      var evdekiler = evdekiYiyecekler(), ekipmanlar = evdekiEkipmanlar();
+      var oneriler = typeof HAZIR_TARIFLER === "undefined" ? [] : HAZIR_TARIFLER.map(function (t) { return { t: t, d: tarifDurumu(t, evdekiler, ekipmanlar) }; })
+        .filter(function (s) { return s.d.acilKullanir.length && s.d.eksikler.length <= 2; })
+        .sort(function (x, y) { return (y.d.acilKullanir.length - x.d.acilKullanir.length) || (x.d.eksikler.length - y.d.eksikler.length); }).slice(0, 3);
+      html += '<h3>⏰ Önce bunları kullan</h3>' +
+        acil.slice(0, 6).map(function (x) {
+          var yazi = x.d.kalan < 0 ? "SKT geçti, kontrol et" : x.d.kalan === 0 ? "bugün bitiyor" : x.d.kalan + " gün kaldı";
+          return '<div class="skt-satir"><span data-skt="' + esc(sktAnahtar(x.alanId, x.u.ad)) + '" style="cursor:pointer"><b>' + esc(basHarfBuyuk(x.u.ad)) + '</b> <small class="aciklama">· ' + esc(ALAN_ADLARI[x.alanId]) + '</small></span>' +
+            '<span class="skt-rozet' + (x.d.kalan < 0 ? ' gecti' : '') + '">' + yazi + '</span></div>';
+        }).join("") +
+        (acil.length > 6 ? '<p class="aciklama" style="margin:6px 0 0">+' + (acil.length - 6) + ' ürün daha</p>' : '') +
+        (oneriler.length ? '<p class="aciklama" style="margin:12px 0 4px"><b>Bunlarla yapabileceklerin:</b></p><div class="dugmeler" style="margin-top:0">' +
+          oneriler.map(function (s) { return '<button class="btn ikincil" data-tarif-detay="' + esc(s.t.ad) + '">🍲 ' + esc(s.t.ad) + (s.d.eksikler.length ? ' <small>(' + s.d.eksikler.length + ' eksik)</small>' : '') + '</button>'; }).join("") + '</div>' : '');
+    }
+    var unut = typeof HAZIR_TARIFLER === "undefined" ? null : unutulanUrun();
+    if (unut) {
+      var tarif = urunuKullananTarif(unut.alanId, unut.u), key = sktAnahtar(unut.alanId, unut.u.ad);
+      var yerAdi = { buzdolabi: "Buzdolabında", kiler: "Kilerinde", dondurucu: "Derin dondurucunda" }[unut.alanId];
+      html += '<div class="unutulan">🤔 <b>' + yerAdi + ' ' + esc(basHarfBuyuk(unut.u.ad)) + ' vardı.</b> ' +
+        (unut.gecen >= 60 ? Math.floor(unut.gecen / 30) + ' aydır' : unut.gecen + ' gündür') + ' dokunulmadı.' +
+        (tarif ? ' <b>' + esc(tarif.t.ad) + '</b> tarifine çok uygun' + (tarif.d.eksikler.length ? ' (' + tarif.d.eksikler.length + ' eksik)' : ', hemen yapabilirsin') + '.' : '') +
+        '<br><small class="aciklama">Hâlâ elinde var mı?</small>' +
+        '<div class="dugmeler" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">' +
+          '<button class="btn" data-unut-hala-var="' + esc(key) + '" data-tarif="' + esc(tarif ? tarif.t.ad : "") + '">' + (tarif ? '👍 Hâlâ var, tarifi aç' : '👍 Hâlâ var') + '</button>' +
+          '<button class="btn ikincil" data-unut-bitti="' + esc(key) + '">🧺 Bitti, listeden kaldır</button>' +
+        '</div></div>';
+    }
+    ["sktKartiUrunler", "sktKartiAna"].forEach(function (id) {
+      var el = document.getElementById(id); if (!el) return;
+      el.innerHTML = html ? '<div class="kart skt-kart"' + (id === "sktKartiAna" ? ' style="margin-top:18px"' : '') + '>' + html + '</div>' : "";
+    });
+  }
+
+  // =====================================================================
   //  HAREKET GEÇMİŞİ (Chrome geçmişi gibi)
   // =====================================================================
   var gecmis = oku("ma_gecmis", []);
@@ -912,6 +1219,7 @@
       Object.keys(eski).forEach(function (k) { if (!(k in yeni)) hareketEkle("➖", eski[k] + " çıkarıldı · " + yer); });
       urunAnlikGoruntu[a] = yeni;
     });
+    sktEsitle();
   }
 
   // HTML'ye kullanıcı yazısı koyarken güvenli hale getirir
@@ -939,7 +1247,6 @@
         '<textarea id="not-' + a.id + '" data-alan="' + a.id + '" placeholder="Ör. ' + esc(a.ornek) + '"></textarea>' +
         '<div class="arac">' +
           '<button class="btn ikincil" data-ses="' + a.id + '">🎤 Sesle ekle</button>' +
-          '<button class="btn ikincil" disabled title="Yapay zekâ aşamasında gelecek">📷 Fotoğrafla ekle (yakında)</button>' +
           '<span class="sayac" id="sayac-' + a.id + '"></span>' +
         '</div>' +
         '<div id="anlasilan-' + a.id + '"></div>' +
@@ -955,8 +1262,10 @@
     document.getElementById("anlasilan-" + alanId).innerHTML = reyonlaraAyir(urunler, reyonAdi, ekipmanAlaniMi(alanId)).map(function (g) {
       return '<div class="reyon-baslik">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + ' · ' + g.urunler.length + '</div>' +
         g.urunler.map(function (u) {
-          return '<span class="etiket ' + (u.az ? "az" : "notr") + '">' + esc(basHarfBuyuk(u.ad)) +
-            (u.miktar ? ' <small>· ' + esc(u.miktar) + '</small>' : '') + (u.az ? ' ⚠️' : '') + '</span>';
+          var ekip = ekipmanAlaniMi(alanId), d = ekip ? null : sktDurumu(alanId, u);
+          return '<span class="etiket ' + (u.az ? "az" : "notr") + (ekip ? '' : ' sktli') + '"' +
+            (ekip ? '' : ' data-skt="' + esc(sktAnahtar(alanId, u.ad)) + '" title="Son kullanma tarihini gör"') + '>' + esc(basHarfBuyuk(u.ad)) +
+            (u.miktar ? ' <small>· ' + esc(u.miktar) + '</small>' : '') + (u.az ? ' ⚠️' : '') + (d ? sktRozeti(d) : '') + '</span>';
         }).join("");
     }).join("");
   }
@@ -1116,7 +1425,9 @@
     var hepsi = [];
     YIYECEK_ALANLARI.forEach(function (a) {
       notuAnla(notlar[a.id] || "").forEach(function (u) {
-        u.yer = a.id; u.bilgi = isimBilgisi(u.ad); hepsi.push(u);
+        u.yer = a.id; u.bilgi = isimBilgisi(u.ad);
+        var sd = sktDurumu(a.id, u); u.acil = !!(sd && sd.kalan <= SKT_YAKLASTI);
+        hepsi.push(u);
       });
     });
     return hepsi;
@@ -1196,6 +1507,192 @@
   }
   tarifleriHazirla();
 
+  // =====================================================================
+  //  HAFTALIK / AYLIK MENÜ PLANI
+  //  ma_plan = { tur: "hafta"|"ay", kisi, bas: "YYYY-AA-GG", gunler: [{ corba, ana, yan }] }
+  // =====================================================================
+  var plan = oku("ma_plan", null);
+  var PLAN_YERLERI = [
+    { id: "corba", ad: "Çorba", ikon: "🥣", kat: ["Çorba"] },
+    { id: "ana", ad: "Ana yemek", ikon: "🍲", kat: ["Ana Yemek", "Deniz Mahsulleri"] },
+    { id: "yan", ad: "Yanına", ikon: "🥗", kat: ["Pilav & Makarna", "Salata", "Zeytinyağlı", "Meze"] }
+  ];
+  var AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+  function planKaydet() { yaz("ma_plan", plan); }
+  function planGunTarihi(i) { var d = new Date(plan.bas + "T12:00:00"); d.setDate(d.getDate() + i); return d; }
+  function planGunYazisi(i) { var d = planGunTarihi(i); return GUNLER[d.getDay()] + ", " + d.getDate() + " " + AYLAR[d.getMonth()]; }
+  function tarifBul(ad) { return HAZIR_TARIFLER.find(function (t) { return t.ad === ad; }); }
+
+  // Bir yer için adaylar: evdekilerle en az eksiği olan, tarihi yaklaşanı kullanan öne; biraz da rastgelelik (her plan aynı olmasın)
+  function planAdaylari(yer, kullanilan, rastgele, mod) {
+    var evdekiler = evdekiYiyecekler(), ekipmanlar = evdekiEkipmanlar();
+    return HAZIR_TARIFLER.filter(function (t) { return yer.kat.indexOf(t.kat) >= 0 && !kullanilan[t.ad]; }).map(function (t) {
+      var d = tarifDurumu(t, evdekiler, ekipmanlar);
+      // "az": evdekilerle en az eksik · "serbest": evdekine bakmadan çeşitli menü, eksikler alışverişe
+      var puan = mod === "serbest"
+        ? d.eksikEkipman.length * 5 - d.acilKullanir.length * 2 + (rastgele ? Math.random() * 10 : 0)
+        : d.eksikler.length * 3 + d.eksikEkipman.length * 5 - d.acilKullanir.length * 5 - Math.min(d.varSayisi, 6) * 0.3 + (rastgele ? Math.random() * 4 : 0);
+      var kullandigi = [];   // evdeki hangi ürünleri kullanıyor (temel olanlar hariç)
+      t.gruplar.forEach(function (g) { g.malzemeler.forEach(function (m) { if (m._bulunan && !m.temel && kullandigi.indexOf(m._bulunan.ad) < 0) kullandigi.push(m._bulunan.ad); }); });
+      return { t: t, d: d, puan: puan, kullandigi: kullandigi };
+    }).sort(function (a, b) { return a.puan - b.puan; });
+  }
+  function planOlustur(tur, kisi, mod) {
+    mod = mod === "serbest" ? "serbest" : "az";
+    var gunSayisi = tur === "ay" ? 30 : 7, kullanilan = {}, havuz = {}, sayac = {};
+    plan = { tur: tur, kisi: kisi, mod: mod, bas: isoGun(Date.now()), gunler: [] };
+    PLAN_YERLERI.forEach(function (y) { havuz[y.id] = planAdaylari(y, {}, true, mod); });
+    for (var i = 0; i < gunSayisi; i++) {
+      var gun = {};
+      PLAN_YERLERI.forEach(function (y) {
+        // Ayda tarif yetmezse 2 hafta sonra tekrar edebilir
+        // Aynı malzeme (ör. kıyma) her gün çıkmasın: o hafta çok kullanılan malzemeyi içeren tarif geri düşer
+        var aday = null, enIyi = Infinity;
+        havuz[y.id].forEach(function (a) {
+          if (kullanilan[a.t.ad] !== undefined && i - kullanilan[a.t.ad] < 14) return;
+          var p = a.puan + (mod === "serbest" ? 0 : a.kullandigi.reduce(function (t, ad) { return t + (sayac[ad] || 0) * 2.5; }, 0));
+          if (p < enIyi) { enIyi = p; aday = a; }
+        });
+        if (aday) {
+          gun[y.id] = aday.t.ad; kullanilan[aday.t.ad] = i;
+          aday.kullandigi.forEach(function (ad) { sayac[ad] = (sayac[ad] || 0) + 1; });
+        }
+      });
+      plan.gunler.push(gun);
+    }
+    planKaydet(); hareketEkle("📅", (tur === "ay" ? "Aylık" : "Haftalık") + " menü oluşturuldu");
+    planKartiniGoster(); planGoster(); bolumAc("plan");
+  }
+
+  // Ana sayfadaki bölüm
+  function planKartiniGoster() {
+    var el = document.getElementById("planKartiAna"); if (!el) return;
+    var ozet = "";
+    if (plan && plan.gunler.length) {
+      var bugun = Math.round((new Date(isoGun(Date.now()) + "T12:00:00") - new Date(plan.bas + "T12:00:00")) / GUN);
+      var g = plan.gunler[bugun];
+      ozet = '<div class="plan-ozet">' + (g ? '<b>Bugün:</b> ' + PLAN_YERLERI.map(function (y) { return g[y.id] ? y.ikon + ' ' + esc(g[y.id]) : ''; }).filter(Boolean).join(' · ')
+          : 'Menünün süresi doldu. Yenisini oluşturabilirsin.') +
+        '<div style="margin-top:10px"><button class="btn" data-bolum="plan">📅 ' + (plan.tur === "ay" ? "Aylık" : "Haftalık") + ' menümü aç</button></div></div>';
+    }
+    el.innerHTML = '<div class="kart plan-kart"><h3>📅 Haftalık / Aylık menü oluştur</h3>' +
+      '<p class="aciklama" style="margin:0 0 10px">Her gün için çorba, ana yemek ve yanına bir şey seçelim.</p>' +
+      ozet +
+      '<label class="aciklama" style="display:block;margin-top:12px">Kaç kişilik? <select id="planKisi">' +
+        [1, 2, 3, 4, 5, 6, 8].map(function (n) { return '<option' + (n === ((plan && plan.kisi) || 4) ? ' selected' : '') + '>' + n + '</option>'; }).join("") +
+      '</select></label>' +
+      '<div class="plan-mod"><b>🏠 Evinizdeki en az eksikle haftalık - aylık menü oluşturmaya ne dersiniz?</b>' +
+        '<div class="plan-secim"><button class="btn" data-plan-olustur="hafta|az">🗓️ Haftalık</button><button class="btn" data-plan-olustur="ay|az">📆 Aylık</button></div></div>' +
+      '<div class="plan-mod"><b>🛒 İleri gidip haftalık - aylık eksikleri tespit edip alışveriş önerisi ile aylık menü oluşturmaya ne dersiniz?</b>' +
+        '<div class="plan-secim"><button class="btn ikincil" data-plan-olustur="hafta|serbest">🗓️ Haftalık</button><button class="btn ikincil" data-plan-olustur="ay|serbest">📆 Aylık</button></div></div>' +
+      '</div>';
+  }
+
+  // Plan sayfası
+  function planGoster() {
+    var el = document.getElementById("planIcerik"); if (!el) return;
+    if (!plan || !plan.gunler.length) { el.innerHTML = '<p class="bos">Henüz bir menü yok. Ana sayfadan oluşturabilirsin.</p>'; return; }
+    var evdekiler = evdekiYiyecekler(), ekipmanlar = evdekiEkipmanlar(), bugunIso = isoGun(Date.now());
+    var son = planGunTarihi(plan.gunler.length - 1), eksikler = planEksikleriTopla();
+    el.innerHTML = '<p class="aciklama" style="margin:0 4px 10px">' + (plan.mod === "serbest" ? "🛒 Alışveriş önerili menü" : "🏠 Evdekilerle en az eksik") + ' · ' + plan.kisi + ' kişilik · ' + planGunYazisi(0) + ' – ' + son.getDate() + ' ' + AYLAR[son.getMonth()] + '</p>' +
+      '<div class="plan-dugmeler">' +
+        '<button class="btn" data-plan-eksik="1">🛒 Eksikleri listeye ekle' + (eksikler.length ? ' (' + eksikler.length + ')' : '') + '</button>' +
+        '<button class="btn whatsapp-renk" data-plan-paylas="1">💬 Paylaş</button>' +
+        '<button class="btn ikincil" data-plan-olustur="' + plan.tur + '|' + (plan.mod || "az") + '">🔁 Yeniden oluştur</button>' +
+        '<button class="btn ikincil" data-plan-sil="1">🗑️ Sil</button>' +
+      '</div>' +
+      (eksikler.length ? '<details class="plan-alinacak"' + (plan.mod === "serbest" ? ' open' : '') + '><summary><b>🛒 Alışveriş önerisi: bu menü için ' + eksikler.length + ' malzeme alınmalı</b></summary>' +
+        '<p style="margin:8px 0 0">' + eksikler.map(function (x) { return esc(x.metin); }).join(" · ") + '</p></details>'
+        : '<div class="plan-alinacak">🎉 Bu menüdeki her şey evinde var.</div>') +
+      plan.gunler.map(function (g, i) {
+        var bugun = isoGun(planGunTarihi(i)) === bugunIso;
+        return '<div class="kart plan-gun' + (bugun ? ' bugun' : '') + '"><div class="plan-gun-baslik">' + (bugun ? '⭐ Bugün · ' : '') + esc(planGunYazisi(i)) + '</div>' +
+          PLAN_YERLERI.map(function (y) {
+            var t = g[y.id] && tarifBul(g[y.id]);
+            if (!t) return '<div class="plan-satir"><span>' + y.ikon + ' <i class="aciklama">' + y.ad + ' seçilmedi</i></span><button class="plan-degistir" data-plan-degistir="' + i + '|' + y.id + '">🔄</button></div>';
+            var d = tarifDurumu(t, evdekiler, ekipmanlar);
+            var rozet = d.eksikler.length === 0 ? '<span class="rozet var">✅</span>' : '<span class="rozet ' + (d.eksikler.length <= 2 ? 'az' : 'yok') + '">' + d.eksikler.length + ' eksik</span>';
+            return '<div class="plan-satir"><span class="plan-tarif" data-tarif-detay="' + esc(t.ad) + '">' + y.ikon + ' ' + esc(t.ad) + '</span>' +
+              '<span style="display:flex;align-items:center;gap:6px">' + rozet + '<button class="plan-degistir" data-plan-degistir="' + i + '|' + y.id + '" title="Değiştir">🔄</button></span></div>';
+          }).join("") + '</div>';
+      }).join("");
+  }
+
+  // 🔄: o güne başka tarif seç (öneriler + arama)
+  var planSecilen = null;
+  function planDegistirAc(deger) {
+    var p = deger.split("|"); planSecilen = { gun: +p[0], yer: PLAN_YERLERI.filter(function (y) { return y.id === p[1]; })[0] };
+    document.getElementById("planSecBaslik").textContent = planGunYazisi(planSecilen.gun) + " · " + planSecilen.yer.ad;
+    document.getElementById("planSecArama").value = "";
+    planSecListesi(); menudenAc("planSecPerdesi");
+  }
+  function planSecListesi() {
+    if (!planSecilen) return;
+    var kullanilan = {};
+    plan.gunler.forEach(function (g) { PLAN_YERLERI.forEach(function (y) { if (g[y.id]) kullanilan[g[y.id]] = true; }); });
+    var arama = normalIsim(document.getElementById("planSecArama").value);
+    var adaylar = planAdaylari(planSecilen.yer, kullanilan, false, "az").filter(function (a) { return !arama || normalIsim(a.t.ad).indexOf(arama) >= 0; }).slice(0, arama ? 30 : 10);
+    document.getElementById("planSecListe").innerHTML = adaylar.length ? adaylar.map(function (a) {
+      return '<button class="menu-sec" data-plan-sec="' + esc(a.t.ad) + '">' + esc(a.t.ad) + ' <small class="aciklama">· ' +
+        (a.d.eksikler.length ? a.d.eksikler.length + ' eksik' : 'hemen yapabilirsin') + (a.d.acilKullanir.length ? ' · ⏰ ' + esc(a.d.acilKullanir.map(basHarfBuyuk).join(", ")) : '') + '</small></button>';
+    }).join("") : '<p class="bos">Bulunamadı.</p>';
+  }
+  function planSec(ad) {
+    if (!planSecilen) return;
+    plan.gunler[planSecilen.gun][planSecilen.yer.id] = ad; planKaydet();
+    perdeKapat("planSecPerdesi"); planGoster(); planKartiniGoster();
+  }
+
+  // Eksikleri miktarlarıyla topla: iki tarifte "3 domates" + "2 domates" → "5 domates"
+  var SAYI_KELIME = { "yarım": 0.5, "bir": 1, "iki": 2, "üç": 3, "dört": 4, "beş": 5, "altı": 6 };
+  function miktarAyir(metin) {
+    var u = satiriAnla(metin), m = (u.miktar || "").trim(), sayi = null, birim = m;
+    var r = m.match(/^(\d+(?:[.,]\d+)?)(?:\s*-\s*\d+)?\s*(.*)$/);
+    if (r) { sayi = parseFloat(r[1].replace(",", ".")); birim = r[2]; }
+    else { var k = m.split(" ")[0]; if (SAYI_KELIME[k] !== undefined) { sayi = SAYI_KELIME[k]; birim = m.slice(k.length).trim(); } }
+    return { sayi: sayi, birim: birim };
+  }
+  function sayiYaz(x, birim) {
+    if (/^(gr|gram|g|ml)$/.test(birim)) x = Math.ceil(x / 50) * 50;              // 133 gr → 150 gr
+    else if (!birim || /^(adet|tane|diş|demet|baş|dal|yaprak|paket|kutu)$/.test(birim)) x = Math.ceil(x);   // 6,5 biber → 7
+    else x = Math.round(x * 2) / 2 || 0.5;
+    return x === 0.5 ? "yarım" : String(x).replace(".", ",");
+  }
+  function planEksikleriTopla() {
+    var evdekiler = evdekiYiyecekler(), toplam = {}, sira = [];
+    plan.gunler.forEach(function (g) {
+      PLAN_YERLERI.forEach(function (y) {
+        var t = g[y.id] && tarifBul(g[y.id]); if (!t) return;
+        var oran = plan.kisi / (parseInt(t.kisi, 10) || 4);
+        tarifDurumu(t, evdekiler, []).eksikler.forEach(function (m) {
+          var key = normalIsim(m.anahtar);
+          if (!toplam[key]) { toplam[key] = { anahtar: m.anahtar, birimler: {}, olcusuz: false, tarifler: [] }; sira.push(key); }
+          var x = toplam[key], ma = miktarAyir(m.metin);
+          if (ma.sayi !== null) x.birimler[ma.birim] = (x.birimler[ma.birim] || 0) + ma.sayi * oran; else x.olcusuz = true;
+          if (x.tarifler.indexOf(t.ad) < 0) x.tarifler.push(t.ad);
+        });
+      });
+    });
+    return sira.map(function (key) {
+      var x = toplam[key], parcalar = Object.keys(x.birimler).map(function (b) { return sayiYaz(x.birimler[b], b) + (b ? " " + b : ""); });
+      return { metin: parcalar.length ? parcalar.join(" + ") + " " + x.anahtar : x.anahtar, anahtar: x.anahtar, tarifler: x.tarifler };
+    });
+  }
+  function planEksikleriEkle() {
+    var eksikler = planEksikleriTopla();
+    eksikler.forEach(function (x) {
+      listeyeEkle(x.metin, x.anahtar, "📅 Menü: " + x.tarifler.slice(0, 3).join(", ") + (x.tarifler.length > 3 ? " +" + (x.tarifler.length - 3) : ""));
+    });
+    hepsiniKaydet();
+    mesaj(eksikler.length ? eksikler.length + " malzeme alışveriş listene eklendi 🛒" : "Eksik yok, her şey evde 🎉");
+  }
+  function planPaylas() {
+    var metin = "📅 " + (plan.tur === "ay" ? "Aylık" : "Haftalık") + " menümüz (" + plan.kisi + " kişilik)\n\n" + plan.gunler.map(function (g, i) {
+      return "▪️ " + planGunYazisi(i) + ": " + PLAN_YERLERI.map(function (y) { return g[y.id]; }).filter(Boolean).join(", ");
+    }).join("\n") + "\n\nMutfak Asistanı ile planlandı 💜";
+    window.open("https://wa.me/?text=" + encodeURIComponent(metin), "_blank");
+  }
+
   var seciliKategori = "Tümü";
   var seciliKoleksiyon = null;
   var sadeceYapabilir = false;
@@ -1203,14 +1700,14 @@
 
   // Bir tarifin evdekilere göre durumu
   function tarifDurumu(t, evdekiler, ekipmanlar) {
-    var eksikler = [], azlar = [], varSayisi = 0, gorulen = {};
+    var eksikler = [], azlar = [], varSayisi = 0, gorulen = {}, acilKullanir = [];
     t.gruplar.forEach(function (g) {
       g.malzemeler.forEach(function (m) {
         var bulunan = evdeBul(m, evdekiler);
         m._bulunan = bulunan;
         if (gorulen[m.anahtar]) return;      // aynı malzeme iki grupta varsa bir kere say
         gorulen[m.anahtar] = true;
-        if (bulunan) { varSayisi++; if (bulunan.az) azlar.push(m); }
+        if (bulunan) { varSayisi++; if (bulunan.az) azlar.push(m); if (bulunan.acil && acilKullanir.indexOf(bulunan.ad) < 0) acilKullanir.push(bulunan.ad); }
         else if (!m.temel) eksikler.push(m);
       });
     });
@@ -1221,7 +1718,7 @@
         if (!var_mi) eksikEkipman.push(e.ad);
       });
     }
-    return { eksikler: eksikler, azlar: azlar, varSayisi: varSayisi, eksikEkipman: eksikEkipman };
+    return { eksikler: eksikler, azlar: azlar, varSayisi: varSayisi, eksikEkipman: eksikEkipman, acilKullanir: acilKullanir };
   }
 
   function kategoriFiltresiniCiz() {
@@ -1244,6 +1741,9 @@
     }).join("");
   }
 
+  // Telefon yorulmasın diye tarifler 40'ar 40'ar gösterilir
+  var TARIF_SAYFA = 40, tarifSiniri = TARIF_SAYFA;
+  function tarifSiniriniSifirla() { tarifSiniri = TARIF_SAYFA; }
   function tarifleriGoster() {
     var evdekiler = evdekiYiyecekler();
     var ekipmanlar = evdekiEkipmanlar();
@@ -1272,12 +1772,13 @@
 
     // En az eksiği olan en üstte; eşitse evdekilerden en çok kullananı
     sonuc.sort(function (a, b) {
-      return (a.d.eksikler.length - b.d.eksikler.length) || (b.d.varSayisi - a.d.varSayisi);
+      return (a.d.eksikler.length - b.d.eksikler.length) || (b.d.acilKullanir.length - a.d.acilKullanir.length) || (b.d.varSayisi - a.d.varSayisi);
     });
 
     document.getElementById("tarifListesi").innerHTML = sonuc.length === 0
       ? '<p class="bos">Bu filtrede tarif bulunamadı.</p>'
-      : sonuc.map(function (s) { return tarifKarti(s.t, s.d); }).join("");
+      : sonuc.slice(0, tarifSiniri).map(function (s) { return tarifKarti(s.t, s.d); }).join("") +
+        (sonuc.length > tarifSiniri ? '<button class="btn ikincil" id="dahaFazlaTarif" style="width:100%;padding:12px;margin:6px 0 16px">⬇️ Daha fazla göster (' + (sonuc.length - tarifSiniri) + ' tarif daha)</button>' : '');
   }
 
   function tarifKarti(t, d) {
@@ -1285,6 +1786,7 @@
     if (d.eksikler.length === 0) rozet = '<span class="rozet var">✅ Şimdi yapabilirsin</span>';
     else if (d.eksikler.length <= 2) rozet = '<span class="rozet az">' + d.eksikler.length + ' eksik</span>';
     else rozet = '<span class="rozet yok">' + d.eksikler.length + ' eksik</span>';
+    if (d.acilKullanir && d.acilKullanir.length) rozet += ' <span class="rozet az">⏰ Önce kullan: ' + esc(d.acilKullanir.map(basHarfBuyuk).join(", ")) + '</span>';
 
     var malzemeHtml = t.gruplar.map(function (g) {
       if (g.malzemeler.length === 0) return "";
@@ -1331,7 +1833,108 @@
     var cubuk = document.getElementById("menuCubugu");
     cubuk.style.display = menu.length ? "block" : "none";
     document.body.classList.toggle("menu-acik", menu.length > 0);
-    document.getElementById("menuIcerik").textContent = menu.join(" + ");
+    document.getElementById("menuIcerik").textContent = menu.length + " yemek: " + menu.join(" + ");
+    if (!menu.length) menuPaneliAcik = false;
+    menuPaneliniGoster();
+  }
+  // ---------- Menüdeki yemekleri adım adım pişirme planı ----------
+  // Yemek saatinden geriye doğru: önce bekleyebilenler (meze, tatlı, soğuyacaklar), en son sıcaklar
+  var pisirme = oku("ma_pisirme", { saat: "20:00", yapildi: {} });
+  // Bekleyebilenler sabah erken değil, önceki akşam yapılır (kimse 06:30'da kalkıp yemek yapmaz)
+  var ONCEKI_AKSAM = 2000, ONCEKI_GUN = 3000;
+  function sureDakika(sure) {
+    var s = (sure || "").toLocaleLowerCase("tr"), saat = s.match(/(\d+)\s*saat/), dk = s.match(/(\d+)\s*dk/);
+    var top = (saat ? +saat[1] * 60 : 0) + (dk ? +dk[1] : 0);
+    return top || 45;
+  }
+  function saatYaz(dkOnce) {
+    if (dkOnce >= ONCEKI_GUN) return "Önceki gün";
+    if (dkOnce >= ONCEKI_AKSAM) return "Önceki akşam";
+    var p = (pisirme.saat || "20:00").split(":"), t = (+p[0]) * 60 + (+p[1] || 0) - dkOnce;
+    t = ((t % 1440) + 1440) % 1440;
+    return ("0" + Math.floor(t / 60)).slice(-2) + ":" + ("0" + (t % 60)).slice(-2);
+  }
+  function onceYazisi(dk) {
+    if (dk >= ONCEKI_GUN) return "";
+    if (dk >= ONCEKI_AKSAM) return "";
+    if (dk <= 0) return "Yemek saati";
+    if (dk >= 60) { var s = Math.floor(dk / 60), d = dk % 60; return s + " saat" + (d ? " " + d + " dk" : "") + " önce"; }
+    return dk + " dk önce";
+  }
+  function pisirmeAdimlari() {
+    var evdekiler = evdekiYiyecekler(), adimlar = [], eksikVar = false;
+    menu.forEach(function (ad) {
+      var t = tarifBul(ad); if (!t) return;
+      if (tarifDurumu(t, evdekiler, []).eksikler.length) eksikVar = true;
+      var sure = sureDakika(t.sure), s = (t.sure || "").toLocaleLowerCase("tr"), n = normalIsim(t.ad), dk, metin;
+      var sogur = /soğuma|dinlen/.test(s), sicakTatli = /(helva|künefe|sufle|kazandibi sıcak)/.test(n);
+      if (/ıslatma/.test(s)) adimlar.push({ id: ad + "|isla", dk: ONCEKI_AKSAM + 2, metin: "💧 <b>" + esc(t.ad) + "</b> için bakliyatı suya koy, bir gece ıslansın." });
+      if (/marine/.test(s)) adimlar.push({ id: ad + "|marine", dk: ONCEKI_AKSAM + 1, metin: "🥩 <b>" + esc(t.ad) + "</b> için eti marine et, kapağını kapatıp dolaba koy." });
+      if ((t.kat === "Tatlı" && !sicakTatli) || sogur) { dk = ONCEKI_AKSAM; metin = "🍮 <b>" + esc(t.ad) + "</b> yap, soğuyunca dolaba koy. Bir gece dinlenince daha lezzetli olur."; }
+      else if (t.kat === "Meze" || t.kat === "Zeytinyağlı") { dk = ONCEKI_AKSAM; metin = "🫙 <b>" + esc(t.ad) + "</b> hazırla, üstünü kapatıp dolaba koy. Soğuk servis edilir."; }
+      else if (t.kat === "İçecekler") { dk = ONCEKI_AKSAM; metin = "🥤 <b>" + esc(t.ad) + "</b> hazırla ve soğusun diye dolaba koy."; }
+      else if (t.kat === "Salata") { dk = 40; metin = "🥗 <b>" + esc(t.ad) + "</b> için sebzeleri doğra. Sosunu servisten hemen önce dök ki salata sulanmasın."; }
+      else if (t.kat === "Çorba") { dk = Math.max(sure, 30) + 20; metin = "🥣 <b>" + esc(t.ad) + "</b> pişirmeye başla (" + esc(t.sure) + "). Pişince ocağın altını kıs, servise kadar sıcak kalsın."; }
+      else if (t.kat === "Pilav & Makarna") { dk = sure + 10; metin = "🍚 <b>" + esc(t.ad) + "</b> pişirmeye başla (" + esc(t.sure) + "). Pilav demlenirken ana yemeğe bak."; }
+      else if (t.kat === "Tatlı") { dk = sure + 15; metin = "🍮 <b>" + esc(t.ad) + "</b> yap, sıcak servis edilir (" + esc(t.sure) + ")."; }
+      else { dk = sure + 20; metin = (sure >= 120 ? "⏳ <b>" + esc(t.ad) + "</b> uzun pişiyor, erken başla (" : "🔥 <b>" + esc(t.ad) + "</b> pişirmeye başla (") + esc(t.sure) + ")."; }
+      adimlar.push({ id: ad + "|pisir", dk: dk, metin: metin, tarif: t });
+    });
+    if (!adimlar.length) return [];
+    if (eksikVar) adimlar.push({ id: "alisveris", dk: ONCEKI_GUN, metin: "🛒 <b>Alışveriş:</b> Eksikleri al. Yukarıdaki \"Eksikleri listeye ekle\" ile hepsi alışveriş listene geçer." });
+    var sicaklar = adimlar.filter(function (a) { return a.dk < ONCEKI_AKSAM && a.tarif; });
+    if (sicaklar.length) adimlar.push({ id: "hazirlik", dk: Math.max.apply(null, sicaklar.map(function (a) { return a.dk; })) + 20, metin: "🔪 <b>Mutfağa gir:</b> sebzeleri yıka ve doğra, malzemeleri tezgâha diz. İşler çok daha hızlı gider." });
+    adimlar.push({ id: "sofra", dk: 60, metin: "🍽️ <b>Sofrayı kur:</b> tabaklar, çatal-bıçak, bardaklar ve peçeteler." });
+    adimlar.push({ id: "son", dk: 15, metin: "♨️ <b>Son dokunuşlar:</b> sıcakları ısıt, salatanın sosunu dök, dolaptakileri servis tabaklarına al." });
+    adimlar.push({ id: "afiyet", dk: 0, metin: "😋 <b>Afiyet olsun!</b> Asistanın her şeyi hatırladı, sen keyfine bak." });
+    return adimlar.sort(function (a, b) { return b.dk - a.dk; });
+  }
+  function pisirmePlaniHtml() {
+    var adimlar = pisirmeAdimlari(); if (!adimlar.length) return "";
+    if (!pisirme.acik) return '<div class="pisirme" style="text-align:center"><button class="btn" data-pisirme-ac="1">🧑‍🍳 Yemeği beraber planlamaya ne dersin?</button></div>';
+    if (!pisirme.saatSecildi) return '<div class="pisirme"><h3 style="margin:0 0 6px">🕗 Yemek kaçta hazır olmalı?</h3>' +
+      '<p class="aciklama" style="margin:0 0 10px">Saati söyle, ne zaman neyi yapacağını sırayla planlayalım.</p>' +
+      '<div class="filtre">' + ["18:00", "19:00", "20:00", "21:00"].map(function (h) { return '<button data-pisirme-saat="' + h + '">' + h + '</button>'; }).join("") + '</div>' +
+      '<label class="aciklama">Başka bir saat: <input type="time" id="pisirmeSaat" value="' + esc(pisirme.saat) + '" style="width:auto;display:inline-block;padding:6px 8px"></label></div>';
+    var biten = adimlar.filter(function (a) { return pisirme.yapildi[a.id]; }).length;
+    return '<div class="pisirme"><h3 style="margin:0 0 4px">🧑‍🍳 Yemeği beraber planlayalım</h3>' +
+      '<p class="aciklama" style="margin:0 0 8px">Bekleyebilenleri önceki akşam yap, sıcakları yemekten hemen önce. Yaptıkça işaretle.</p>' +
+      '<label class="aciklama">🕗 Yemek saati: <input type="time" id="pisirmeSaat" value="' + esc(pisirme.saat) + '" style="width:auto;display:inline-block;padding:6px 8px"></label>' +
+      '<p class="aciklama" style="margin:8px 0 4px">' + biten + ' / ' + adimlar.length + ' adım tamam</p>' +
+      adimlar.map(function (a) {
+        var bitti = !!pisirme.yapildi[a.id];
+        return '<div class="pisirme-adim' + (bitti ? ' bitti' : '') + '">' +
+          '<div class="zaman"><b>' + saatYaz(a.dk) + '</b><small>' + onceYazisi(a.dk) + '</small></div>' +
+          '<div style="flex:1"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer">' +
+            '<input type="checkbox" data-pisirme-yapildi="' + esc(a.id) + '"' + (bitti ? ' checked' : '') + ' style="width:auto;margin-top:3px">' +
+            '<span>' + a.metin + '</span></label>' +
+          (a.tarif ? '<details><summary class="aciklama">Nasıl yapılır?</summary><ol class="yapilis">' + a.tarif.yapilis.map(function (y) { return '<li>' + esc(y) + '</li>'; }).join("") + '</ol></details>' : '') +
+          '</div></div>';
+      }).join("") +
+      (biten ? '<button class="btn ikincil" data-pisirme-sifirla="1" style="margin-top:8px">↺ İşaretleri temizle</button>' : '') +
+      '</div>';
+  }
+  // "Menüme git": sayfa değişmeden alttan açılan liste, her yemeğin eksikleriyle
+  var menuPaneliAcik = false;
+  function menuPaneliniGoster() {
+    var el = document.getElementById("menuPaneli"), btn = document.getElementById("menuGitBtn");
+    if (!el) return;
+    el.classList.toggle("acik", menuPaneliAcik);
+    document.body.classList.toggle("menu-paneli-acik", menuPaneliAcik);
+    if (btn) btn.textContent = menuPaneliAcik ? "📋 Menümü kapat ▼" : "📋 Menüme git ▲";
+    if (!menuPaneliAcik) { el.innerHTML = ""; return; }
+    var evdekiler = evdekiYiyecekler(), toplam = 0;
+    el.innerHTML = '<h3 style="margin:4px 0 6px">🍽️ Menüm</h3>' + menu.map(function (ad, i) {
+      var t = tarifBul(ad); if (!t) return "";
+      var d = tarifDurumu(t, evdekiler, []); toplam += d.eksikler.length;
+      return '<div class="menu-kalem"><div class="menu-kalem-ust"><span><b data-tarif-detay="' + esc(t.ad) + '">' + (i + 1) + '. ' + esc(t.ad) + '</b> ' +
+          '<small class="aciklama">' + esc(t.kat) + ' · ⏱️ ' + esc(t.sure) + '</small></span>' +
+          '<button class="sil" data-menu-cikar="' + t.no + '" title="Menüden çıkar">✕</button></div>' +
+        '<div class="eksikler">' + (d.eksikler.length
+          ? '<span style="color:var(--yok-yazi)">Eksik (' + d.eksikler.length + '):</span> ' + d.eksikler.map(function (m) { return '<span class="etiket yok">' + esc(m.metin) + '</span>'; }).join("")
+          : '<span class="etiket var">✅ Hepsi evde</span>') + '</div></div>';
+    }).join("") +
+    '<p class="aciklama" style="margin:8px 2px 0"><b>' + (toplam ? 'Toplam ' + toplam + ' eksik malzeme.' : 'Hiç eksik yok 🎉') + '</b> Yemeğin adına dokunarak tarifine bakabilirsin.</p>' + pisirmePlaniHtml();
   }
 
   function menuDegistir(no) {
@@ -1402,14 +2005,18 @@
   function alinanlariUrunlereEkle() {
     var alinanlar = liste.filter(function (x) { return x.alindi; });
     if (alinanlar.length === 0) { mesaj("Önce aldıklarını işaretle ✓"); return; }
+    var yeniAlinanlar = [];
     alinanlar.forEach(function (x) {
       var bilgi = isimBilgisi(x.anahtar);
       var kilere = KILERE_GIDENLER.indexOf(bilgi.tam) >= 0 || (bilgi.son && KILERE_GIDENLER.indexOf(bilgi.son) >= 0);
       notaEkle(kilere ? "kiler" : "buzdolabi", x.metin.toLocaleLowerCase("tr"));
+      var au = notuAnla(x.metin.toLocaleLowerCase("tr"))[0];
+      if (au) yeniAlinanlar.push(sktAnahtar(kilere ? "kiler" : "buzdolabi", au.ad));
     });
     liste = liste.filter(function (x) { return !x.alindi; });
     hepsiniKaydet(); tumNotlariDuzenle(); alanlariDoldur(); eksikListesiniGoster(); tavsiyeleriGoster();
     urunDegisiklikleriniKaydet();
+    sktYenidenAlindi(yeniAlinanlar);
     mesaj(alinanlar.length + " ürün buzdolabına / kilere eklendi 🧺");
   }
 
@@ -1753,7 +2360,7 @@
     return {
       surum: 1, tarih: new Date().toISOString(),
       profil: { ad: k.ad || "", eposta: k.eposta || "", tel: k.tel || "", adres: k.adres || "" },
-      notlar: notlar, liste: liste, hatirlatma: hatirlatma, menu: menu, sofra: sofra, mektuplar: mektuplar,
+      notlar: notlar, liste: liste, hatirlatma: hatirlatma, menu: menu, sofra: sofra, mektuplar: mektuplar, skt: sktKayit, plan: plan,
       tarifler: uyeTarifleri.filter(function (t) { return t.ekleyenEposta === aktifEposta; }),
       kayitliListeler: kayitliListeler.filter(function (l) { return l.eposta === aktifEposta; }),
       gecmis: gecmis.filter(function (h) { return h.eposta === aktifEposta; }),
@@ -1816,6 +2423,8 @@
       hepsiniKaydet();
       if (v.sofra) yaz("ma_sofra", v.sofra);
       if (v.mektuplar) yaz("ma_mektuplar", v.mektuplar);
+      if (v.skt) yaz("ma_skt", v.skt);
+      if (v.plan) yaz("ma_plan", v.plan);
       (v.tarifler || []).forEach(function (t) {
         if (!uyeTarifleri.some(function (x) { return x.id === t.id; })) { t.ekleyenEposta = aktifEposta; uyeTarifleri.push(t); }
       });
@@ -1890,7 +2499,7 @@
   function silmeOnayla() { if (silmeTuru === "veri") verileriSil(); else hesabiTamamenSil(aktifEposta, true); }
   // Hesap kalır; notlar, listeler, menü, sofra, tarifler ve mektuplar silinir
   function verileriSil() {
-    ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_gecmis", "urunler", "alisveris", "dolap"]
+    ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_gecmis", "ma_skt", "ma_plan", "urunler", "alisveris", "dolap"]
       .forEach(function (a) { sil(a); });
     if (aktifEposta) {
       yaz("ma_uye_tarifleri", uyeTarifleri.filter(function (t) { return t.ekleyenEposta !== aktifEposta; }));
@@ -1916,7 +2525,7 @@
     yaz("ma_aboneler", aboneler); yaz("ma_uye_tarifleri", uyeTarifleri); yaz("ma_kayitli_listeler", kayitliListeler);
     if (aktifEposta === eposta) { aktifEposta = null; yaz("ma_kullanici", null); }
     if (cihazVerisi) {
-      ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_ses_onay", "ma_gecmis", "urunler", "alisveris", "dolap"]
+      ["ma_notlar", "ma_liste", "ma_hatirlatma", "ma_menu", "ma_sofra", "ma_mektuplar", "ma_ses_onay", "ma_gecmis", "ma_skt", "ma_plan", "urunler", "alisveris", "dolap"]
         .forEach(function (a) { try { localStorage.removeItem(a); } catch (e) {} });
       try { sessionStorage.setItem("ma_silindi", "hesap"); } catch (e) {}
       location.reload();
@@ -2088,9 +2697,46 @@
   //  9) SOFRA PLANLA: "8 kişilik akşam yemeği" adım adım
   //  Adım 1: sofra modu · Adım 2: kişi sayısı · Adım 3: favoriler · Adım 4: plan
   // =====================================================================
+  // Eski telefonlarda da görünen ikonlar seçildi (🫒 gibi yeni emojiler bazı cihazlarda kutu olarak çıkıyor)
   var FAVORILER = [
-    { ad: "Meze", ikon: "🫒" }, { ad: "Balık", ikon: "🐟" }, { ad: "Diyet", ikon: "🥗" }, { ad: "Hamur İşi", ikon: "🥐" }
+    { ad: "Et", ikon: "🥩" }, { ad: "Köfte", ikon: "🍖" }, { ad: "Tavuk", ikon: "🍗" }, { ad: "Balık", ikon: "🐟" },
+    { ad: "Zeytinyağlı", ikon: "🍆" }, { ad: "Meze", ikon: "🧀" }, { ad: "Hamur İşi", ikon: "🥐" }, { ad: "Diyet", ikon: "🥗" }, { ad: "Vejetaryen", ikon: "🥦" }
   ];
+  // Favori listelerini tarif arşivinden tamamla (yeni tarif eklendikçe kendiliğinden büyür)
+  (function favorileriTamamla() {
+    var ET = /(^| )(et|eti|kıyma|kıymalı|kuşbaşı|kuzu|dana|biftek|bonfile|antrikot|pirzola|kavurma|kebap|kebabı|sucuk|pastırma|ciğer|ciğeri|tavuk|piliç|hindi|balık|somon|levrek|hamsi|karides|kalamar|midye|ton)( |$)/;
+    function adiUyar(t, re) { return re.test(normalIsim(t.ad)); }
+    function etliMi(t) { return adiUyar(t, ET) || t.gruplar.some(function (g) { return g.malzemeler.some(function (m) { return ET.test(normalIsim(m.anahtar)); }); }); }
+    var ekle = {
+      "Et": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Ana Yemek" && /(^| )(et|kuzu|dana|biftek|bonfile|antrikot|pirzola|kavurma|kebap|kebabı|tandır|ali nazik|beğendi|güveç|tas)( |$)/.test(normalIsim(t.ad)) && !/(tavuk|piliç|köfte|balık)/.test(normalIsim(t.ad)); }),
+      "Köfte": HAZIR_TARIFLER.filter(function (t) { return /köfte/.test(normalIsim(t.ad)) && !/(mercimek|etsiz|patates|tavuk)/.test(normalIsim(t.ad)); }),
+      "Tavuk": HAZIR_TARIFLER.filter(function (t) { return /(tavuk|piliç)/.test(normalIsim(t.ad)) && t.kat !== "Çorba"; }),
+      "Balık": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Deniz Mahsulleri"; }),
+      "Zeytinyağlı": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Zeytinyağlı"; }),
+      "Meze": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Meze"; }),
+      "Hamur İşi": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Hamur İşi"; }),
+      "Vejetaryen": HAZIR_TARIFLER.filter(function (t) { return ["Ana Yemek", "Zeytinyağlı", "Meze", "Salata", "Pilav & Makarna", "Ara Sıcak"].indexOf(t.kat) >= 0 && !etliMi(t); })
+    };
+    Object.keys(ekle).forEach(function (k) {
+      var liste = (FAVORI_ETIKETLERI[k] || []).slice();
+      ekle[k].forEach(function (t) { if (liste.indexOf(t.ad) < 0) liste.push(t.ad); });
+      FAVORI_ETIKETLERI[k] = liste;
+    });
+    // Arşivde olmayan tarif adları planı bozmasın
+    Object.keys(FAVORI_ETIKETLERI).forEach(function (k) { FAVORI_ETIKETLERI[k] = FAVORI_ETIKETLERI[k].filter(function (ad) { return tarifBul(ad); }); });
+    // "Emin değilim": herkesin seveceği dengeli bir sofra
+    if (!SOFRA_MODLARI.some(function (m) { return m.id === "emin"; })) SOFRA_MODLARI.push({
+      id: "emin", ad: "Emin değilim", ikon: "🤔", aciklama: "Sen karar verme, herkesin seveceği dengeli bir sofra kuralım.",
+      ipucu: "Çorba, bir ana yemek, yanında pilav, iki meze ve bir tatlı: klasik ama hiç şaşmayan bir sofra. Beğenmediğini 🔄 ile değiştirebilirsin.",
+      kurslar: [
+        { ad: "Çorba", sayi: 1, adaylar: ["Mercimek Çorbası", "Ezogelin Çorbası", "Yayla Çorbası", "Domates Çorbası", "Tarhana Çorbası"] },
+        { ad: "Ana yemek", sayi: 1, adaylar: ["Izgara Köfte", "Karnıyarık", "Tas Kebabı", "Hünkâr Beğendi", "Fırında Somon", "Tavuk Sote", "Kıymalı Ali Nazik"] },
+        { ad: "Yanında", sayi: 1, adaylar: ["Pirinç Pilavı", "Bulgur Pilavı"] },
+        { ad: "Meze & salata", sayi: 2, adaylar: ["Çoban Salata", "Cacık", "Haydari", "Ezme", "Patates Salatası", "Kısır", "Yaprak Sarma", "Havuç Tarator"] },
+        { ad: "Tatlı", sayi: 1, adaylar: ["Sütlaç", "Revani", "İrmik Helvası", "Kabak Tatlısı", "Islak Kek"] }
+      ] });
+    SOFRA_MODLARI.forEach(function (m) { m.kurslar.forEach(function (k) { k.adaylar = k.adaylar.filter(function (ad) { return tarifBul(ad); }); }); });
+  })();
   var sofra = oku("ma_sofra", { adim: 1, mod: null, kisi: 8, favoriler: [], secimler: {}, yapildi: {} });
 
   function sofraKaydet() { yaz("ma_sofra", sofra); }
@@ -2169,9 +2815,14 @@
     }
     else if (sofra.adim === 2) {
       icerik = '<div class="kart" style="text-align:center"><h3>' + sofraModu().ikon + ' Kaç kişi olacaksınız?</h3>' +
-        '<div class="kisi-secim"><button data-kisi-degis="-1">−</button><div class="sayi">' + sofra.kisi + '</div><button data-kisi-degis="1">+</button></div>' +
+        '<div class="kisi-secim"><button data-kisi-degis="-1">−</button><div class="sayi">' + (sofra.aralik || sofra.kisi) + '</div><button data-kisi-degis="1">+</button></div>' +
+        '<p class="aciklama" style="margin:4px 0 6px">Tam sayıyı bilmiyorsan aralık seç:</p>' +
+        '<div class="filtre" style="justify-content:center">' + ["2-4", "4-6", "6-8", "8-10"].map(function (a) {
+          return '<button class="' + (sofra.aralik === a ? "aktif" : "") + '" data-kisi-aralik="' + a + '">' + a + ' kişi</button>';
+        }).join("") + '</div>' +
+        '<p class="aciklama" style="margin:10px 0 6px">ya da tam sayı:</p>' +
         '<div class="filtre" style="justify-content:center">' + [2, 4, 6, 8, 10, 12, 15, 20].map(function (n) {
-          return '<button class="' + (sofra.kisi === n ? "aktif" : "") + '" data-kisi="' + n + '">' + n + ' kişi</button>';
+          return '<button class="' + (!sofra.aralik && sofra.kisi === n ? "aktif" : "") + '" data-kisi="' + n + '">' + n + ' kişi</button>';
         }).join("") + '</div>' +
         '<div class="arac" style="justify-content:center;margin-top:18px"><button class="btn ikincil" data-sofra-adim="1">← Geri</button>' +
         '<button class="btn" data-sofra-adim="3">İleri →</button></div></div>';
@@ -2193,6 +2844,54 @@
     alan.innerHTML = ilerleme + icerik;
   }
 
+  var sofraAcik = {};   // Planda aşağı doğru açılan tarifler (plan değişmez, sayfa değişmez)
+  function tarifMalzemeHtml(t) {
+    return t.gruplar.map(function (g) {
+      if (!g.malzemeler.length) return "";
+      return (g.baslik ? '<div class="grup-baslik">' + esc(g.baslik) + '</div>' : '') + g.malzemeler.map(function (m) {
+        var sinif = m._bulunan ? (m._bulunan.az ? "az" : "var") : m.temel ? "temel" : "yok";
+        return '<span class="etiket ' + sinif + '">' + esc(m.metin) + '</span>';
+      }).join("");
+    }).join("");
+  }
+  // Satırın altında açılan kısa önizleme: malzemeler + üç düğme
+  function tarifOnizlemeHtml(t, d) {
+    var menude = menu.indexOf(t.ad) >= 0;
+    return '<div class="onizleme">' +
+      '<p class="aciklama" style="margin:0 0 6px"><b>Malzemeler</b> · <span style="color:var(--var-yazi)">yeşil</span> evde var, <span style="color:var(--yok-yazi)">kırmızı</span> eksik</p>' +
+      tarifMalzemeHtml(t) +
+      '<div class="arac" style="margin-top:10px">' +
+        '<button class="btn ikincil" data-onizleme-menu="' + t.no + '">' + (menude ? '✓ Menümde' : '🍽️ Menüme ekle') + '</button>' +
+        (d.eksikler.length ? '<button class="btn ikincil" data-eksik-ekle="' + t.no + '">🛒 Eksikleri listeye ekle (' + d.eksikler.length + ')</button>' : '') +
+        '<button class="btn" data-tarif-detay="' + esc(t.ad) + '">📖 Ayrıntılı incele</button>' +
+      '</div></div>';
+  }
+  // Tam tarif: bulunduğun sayfayı değiştirmeden açılan pencere, "Seçeneklere dön" ile aynı yere dönülür
+  function tarifDetayAc(ad) {
+    var t = tarifBul(ad); if (!t) return;
+    var d = tarifDurumu(t, evdekiYiyecekler(), []);
+    document.getElementById("tarifDetayIcerik").innerHTML =
+      '<h3>' + esc(t.ad) + '</h3><p class="aciklama" style="margin:0 0 10px">' + esc(t.kat) + ' · ⏱️ ' + esc(t.sure) + ' · ' + esc(String(t.kisi)) + ' kişilik' +
+        (d.eksikler.length ? ' · ' + d.eksikler.length + ' eksik' : ' · ✅ hepsi evde') + '</p>' +
+      '<p class="aciklama" style="margin:0 0 4px"><b>Malzemeler</b></p>' + tarifMalzemeHtml(t) +
+      '<p class="aciklama" style="margin:14px 0 4px"><b>Yapılışı</b></p><ol class="yapilis">' + t.yapilis.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join("") + '</ol>' +
+      '<div class="arac" style="margin-top:12px">' +
+        (d.eksikler.length ? '<button class="btn ikincil" data-eksik-ekle="' + t.no + '">🛒 Eksikleri listeye ekle</button>' : '') +
+        '<button class="btn ikincil" data-onizleme-menu="' + t.no + '">' + (menu.indexOf(t.ad) >= 0 ? '✓ Menümde' : '🍽️ Menüme ekle') + '</button>' +
+        '<button class="btn" data-detay-kapat="1">← Seçeneklere dön</button>' +
+      '</div>';
+    hareketEkle("📖", t.ad + " tarifine bakıldı");
+    menudenAc("tarifDetayPerdesi");
+    document.querySelector("#tarifDetayPerdesi .pencere").scrollTop = 0;
+  }
+  function onizlemeYenile() {
+    if (document.getElementById("sofra").classList.contains("aktif")) sofraGoster();
+    if (document.getElementById("plan").classList.contains("aktif")) planGoster();
+    if (document.getElementById("tarifDetayPerdesi").classList.contains("acik")) {
+      var b = document.querySelector("#tarifDetayIcerik h3"); if (b) tarifDetayAc(b.textContent);
+    }
+  }
+
   function sofraPlaniHtml() {
     var mod = sofraModu();
     var plan = sofraSecimleri();
@@ -2209,11 +2908,13 @@
         var olcek = Math.abs(kat - 1) < 0.01 ? "" : " · " + sofra.kisi + " kişi için malzemeleri " + (Math.round(kat * 10) / 10).toString().replace(".", ",") + " katı al";
         var rozet = d.eksikler.length === 0 ? '<span class="rozet var">✅ Evde var</span>'
           : '<span class="rozet ' + (d.eksikler.length <= 2 ? "az" : "yok") + '">' + d.eksikler.length + ' eksik</span>';
-        return '<div class="secim"><div><b>' + esc(t.ad) + '</b> ' + rozet +
+        var acik = !!sofraAcik[t.ad];
+        return '<div class="secim' + (acik ? ' acik' : '') + '"><div class="secim-ust"><div><b>' + esc(t.ad) + '</b> ' + rozet +
           '<span class="kaynak">' + esc(t.kat) + ' · ⏱️ ' + esc(t.sure) + ' · ' + t.kisi + ' kişilik' + olcek + '</span></div>' +
           '<div class="arac" style="margin:0;flex-wrap:nowrap">' +
-          '<button class="btn ikincil" data-tarife-git="' + esc(t.ad) + '" title="Tarifi gör">📖</button>' +
-          '<button class="btn ikincil" data-baska="' + ki + '|' + si + '" title="Başka öner">🔄</button></div></div>';
+          '<button class="btn ikincil genislet" data-sofra-ac="' + esc(t.ad) + '" title="' + (acik ? 'Kapat' : 'Malzemelere bak') + '">' + (acik ? '▲' : '▼') + '</button>' +
+          '<button class="btn ikincil" data-baska="' + ki + '|' + si + '" title="Başka öner">🔄</button></div></div>' +
+          (acik ? tarifOnizlemeHtml(t, d) : '') + '</div>';
       }).join("") + '</div>';
     }).join("");
 
@@ -2222,7 +2923,7 @@
 
     return '<div class="kart">' +
         '<div class="tarif-ust"><div><h3>' + mod.ikon + ' ' + esc(mod.ad) + '</h3>' +
-        '<p class="aciklama">' + sofra.kisi + ' kişi' + (sofra.favoriler.length ? ' · Favoriler: ' + esc(sofra.favoriler.join(", ")) : '') + '</p></div>' +
+        '<p class="aciklama">' + (sofra.aralik ? sofra.aralik + ' kişi (malzemeler ' + sofra.kisi + ' kişiye göre)' : sofra.kisi + ' kişi') + (sofra.favoriler.length ? ' · Favoriler: ' + esc(sofra.favoriler.join(", ")) : '') + '</p></div>' +
         '<button class="btn ikincil" data-sofra-adim="1">✏️ Değiştir</button></div>' +
         '<div class="ipucu" style="margin-top:10px">💡 ' + esc(mod.ipucu) + '</div>' +
         menuHtml +
@@ -2318,6 +3019,7 @@
     document.querySelectorAll("nav button").forEach(function (b) { b.classList.toggle("aktif", b.dataset.bolum === id); });
     if (id === "tarifler") { kategoriFiltresiniCiz(); tarifleriGoster(); }
     if (id === "sofra") sofraGoster();
+    if (id === "plan") planGoster();
     if (id === "alisveris") { eksikListesiniGoster(); hatirlatmaGoster(); tavsiyeleriGoster(); }
     window.scrollTo(0, 0);
   }
@@ -2419,7 +3121,7 @@
     if (e.target.id === "uyelikPerdesi") uyelikKapat();
     if (e.target.id === "tarifPerdesi") tarifPenceresiKapat();
 
-    var b = e.target.closest("button, input[type=checkbox]");
+    var b = e.target.closest("button, input[type=checkbox], [data-skt], [data-tarif-detay]");
     if (!b) return;
     var d = b.dataset;
     if (b.id === "kullaniciBtn") { if (aktifKullanici()) kMenu.classList.toggle("acik"); else uyelikAc(); }
@@ -2431,14 +3133,26 @@
     }
     else if (d.sofraMod) { sofra.mod = d.sofraMod; sofra.adim = 2; sofra.secimler = {}; sofra.yapildi = {}; sofraKaydet(); sofraGoster(); }
     else if (d.sofraAdim) { sofra.adim = +d.sofraAdim; if (sofra.adim === 4) sofra.secimler = {}; sofraKaydet(); sofraGoster(); window.scrollTo(0, 0); }
-    else if (d.kisiDegis) { sofra.kisi = Math.max(1, Math.min(100, sofra.kisi + (+d.kisiDegis))); sofraKaydet(); sofraGoster(); }
-    else if (d.kisi) { sofra.kisi = +d.kisi; sofraKaydet(); sofraGoster(); }
+    else if (d.kisiDegis) { sofra.aralik = null; sofra.kisi = Math.max(1, Math.min(100, sofra.kisi + (+d.kisiDegis))); sofraKaydet(); sofraGoster(); }
+    else if (d.kisiAralik) { sofra.aralik = d.kisiAralik; sofra.kisi = +d.kisiAralik.split("-")[1]; sofraKaydet(); sofraGoster(); }   // en kalabalık hâline göre hazırlanır
+    else if (d.kisi) { sofra.aralik = null; sofra.kisi = +d.kisi; sofraKaydet(); sofraGoster(); }
     else if (d.favori) {
       var fi = sofra.favoriler.indexOf(d.favori);
       if (fi >= 0) sofra.favoriler.splice(fi, 1); else sofra.favoriler.push(d.favori);
       sofraKaydet(); sofraGoster();
     }
     else if (d.favoriYok !== undefined) { sofra.favoriler = []; sofra.adim = 4; sofra.secimler = {}; sofraKaydet(); sofraGoster(); }
+    else if (d.sofraAc) { sofraAcik[d.sofraAc] = !sofraAcik[d.sofraAc]; sofraGoster(); }
+    else if (d.tarifDetay) tarifDetayAc(d.tarifDetay);
+    else if (d.detayKapat) perdeKapat("tarifDetayPerdesi");
+    else if (d.pisirmeYapildi) { pisirme.yapildi[d.pisirmeYapildi] = b.checked; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
+    else if (d.pisirmeAc) { pisirme.acik = true; pisirme.saatSecildi = false; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
+    else if (d.pisirmeSaat) { pisirme.saat = d.pisirmeSaat; pisirme.saatSecildi = true; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
+    else if (d.pisirmeSifirla) { pisirme.yapildi = {}; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
+    else if (d.menuGit) { menuPaneliAcik = !menuPaneliAcik; menuPaneliniGoster(); }
+    else if (d.menuCikar) { menuDegistir(+d.menuCikar); onizlemeYenile(); }
+    else if (d.onizlemeMenu) { var mt = HAZIR_TARIFLER[+d.onizlemeMenu]; menuDegistir(+d.onizlemeMenu); mesaj(menu.indexOf(mt.ad) >= 0 ? mt.ad + " menüne eklendi 🍽️" : mt.ad + " menünden çıkarıldı"); onizlemeYenile(); }
+    else if (d.eksikEkle !== undefined && b.closest(".onizleme, #tarifDetayPerdesi")) { tarifEksikleriniEkle(+d.eksikEkle); }
     else if (d.baska) { var parca = d.baska.split("|"); baskaOner(+parca[0], +parca[1]); }
     else if (d.tarifeGit) {
       bolumAc("tarifler"); seciliKategori = "Tümü"; sadeceYapabilir = false; kategoriFiltresiniCiz();
@@ -2458,9 +3172,10 @@
     else if (d.mektupTuru) { seciliMektupTuru = d.mektupTuru; mektupBolumunuGoster(); }
     else if (d.bolum) bolumAc(d.bolum);
     else if (d.ses) sesleEkle(d.ses, b);
-    else if (d.kategori) { seciliKategori = d.kategori; seciliKoleksiyon = null; kategoriFiltresiniCiz(); tarifleriGoster(); }
-    else if (d.koleksiyon) { seciliKoleksiyon = seciliKoleksiyon === d.koleksiyon ? null : d.koleksiyon; seciliKategori = "Tümü"; kategoriFiltresiniCiz(); tarifleriGoster(); }
-    else if (b.id === "sadeceYapabilir") { sadeceYapabilir = !sadeceYapabilir; kategoriFiltresiniCiz(); tarifleriGoster(); }
+    else if (b.id === "dahaFazlaTarif") { tarifSiniri += TARIF_SAYFA; tarifleriGoster(); }
+    else if (d.kategori) { tarifSiniriniSifirla(); seciliKategori = d.kategori; seciliKoleksiyon = null; kategoriFiltresiniCiz(); tarifleriGoster(); }
+    else if (d.koleksiyon) { tarifSiniriniSifirla(); seciliKoleksiyon = seciliKoleksiyon === d.koleksiyon ? null : d.koleksiyon; seciliKategori = "Tümü"; kategoriFiltresiniCiz(); tarifleriGoster(); }
+    else if (b.id === "sadeceYapabilir") { tarifSiniriniSifirla(); sadeceYapabilir = !sadeceYapabilir; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (d.tarifAc !== undefined) {
       acikTarifler[d.tarifAc] = !acikTarifler[d.tarifAc];
       if (acikTarifler[d.tarifAc] && HAZIR_TARIFLER[+d.tarifAc]) hareketEkle("📖", HAZIR_TARIFLER[+d.tarifAc].ad + " tarifine bakıldı");
@@ -2476,10 +3191,22 @@
       hepsiniKaydet(); hatirlatmaGoster();
     }
     else if (d.azEkle) { azOlaniListeyeEkle(d.azEkle); }
+    else if (d.skt) sktAc(d.skt);
+    else if (d.planOlustur) { var pk = document.getElementById("planKisi"); var po = d.planOlustur.split("|"); planOlustur(po[0], pk ? +pk.value : (plan && plan.kisi) || 4, po[1] || (plan && plan.mod)); }
+    else if (d.planDegistir) planDegistirAc(d.planDegistir);
+    else if (d.planSec) planSec(d.planSec);
+    else if (d.planEksik) planEksikleriEkle();
+    else if (d.planPaylas) planPaylas();
+    else if (d.planSil) { plan = null; sil("ma_plan"); planKartiniGoster(); bolumAc("anasayfa"); mesaj("Menü silindi"); }
+    else if (d.sktKaydet !== undefined) sktKaydet();
+    else if (d.sktBitti) sktBitti(d.sktBitti);
+    else if (d.unutHalaVar) unutulanHalaVar(d.unutHalaVar, d.tarif);
+    else if (d.unutBitti) { sktBitti(d.unutBitti); }
     else if (d.tavsiye) { listeyeEkle(d.tavsiye, d.tavsiye, "Tavsiye"); hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster(); mesaj(d.tavsiye + " listene eklendi"); }
   });
 
   document.addEventListener("change", function (e) {
+    if (e.target.id === "pisirmeSaat") { pisirme.saat = e.target.value || "20:00"; pisirme.saatSecildi = true; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
     if (e.target.dataset && e.target.dataset.alan) {
       notlar[e.target.dataset.alan] = e.target.value;
       notuDuzenle(e.target.dataset.alan);
@@ -2490,7 +3217,8 @@
   document.addEventListener("input", function (e) {
     if (e.target.id === "gecmisArama") gecmisiGoster();
     if (e.target.dataset && e.target.dataset.alan) notDegisti(e);
-    if (e.target.id === "tarifArama") tarifleriGoster();
+    if (e.target.id === "tarifArama") { tarifSiniriniSifirla(); tarifleriGoster(); }
+    if (e.target.id === "planSecArama") planSecListesi();
     if (e.target.id === "hatirlatmaNotu") { hatirlatma.not = e.target.value; hepsiniKaydet(); }
   });
   document.getElementById("uyeEposta").addEventListener("keydown", function (e) { if (e.key === "Enter") uyeOl(); });
@@ -2515,6 +3243,8 @@
 
   alanKartlariniCiz(YIYECEK_ALANLARI, "yiyecekAlanlari");
   alanKartlariniCiz(EKIPMAN_ALANLARI, "ekipmanAlanlari");
+  sktEsitle();
+  planKartiniGoster();
   alanlariDoldur();
   menuGoster();
   anaSayfaModlariniGoster();
