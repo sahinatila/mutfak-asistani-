@@ -144,6 +144,9 @@
   .menu-kalem-ust b { cursor: pointer; }
   .menu-kalem .eksikler { font-size: 13px; margin-top: 4px; }
   .pisirme { border-top: 2px solid var(--ana); margin-top: 14px; padding-top: 12px; }
+  .saat-secici { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 8px 0; }
+  .saat-secici .saat { font-size: 34px; font-weight: 800; color: var(--ana); min-width: 110px; text-align: center; font-variant-numeric: tabular-nums; }
+  .saat-secici button { width: 46px; height: 46px; border-radius: 50%; border: none; background: var(--temel-zemin); color: var(--yazi); font-size: 22px; cursor: pointer; }
   .pisirme-adim { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--cizgi); font-size: 14px; }
   .pisirme-adim .zaman { min-width: 74px; text-align: center; }
   .pisirme-adim .zaman b { display: block; font-size: 17px; color: var(--ana); }
@@ -1565,6 +1568,7 @@
   }
 
   // Ana sayfadaki bölüm
+  var planKisiSecim = (plan && plan.kisi) || 4;
   function planKartiniGoster() {
     var el = document.getElementById("planKartiAna"); if (!el) return;
     var ozet = "";
@@ -1578,9 +1582,9 @@
     el.innerHTML = '<div class="kart plan-kart"><h3>📅 Haftalık / Aylık menü oluştur</h3>' +
       '<p class="aciklama" style="margin:0 0 10px">Her gün için çorba, ana yemek ve yanına bir şey seçelim.</p>' +
       ozet +
-      '<label class="aciklama" style="display:block;margin-top:12px">Kaç kişilik? <select id="planKisi">' +
-        [1, 2, 3, 4, 5, 6, 8].map(function (n) { return '<option' + (n === ((plan && plan.kisi) || 4) ? ' selected' : '') + '>' + n + '</option>'; }).join("") +
-      '</select></label>' +
+      '<p class="aciklama" style="margin:12px 0 2px"><b>Kaç kişilik?</b></p><div class="filtre" style="margin-bottom:0">' +
+        [1, 2, 3, 4, 5, 6, 8].map(function (n) { return '<button class="' + (n === planKisiSecim ? 'aktif' : '') + '" data-plan-kisi="' + n + '">' + n + ' kişi</button>'; }).join("") +
+      '</div>' +
       '<div class="plan-mod"><b>🏠 Evinizdeki en az eksikle haftalık - aylık menü oluşturmaya ne dersiniz?</b>' +
         '<div class="plan-secim"><button class="btn" data-plan-olustur="hafta|az">🗓️ Haftalık</button><button class="btn" data-plan-olustur="ay|az">📆 Aylık</button></div></div>' +
       '<div class="plan-mod"><b>🛒 İleri gidip haftalık - aylık eksikleri tespit edip alışveriş önerisi ile aylık menü oluşturmaya ne dersiniz?</b>' +
@@ -1889,17 +1893,22 @@
     adimlar.push({ id: "afiyet", dk: 0, metin: "😋 <b>Afiyet olsun!</b> Asistanın her şeyi hatırladı, sen keyfine bak." });
     return adimlar.sort(function (a, b) { return b.dk - a.dk; });
   }
+  // Temaya uygun saat seçici: hazır saatler + 15'er dakika ileri/geri
+  function saatSeciciHtml() {
+    return '<div class="saat-secici"><button data-saat-kaydir="-15" aria-label="15 dakika erken">−</button><div class="saat">' + esc(pisirme.saat) + '</div><button data-saat-kaydir="15" aria-label="15 dakika geç">+</button></div>' +
+      '<div class="filtre" style="justify-content:center">' + ["18:00", "19:00", "20:00", "21:00"].map(function (h) {
+        return '<button class="' + (pisirme.saatSecildi && pisirme.saat === h ? 'aktif' : '') + '" data-pisirme-saat="' + h + '">' + h + '</button>'; }).join("") + '</div>';
+  }
   function pisirmePlaniHtml() {
     var adimlar = pisirmeAdimlari(); if (!adimlar.length) return "";
     if (!pisirme.acik) return '<div class="pisirme" style="text-align:center"><button class="btn" data-pisirme-ac="1">🧑‍🍳 Yemeği beraber planlamaya ne dersin?</button></div>';
     if (!pisirme.saatSecildi) return '<div class="pisirme"><h3 style="margin:0 0 6px">🕗 Yemek kaçta hazır olmalı?</h3>' +
       '<p class="aciklama" style="margin:0 0 10px">Saati söyle, ne zaman neyi yapacağını sırayla planlayalım.</p>' +
-      '<div class="filtre">' + ["18:00", "19:00", "20:00", "21:00"].map(function (h) { return '<button data-pisirme-saat="' + h + '">' + h + '</button>'; }).join("") + '</div>' +
-      '<label class="aciklama">Başka bir saat: <input type="time" id="pisirmeSaat" value="' + esc(pisirme.saat) + '" style="width:auto;display:inline-block;padding:6px 8px"></label></div>';
+      saatSeciciHtml() + '<div style="text-align:center;margin-top:8px"><button class="btn" data-pisirme-saat="' + esc(pisirme.saat) + '">Bu saate göre planla →</button></div></div>';
     var biten = adimlar.filter(function (a) { return pisirme.yapildi[a.id]; }).length;
     return '<div class="pisirme"><h3 style="margin:0 0 4px">🧑‍🍳 Yemeği beraber planlayalım</h3>' +
       '<p class="aciklama" style="margin:0 0 8px">Bekleyebilenleri önceki akşam yap, sıcakları yemekten hemen önce. Yaptıkça işaretle.</p>' +
-      '<label class="aciklama">🕗 Yemek saati: <input type="time" id="pisirmeSaat" value="' + esc(pisirme.saat) + '" style="width:auto;display:inline-block;padding:6px 8px"></label>' +
+      '<p class="aciklama" style="margin:0;text-align:center"><b>🕗 Yemek saati</b></p>' + saatSeciciHtml() +
       '<p class="aciklama" style="margin:8px 0 4px">' + biten + ' / ' + adimlar.length + ' adım tamam</p>' +
       adimlar.map(function (a) {
         var bitti = !!pisirme.yapildi[a.id];
@@ -3146,6 +3155,10 @@
     else if (d.tarifDetay) tarifDetayAc(d.tarifDetay);
     else if (d.detayKapat) perdeKapat("tarifDetayPerdesi");
     else if (d.pisirmeYapildi) { pisirme.yapildi[d.pisirmeYapildi] = b.checked; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
+    else if (d.saatKaydir) {
+      var sp = pisirme.saat.split(":"), dkk = ((+sp[0]) * 60 + (+sp[1]) + (+d.saatKaydir) + 1440) % 1440;
+      pisirme.saat = ("0" + Math.floor(dkk / 60)).slice(-2) + ":" + ("0" + (dkk % 60)).slice(-2); yaz("ma_pisirme", pisirme); menuPaneliniGoster();
+    }
     else if (d.pisirmeAc) { pisirme.acik = true; pisirme.saatSecildi = false; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
     else if (d.pisirmeSaat) { pisirme.saat = d.pisirmeSaat; pisirme.saatSecildi = true; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
     else if (d.pisirmeSifirla) { pisirme.yapildi = {}; yaz("ma_pisirme", pisirme); menuPaneliniGoster(); }
@@ -3192,7 +3205,8 @@
     }
     else if (d.azEkle) { azOlaniListeyeEkle(d.azEkle); }
     else if (d.skt) sktAc(d.skt);
-    else if (d.planOlustur) { var pk = document.getElementById("planKisi"); var po = d.planOlustur.split("|"); planOlustur(po[0], pk ? +pk.value : (plan && plan.kisi) || 4, po[1] || (plan && plan.mod)); }
+    else if (d.planOlustur) { var po = d.planOlustur.split("|"); planOlustur(po[0], planKisiSecim, po[1] || (plan && plan.mod)); }
+    else if (d.planKisi) { planKisiSecim = +d.planKisi; planKartiniGoster(); }
     else if (d.planDegistir) planDegistirAc(d.planDegistir);
     else if (d.planSec) planSec(d.planSec);
     else if (d.planEksik) planEksikleriEkle();
