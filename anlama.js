@@ -107,6 +107,8 @@ function satiriAnla(ham) {
 
   // Baştaki miktarları al (isim için en az bir kelime bırak)
   while (i < j - 1) {
+    // "2 diş sarımsak"taki diş miktardır, "diş macunu / diş fırçası / diş ipi"deki değil
+    if (t[i] === "diş" && /^(macun|fırça|ip|beyaz|protez|bakım)/.test(t[i + 1])) break;
     if (miktarMi(t[i])) { miktar.push(t[i]); i++; }
     else if (OLCU_ILK.has(t[i]) && OLCU_IKINCI.has(t[i + 1]) && i + 2 < j) { miktar.push(t[i], t[i + 1]); i += 2; }
     else break;

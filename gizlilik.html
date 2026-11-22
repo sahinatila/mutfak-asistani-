@@ -45,14 +45,15 @@
   <!-- ===================== TÜRKÇE ===================== -->
   <section class="kart" id="tr" lang="tr">
     <h2>Gizlilik Politikası</h2>
-    <p class="tarih">Son güncelleme: 18 Kasım 2026</p>
+    <p class="tarih">Son güncelleme: 22 Kasım 2026</p>
     <p>Bu politika, <b>Mutfak Asistanı</b> uygulamasının (web sitesi ve Android uygulaması) hangi bilgileri kullandığını, bunları nerede sakladığını ve nasıl silebileceğinizi anlatır. Uygulamayı geliştiren ve veri sorumlusu: <b>Şahin Atila</b>.</p>
 
     <div class="soz">
       <p>🔒 Sözümüz</p>
       <ul>
         <li>Yazdığınız, paylaştığınız ve söylediğiniz hiçbir şeyi <b>görmüyor, saklamıyor, satmıyor ve kimseyle paylaşmıyoruz</b>.</li>
-        <li>Bilgileriniz <b>yalnızca kendi cihazınızda</b> durur. Bize ait bir sunucuya gönderilmez; bizim bile erişimimiz yoktur.</li>
+        <li>Mutfak notlarınız, listeleriniz, tarifleriniz ve hesap bilgileriniz <b>yalnızca kendi cihazınızda</b> durur. Bize ait bir sunucuya gönderilmez; bizim bile erişimimiz yoktur.</li>
+        <li>Tek istisna, kendiniz seçerseniz: <b>"Google ile devam et"</b> ya da <b>"Şifresiz, e-postayla devam et"</b> ile girerseniz, sadece kimliğinizi doğrulamak için e-posta adresiniz (Google ile girişte adınız da) Google'ın <b>Firebase Authentication</b> hizmetine gider. Başka hiçbir bilginiz gitmez.</li>
         <li>Sesiniz <b>bizim tarafımızdan kaydedilmez, saklanmaz ve dinlenmez</b>.</li>
         <li>Reklam, analiz ya da takip aracı <b>kullanmıyoruz</b>.</li>
       </ul>
@@ -60,7 +61,7 @@
 
     <h3>Hangi bilgiler kullanılır?</h3>
     <ul>
-      <li><b>Üyelik bilgileri:</b> E-posta adresiniz; isteğe bağlı olarak ad soyad, telefon ve adresiniz. Şifre koyarsanız şifreniz açık olarak değil, geri çevrilemeyen bir özet (SHA-256) olarak saklanır.</li>
+      <li><b>Üyelik bilgileri:</b> E-posta adresiniz; isteğe bağlı olarak ad soyad, telefon ve adresiniz. Şifre koyarsanız şifreniz açık olarak değil, geri çevrilemeyen bir özet (SHA-256) olarak saklanır. Üç giriş yolu vardır: kullanıcı adı + e-posta + şifre, Google ile devam et, şifresiz e-posta bağlantısı.</li>
       <li><b>Mutfak notlarınız:</b> Buzdolabı, kiler, derin dondurucu ve ekipman notlarınız.</li>
       <li><b>Planlarınız:</b> Alışveriş listeniz, tarihleriyle kaydettiğiniz eski listeleriniz, menünüz, sofra planınız ve hatırlatmalarınız.</li>
       <li><b>Paylaştığınız içerik:</b> Eklediğiniz tarifler ve yazdığınız istek/öneri mektupları.</li>
@@ -76,6 +77,16 @@
     <p><b>Misafir olarak</b> kullanırsanız girdikleriniz yalnızca o oturumda tutulur, uygulamayı kapattığınızda silinir ve hareket geçmişi kaydedilmez. Üye olursanız bilgileriniz cihazınızda kalıcı olarak saklanır.</p>
     <p>Tüm bilgiler cihazınızdaki tarayıcı/uygulama hafızasında (yerel depolama) tutulur. Uygulama, internet yokken de açılabilmesi için kendi dosyalarını cihazınıza kaydeder; bu dosyalar sizin bilgilerinizi içermez.</p>
 
+    <h3>Google ile ve şifresiz e-postayla giriş</h3>
+    <ul>
+      <li>Bu iki giriş yolu isteğe bağlıdır. İstemezseniz kullanıcı adı, e-posta ve şifreyle üye olabilirsiniz; o zaman hiçbir bilginiz cihazınızdan çıkmaz.</li>
+      <li><b>Google ile devam et:</b> Google hesabınızı seçtiğinizde Google, e-posta adresinizi, adınızı, profil fotoğrafı bağlantınızı ve hesap kimlik numaranızı uygulamaya iletir. Uygulama bunlardan yalnızca <b>e-postanızı ve adınızı</b> cihazınızdaki hesabınıza yazar. Google şifreniz bize hiçbir zaman gelmez.</li>
+      <li><b>Şifresiz e-postayla devam et:</b> Yazdığınız e-posta adresine, Firebase üzerinden tek kullanımlık bir giriş bağlantısı gönderilir. E-posta adresiniz, bağlantıyı açtığınız cihaz tanıyabilsin diye o cihazda kısa süreliğine saklanır.</li>
+      <li><b>Firebase'de ne tutulur:</b> Giriş hizmeti sizin için bir giriş kaydı tutar: e-posta adresi, (Google ile girişte) ad ve profil fotoğrafı bağlantısı, kayıt ve son giriş tarihi, hangi yolla girdiğiniz ve kötüye kullanımı önlemek için IP adresi gibi teknik kayıtlar. Mutfak notlarınız, listeleriniz, tarifleriniz, telefonunuz ve adresiniz bu kayda <b>eklenmez</b>.</li>
+      <li>Firebase, Google LLC'nin hizmetidir ve bilgileri Google'ın yurt dışındaki sunucularında işleyebilir. Ayrıntılar: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase gizlilik ve güvenlik</a>, <a href="https://policies.google.com/privacy?hl=tr" target="_blank" rel="noopener">Google Gizlilik Politikası</a>.</li>
+      <li>Bu bilgiler yalnızca giriş için kullanılır; reklam, pazarlama ya da başka bir amaçla kullanılmaz ve satılmaz.</li>
+    </ul>
+
     <h3>Mikrofon ve sesle ekleme</h3>
     <ul>
       <li>Mikrofon yalnızca siz "Sesle ekle" düğmesine bastığınızda ve izin verdiğinizde açılır. İlk kullanımda size ayrıca bilgi verilir ve onayınız istenir.</li>
@@ -85,22 +96,27 @@
     </ul>
 
     <h3>WhatsApp ile paylaşım</h3>
-    <p>Alışveriş listesi, menü ya da mektup gönderirken "WhatsApp ile gönder" düğmesine basarsanız, hazırlanan metin WhatsApp'ta açılır. Gönderip göndermemek size kalmıştır. Gönderdiğiniz mesajlar WhatsApp'ın kendi gizlilik kurallarına tabidir.</p>
+    <p>Alışveriş listesi ya da menü paylaşırken "WhatsApp" düğmesine basarsanız, hazırlanan metin WhatsApp'ta açılır. Gönderip göndermemek size kalmıştır. Gönderdiğiniz mesajlar WhatsApp'ın kendi gizlilik kurallarına tabidir.</p>
+
+    <h3>İstek, öneri ve şikayet mektupları</h3>
+    <p>"İstek, Öneri ve Şikayet Mektubu" bölümünde "Gönder"e bastığınızda mektubunuz; türü (öneri, istek, şikayet, teşekkür), varsa adınız ve e-posta adresinizle birlikte sunucumuz üzerinden e-posta olarak bize (asistanimutfak@gmail.com) iletilir. Bu bilgiler yalnızca mektubunuzu okumak ve size dönüş yapmak için kullanılır. Giriş yapmadan gönderirseniz mektup "Misafir" olarak gelir.</p>
 
     <h3>Üçüncü taraflar</h3>
     <ul>
       <li><b>GitHub Pages:</b> Uygulamanın dosyaları GitHub Pages üzerinden yayınlanır. GitHub, güvenlik amacıyla ziyaretçilerin IP adresi gibi teknik kayıtlarını tutabilir.</li>
       <li><b>Google Play:</b> Uygulamayı Google Play'den indirirseniz Google, indirme ile ilgili bilgileri kendi politikasına göre işler.</li>
+      <li><b>Google Firebase Authentication:</b> Yalnızca "Google ile devam et" ya da "Şifresiz, e-postayla devam et" yolunu seçerseniz, yukarıda anlatılan giriş bilgileri için.</li>
+      <li><b>Cloudflare ve Resend:</b> Gönderdiğiniz mektup, sunucumuzu barındıran Cloudflare ve e-postayı ileten Resend hizmetleri üzerinden bize ulaşır. Bu hizmetler mektubu yalnızca iletmek için işler.</li>
       <li>Bunlar dışında hiçbir üçüncü tarafa bilgi aktarılmaz.</li>
     </ul>
 
     <h3 id="hesap-silme">Hesabınızı ve bilgilerinizi nasıl silersiniz?</h3>
     <ul>
-      <li><b>Uygulama içinden:</b> Sağ üstteki adınıza dokunun. <i>"🧹 Verilerimi sil"</i> hesabınızı bırakıp notlarınızı, listelerinizi, tariflerinizi ve mektuplarınızı siler. <i>"🗑️ Hesabımı sil"</i> iki seçenek sunar: <b>Askıya al</b> (hesabınız 30 gün bekler, bu sürede giriş yapıp <i>"♻️ Hesabımı geri getir"</i> ile geri alabilirsiniz; geri almazsanız tamamen silinir) veya <b>Tamamen sil</b> (hemen ve kalıcı olarak silinir). Giriş yapmadan da ana sayfanın en altındaki <i>"Verilerimi sil"</i> linkini kullanabilirsiniz. Silme hemen ve kalıcı olarak gerçekleşir.</li>
+      <li><b>Uygulama içinden:</b> Sağ üstteki adınıza dokunun. <i>"🧹 Verilerimi sil"</i> hesabınızı bırakıp notlarınızı, listelerinizi, tariflerinizi ve mektuplarınızı siler. <i>"🗑️ Hesabımı sil"</i> iki seçenek sunar: <b>Askıya al</b> (hesabınız 30 gün bekler, bu sürede giriş yapıp <i>"♻️ Hesabımı geri getir"</i> ile geri alabilirsiniz; geri almazsanız tamamen silinir) veya <b>Tamamen sil</b> (hemen ve kalıcı olarak silinir). Google ile ya da e-posta bağlantısıyla girdiyseniz <i>Tamamen sil</i>, Firebase'deki giriş kaydınızı da siler; gerekirse güvenlik için bir kez daha Google hesabınızı seçmeniz istenir. Giriş kaydı uygulamadan silinemezse bize yazmanız yeterli, en geç 30 gün içinde sileriz. Giriş yapmadan da ana sayfanın en altındaki <i>"Verilerimi sil"</i> linkini kullanabilirsiniz. Silme hemen ve kalıcı olarak gerçekleşir.</li>
       <li><b>Paylaştığınız tarifler:</b> Hesabınız silindiğinde onay bekleyen ve onaylanmamış tarifleriniz silinir. Onaylanıp tarif kitabımıza katılmış tarifleriniz kitapta kalır, ancak adınız ve e-postanız kaldırılır; tarif "Mutfak Asistanı ailesi" adıyla, isimsiz olarak görünür.</li>
       <li>Ürün notlarını, listeleri ve tarifleri uygulama içinden tek tek silebilirsiniz.</li>
       <li>Hesabınızdan "Çıkış yap" ile çıkabilirsiniz.</li>
-      <li><b>Tüm bilgileri silmek için:</b> Android'de <i>Ayarlar → Uygulamalar → Mutfak Asistanı → Depolama → Verileri temizle</i>; tarayıcıda ise bu sitenin verilerini (çerezler ve site verileri) temizleyin. Bilgiler yalnızca cihazınızda olduğundan bu işlemden sonra tamamen silinmiş olur.</li>
+      <li><b>Tüm bilgileri silmek için:</b> Android'de <i>Ayarlar → Uygulamalar → Mutfak Asistanı → Depolama → Verileri temizle</i>; tarayıcıda ise bu sitenin verilerini (çerezler ve site verileri) temizleyin. Bu, cihazınızdaki tüm bilgileri siler. Google ile ya da e-posta bağlantısıyla girdiyseniz Firebase'deki giriş kaydınızın silinmesi için önce uygulamadan <i>Hesabımı sil → Tamamen sil</i> yapın ya da bize yazın.</li>
       <li>Yardım isterseniz aşağıdaki adresten bize yazabilirsiniz.</li>
     </ul>
 
@@ -108,10 +124,10 @@
     <p>Uygulama çocuklara yönelik değildir ve 13 yaşından küçüklerden bilerek bilgi toplamaz.</p>
 
     <h3>KVKK kapsamında bilgilendirme</h3>
-    <p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sorumlusu Şahin Atila'dır. Ad ve e-posta bilgileriniz, uygulamanın üyelik hizmetini sunmak amacıyla ve sözleşmenin ifası hukuki sebebine dayanarak yalnızca cihazınızda işlenir; yurt içinde ya da yurt dışında kimseye aktarılmaz. Kanun'un 11. maddesi uyarınca; verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini ya da silinmesini isteme ve diğer haklarınızı kullanmak için aşağıdaki e-posta adresinden bize başvurabilirsiniz.</p>
+    <p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sorumlusu Şahin Atila'dır. Ad ve e-posta bilgileriniz, uygulamanın üyelik hizmetini sunmak amacıyla ve sözleşmenin ifası hukuki sebebine dayanarak cihazınızda işlenir. Kullanıcı adı ve şifreyle üye olursanız kimseye aktarılmaz. "Google ile devam et" ya da "Şifresiz, e-postayla devam et" yolunu kendiniz seçerseniz, e-posta adresiniz ve (Google ile girişte) adınız yalnızca kimlik doğrulama amacıyla, hizmet sağlayıcımız Google LLC'nin Firebase Authentication hizmetine ve dolayısıyla yurt dışındaki sunuculara aktarılır. Bu yolu seçmek zorunlu değildir. Kanun'un 11. maddesi uyarınca; verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini ya da silinmesini isteme ve diğer haklarınızı kullanmak için aşağıdaki e-posta adresinden bize başvurabilirsiniz.</p>
 
     <h3>Değişiklikler</h3>
-    <p>Uygulamaya sunucu, Google ile giriş ya da yapay zekâ gibi yeni özellikler eklendiğinde bu politika güncellenir ve tarih değiştirilir.</p>
+    <p>Uygulamaya sunucu ya da yapay zekâ gibi yeni özellikler eklendiğinde bu politika güncellenir ve tarih değiştirilir.</p>
 
     <h3>İletişim</h3>
     <p>Şahin Atila · E-posta: <a href="mailto:asistanimutfak@gmail.com">asistanimutfak@gmail.com</a></p>
@@ -120,14 +136,15 @@
   <!-- ===================== ENGLISH ===================== -->
   <section class="kart" id="en" lang="en">
     <h2>Privacy Policy</h2>
-    <p class="tarih">Last updated: November 18, 2026</p>
+    <p class="tarih">Last updated: November 22, 2026</p>
     <p>This policy explains what information the <b>Mutfak Asistanı</b> (Kitchen Assistant) app — the website and the Android app — uses, where it is stored and how you can delete it. Developer and data controller: <b>Şahin Atila</b>.</p>
 
     <div class="soz">
       <p>🔒 Our promise</p>
       <ul>
         <li>We <b>do not see, store, sell or share</b> anything you type, share or say.</li>
-        <li>Your information stays <b>only on your own device</b>. It is never sent to a server of ours; even we cannot access it.</li>
+        <li>Your kitchen notes, lists, recipes and account details stay <b>only on your own device</b>. They are never sent to a server of ours; even we cannot access them.</li>
+        <li>The only exception, if you choose it: when you sign in with <b>"Google ile devam et"</b> (Continue with Google) or <b>"Şifresiz, e-postayla devam et"</b> (passwordless email link), your email address (and, with Google, your name) goes to Google's <b>Firebase Authentication</b> service solely to verify who you are. Nothing else is sent.</li>
         <li>Your voice is <b>never recorded, stored or listened to by us</b>.</li>
         <li>We use <b>no</b> advertising, analytics or tracking tools.</li>
       </ul>
@@ -135,7 +152,7 @@
 
     <h3>What information is used?</h3>
     <ul>
-      <li><b>Account details:</b> your email address and, optionally, your full name, phone number and address. If you set a password, it is stored only as an irreversible hash (SHA-256), never in plain text.</li>
+      <li><b>Account details:</b> your email address and, optionally, your full name, phone number and address. If you set a password, it is stored only as an irreversible hash (SHA-256), never in plain text. There are three ways to sign in: username + email + password, Continue with Google, or a passwordless email link.</li>
       <li><b>Kitchen notes:</b> your fridge, pantry, freezer and equipment notes.</li>
       <li><b>Plans:</b> your shopping list, saved dated shopping lists, menu, table plan and reminders.</li>
       <li><b>Content you share:</b> recipes you add and feedback letters you write.</li>
@@ -151,6 +168,16 @@
     <p>If you use the app <b>as a guest</b>, what you enter is kept only for that session, deleted when you close the app, and no activity history is recorded. If you sign up, your information is stored permanently on your device.</p>
     <p>All information is kept in your device's browser/app storage (local storage). The app also saves its own files on your device so it can open offline; those files contain none of your information.</p>
 
+    <h3>Sign-in with Google and passwordless email</h3>
+    <ul>
+      <li>Both are optional. You can sign up with a username, email and password instead; then nothing leaves your device.</li>
+      <li><b>Continue with Google:</b> when you pick your Google account, Google shares your email address, name, profile photo link and account ID with the app. The app stores only your <b>email and name</b> in your account on your device. We never receive your Google password.</li>
+      <li><b>Passwordless email:</b> a one-time sign-in link is sent to the address you enter, via Firebase. Your email address is kept briefly on that device so it can recognise the link when you open it.</li>
+      <li><b>What Firebase keeps:</b> the sign-in service keeps a sign-in record for you: email address, (with Google) name and profile photo link, creation and last sign-in dates, the sign-in method, and technical logs such as IP address to prevent abuse. Your kitchen notes, lists, recipes, phone and address are <b>not</b> added to it.</li>
+      <li>Firebase is a service of Google LLC and may process data on Google's servers outside Turkey. See <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy and security</a> and the <a href="https://policies.google.com/privacy?hl=en" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
+      <li>This information is used only for signing in; never for advertising, marketing or anything else, and it is never sold.</li>
+    </ul>
+
     <h3>Microphone and voice input</h3>
     <ul>
       <li>The microphone turns on only when you press "Add by voice" and grant permission. On first use you are informed and asked to confirm.</li>
@@ -160,22 +187,27 @@
     </ul>
 
     <h3>Sharing via WhatsApp</h3>
-    <p>If you press "Send via WhatsApp" for a shopping list, menu or letter, the prepared text opens in WhatsApp and you decide whether to send it. Messages you send are subject to WhatsApp's own privacy terms.</p>
+    <p>If you press the "WhatsApp" button for a shopping list or menu, the prepared text opens in WhatsApp and you decide whether to send it. Messages you send are subject to WhatsApp's own privacy terms.</p>
+
+    <h3>Feedback letters</h3>
+    <p>When you press "Send" in the "Request, Suggestion and Complaint Letter" section, your letter is emailed to us (asistanimutfak@gmail.com) through our server, together with its type (suggestion, request, complaint, thanks) and, if available, your name and email address. This information is used only to read your letter and reply to you. If you are not signed in, the letter arrives as "Guest".</p>
 
     <h3>Third parties</h3>
     <ul>
       <li><b>GitHub Pages:</b> the app's files are hosted on GitHub Pages. GitHub may keep technical logs such as visitors' IP addresses for security purposes.</li>
       <li><b>Google Play:</b> if you install the app from Google Play, Google processes installation data under its own policy.</li>
+      <li><b>Google Firebase Authentication:</b> only if you choose Continue with Google or the passwordless email link, for the sign-in data described above.</li>
+      <li><b>Cloudflare and Resend:</b> letters you send pass through Cloudflare (which hosts our server) and Resend (which delivers the email). These services process the letter only to deliver it.</li>
       <li>No information is passed to any other third party.</li>
     </ul>
 
     <h3 id="account-deletion">How to delete your account and information</h3>
     <ul>
-      <li><b>In the app:</b> tap your name at the top right. <i>"🧹 Verilerimi sil"</i> (Delete my data) keeps your account but deletes your notes, lists, recipes and letters. <i>"🗑️ Hesabımı sil"</i> (Delete my account) offers two options: <b>Suspend</b> (your account waits 30 days; sign in and tap <i>"♻️ Hesabımı geri getir"</i> (Restore my account) to get it back, otherwise it is permanently deleted) or <b>Delete permanently</b> (deleted immediately). Without signing in, use the <i>"Verilerimi sil"</i> link at the bottom of the home page. Deletion is immediate and permanent.</li>
+      <li><b>In the app:</b> tap your name at the top right. <i>"🧹 Verilerimi sil"</i> (Delete my data) keeps your account but deletes your notes, lists, recipes and letters. <i>"🗑️ Hesabımı sil"</i> (Delete my account) offers two options: <b>Suspend</b> (your account waits 30 days; sign in and tap <i>"♻️ Hesabımı geri getir"</i> (Restore my account) to get it back, otherwise it is permanently deleted) or <b>Delete permanently</b> (deleted immediately). If you signed in with Google or an email link, <i>Delete permanently</i> also deletes your sign-in record in Firebase; you may be asked to pick your Google account once more for security. If the record cannot be deleted from the app, just email us and we will delete it within 30 days. Without signing in, use the <i>"Verilerimi sil"</i> link at the bottom of the home page. Deletion is immediate and permanent.</li>
       <li><b>Recipes you shared:</b> when your account is deleted, your pending and rejected recipes are deleted. Recipes that were approved and added to our recipe book stay there, but your name and email are removed and the recipe is shown anonymously as "Mutfak Asistanı ailesi".</li>
       <li>You can delete product notes, lists and recipes one by one inside the app.</li>
       <li>You can sign out with "Çıkış yap" (Sign out).</li>
-      <li><b>To delete everything:</b> on Android go to <i>Settings → Apps → Mutfak Asistanı → Storage → Clear data</i>; in a browser, clear this site's data (cookies and site data). Because the information exists only on your device, it is then permanently deleted.</li>
+      <li><b>To delete everything:</b> on Android go to <i>Settings → Apps → Mutfak Asistanı → Storage → Clear data</i>; in a browser, clear this site's data (cookies and site data). This deletes everything on your device. If you signed in with Google or an email link, use <i>Delete my account → Delete permanently</i> in the app first, or email us, so your Firebase sign-in record is deleted too.</li>
       <li>If you need help, contact us at the address below.</li>
     </ul>
 
@@ -183,10 +215,10 @@
     <p>The app is not directed at children and does not knowingly collect information from anyone under 13.</p>
 
     <h3>Turkish data protection law (KVKK)</h3>
-    <p>Under Turkish Law No. 6698 on the Protection of Personal Data, the data controller is Şahin Atila. Your name and email are processed only on your device, to provide the account feature, on the legal basis of performing the service you requested, and are not transferred to anyone inside or outside Turkey. You may exercise your rights under Article 11 of the Law (to learn whether your data is processed, request information, correction or deletion, and others) by emailing us.</p>
+    <p>Under Turkish Law No. 6698 on the Protection of Personal Data, the data controller is Şahin Atila. Your name and email are processed on your device to provide the account feature, on the legal basis of performing the service you requested. If you sign up with a username and password they are not transferred to anyone. If you choose Continue with Google or the passwordless email link, your email address and (with Google) your name are transferred, solely for authentication, to our service provider Google LLC's Firebase Authentication and therefore to servers outside Turkey. Choosing these options is not required. You may exercise your rights under Article 11 of the Law (to learn whether your data is processed, request information, correction or deletion, and others) by emailing us.</p>
 
     <h3>Changes</h3>
-    <p>When new features such as a server, Google sign-in or AI are added, this policy will be updated and its date changed.</p>
+    <p>When new features such as a server or AI are added, this policy will be updated and its date changed.</p>
 
     <h3>Contact</h3>
     <p>Şahin Atila · Email: <a href="mailto:asistanimutfak@gmail.com">asistanimutfak@gmail.com</a></p>

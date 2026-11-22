@@ -50,6 +50,28 @@ var EKIPMAN_REYONLARI = [
     "süzgeç", "kevgir", "maşa", "soyacak", "havan", "huni", "ölçü kabı", "makas", "açacak", "konserve açacağı", "sarımsak ezici"] }
 ];
 
+// Temizlik Malzemelerim defteri: bulaşık, çamaşır, ev temizliği, kişisel bakım ve mutfak sarf malzemeleri.
+// Yiyecek defterlerine yazılan temizlik ürünleri buraya taşınır; alışverişten gelenler de buraya konur.
+var TEMIZLIK_REYONLARI = [
+  { ad: "Bulaşık", ikon: "🍽️", urunler: ["bulaşık deterjanı", "sıvı bulaşık deterjanı", "elde bulaşık deterjanı", "bulaşık makinesi deterjanı",
+    "bulaşık makinesi tableti", "tablet", "bulaşık tableti", "bulaşık makinesi tuzu", "makine tuzu", "parlatıcı", "bulaşık makinesi parlatıcısı",
+    "makine temizleyici", "bulaşık makinesi temizleyici", "bulaşık süngeri", "sünger", "bulaşık teli", "tel", "bulaşık eldiveni", "bulaşık bezi"] },
+  { ad: "Çamaşır", ikon: "👕", urunler: ["çamaşır deterjanı", "toz deterjan", "sıvı deterjan", "matik", "deterjan", "yumuşatıcı", "çamaşır yumuşatıcısı",
+    "çamaşır suyu", "leke çıkarıcı", "renk koruyucu", "kireç önleyici", "çamaşır makinesi temizleyici", "çamaşır kapsülü", "kapsül deterjan", "ütü suyu", "mandal"] },
+  { ad: "Genel Temizlik", ikon: "🧽", urunler: ["yüzey temizleyici", "genel temizlik", "yer temizleyici", "cam temizleyici", "cam sil", "kireç sökücü",
+    "yağ çözücü", "krem temizleyici", "banyo temizleyici", "mutfak temizleyici", "tuvalet temizleyici", "wc temizleyici", "lavabo açıcı", "gider açıcı",
+    "arap sabunu", "sirke", "karbonat", "limon tuzu", "tuz ruhu", "dezenfektan", "el dezenfektanı", "ıslak mendil", "temizlik bezi", "mikrofiber bez",
+    "toz bezi", "paspas", "mop", "kova", "fırça", "süpürge", "faraş", "temizlik eldiveni", "oda kokusu", "hava tazeleyici", "böcek ilacı", "sinek ilacı",
+    "naftalin", "mobilya cilası"] },
+  { ad: "Kağıt & Sarf", ikon: "🧻", urunler: ["tuvalet kağıdı", "kağıt havlu", "peçete", "kağıt mendil", "mendil", "çöp torbası", "çöp poşeti", "buzdolabı poşeti",
+    "streç film", "streç", "alüminyum folyo", "folyo", "pişirme kağıdı", "yağlı kağıt", "kilitli poşet", "saklama kabı", "kürdan", "pipet"] },
+  { ad: "Kişisel Bakım", ikon: "🧴", urunler: ["şampuan", "saç kremi", "duş jeli", "sabun", "sıvı sabun", "el sabunu", "katı sabun", "kolonya", "deodorant",
+    "parfüm", "nemlendirici", "el kremi", "vücut losyonu", "güneş kremi", "tıraş köpüğü", "tıraş bıçağı", "jilet", "pamuk", "kulak çubuğu", "ped",
+    "hijyenik ped", "tampon", "bebek bezi", "bebek şampuanı", "makyaj temizleme", "tarak", "lif", "banyo lifi", "bornoz"] },
+  { ad: "Ağız Bakımı", ikon: "🪥", urunler: ["diş macunu", "diş fırçası", "diş ipi", "ağız gargarası", "gargara", "ağız bakım suyu", "arayüz fırçası",
+    "protez temizleyici", "diş beyazlatıcı"] }
+];
+
 // MARKALAR: marka adı → asıl ürün. Böylece "nutella" Kahvaltılık'a, "fairy" Temizlik'e değil gerçek yerine gider,
 // tariflerde de "çikolata kreması" yerine sayılır. Yeni marka eklemek için: "marka": "ürün"
 var MARKALAR = {
@@ -71,7 +93,17 @@ var MARKALAR = {
   "dr. oetker": "kabartma tozu", "pakmaya": "maya", "kemal kükrer": "kabartma tozu",
   "becel": "margarin", "rama": "margarin", "komili": "zeytinyağı", "yudum": "ayçiçek yağı", "orkide": "ayçiçek yağı",
   "superfresh": "dondurulmuş", "algida": "dondurma", "magnum": "dondurma", "carte d'or": "dondurma", "maraş dondurma": "dondurma",
-  "nutri bebe": "mama", "aptamil": "mama", "bebelac": "mama"
+  "nutri bebe": "mama", "aptamil": "mama", "bebelac": "mama",
+  // Temizlik ve kişisel bakım markaları → Temizlik Malzemelerim
+  "fairy": "bulaşık deterjanı", "pril": "bulaşık deterjanı", "finish": "bulaşık makinesi tableti", "pril tablet": "bulaşık makinesi tableti",
+  "ariel": "çamaşır deterjanı", "omo": "çamaşır deterjanı", "persil": "çamaşır deterjanı", "bingo": "çamaşır deterjanı", "alo": "çamaşır deterjanı",
+  "tursil": "çamaşır deterjanı", "yumoş": "yumuşatıcı", "vernel": "yumuşatıcı", "domestos": "çamaşır suyu", "ace": "çamaşır suyu",
+  "cif": "krem temizleyici", "mr. muscle": "yağ çözücü", "mr muscle": "yağ çözücü", "harpic": "tuvalet temizleyici", "calgon": "kireç önleyici",
+  "vanish": "leke çıkarıcı", "glade": "oda kokusu", "selpak": "kağıt mendil", "solo": "tuvalet kağıdı", "familia": "tuvalet kağıdı",
+  "colgate": "diş macunu", "signal": "diş macunu", "ipana": "diş macunu", "sensodyne": "diş macunu", "oral-b": "diş fırçası", "oral b": "diş fırçası",
+  "listerine": "ağız gargarası", "elidor": "şampuan", "head & shoulders": "şampuan", "pantene": "şampuan", "blendax": "şampuan",
+  "duru": "sabun", "protex": "sabun", "rexona": "deodorant", "eyüp sabri tuncer": "kolonya", "rebul": "kolonya", "gillette": "tıraş bıçağı",
+  "orkid": "ped", "prima": "bebek bezi", "molfix": "bebek bezi"
 };
 var _MARKA = {};
 Object.keys(MARKALAR).forEach(function (k) { _MARKA[normalIsim(k)] = MARKALAR[k]; });
@@ -95,16 +127,13 @@ function _reyonHazirla(reyonlar) {
   reyonlar.forEach(function (r) { r._anahtar = r.urunler.map(normalIsim); });
   return reyonlar;
 }
-_reyonHazirla(YIYECEK_REYONLARI); _reyonHazirla(EKIPMAN_REYONLARI);
+_reyonHazirla(YIYECEK_REYONLARI); _reyonHazirla(EKIPMAN_REYONLARI); _reyonHazirla(TEMIZLIK_REYONLARI);
 
-// Ürünün reyonunu bul. Türkçede asıl isim sondadır ("tavuk incik" → incik, "domates salçası" → salça),
-// bu yüzden önce SONDAN eşleşen en uzun kelimeye bakılır, sonra başka yerde geçene.
-function reyonBul(ad, ekipmanMi) {
-  var n = normalIsim(ekipmanMi ? ad : markaCoz(ad)), enIyi = null, enIyiPuan = -1;
-  // Her türlü kahve ve çay (bitki çayları dahil) içecektir: "kahve çekirdeği" kuruyemiş değildir
-  if (!ekipmanMi && /(^| )(kahve|çay|espresso|latte|cappuccino|ıhlamur|adaçay)( |$)/.test(n) && !/(tabağ|bardağ|kaşığ|fincan)/.test(n))
-    return YIYECEK_REYONLARI.filter(function (r) { return r.ad === "İçecekler"; })[0];
-  (ekipmanMi ? EKIPMAN_REYONLARI : YIYECEK_REYONLARI).forEach(function (r) {
+// tur: false = yiyecek, true = ekipman, "temizlik" = Temizlik Malzemelerim
+function _reyonListesi(tur) { return tur === "temizlik" ? TEMIZLIK_REYONLARI : tur ? EKIPMAN_REYONLARI : YIYECEK_REYONLARI; }
+function _enIyiReyon(n, reyonlar) {
+  var enIyi = null, enIyiPuan = -1;
+  reyonlar.forEach(function (r) {
     r._anahtar.forEach(function (k) {
       var puan = -1;
       if (n === k) puan = 1000 + k.length;
@@ -113,7 +142,29 @@ function reyonBul(ad, ekipmanMi) {
       if (puan > enIyiPuan) { enIyiPuan = puan; enIyi = r; }
     });
   });
-  return enIyi || { ad: "Diğer", ikon: "📦" };
+  return { r: enIyi, puan: enIyiPuan };
+}
+// Bu ürün temizlik / kişisel bakım ürünü mü? ("çamaşır suyu" evet, "su" ve "sirke" hayır: eşitlikte yiyecek kazanır)
+// ekipmanMi: ekipman defterindeysek aletlerle de kıyasla ("çırpma teli" alettir, "bulaşık teli" temizlik)
+function temizlikUrunuMu(ad, ekipmanMi) {
+  var n = normalIsim(markaCoz(ad));
+  var t = _enIyiReyon(n, TEMIZLIK_REYONLARI), y = _enIyiReyon(n, YIYECEK_REYONLARI);
+  var rakip = ekipmanMi ? Math.max(y.puan, _enIyiReyon(normalIsim(ad), EKIPMAN_REYONLARI).puan) : y.puan;
+  return !!t.r && t.puan > rakip;
+}
+
+// Ürünün reyonunu bul. Türkçede asıl isim sondadır ("tavuk incik" → incik, "domates salçası" → salça),
+// bu yüzden önce SONDAN eşleşen en uzun kelimeye bakılır, sonra başka yerde geçene.
+function reyonBul(ad, ekipmanMi) {
+  var n = normalIsim(ekipmanMi === true ? ad : markaCoz(ad));
+  if (ekipmanMi === "temizlik") return _enIyiReyon(n, TEMIZLIK_REYONLARI).r || { ad: "Diğer", ikon: "📦" };
+  // Her türlü kahve ve çay (bitki çayları dahil) içecektir: "kahve çekirdeği" kuruyemiş değildir
+  if (!ekipmanMi && /(^| )(kahve|çay|espresso|latte|cappuccino|ıhlamur|adaçay)( |$)/.test(n) && !/(tabağ|bardağ|kaşığ|fincan)/.test(n))
+    return YIYECEK_REYONLARI.filter(function (r) { return r.ad === "İçecekler"; })[0];
+  var y = _enIyiReyon(n, _reyonListesi(ekipmanMi));
+  // Alışveriş listesi gibi karışık yerlerde temizlik ürünleri de kendi reyonuna gitsin ("çamaşır suyu" İçecekler'e değil)
+  if (!ekipmanMi) { var t = _enIyiReyon(n, TEMIZLIK_REYONLARI); if (t.r && t.puan > y.puan) return t.r; }
+  return y.r || { ad: "Diğer", ikon: "📦" };
 }
 
 // Ürünün reyonunu bulurken miktara da bak: "1 demet nane" tazedir (Sebze), sadece "nane" baharattır
@@ -201,7 +252,7 @@ function _mesafe(a, b, sinir) {
 var _SOZLUK = null, _SOZLUK_HARFSIZ = null, _SOZLUK_SET = null, _SOZLUKLER = {};
 // Yiyecek ve ekipman için ayrı sözlük: ekipman defterinde bir kelime yiyeceğe "düzeltilmez"
 function _sozlukSec(ekipmanMi) {
-  var k = ekipmanMi ? "ekipman" : "yiyecek";
+  var k = ekipmanMi === "temizlik" ? "temizlik" : ekipmanMi ? "ekipman" : "yiyecek";
   if (!_SOZLUKLER[k]) { _sozlukKur(ekipmanMi); _SOZLUKLER[k] = { s: _SOZLUK, h: _SOZLUK_HARFSIZ, set: _SOZLUK_SET }; }
   _SOZLUK = _SOZLUKLER[k].s; _SOZLUK_HARFSIZ = _SOZLUKLER[k].h; _SOZLUK_SET = _SOZLUKLER[k].set;
 }
@@ -212,7 +263,8 @@ function _sozlukKur(ekipmanMi) {
       w = w.replace(/[^a-zçğıöşüâî]/g, ""); if (w.length >= 2) kelimeler.add(w);
     });
   }
-  (ekipmanMi ? EKIPMAN_REYONLARI : YIYECEK_REYONLARI).forEach(function (r) { r.urunler.forEach(ekle); });
+  _reyonListesi(ekipmanMi).forEach(function (r) { r.urunler.forEach(ekle); });
+  if (ekipmanMi === "temizlik") Object.keys(MARKALAR).forEach(ekle);
   var reyonKelimeleri = new Set(kelimeler);
   EK_KELIMELER.forEach(ekle);
   TURKCE_KELIMELER.forEach(ekle);
@@ -220,6 +272,10 @@ function _sozlukKur(ekipmanMi) {
   // Miktar kelimeleri (kırk, altı, kalıp...) "bilinir" ama hiçbir yazım hatası onlara çevrilmez
   var hedefler = Array.from(kelimeler), bilinen = new Set(hedefler);
   if (typeof MIKTAR_KELIMELERI !== "undefined") MIKTAR_KELIMELERI.forEach(function (w) { bilinen.add(w); });
+  // Yiyecek defterine yazılan "şampuan", "yumuşatıcı" gibi kelimeler doğru kabul edilsin (sonra Temizlik'e taşınır), ama hiçbir yazım hatası onlara çevrilmesin
+  if (!ekipmanMi) TEMIZLIK_REYONLARI.forEach(function (r) { r.urunler.forEach(function (y) {
+    y.toLocaleLowerCase("tr").split(/[\s\/,()]+/).forEach(function (w) { w = w.replace(/[^a-zçğıöşüâî]/g, ""); if (w.length >= 2) bilinen.add(w); });
+  }); });
   _SOZLUK = hedefler.filter(function (w) { return reyonKelimeleri.has(w) || !(typeof MIKTAR_SET !== "undefined" && MIKTAR_SET.has(w)); });
   _SOZLUK_HARFSIZ = {};
   _SOZLUK.forEach(function (w) { var h = _harfsiz(w); (_SOZLUK_HARFSIZ[h] = _SOZLUK_HARFSIZ[h] || []).push(w); });
@@ -237,7 +293,7 @@ function _sozlukKurYiyecek(ekle) {
 // Tek kelimeyi düzelt; düzeltemezse aynısını döndür
 function _bilinir(w) { return _SOZLUK_SET.has(w) || _SOZLUK_SET.has(kok(w)); }
 function kelimeDuzelt(w, ekipmanMi) {
-  _sozlukSec(!!ekipmanMi);
+  _sozlukSec(ekipmanMi === "temizlik" ? "temizlik" : !!ekipmanMi);
   if (w.length < 3 || /\d/.test(w) || _bilinir(w)) return w;
   // Çekim eki almış kelimeler ("boylarda", "kenarındaki") büyük ihtimalle doğru yazılmış bir açıklamadır: dokunma
   if (/(larda|lerde|ları|leri|daki|deki|taki|teki|ında|inde|unda|ünde)$/.test(w)) return w;
