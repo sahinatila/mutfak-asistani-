@@ -12,6 +12,7 @@
   <link rel="apple-touch-icon" href="ikonlar/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
+<script>/* yazı boyutu: sayfa açılırken titreme olmasın */try{var _yz=[1,1.15,1.3,1.5][parseInt(localStorage.getItem("ma_yazi_boyu")||"0",10)||0]||1;if(_yz!==1){document.documentElement.style.setProperty("--yz",_yz);document.documentElement.classList.add("yazi-buyuk");}}catch(e){}</script>
 <style>
   /* ---------- RENKLER (koyu ve açık tema) ---------- */
   :root {
@@ -20,12 +21,14 @@
     --var-zemin: #d1f7e8; --var-yazi: #00875a; --yok-zemin: #ffe0e0; --yok-yazi: #c0392b;
     --az-zemin: #ffeccc; --az-yazi: #b9770e; --temel-zemin: #eceff1; --temel-yazi: #607d8b;
     --kutu: #fbfbfd;
+    --serit-zemin: #ffffff; --serit-yazi: #5641d8; --serit-vurgu: #0e8a74; --serit-cizgi: #ddd8fb;
   }
   body.koyu {
     --zemin: #15161a; --kart: #20222a; --yazi: #e8e8ec; --soluk: #9aa0a6; --cizgi: #33363f;
     --ana: #8c7cf0; --ana-koyu: #7363e6; --var-zemin: #12392d; --var-yazi: #5be3b5; --yok-zemin: #431e1e;
     --yok-yazi: #ff8a80; --az-zemin: #44361a; --az-yazi: #ffc56b; --temel-zemin: #2b2f36; --temel-yazi: #a9b6bf;
     --kutu: #1a1c22;
+    --serit-zemin: #4b3dbf; --serit-yazi: #ffffff; --serit-vurgu: #3ef0c8; --serit-cizgi: #4b3dbf;
   }
 
   * { box-sizing: border-box; }
@@ -110,7 +113,27 @@
   .filtre button.aktif { background: var(--ana); color: white; border-color: var(--ana); }
 
   .tarif-ust { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  /* Tarif simgesi: fotoğraf yerine minik emoji (simgeler.js) */
+  .tarif-bas { display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
+  .tarif-bas h3 { margin: 0 0 4px; }
+  .tarif-simge { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px; background: var(--temel-zemin);
+    display: flex; align-items: center; justify-content: center; font-size: 26px; line-height: 1;
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif; }
   .rozet { font-size: 12px; padding: 4px 10px; border-radius: 12px; white-space: nowrap; }
+  /* Besin değeri, öğün, pişirme, süre (besin.js) */
+  .tarif-bilgi { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: 6px 0 4px; }
+  .tarif-bilgi span { font-size: 12px; padding: 3px 9px; border-radius: 12px; background: var(--temel-zemin); color: var(--yazi); line-height: 1.4; }
+  .tarif-bilgi span b { font-weight: 600; }
+  .tarif-bilgi .diyet-rozet { background: var(--var-zemin); color: var(--var-yazi); font-weight: 600; }
+  .filtre button.diyet-filtre { border-color: var(--var-yazi); color: var(--var-yazi); }
+  .filtre button.diyet-filtre.aktif { background: var(--yesil); border-color: var(--yesil); color: #fff; }
+  .besin-kutu { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--kutu); border: 1px solid var(--cizgi); font-size: 14px; line-height: 1.5; }
+  .besin-baslik { font-weight: bold; font-size: 15px; }
+  .besin-izgara { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 6px; }
+  .besin-izgara div { background: var(--kart); border: 1px solid var(--cizgi); border-radius: 10px; padding: 6px 8px; text-align: center; }
+  .besin-izgara small { display: block; color: var(--soluk); font-size: 12px; }
+  .besin-izgara b { font-size: 15px; }
+  .besin-not { margin: 10px 0 0; padding: 8px 10px; border-radius: 8px; background: var(--az-zemin); color: var(--az-yazi); font-size: 12.5px; }
   .grup-baslik { font-weight: bold; font-size: 13px; margin: 10px 0 2px; color: var(--soluk); }
   .yapilis { margin: 10px 0 0; padding-left: 20px; line-height: 1.6; }
   .uyari { color: var(--turuncu); font-size: 13px; margin-top: 8px; }
@@ -165,6 +188,27 @@
   .kullanici-menu.acik { display: block; }
   .kullanici-menu .eposta { color: var(--soluk); font-size: 13px; margin: 2px 0 12px; word-break: break-all; }
 
+  /* ---------- YAZI BOYUTU (görme kolaylığı) ---------- */
+  .yazi-btn { background: rgba(255,255,255,.2); border: none; color: white; font-size: 18px; font-weight: 700; border-radius: 10px;
+    padding: 8px 11px; cursor: pointer; font-family: Georgia, "Times New Roman", serif; line-height: 1.2; }
+  .yazi-btn small { font-size: 13px; }
+  .yazi-menu { position: absolute; right: 0; top: 52px; background: var(--kart); color: var(--yazi); border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25); padding: 12px; width: 230px; display: none; z-index: 31; }
+  .yazi-menu.acik { display: block; }
+  .yazi-menu b { display: block; font-size: 15px; margin: 2px 4px 8px; }
+  .yazi-menu button { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: var(--kutu);
+    border: 2px solid var(--cizgi); color: var(--yazi); border-radius: 10px; padding: 8px 10px; margin-bottom: 6px; cursor: pointer; font-size: 15px; }
+  .yazi-menu button span { font-family: Georgia, "Times New Roman", serif; font-weight: 700; width: 30px; text-align: center; }
+  .yazi-menu button.aktif { border-color: var(--ana); background: var(--ana); color: #fff; }
+  /* Seçilen boyut: başlık dışındaki her şey büyür (başlık telefonda taşmasın diye sabit kalır) */
+  html { --yz: 1; }
+  html.yazi-buyuk body > :not(header):not(script) { zoom: var(--yz); }
+  html.yazi-buyuk .pencere { max-height: calc(88vh / var(--yz)) !important; overflow-y: auto !important; }
+  html.yazi-buyuk #menuPaneli { max-height: calc(55vh / var(--yz)); }
+  html.yazi-buyuk #yazimOneri { width: min(calc(92vw / var(--yz)), 420px); }
+  html.yazi-buyuk body { overflow-x: hidden; }
+  @media (max-width: 600px) { .yazi-btn { padding: 7px 9px; } }
+
   /* ---------- ANA SAYFA (TANITIM) ---------- */
   .tanitim { max-width: 980px; margin: 0 auto; padding: 10px 16px 60px; }
   .kahraman { display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; align-items: center; margin: 20px 0 40px; }
@@ -179,6 +223,24 @@
   .ozellik .ikon { font-size: 34px; }
   .ozellik h3 { margin: 10px 0 6px; }
   .ozellik p { margin: 0; color: var(--soluk); font-size: 14px; line-height: 1.5; }
+  .oz-bolum-baslik { font-size: 24px; margin: 10px 0 18px; text-align: center; }
+  .oz-bolum-baslik span { color: var(--ana); }
+  .oz-cizim svg { display: block; width: 100%; height: 100%; }
+  .oz-sekme { display: grid; grid-template-columns: 1fr 1.1fr; gap: 22px; align-items: center; padding: 22px; border-radius: 22px; margin: 0 0 22px; }
+  .oz-notlar { display: flex; flex-direction: column; gap: 10px; }
+  .oz-not { display: flex; gap: 12px; align-items: flex-start; text-align: left; width: 100%; background: var(--kutu); color: var(--yazi);
+    border: 2px solid var(--cizgi); border-radius: 14px; padding: 12px 14px; cursor: pointer; font-family: inherit; transition: border-color .2s, box-shadow .2s; }
+  .oz-not b { display: block; font-size: 16px; margin-bottom: 3px; }
+  .oz-not b i { font-style: normal; color: var(--ana); }
+  .oz-not small { display: block; color: var(--soluk); font-size: 13.5px; line-height: 1.45; }
+  .oz-no { flex: 0 0 30px; height: 30px; border-radius: 50%; background: var(--cizgi); color: var(--yazi); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .oz-not.aktif { border-color: var(--ana); box-shadow: 0 6px 18px rgba(108,92,231,.18); }
+  .oz-not.aktif .oz-no { background: var(--ana); color: #fff; }
+  .oz-buyuk { border-radius: 18px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.15); }
+  .oz-res { display: none; } .oz-res.aktif { display: block; animation: ozBelir .35s ease; }
+  .oz-res svg { height: auto; }
+  @keyframes ozBelir { from { opacity: 0; } to { opacity: 1; } }
+  @media (max-width: 760px) { .oz-sekme { grid-template-columns: 1fr; padding: 14px; } .oz-buyuk { order: -1; } }
   @media (max-width: 760px) {
     .kahraman { grid-template-columns: 1fr; }
     .kahraman h2 { font-size: 26px; }
@@ -294,6 +356,82 @@
   #yazimOneri .dugmeler button { flex: 1; padding: 9px; }
 </style>
 </head>
+<style id="altbilgi-stil">
+  /* ====================== ALT BİLGİ (FOOTER) ====================== */
+  .alt-bilgi { background: var(--kart); border-top: 1px solid var(--cizgi); margin-top: 40px;
+    padding: 30px 16px calc(34px + env(safe-area-inset-bottom)); box-shadow: 0 -2px 12px rgba(0,0,0,.05); }
+  .alt-ic { max-width: 760px; margin: 0 auto; }
+  .alt-marka { display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 6px; }
+  .alt-marka img { width: 34px; height: 34px; border-radius: 9px; }
+  .alt-marka b { font-size: 18px; }
+  .alt-slogan { text-align: center; color: var(--soluk); font-size: 13px; margin: 0 0 22px; }
+  .alt-dugmeler { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 22px; }
+  .alt-dugme { display: inline-flex; align-items: center; gap: 9px; padding: 12px 18px; border-radius: 12px;
+    border: none; cursor: pointer; font-size: 15px; font-family: inherit; font-weight: 600; text-decoration: none;
+    color: #fff; transition: transform .12s, filter .12s; line-height: 1.2; }
+  .alt-dugme:hover { transform: translateY(-2px); filter: brightness(1.05); }
+  .alt-dugme svg { width: 22px; height: 22px; flex: 0 0 auto; }
+  .alt-dugme.wp { background: #25d366; }
+  .alt-dugme.sss { background: linear-gradient(135deg, #e17055, #f0a05c); }
+  .alt-dugme.giz { background: var(--ana); }
+  .alt-dugme.sil { background: #e4e7ec; color: var(--yazi); }
+  body.koyu .alt-dugme.sil { background: #2b2f36; color: var(--yazi); }
+  /* Google Play rozeti */
+  .play-rozet { display: inline-flex; align-items: center; gap: 11px; background: #000; color: #fff;
+    border: 1px solid #555; border-radius: 12px; padding: 9px 20px 9px 16px; cursor: pointer; font-family: inherit; }
+  .play-rozet svg { width: 26px; height: 26px; }
+  .play-rozet .pr-ust { font-size: 10px; letter-spacing: .5px; text-transform: uppercase; opacity: .9; display: block; line-height: 1.1; }
+  .play-rozet .pr-alt { font-size: 18px; font-weight: 600; display: block; line-height: 1.15; }
+  .play-rozet .pr-yakinda { background: var(--yesil); color: #fff; font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 20px; margin-left: 4px; }
+  .alt-rozetler { display: flex; justify-content: center; margin-bottom: 20px; }
+  .alt-alt { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; align-items: center;
+    border-top: 1px solid var(--cizgi); padding-top: 18px; }
+  .alt-alt a, .alt-alt button.alt-link { color: var(--soluk); font-size: 13px; text-decoration: none;
+    background: none; border: none; cursor: pointer; font-family: inherit; padding: 4px; }
+  .alt-alt a:hover, .alt-alt button.alt-link:hover { color: var(--ana); }
+  .alt-telif { text-align: center; color: var(--soluk); font-size: 12px; margin: 16px 0 0; }
+  /* Yukarı çık oku (yüzen) */
+  #yukariOk { position: fixed; left: 18px; bottom: 18px; width: 50px; height: 50px; border-radius: 14px;
+    border: none; background: var(--ana); color: #fff; font-size: 24px; cursor: pointer; display: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,.28); z-index: 40; align-items: center; justify-content: center;
+    transition: transform .12s; }
+  #yukariOk:hover { transform: translateY(-3px); }
+  #yukariOk.gorun { display: flex; }
+  body.menu-acik #yukariOk { bottom: 110px; }
+  /* ====================== SSS SAYFASI ====================== */
+  #sss { max-width: 760px; }
+  .sss-ust { text-align: center; margin-bottom: 20px; }
+  .sss-ust h2 { margin: 0 0 6px; }
+  .sss-ust .balon { font-size: 44px; line-height: 1; margin-bottom: 8px; }
+  .sss-geri { display: inline-flex; align-items: center; gap: 6px; background: var(--kart); color: var(--ana);
+    border: 2px solid var(--cizgi); border-radius: 10px; padding: 9px 16px; cursor: pointer; font-size: 15px;
+    font-family: inherit; margin-bottom: 18px; font-weight: 600; }
+  .sss-geri:hover { border-color: var(--ana); }
+  .sss-oge { background: var(--kart); border-radius: 14px; margin-bottom: 11px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .sss-soru { width: 100%; text-align: left; background: none; border: none; cursor: pointer; font-family: inherit;
+    padding: 16px 16px; font-size: 16px; font-weight: 600; color: var(--yazi);
+    display: flex; align-items: flex-start; gap: 11px; line-height: 1.4; }
+  .sss-soru .sss-simge { font-size: 22px; flex: 0 0 auto; }
+  .sss-soru .sss-metin { flex: 1; }
+  .sss-soru .sss-ok { flex: 0 0 auto; color: var(--soluk); font-size: 15px; transition: transform .2s; margin-top: 3px; }
+  .sss-oge.acik .sss-soru .sss-ok { transform: rotate(180deg); }
+  .sss-cevap { max-height: 0; overflow: hidden; transition: max-height .28s ease; }
+  .sss-oge.acik .sss-cevap { max-height: 1500px; }
+  .sss-cevap-ic { padding: 0 16px 16px 50px; color: var(--yazi); font-size: 15px;
+    line-height: 1.6; }
+  .sss-cevap-ic b { color: var(--ana); }
+  .sss-grup { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+    color: var(--soluk); margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+  .sss-grup::before { content: ""; height: 1px; background: var(--cizgi); flex: 1; }
+  .sss-grup::after { content: ""; height: 1px; background: var(--cizgi); flex: 1; }
+  @media (max-width: 480px) {
+    .alt-dugme, .play-rozet { font-size: 14px; }
+    .alt-dugmeler { gap: 9px; }
+  }
+</style>
+
 <body>
   <header>
     <div>
@@ -301,6 +439,8 @@
       <p>Mutfağındakini bil, ne pişireceğini bul, eksikleri listele.</p>
     </div>
     <div class="sag-ust">
+      <button class="yazi-btn" id="yaziBtn" title="Yazı boyutu" aria-label="Yazı boyutunu değiştir"><small>A</small>A</button>
+      <div class="yazi-menu" id="yaziMenu"></div>
       <button class="tema-btn" onclick="temaDegistir()" title="Koyu / açık tema">🌙</button>
       <button class="kullanici-btn" id="kullaniciBtn"></button>
       <div class="kullanici-menu" id="kullaniciMenu"></div>
@@ -479,13 +619,205 @@
       <div id="sktKartiAna" style="max-width:1100px;margin:0 auto;padding:0 16px"></div>
       <div id="planKartiAna" style="max-width:1100px;margin:18px auto 0;padding:0 16px"></div>
 
-      <div class="ozellikler">
-        <div class="ozellik"><div class="ikon">✍️</div><h3>Yaz ya da söyle</h3>
-          <p>Form doldurmak yok. "Yarım kilo kıyma, az süt, gevrek" yaz ya da sesle söyle, biz anlarız.</p></div>
-        <div class="ozellik"><div class="ikon">🍲</div><h3>Ne pişireceğini bul</h3>
-          <p>Evindeki malzemelerle hemen yapabileceğin yemekleri öneririz. Eksik varsa söyleriz.</p></div>
-        <div class="ozellik"><div class="ikon">🛒</div><h3>Alışverişi kolaylaştır</h3>
-          <p>Eksikler tek tuşla listede. Aldıkların otomatik olarak dolabına geçer, listeyi paylaşabilirsin.</p></div>
+      <!-- Özellikler: kendi çizdiğimiz 4 illüstrasyonla -->
+      <div class="ozellikler-yeni oz-c">
+      <h3 class="oz-bolum-baslik">Mutfak Asistanı <span>neler yapar?</span></h3>
+        <div class="kart oz-sekme">
+          <div class="oz-notlar">
+            <button class="oz-not aktif" data-oz="0"><span class="oz-no">1</span><span><b>Yaz ya da söyle, <i>biz anlarız.</i></b><small>Form doldurmak yok. "Yarım kilo kıyma, az süt, gevrek" yaz ya da sesle söyle, biz anlarız.</small></span></button>
+            <button class="oz-not" data-oz="1"><span class="oz-no">2</span><span><b>Ne pişireceğini bul, <i>eksiği biz söyleyelim.</i></b><small>Evindeki malzemelerle hemen yapabileceğin yemekleri öneririz. Eksik varsa söyleriz.</small></span></button>
+            <button class="oz-not" data-oz="2"><span class="oz-no">3</span><span><b>Alışverişi kolaylaştır, <i>tek tuşla listede.</i></b><small>Eksikler tek tuşla listede. Aldıkların otomatik olarak dolabına geçer, listeyi paylaşabilirsin.</small></span></button>
+            <button class="oz-not" data-oz="3"><span class="oz-no">4</span><span><b>Haftalık, aylık menün <i>hazır olsun.</i></b><small>Evindekilere göre haftalık ya da aylık yemek planını biz hazırlayalım. Her gün ne pişireceğin, ne alacağın belli olsun.</small></span></button>
+          </div>
+          <div class="oz-cizim oz-buyuk">
+            <div class="oz-res aktif" data-oz="0">
+              <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Malzemelerini yazan ya da söyleyen biri">
+                <rect width="520" height="360" fill="#ece8ff"/>
+                <rect y="300" width="520" height="60" fill="#d9d1ff"/>
+                <g fill="#fff" opacity=".7"><circle cx="40" cy="40" r="3"/><circle cx="210" cy="30" r="2.5"/><circle cx="490" cy="210" r="3"/></g>
+                <!-- konuşma balonu -->
+                <rect x="222" y="38" width="270" height="140" rx="24" fill="#fff"/>
+                <path d="M250 172 l-30 34 l58 -30z" fill="#fff"/>
+                <text x="246" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">"Yarım kilo kıyma,</text>
+                <text x="246" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">az süt, gevrek"</text>
+                <!-- küçük ürün çizimleri -->
+                <ellipse cx="270" cy="146" rx="20" ry="13" fill="#ff8a8a"/><ellipse cx="270" cy="144" rx="12" ry="6" fill="#ffc0c0"/>
+                <rect x="312" y="124" width="26" height="38" rx="4" fill="#dfe6e9"/><path d="M312 128 l13 -12 l13 12z" fill="#74b9ff"/><rect x="316" y="138" width="18" height="10" rx="2" fill="#74b9ff"/>
+                <circle cx="380" cy="144" r="16" fill="none" stroke="#d58a3a" stroke-width="10"/>
+                <g fill="#fff3d6"><circle cx="372" cy="134" r="1.6"/><circle cx="388" cy="136" r="1.6"/><circle cx="392" cy="150" r="1.6"/><circle cx="370" cy="154" r="1.6"/><circle cx="380" cy="128" r="1.6"/></g>
+                <path d="M424 146 l10 10 l20 -22" stroke="#00b894" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- mikrofon ve ses dalgaları -->
+                <circle cx="400" cy="250" r="38" fill="#6c5ce7"/>
+                <rect x="390" y="226" width="20" height="32" rx="10" fill="#fff"/>
+                <path d="M382 250 q0 18 18 18 q18 0 18 -18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <line x1="400" y1="268" x2="400" y2="276" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                <path d="M452 228 q12 22 0 44 M466 216 q20 34 0 68" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" opacity=".55"/>
+                <path d="M348 228 q-12 22 0 44 M334 216 q-20 34 0 68" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" opacity=".55"/>
+                <!-- kişi -->
+                <rect x="62" y="214" width="96" height="140" rx="38" fill="#00b894"/>
+                <circle cx="110" cy="176" r="38" fill="#f1c27d"/>
+                <path d="M72 172 q-2 -50 38 -50 q40 0 38 50 q-8 -30 -38 -30 q-30 0 -38 30z" fill="#4e342e"/>
+                <circle cx="98" cy="178" r="3.5" fill="#333"/><circle cx="122" cy="178" r="3.5" fill="#333"/>
+                <path d="M98 194 q12 11 24 0" stroke="#333" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <circle cx="88" cy="190" r="6" fill="#ff7675" opacity=".35"/><circle cx="132" cy="190" r="6" fill="#ff7675" opacity=".35"/>
+                <!-- telefon tutan kol -->
+                <path d="M146 262 q30 -6 44 -34" stroke="#00b894" stroke-width="20" fill="none" stroke-linecap="round"/>
+                <rect x="172" y="186" width="52" height="88" rx="10" fill="#2d3436" transform="rotate(10 198 230)"/>
+                <rect x="178" y="194" width="40" height="68" rx="5" fill="#fff" transform="rotate(10 198 230)"/>
+                <g transform="rotate(10 198 230)" fill="#a29bfe"><rect x="183" y="202" width="28" height="5" rx="2"/><rect x="183" y="213" width="20" height="5" rx="2"/><rect x="183" y="224" width="24" height="5" rx="2"/></g>
+                <circle cx="190" cy="268" r="11" fill="#f1c27d"/>
+              </svg>
+            </div>
+            <div class="oz-res" data-oz="1">
+              <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dolaptaki malzemelerden yemek önerisi">
+                <rect width="520" height="360" fill="#e3f7ef"/>
+                <rect y="310" width="520" height="50" fill="#c6ecdc"/>
+                <!-- buzdolabı (açık) -->
+                <path d="M24 70 l34 -10 v250 l-34 -10z" fill="#b2bec3"/>
+                <rect x="58" y="56" width="150" height="256" rx="14" fill="#dfe6e9"/>
+                <rect x="70" y="70" width="126" height="228" rx="8" fill="#fff"/>
+                <g stroke="#dfe6e9" stroke-width="4"><line x1="70" y1="142" x2="196" y2="142"/><line x1="70" y1="218" x2="196" y2="218"/></g>
+                <g>
+                  <ellipse cx="92" cy="128" rx="9" ry="12" fill="#fff6e0" stroke="#f0dcb0" stroke-width="2"/><ellipse cx="112" cy="128" rx="9" ry="12" fill="#fff6e0" stroke="#f0dcb0" stroke-width="2"/>
+                  <circle cx="146" cy="128" r="13" fill="#e17055"/><path d="M146 115 l-4 -6 M146 115 l5 -5" stroke="#43a047" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="176" cy="130" r="11" fill="#e17055"/>
+                  <rect x="84" y="164" width="28" height="50" rx="4" fill="#74b9ff"/><path d="M84 168 l14 -14 l14 14z" fill="#0984e3"/>
+                  <path d="M128 212 l40 0 l-20 -26z" fill="#fdcb6e"/><circle cx="146" cy="204" r="3" fill="#f6b93b"/>
+                  <path d="M178 214 l10 -40" stroke="#e67e22" stroke-width="9" stroke-linecap="round"/><path d="M188 174 l-2 -10 M188 174 l6 -8" stroke="#43a047" stroke-width="3" stroke-linecap="round"/>
+                  <ellipse cx="104" cy="282" rx="26" ry="12" fill="#81c784"/><ellipse cx="160" cy="284" rx="22" ry="10" fill="#a5d6a7"/>
+                </g>
+                <!-- kesik ok -->
+                <path d="M220 150 q70 -70 140 -10" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-dasharray="10 9" stroke-linecap="round"/>
+                <path d="M352 126 l14 18 l-22 4" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- tencere -->
+                <path d="M318 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+                <path d="M348 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+                <path d="M378 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+                <rect x="290" y="214" width="116" height="10" rx="5" fill="#5641d8"/>
+                <rect x="296" y="222" width="104" height="70" rx="16" fill="#6c5ce7"/>
+                <rect x="276" y="236" width="22" height="10" rx="5" fill="#5641d8"/><rect x="398" y="236" width="22" height="10" rx="5" fill="#5641d8"/>
+                <circle cx="334" cy="254" r="3.5" fill="#fff"/><circle cx="362" cy="254" r="3.5" fill="#fff"/>
+                <path d="M336 266 q12 10 24 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <rect x="280" y="292" width="136" height="12" rx="6" fill="#636e72"/>
+                <!-- öneri kartları -->
+                <g>
+                  <rect x="404" y="40" width="102" height="54" rx="12" fill="#fff"/>
+                  <circle cx="426" cy="67" r="12" fill="#00b894"/><path d="M420 67 l5 5 l8 -9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <text x="444" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#00875a">Hazır</text>
+                  <rect x="420" y="108" width="92" height="50" rx="12" fill="#fff"/>
+                  <circle cx="440" cy="133" r="11" fill="#e17055"/><text x="440" y="138" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">1</text>
+                  <text x="456" y="138" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#c0392b">eksik</text>
+                </g>
+                <path d="M250 60 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4 l10 -4z" fill="#fdcb6e"/>
+                <path d="M470 220 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3z" fill="#fdcb6e"/>
+              </svg>
+            </div>
+            <div class="oz-res" data-oz="2">
+              <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alışveriş listesi ve dolu sepet">
+                <rect width="520" height="360" fill="#ffefdf"/>
+                <rect y="306" width="520" height="54" fill="#f6d9bd"/>
+                <!-- telefon: alışveriş listesi -->
+                <rect x="50" y="36" width="160" height="270" rx="22" fill="#2d3436"/>
+                <rect x="60" y="50" width="140" height="244" rx="12" fill="#fff"/>
+                <rect x="60" y="50" width="140" height="40" rx="12" fill="#6c5ce7"/><rect x="60" y="76" width="140" height="14" fill="#6c5ce7"/>
+                <text x="130" y="76" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#fff">Eksikler</text>
+                <g>
+                  <rect x="74" y="106" width="20" height="20" rx="5" fill="#00b894"/><path d="M78 116 l4 4 l8 -9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <rect x="102" y="111" width="76" height="9" rx="4" fill="#dfe6e9"/>
+                  <rect x="74" y="142" width="20" height="20" rx="5" fill="#00b894"/><path d="M78 152 l4 4 l8 -9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <rect x="102" y="147" width="60" height="9" rx="4" fill="#dfe6e9"/>
+                  <rect x="74" y="178" width="20" height="20" rx="5" fill="none" stroke="#b2bec3" stroke-width="3"/>
+                  <rect x="102" y="183" width="70" height="9" rx="4" fill="#b2bec3"/>
+                  <rect x="74" y="214" width="20" height="20" rx="5" fill="none" stroke="#b2bec3" stroke-width="3"/>
+                  <rect x="102" y="219" width="54" height="9" rx="4" fill="#b2bec3"/>
+                </g>
+                <rect x="78" y="252" width="104" height="28" rx="14" fill="#6c5ce7"/>
+                <text x="130" y="271" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">+ Tek tuşla</text>
+                <!-- paylaş simgesi -->
+                <circle cx="214" cy="46" r="24" fill="#00b894"/>
+                <g fill="#fff"><circle cx="205" cy="46" r="5"/><circle cx="222" cy="37" r="5"/><circle cx="222" cy="55" r="5"/></g>
+                <path d="M205 46 l17 -9 M205 46 l17 9" stroke="#fff" stroke-width="3"/>
+                <!-- sepet -->
+                <g>
+                  <path d="M268 156 h24 l22 92 h120 l20 -70 h-138" fill="none" stroke="#5641d8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M300 178 h154 l-20 70 h-120z" fill="#6c5ce7"/>
+                  <g stroke="#a29bfe" stroke-width="4"><line x1="344" y1="186" x2="350" y2="240"/><line x1="384" y1="186" x2="384" y2="240"/><line x1="424" y1="186" x2="418" y2="240"/></g>
+                  <circle cx="334" cy="276" r="14" fill="#2d3436"/><circle cx="420" cy="276" r="14" fill="#2d3436"/>
+                  <circle cx="334" cy="276" r="5" fill="#b2bec3"/><circle cx="420" cy="276" r="5" fill="#b2bec3"/>
+                  <!-- içindekiler -->
+                  <rect x="318" y="108" width="22" height="72" rx="10" fill="#e1a95f" transform="rotate(-18 329 144)"/>
+                  <rect x="350" y="122" width="34" height="58" rx="5" fill="#dfe6e9"/><path d="M350 126 l17 -16 l17 16z" fill="#74b9ff"/><rect x="356" y="140" width="22" height="14" rx="2" fill="#74b9ff"/>
+                  <circle cx="408" cy="164" r="18" fill="#d63031"/><path d="M408 146 q6 -10 14 -8" stroke="#43a047" stroke-width="4" fill="none" stroke-linecap="round"/>
+                  <ellipse cx="438" cy="158" rx="12" ry="26" fill="#55efc4" transform="rotate(20 438 158)"/>
+                </g>
+                <!-- dolaba geçiş oku -->
+                <rect x="452" y="30" width="48" height="80" rx="8" fill="#dfe6e9"/><line x1="452" y1="58" x2="500" y2="58" stroke="#b2bec3" stroke-width="3"/>
+                <rect x="490" y="40" width="4" height="12" rx="2" fill="#b2bec3"/><rect x="490" y="66" width="4" height="16" rx="2" fill="#b2bec3"/>
+                <path d="M396 104 q14 -50 48 -46" stroke="#e17055" stroke-width="5" fill="none" stroke-dasharray="9 8" stroke-linecap="round"/>
+                <path d="M434 48 l12 10 l-12 10" stroke="#e17055" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="368" y="40" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#e17055">dolabına</text>
+                <path d="M258 70 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
+              </svg>
+            </div>
+            <div class="oz-res" data-oz="3">
+              <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haftalık yemek planı takvimi">
+                <rect width="520" height="360" fill="#fff6d6"/>
+                <rect y="312" width="520" height="48" fill="#f7e5a6"/>
+                <!-- takvim -->
+                <rect x="166" y="44" width="330" height="252" rx="18" fill="#fff"/>
+                <rect x="166" y="44" width="330" height="56" rx="18" fill="#6c5ce7"/><rect x="166" y="80" width="330" height="20" fill="#6c5ce7"/>
+                <g fill="#2d3436"><rect x="214" y="32" width="10" height="26" rx="5"/><rect x="438" y="32" width="10" height="26" rx="5"/></g>
+                <text x="331" y="80" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#fff">Haftalık Menü</text>
+                <g font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#7f8c8d" text-anchor="middle">
+                  <text x="192" y="120">Pzt</text><text x="238" y="120">Sal</text><text x="284" y="120">Çar</text><text x="330" y="120">Per</text><text x="376" y="120">Cum</text><text x="422" y="120">Cmt</text><text x="468" y="120">Paz</text>
+                </g>
+                <g fill="#f4f1ff">
+                  <rect x="174" y="128" width="36" height="46" rx="8"/><rect x="220" y="128" width="36" height="46" rx="8"/><rect x="266" y="128" width="36" height="46" rx="8"/><rect x="312" y="128" width="36" height="46" rx="8"/><rect x="358" y="128" width="36" height="46" rx="8"/><rect x="404" y="128" width="36" height="46" rx="8"/><rect x="450" y="128" width="36" height="46" rx="8"/>
+                  <rect x="174" y="182" width="36" height="46" rx="8"/><rect x="220" y="182" width="36" height="46" rx="8"/><rect x="266" y="182" width="36" height="46" rx="8"/><rect x="312" y="182" width="36" height="46" rx="8"/><rect x="358" y="182" width="36" height="46" rx="8"/><rect x="404" y="182" width="36" height="46" rx="8"/><rect x="450" y="182" width="36" height="46" rx="8"/>
+                  <rect x="174" y="236" width="36" height="46" rx="8"/><rect x="220" y="236" width="36" height="46" rx="8"/><rect x="266" y="236" width="36" height="46" rx="8"/><rect x="312" y="236" width="36" height="46" rx="8"/><rect x="358" y="236" width="36" height="46" rx="8"/><rect x="404" y="236" width="36" height="46" rx="8"/><rect x="450" y="236" width="36" height="46" rx="8"/>
+                </g>
+                <rect x="312" y="128" width="36" height="46" rx="8" fill="none" stroke="#6c5ce7" stroke-width="3"/>
+                <!-- küçük yemek kaseleri -->
+                <g>
+                  <path d="M182 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#e17055"/><ellipse cx="192" cy="152" rx="10" ry="3" fill="#fab1a0"/>
+                  <path d="M228 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#00b894"/><ellipse cx="238" cy="152" rx="10" ry="3" fill="#55efc4"/>
+                  <path d="M274 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#fdcb6e"/><ellipse cx="284" cy="152" rx="10" ry="3" fill="#ffeaa7"/>
+                  <path d="M320 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#e17055"/><ellipse cx="330" cy="152" rx="10" ry="3" fill="#fab1a0"/>
+                  <path d="M366 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#0984e3"/><ellipse cx="376" cy="152" rx="10" ry="3" fill="#74b9ff"/>
+                  <path d="M412 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#00b894"/><ellipse cx="422" cy="152" rx="10" ry="3" fill="#55efc4"/>
+                  <path d="M458 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#fd79a8"/><ellipse cx="468" cy="152" rx="10" ry="3" fill="#fab1c8"/>
+                  <path d="M182 206 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#fdcb6e"/><ellipse cx="192" cy="206" rx="10" ry="3" fill="#ffeaa7"/>
+                  <path d="M228 206 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#e17055"/><ellipse cx="238" cy="206" rx="10" ry="3" fill="#fab1a0"/>
+                  <path d="M274 206 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#0984e3"/><ellipse cx="284" cy="206" rx="10" ry="3" fill="#74b9ff"/>
+                  <path d="M320 206 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#00b894"/><ellipse cx="330" cy="206" rx="10" ry="3" fill="#55efc4"/>
+                  <path d="M366 206 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#fd79a8"/><ellipse cx="376" cy="206" rx="10" ry="3" fill="#fab1c8"/>
+                  <path d="M412 206 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#fdcb6e"/><ellipse cx="422" cy="206" rx="10" ry="3" fill="#ffeaa7"/>
+                  <path d="M458 206 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#e17055"/><ellipse cx="468" cy="206" rx="10" ry="3" fill="#fab1a0"/>
+                  <path d="M182 260 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#0984e3"/><ellipse cx="192" cy="260" rx="10" ry="3" fill="#74b9ff"/>
+                  <path d="M228 260 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#fdcb6e"/><ellipse cx="238" cy="260" rx="10" ry="3" fill="#ffeaa7"/>
+                  <path d="M274 260 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#00b894"/><ellipse cx="284" cy="260" rx="10" ry="3" fill="#55efc4"/>
+                </g>
+                <!-- geçmiş günlere tik -->
+                <g stroke="#00b894" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M196 136 l4 4 l7 -7"/><path d="M242 136 l4 4 l7 -7"/><path d="M288 136 l4 4 l7 -7"/>
+                </g>
+                <!-- aşçı şapkalı kişi, takvimi gösteriyor -->
+                <rect x="36" y="206" width="90" height="134" rx="36" fill="#e84393"/>
+                <path d="M46 250 h70 v50 q-35 16 -70 0z" fill="#fff" opacity=".9"/>
+                <circle cx="81" cy="172" r="34" fill="#e0ac69"/>
+                <path d="M48 160 q33 -14 66 0 v-10 h-66z" fill="#fff"/>
+                <circle cx="58" cy="130" r="17" fill="#fff"/><circle cx="81" cy="120" r="20" fill="#fff"/><circle cx="104" cy="130" r="17" fill="#fff"/>
+                <rect x="50" y="130" width="62" height="24" fill="#fff"/>
+                <circle cx="70" cy="174" r="3.5" fill="#333"/><circle cx="92" cy="174" r="3.5" fill="#333"/>
+                <path d="M70 188 q11 10 22 0" stroke="#333" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <circle cx="60" cy="184" r="6" fill="#ff7675" opacity=".35"/><circle cx="102" cy="184" r="6" fill="#ff7675" opacity=".35"/>
+                <path d="M118 236 q30 -10 46 -40" stroke="#e84393" stroke-width="18" fill="none" stroke-linecap="round"/>
+                <circle cx="166" cy="192" r="10" fill="#e0ac69"/>
+                <path d="M140 74 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Mutfak Asistanı ailesine katıl -->
@@ -619,6 +951,133 @@
       </div>
     </div>
   </section>
+
+
+  <!-- ===================== SSS (SIK SORULAN SORULAR) ===================== -->
+  <section id="sss" class="bolum">
+    <button class="sss-geri" onclick="bolumAc('anasayfa')">← Ana sayfaya dön</button>
+    <div class="sss-ust">
+      <div class="balon">🤔💬</div>
+      <h2 class="buyuk">Sık Sorulan Sorular</h2>
+      <p class="aciklama">Merak ettiklerin, kısa ve dürüst cevaplarla. Bir soruya dokun, açılsın. 👇</p>
+    </div>
+
+    <div class="sss-grup">🔒 Gizlilik & Verilerin</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="1"><span class="sss-simge">📱</span><span class="sss-metin">Yazdığım her şey nerede saklanıyor?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Dolabın, listelerin, notların ve tariflerin <b>sadece bu telefonun içinde</b> saklanır; bizim bir sunucumuza gönderilmez. Yalnızca Google ya da e-posta bağlantısıyla giriş yaparsan, sadece <b>e-postan ve adın</b> giriş için Google Firebase'e gider; başka hiçbir şey gitmez.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="2"><span class="sss-simge">✈️</span><span class="sss-metin">İnternet yokken de çalışır mı?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Evet. Uygulama bir kez açıldıktan sonra dosyalarını telefonuna kaydeder, böylece <b>uçak modunda ya da internetsiz</b> yerde bile açılıp çalışır. İnternet sadece güncelleme geldiğinde kullanılır.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="3"><span class="sss-simge">🧹</span><span class="sss-metin">Verilerimi nasıl silerim?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">En alttaki <b>"Verilerimi sil"</b> düğmesine ya da sağ üstteki adına dokunup <b>"🧹 Verilerimi sil"</b>e basabilirsin. Dilersen hesabını tamamen de silebilirsin. Silme işlemi hemen ve kalıcıdır. Ayrıntılar <b>Gizlilik Politikası</b> sayfasında.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="4"><span class="sss-simge">📢</span><span class="sss-metin">Reklam ya da takip var mı?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Hayır. Uygulamada reklam yok, seni izleyen takip kodu yok, verilerini satmıyoruz. Amacımız sadece mutfakta işini kolaylaştırmak. 🙂</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="5"><span class="sss-simge">🔑</span><span class="sss-metin">Telefonumu başkası açarsa bilgilerimi görür mü?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Veriler telefonunda durduğu için, telefonunun kilidini açabilen biri uygulamayı da açabilir. Bu yüzden telefonunda <b>ekran kilidi</b> (parmak izi, yüz ya da şifre) kullanman en iyi korumadır.</div></div></div>
+
+    <div class="sss-grup">🍳 Mutfak İpuçları</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="6"><span class="sss-simge">🥔</span><span class="sss-metin">Patates nasıl daha lezzetli olur?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Fırında pişen patates, dışı çıtır içi yumuşak olur. Dilimleri eşit büyüklükte kes, az zeytinyağı ve tuzla karıştır, 200°C fırında ara sıra çevirerek pişir. Haşlamaya göre genelde daha lezzetli bir sonuç verir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="7"><span class="sss-simge">🍗</span><span class="sss-metin">Tavuk göğsü neden kuru oluyor?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Çünkü fazla pişince suyunu kaybeder. Çok yüksek ateşte uzun süre tutma; orta ateşte pişir ve içi pişer pişmez ocaktan al. Pişirmeden önce birkaç saat tuzlu suda ya da yoğurtta bekletmek etin daha sulu kalmasına yardımcı olur.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="8"><span class="sss-simge">🥦</span><span class="sss-metin">Sebzeler en iyi nasıl pişer?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Buharda ya da az suyla, kısa sürede pişirmek sebzelerin rengini, dokusunu ve besin değerini daha iyi korur. Brokoli, karnabahar ve havuç buharda hafif diri kalacak şekilde pişince hem daha lezzetli hem daha canlı görünür.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="9"><span class="sss-simge">🍝</span><span class="sss-metin">Makarna nasıl pişirilir?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Bol, kaynar ve tuzlu suda pişir. Paketteki süreye yakın, hafif diri ("al dente") kalınca süz. Suyunu tamamen dökmeden önce bir kepçe pişme suyunu ayır; sosla karıştırınca sosu bağlar ve daha lezzetli olur.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="10"><span class="sss-simge">🐟</span><span class="sss-metin">Balığı nasıl pişireyim?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Fırın ya da ızgara, balığın lezzetini ve dokusunu güzel ortaya çıkarır. Çok çevirme; eti kolayca çatalla ayrılıyorsa pişmiştir. Üzerine limon ve taze otlar lezzeti artırır. Taze balığın kokusu hafif ve deniz gibidir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="11"><span class="sss-simge">🍚</span><span class="sss-metin">Pilav neden lapa oluyor?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Genelde fazla su ya da fazla karıştırmaktan. Pirinci önce yıkayıp süz, doğru su ölçüsüyle (çoğu pirinçte 1 ölçü pirince ~1,5 ölçü su) kıs kıs pişir ve pişince birkaç dakika kapağı kapalı dinlendir. Karıştırmayı en aza indir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="12"><span class="sss-simge">🫘</span><span class="sss-metin">Kuru fasulye, nohut çabuk pişsin istiyorum.</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Bir gece önceden bol suda ıslatmak hem pişme süresini kısaltır hem de daha kolay sindirilmelerine yardımcı olur. Islattığın suyu dök, temiz suyla pişir. Düdüklü tencere süreyi iyice kısaltır.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="13"><span class="sss-simge">🥩</span><span class="sss-metin">Et (biftek) nasıl daha lezzetli olur?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Eti buzdolabından çıkarıp oda sıcaklığına yakın beklet, iyice kurula ve <b>çok sıcak</b> tavada kısa süre mühürle; böylece dışı güzel kızarır. Piştikten sonra birkaç dakika dinlendir, suyu ete geri yayılır ve daha sulu olur.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="14"><span class="sss-simge">🍳</span><span class="sss-metin">Yumurtayı kıvamında nasıl pişiririm?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Rafadan için kaynayan suya yumurtayı koyup ~6 dakika, katı için ~9-10 dakika tut, sonra soğuk suya al; kabuğu daha kolay soyulur. Sahanda pişirirken kısık ateş, beyazı lastikleşmeden pişmesini sağlar.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="15"><span class="sss-simge">🧅</span><span class="sss-metin">Soğan doğrarken gözüm yanmasın.</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Soğanı bir süre buzdolabında soğutmak ve <b>keskin</b> bir bıçak kullanmak gözü yakan maddenin yayılmasını azaltır. İyi havalanan bir yerde doğramak da işe yarar. Keskin bıçak ayrıca daha güvenlidir.</div></div></div>
+
+    <div class="sss-grup">🧼 Hijyen & Güvenli Mutfak</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="16"><span class="sss-simge">🧽</span><span class="sss-metin">Mutfak hijyeni neden bu kadar önemli?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Temiz bir mutfak, yemeklerin güvenle ve lezzetli kalmasına yardımcı olur. Yemeğe başlamadan ve çiğ et-tavuk-balığa dokunduktan sonra ellerini sabunla yıka; tezgahı ve bıçakları temiz tut. Küçük alışkanlıklar büyük fark yaratır. ✨</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="17"><span class="sss-simge">🔪</span><span class="sss-metin">Çiğ et ile sebzeyi aynı tahtada doğrayabilir miyim?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">İyisi ayrı tahta kullanmak. Çiğ et, tavuk ve balık için ayrı; sebze, meyve ve ekmek için ayrı doğrama tahtası kullan. Aynı tahtayı kullanacaksan arada sıcak sabunlu suyla iyice yıka. Böylece çiğ gıdadan geçebilecek bakteriler diğer yiyeceklere bulaşmaz.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="18"><span class="sss-simge">🧊</span><span class="sss-metin">Yiyecekleri nasıl saklamalıyım?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Çabuk bozulanları (et, süt, pişmiş yemek) buzdolabında, ağzı kapalı kaplarda sakla. Sıcak yemeği oda sıcaklığına yakın soğutup kaldır. Çiğ eti alt raflara koy ki suyu diğer yiyeceklere damlamasın. Uygulamadaki <b>son kullanma takibi</b> ile neyin önce biteceğini kolayca görebilirsin.</div></div></div>
+
+    <div class="sss-grup">♻️ Tasarruf & İsrafı Önleme</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="19"><span class="sss-simge">🌱</span><span class="sss-metin">İsrafı nasıl azaltırım?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Önce evdekini kullan. Uygulamada dolabını yazınca sana <b>eldekilerle yapabileceğin</b> yemekleri önerir, son kullanma tarihi yaklaşanları hatırlatır. İhtiyacın kadar al, büyük porsiyonları paylaş ya da sakla. Hem bütçene hem doğaya iyi gelir. 💚</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="20"><span class="sss-simge">🥘</span><span class="sss-metin">Artan yemekleri nasıl değerlendiririm?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Artan pilav, et ya da sebzeler ertesi gün yeni bir yemeğe dönüşebilir: sebzeler çorbaya, et sandviçe ya da makarnaya, ekmek bayatlayınca kızartma veya galeta ununa. Uygun olanları kaplara bölüp dondurabilirsin. Atmadan önce bir kez daha düşün; çoğu şey kurtarılabilir. 🙌</div></div></div>
+
+    <p class="aciklama" style="text-align:center;margin-top:24px">Başka sorun mu var? <a href="https://wa.me/905541939113?text=Merhaba%2C%20Mutfak%20Asistan%C4%B1%20hakk%C4%B1nda%20bir%20sorum%20var." target="_blank" rel="noopener" style="color:var(--ana)">WhatsApp'tan bize yaz 💬</a></p>
+  </section>
+
+  <!-- ===================== ALT BİLGİ (FOOTER) ===================== -->
+  <footer class="alt-bilgi">
+    <div class="alt-ic">
+      <div class="alt-marka"><img src="ikonlar/icon-192.png" alt=""><b>Mutfak Asistanı</b></div>
+      <p class="alt-slogan">Mutfağındakini bil, ne pişireceğini bul, eksikleri listele.</p>
+
+      <div class="alt-rozetler">
+        <button class="play-rozet" onclick="playYakinda()" aria-label="Google Play'de yakında">
+          <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00D2FF" d="M47 24C41 28 38 36 38 47v418c0 11 3 19 9 23l245-232z"/><path fill="#00E676" d="M47 24c7-4 16-3 26 3l279 161-60 57z"/><path fill="#FFC400" d="M352 188l73 42c20 12 20 32 0 44l-73 42-60-57z"/><path fill="#FF3D00" d="M47 488c7 4 16 3 26-3l279-161-60-57z"/></svg>
+          <span><span class="pr-ust">Yakında şurada</span><span class="pr-alt">Google Play<span class="pr-yakinda">YAKINDA</span></span></span>
+        </button>
+      </div>
+
+      <div class="alt-dugmeler">
+        <a class="alt-dugme wp" href="https://wa.me/905541939113?text=Merhaba%2C%20Mutfak%20Asistan%C4%B1%20hakk%C4%B1nda%20yaz%C4%B1yorum." target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.3.6 4.4 1.7 6.3L4 29l7.4-1.9c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.4 1.1 1.2-4.3-.3-.4a10 10 0 01-1.6-5.4c0-5.6 4.6-10.2 10.3-10.2S26.3 9.9 26.3 15.5 21.7 25.8 16 25.8zm5.7-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7.1-1.7-.9-2.8-1.5-4-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
+          WhatsApp'tan yaz
+        </a>
+        <button class="alt-dugme sss" onclick="bolumAc('sss')">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm1.6-6.1c-.5.6-1.1.9-1.4 1.3-.2.3-.2.6-.2 1.3h-2c0-1 .1-1.6.5-2.1.4-.5 1-.8 1.3-1.2.3-.4.3-1-.1-1.4-.4-.4-1.2-.4-1.6 0-.3.3-.4.7-.4 1.1h-2c0-1 .4-1.9 1.1-2.5 1.2-1 3-.9 4.1.1 1 .9 1.1 2.5.2 3.6z"/></svg>
+          Sık Sorulan Sorular
+        </button>
+        <a class="alt-dugme giz" href="gizlilik.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5 3.8 9.7 9 11 5.2-1.3 9-6 9-11V5l-9-4zm0 10.9h7c-.5 3.8-3 7.1-7 8.1V12H5V6.3l7-3.1v8.7z"/></svg>
+          Gizlilik Politikası
+        </a>
+        <button class="alt-dugme sil" onclick="silmeAc('veri')">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 7h12l-1 14H7L6 7zm3-3h6l1 2h4v2H2V6h4l1-2zm1 6v8h2v-8h-2zm4 0v8h2v-8h-2z"/></svg>
+          Verilerimi sil
+        </button>
+      </div>
+
+      <div class="alt-alt">
+        <a href="gizlilik.html">🔒 Gizlilik Politikası</a>
+        <button class="alt-link" onclick="silmeAc('veri')">🧹 Verilerimi sil</button>
+        <button class="alt-link" onclick="bolumAc('sss')">❓ SSS</button>
+        <a href="https://wa.me/905541939113" target="_blank" rel="noopener">💬 İletişim</a>
+      </div>
+      <p class="alt-telif">© 2026 Mutfak Asistanı · Sevgiyle hazırlandı 🧑‍🍳</p>
+    </div>
+  </footer>
+
+  <!-- Yukarı çık oku -->
+  <button id="yukariOk" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="En üste çık" title="En üste çık">▲</button>
+
 
   <!-- Menü çubuğu: tarif seçince altta çıkar -->
   <div id="menuCubugu"><div id="menuPaneli"></div><div class="ic">
@@ -870,6 +1329,8 @@
   <script src="anlama.js"></script>
   <script src="tarifler.js"></script>
 <script src="kategoriler.js"></script>
+  <script src="simgeler.js"></script>
+  <script src="besin.js"></script>
   <script>
   // =====================================================================
   //  1) BÖLÜMLER: Ürünlerim sekmesindeki not defterleri
@@ -1527,7 +1988,6 @@
     { ad: "Et Yemekleri", ikon: "🥩", kural: function (t, a, m) { return /(^|[ ,])(et|eti|kuşbaşı|kuzu|dana|biftek|antrikot|ciğer|kavurma|pirzola|incik)([ ,]|$)/.test(m) || /kebab|kebap|tandır/.test(a); } },
     { ad: "Kıymalı Tarifler", ikon: "🍖", kural: function (t, a, m) { return /kıyma/.test(m); } },
     { ad: "Sebze Yemekleri", ikon: "🥬", kural: function (t, a, m) { return (t.kat === "Zeytinyağlı" || t.kat === "Ana Yemek") && !etliMi(m); } },
-    { ad: "Vejetaryen", ikon: "🌱", kural: function (t, a, m) { return t.kat !== "İçecekler" && !etliMi(m); } },
     { ad: "Börek & Hamur İşi", ikon: "🥟", kural: function (t, a, m) { return /börek|böreği|gözleme|poğaça|pişi|mantı|pide|pizza/.test(a); } },
     { ad: "Kurabiye & Kek", ikon: "🍪", kural: function (t, a, m) { return /kurabiye|kek|kraker/.test(a); } },
     { ad: "Limonatalar", ikon: "🍋", kural: function (t, a, m) { return /limonata/.test(a); } },
@@ -1553,12 +2013,63 @@
         if (satir.charAt(0) === "#") gruplar.push({ baslik: satir.slice(1).trim(), malzemeler: [] });
         else gruplar[gruplar.length - 1].malzemeler.push(tarifSatiri(satir));
       });
-      return { no: no, id: t.id || null, ekleyen: t.ekleyen || null, ekleyenEposta: t.ekleyenEposta || null, koleksiyonlar: koleksiyonlariBul(t),
+      return { ham: t, no: no, id: t.id || null, ekleyen: t.ekleyen || null, ekleyenEposta: t.ekleyenEposta || null, koleksiyonlar: koleksiyonlariBul(t),
+        simge: typeof tarifSimgesi === "function" ? tarifSimgesi({ ad: t.ad, kat: ({ "Balık": "Deniz Mahsulleri", "Atıştırmalık": "Aperatifler" })[t.kat] || t.kat, m: t.m }) : "",
         ad: t.ad, kat: ({ "Balık": "Deniz Mahsulleri", "Atıştırmalık": "Aperatifler" })[t.kat] || t.kat, kisi: t.kisi, sure: t.sure, gruplar: gruplar, yapilis: t.y,
         ekipman: (t.e || []).map(function (e) { return { ad: e, bilgi: isimBilgisi(e) }; }) };
     });
   }
   tarifleriHazirla();
+
+  // ---------- Besin değeri, diyet, öğün, pişirme türü, süre (besin.js) ----------
+  // Telefon yorulmasın diye her tarif ilk gösterildiğinde bir kere hesaplanır
+  // Etli/etsiz ayrımıyla adı değişen tarifler: eski menü ve planlar bozulmasın
+  var ESKI_TARIF_ADLARI = {"Kuru Fasulye": "Etli Kuru Fasulye", "Nohut Yemeği": "Etli Nohut Yemeği", "Patates Oturtma": "Etli Patates Oturtma", "Bezelye Yemeği": "Etli Bezelye Yemeği", "Gözleme": "Kıymalı Gözleme", "Mini Pizza": "Sucuklu Mini Pizza", "Kabak Oturtma": "Etli Kabak Oturtma", "Türlü": "Etli Türlü"};
+  (function eskiAdlariGuncelle() {   // kayıtlı menü ve planlardaki eski adları yenile
+    var degisti = false;
+    menu = menu.map(function (ad) { if (ESKI_TARIF_ADLARI[ad]) { degisti = true; return ESKI_TARIF_ADLARI[ad]; } return ad; });
+    if (degisti) yaz("ma_menu", menu);
+  })();
+  var DIYETLER = [{ ad: "Vegan", ikon: "🌱" }, { ad: "Vejetaryen", ikon: "🥕" }, { ad: "Diyet", ikon: "🥗" }];
+  var seciliDiyet = null;
+  function tarifBilgi(t) {
+    if (!t._bilgi && typeof tarifBilgisi === "function") {
+      var h = t.ham || {};
+      t._bilgi = tarifBilgisi({ ad: t.ad, kat: t.kat, kisi: t.kisi, sure: t.sure, m: h.m || [], y: t.yapilis || [], e: h.e || [] });
+    }
+    return t._bilgi || null;
+  }
+  var DIYET_IKON = { "Vegan": "🌱", "Vejetaryen": "🥕", "Diyet": "🥗" };
+  function bilgiSatiriHtml(t) {
+    var b = tarifBilgi(t); if (!b) return "";
+    var bs = b.besin, D = BESIN_DUZEY;
+    return '<div class="tarif-bilgi">' +
+      (bs.kcal ? '<span title="Porsiyon başı tahmini">🔥 ~' + bs.kcal + ' kcal/porsiyon</span>' : '') +
+      '<span>👥 ' + t.kisi + ' kişilik</span>' +
+      (b.sure ? '<span>⏱️ ' + esc(b.sure) + '</span>' : '') +
+      '<span>🍽️ ' + esc(b.ogun.join(", ")) + '</span>' +
+      '<span>🍳 ' + esc(b.pisirme.join(", ")) + '</span>' +
+      (bs.kcal ? '<span>😋 Doyuruculuk: <b>' + D[bs.doyurucu] + '</b></span><span>🥦 Besleyicilik: <b>' + D[bs.besleyici] + '</b></span>' : '') +
+      b.diyet.map(function (d) { return '<span class="diyet-rozet">' + DIYET_IKON[d] + ' ' + d + '</span>'; }).join("") +
+    '</div>';
+  }
+  function besinKutusuHtml(t) {
+    var b = tarifBilgi(t); if (!b || !b.besin.kcal) return "";
+    var bs = b.besin, D = BESIN_DUZEY;
+    function hucre(ad, deger) { return '<div><small>' + ad + '</small><b>' + deger + '</b></div>'; }
+    return '<div class="besin-kutu">' +
+      '<div class="besin-baslik">🥗 Porsiyon başı <u>tahmini</u> besin değeri</div>' +
+      '<p class="aciklama" style="margin:2px 0 8px">' + t.kisi + ' kişilik tarifin 1 porsiyonu için</p>' +
+      '<div class="besin-izgara">' + hucre("Kalori", "~" + bs.kcal + " kcal") + hucre("Protein", bs.protein + " g") + hucre("Yağ", bs.yag + " g") +
+        hucre("Karbonhidrat", bs.karb + " g") + hucre("Şeker", bs.seker + " g") + hucre("Lif", bs.lif + " g") + '</div>' +
+      '<p style="margin:10px 0 4px"><b>Öne çıkan vitamin ve mineraller:</b> ' +
+        (bs.kaynak.length ? bs.kaynak.slice(0, 6).map(function (k) { return esc(k.ad) + ' <small>(günlük ihtiyacın ~%' + Math.min(k.yuzde, 999) + ')</small>'; }).join(", ") : 'Belirgin bir kaynak değil') + '</p>' +
+      '<p style="margin:4px 0">😋 Doyuruculuk: <b>' + D[bs.doyurucu] + '</b> · 🥦 Besleyicilik: <b>' + D[bs.besleyici] + '</b></p>' +
+      (bs.bulunamayan.length ? '<p class="aciklama" style="margin:4px 0">Hesaba katılamayan: ' + esc(bs.bulunamayan.join(", ")) + '</p>' : '') +
+      '<p class="besin-not">ⓘ Bu değerler malzeme miktarlarından hesaplanmış <b>tahminlerdir</b>; kullanılan ürüne, pişirme şekline ve porsiyon büyüklüğüne göre değişir. ' +
+        '<b>Tıbbi veya diyet tavsiyesi değildir.</b> Özel bir sağlık durumun, alerjin ya da diyetin varsa doktoruna veya diyetisyenine danış.</p>' +
+    '</div>';
+  }
 
   // =====================================================================
   //  HAFTALIK / AYLIK MENÜ PLANI
@@ -1574,7 +2085,7 @@
   function planKaydet() { yaz("ma_plan", plan); }
   function planGunTarihi(i) { var d = new Date(plan.bas + "T12:00:00"); d.setDate(d.getDate() + i); return d; }
   function planGunYazisi(i) { var d = planGunTarihi(i); return GUNLER[d.getDay()] + ", " + d.getDate() + " " + AYLAR[d.getMonth()]; }
-  function tarifBul(ad) { return HAZIR_TARIFLER.find(function (t) { return t.ad === ad; }); }
+  function tarifBul(ad) { ad = ESKI_TARIF_ADLARI[ad] || ad; return HAZIR_TARIFLER.find(function (t) { return t.ad === ad; }); }
 
   // Bir yer için adaylar: evdekilerle en az eksiği olan, tarihi yaklaşanı kullanan öne; biraz da rastgelelik (her plan aynı olmasın)
   function planAdaylari(yer, kullanilan, rastgele, mod) {
@@ -1785,7 +2296,10 @@
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
     });
     document.getElementById("kategoriFiltre").innerHTML = kategoriler.map(function (k) {
-      return '<button class="' + (k === seciliKategori ? "aktif" : "") + '" data-kategori="' + esc(k) + '">' + esc(k) + '</button>';
+      return '<button class="' + (k === seciliKategori ? "aktif" : "") + '" data-kategori="' + esc(k) + '">' + esc(k) + '</button>' +
+        (k === "Tümü" ? DIYETLER.map(function (d) {
+          return '<button class="diyet-filtre' + (d.ad === seciliDiyet ? " aktif" : "") + '" data-diyet="' + d.ad + '">' + d.ikon + ' ' + d.ad + '</button>';
+        }).join("") : "");
     }).join("");
     document.getElementById("sadeceYapabilir").classList.toggle("aktif", sadeceYapabilir);
     document.getElementById("koleksiyonFiltre").innerHTML = KOLEKSIYONLAR.map(function (k) {
@@ -1816,6 +2330,7 @@
 
     sonuc = sonuc.filter(function (s) {
       if (seciliKategori !== "Tümü" && s.t.kat !== seciliKategori) return false;
+      if (seciliDiyet) { var bi = tarifBilgi(s.t); if (!bi || bi.diyet.indexOf(seciliDiyet) < 0) return false; }
       if (seciliKoleksiyon && s.t.koleksiyonlar.indexOf(seciliKoleksiyon) < 0) return false;
       if (sadeceYapabilir && s.d.eksikler.length > 0) return false;
       if (arama && normalIsim(s.t.ad).indexOf(arama) < 0 &&
@@ -1835,6 +2350,7 @@
         (sonuc.length > tarifSiniri ? '<button class="btn ikincil" id="dahaFazlaTarif" style="width:100%;padding:12px;margin:6px 0 16px">⬇️ Daha fazla göster (' + (sonuc.length - tarifSiniri) + ' tarif daha)</button>' : '');
   }
 
+  function simgeHtml(t) { return t.simge ? '<span class="tarif-simge" aria-hidden="true">' + t.simge + '</span>' : ''; }
   function tarifKarti(t, d) {
     var rozet;
     if (d.eksikler.length === 0) rozet = '<span class="rozet var">✅ Şimdi yapabilirsin</span>';
@@ -1859,12 +2375,13 @@
     var menude = menu.indexOf(t.ad) >= 0;
 
     return '<div class="kart">' +
-      '<div class="tarif-ust"><div><h3>' + esc(t.ad) + '</h3>' +
-      '<p class="aciklama">' + esc(t.kat) + ' · ' + t.kisi + ' kişilik · ⏱️ ' + esc(t.sure) +
-      (t.ekleyen ? ' · <span class="uye-rozet">👤 ' + esc(t.ekleyen) + ' paylaştı</span>' : '') + '</p></div>' + rozet + '</div>' +
+      '<div class="tarif-ust"><div class="tarif-bas">' + simgeHtml(t) + '<div><h3>' + esc(t.ad) + '</h3>' +
+      '<p class="aciklama">' + esc(t.kat) + ' · ⏱️ ' + esc(t.sure) +
+      (t.ekleyen ? ' · <span class="uye-rozet">👤 ' + esc(t.ekleyen) + ' paylaştı</span>' : '') + '</p></div></div>' + rozet + '</div>' +
+      bilgiSatiriHtml(t) +
       malzemeHtml +
       (d.eksikEkipman.length ? '<div class="uyari">⚠️ Ekipmanlarında göremedik: ' + esc(d.eksikEkipman.join(", ")) + '</div>' : '') +
-      (acik ? '<ol class="yapilis">' + t.yapilis.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join("") + '</ol>' : '') +
+      (acik ? '<ol class="yapilis">' + t.yapilis.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join("") + '</ol>' + besinKutusuHtml(t) : '') +
       '<div class="arac">' +
         '<button class="btn ikincil" data-tarif-ac="' + t.no + '">' + (acik ? "Yapılışı gizle" : "📖 Yapılışı") + '</button>' +
         (d.eksikler.length ? '<button class="btn" data-eksik-ekle="' + t.no + '">🛒 Eksikleri listeye ekle</button>' : '') +
@@ -2641,8 +3158,8 @@
     if (serit) return;
     serit = document.createElement("div");
     serit.id = "misafirSeridi";
-    serit.style.cssText = "background:var(--az-zemin);color:var(--az-yazi);font-size:13px;text-align:center;padding:8px 12px";
-    serit.innerHTML = '👋 Misafir olarak geziyorsun, uygulamayı kapatınca yaptıkların silinir. <a href="#" onclick="uyelikAc();return false" style="color:inherit;font-weight:700">Ücretsiz üye ol →</a>';
+    serit.style.cssText = "background:var(--serit-zemin);color:var(--serit-yazi);font-size:13px;text-align:center;padding:8px 12px;border-bottom:1px solid var(--serit-cizgi)";
+    serit.innerHTML = '👋 Misafir olarak geziyorsun, uygulamayı kapatınca yaptıkların silinir. <a href="#" onclick="uyelikAc();return false" style="color:var(--serit-vurgu);font-weight:700">Ücretsiz üye ol →</a>';
     document.querySelector("header").insertAdjacentElement("afterend", serit);
   }
 
@@ -3060,7 +3577,7 @@
 
   function sofraKaydet() { yaz("ma_sofra", sofra); }
 
-  function tarifBul(ad) { return HAZIR_TARIFLER.find(function (t) { return t.ad === ad; }); }
+  function tarifBul(ad) { ad = ESKI_TARIF_ADLARI[ad] || ad; return HAZIR_TARIFLER.find(function (t) { return t.ad === ad; }); }
   function sofraModu() { return SOFRA_MODLARI.find(function (m) { return m.id === sofra.mod; }); }
 
   // Modun kursları + favori seçildiyse "Favorilerinden" kursu
@@ -3190,7 +3707,7 @@
     var t = tarifBul(ad); if (!t) return;
     var d = tarifDurumu(t, evdekiYiyecekler(), []);
     document.getElementById("tarifDetayIcerik").innerHTML =
-      '<h3>' + esc(t.ad) + '</h3><p class="aciklama" style="margin:0 0 10px">' + esc(t.kat) + ' · ⏱️ ' + esc(t.sure) + ' · ' + esc(String(t.kisi)) + ' kişilik' +
+      '<div class="tarif-bas" style="align-items:center;margin-bottom:6px">' + simgeHtml(t) + '<h3 style="margin:0">' + esc(t.ad) + '</h3></div><p class="aciklama" style="margin:0 0 10px">' + esc(t.kat) + ' · ⏱️ ' + esc(t.sure) + ' · ' + esc(String(t.kisi)) + ' kişilik' +
         (d.eksikler.length ? ' · ' + d.eksikler.length + ' eksik' : ' · ✅ hepsi evde') + '</p>' +
       '<p class="aciklama" style="margin:0 0 4px"><b>Malzemeler</b></p>' + tarifMalzemeHtml(t) +
       '<p class="aciklama" style="margin:14px 0 4px"><b>Yapılışı</b></p><ol class="yapilis">' + t.yapilis.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join("") + '</ol>' +
@@ -3432,8 +3949,41 @@
     });
   }
 
+  // ---------- Yazı boyutu (görme kolaylığı) — bu cihazda kalıcı ----------
+  var YAZI_BOYLARI = [
+    { ad: "Normal", oran: 1, ornek: 15 },
+    { ad: "Büyük", oran: 1.15, ornek: 18 },
+    { ad: "Daha büyük", oran: 1.3, ornek: 21 },
+    { ad: "En büyük", oran: 1.5, ornek: 24 }
+  ];
+  function yaziBoyuUygula(i) {
+    var b = YAZI_BOYLARI[i] || YAZI_BOYLARI[0];
+    var kok = document.documentElement;
+    kok.style.setProperty("--yz", b.oran);
+    kok.classList.toggle("yazi-buyuk", b.oran !== 1);
+  }
+  function yaziBoyuOku() { try { return parseInt(localStorage.getItem("ma_yazi_boyu") || "0", 10) || 0; } catch (e) { return 0; } }
+  function yaziMenusuCiz() {
+    var secili = yaziBoyuOku();
+    document.getElementById("yaziMenu").innerHTML = "<b>🔍 Yazı boyutu</b>" + YAZI_BOYLARI.map(function (b, i) {
+      return '<button data-yazi-boyu="' + i + '"' + (i === secili ? ' class="aktif"' : "") + '><span style="font-size:' + b.ornek + 'px">A</span>' + b.ad + "</button>";
+    }).join("");
+  }
+  function yaziBoyuSec(i) {
+    try { localStorage.setItem("ma_yazi_boyu", String(i)); } catch (e) {}
+    yaziBoyuUygula(i);
+    yaziMenusuCiz();
+  }
+  yaziBoyuUygula(yaziBoyuOku());
+
   // Tüm tıklamaları tek yerden yönetiyoruz
   document.addEventListener("click", function (e) {
+    // Yazı boyutu menüsü
+    var yMenu = document.getElementById("yaziMenu");
+    if (e.target.closest("#yaziBtn")) { yaziMenusuCiz(); yMenu.classList.toggle("acik"); document.getElementById("kullaniciMenu").classList.remove("acik"); return; }
+    var yb = e.target.closest("[data-yazi-boyu]");
+    if (yb) { yaziBoyuSec(parseInt(yb.dataset.yaziBoyu, 10)); return; }
+    if (!e.target.closest("#yaziMenu")) yMenu.classList.remove("acik");
     // Kullanıcı menüsü dışına tıklanınca menüyü kapat
     var kMenu = document.getElementById("kullaniciMenu");
     if (!e.target.closest("#kullaniciMenu") && !e.target.closest("#kullaniciBtn")) kMenu.classList.remove("acik");
@@ -3496,6 +4046,7 @@
     else if (d.bolum) bolumAc(d.bolum);
     else if (d.ses) sesleEkle(d.ses, b);
     else if (b.id === "dahaFazlaTarif") { tarifSiniri += TARIF_SAYFA; tarifleriGoster(); }
+    else if (d.diyet) { tarifSiniriniSifirla(); seciliDiyet = seciliDiyet === d.diyet ? null : d.diyet; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (d.kategori) { tarifSiniriniSifirla(); seciliKategori = d.kategori; seciliKoleksiyon = null; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (d.koleksiyon) { tarifSiniriniSifirla(); seciliKoleksiyon = seciliKoleksiyon === d.koleksiyon ? null : d.koleksiyon; seciliKategori = "Tümü"; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (b.id === "sadeceYapabilir") { tarifSiniriniSifirla(); sadeceYapabilir = !sadeceYapabilir; kategoriFiltresiniCiz(); tarifleriGoster(); }
@@ -3590,5 +4141,38 @@
     window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js"); });
   }
 </script>
+<script>
+/* Özellik notları: tıklanan notun resmi gösterilir; dokunulmazsa birkaç saniyede bir sıradakine geçer */
+(function(){
+  var kok=document.querySelector('.oz-c'); if(!kok) return;
+  var notlar=kok.querySelectorAll('.oz-not'), resimler=kok.querySelectorAll('.oz-res'), sira=0, dokundu=false;
+  function goster(i){ sira=i; notlar.forEach(function(n,k){n.classList.toggle('aktif',k===i);}); resimler.forEach(function(r,k){r.classList.toggle('aktif',k===i);}); }
+  notlar.forEach(function(n,k){ n.addEventListener('click',function(){ dokundu=true; goster(k); }); });
+  setInterval(function(){ if(!dokundu && !document.hidden && document.getElementById('anasayfa').classList.contains('aktif')) goster((sira+1)%notlar.length); },5000);
+})();
+</script>
+<script>
+/* Alt bilgi + SSS + yukarı çık oku */
+function playYakinda(){
+  if (typeof mesaj === "function") mesaj("🎉 Çok yakında Google Play'de! Şimdilik uygulamayı telefonuna ekleyebilirsin.");
+  else alert("Çok yakında Google Play'de!");
+}
+(function(){
+  /* SSS açılır-kapanır */
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest(".sss-soru");
+    if (!btn) return;
+    btn.parentElement.classList.toggle("acik");
+  });
+  /* Yukarı çık oku: aşağı kaydırınca görün */
+  var ok = document.getElementById("yukariOk");
+  if (ok){
+    var gorunur = function(){ ok.classList.toggle("gorun", window.scrollY > 400); };
+    window.addEventListener("scroll", gorunur, { passive:true });
+    gorunur();
+  }
+})();
+</script>
+
 </body>
 </html>
