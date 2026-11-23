@@ -96,17 +96,32 @@ var TARIFLER = [
         "Salçayı suyla açıp tepsiye dök, 180 derece fırında 25 dakika pişir."],
     e: ["fırın"] },
 
-  { ad: "Kuru Fasulye", kat: "Ana Yemek", kisi: 4, sure: "90 dk (+1 gece ıslatma)",
+  { ad: "Etli Kuru Fasulye", kat: "Ana Yemek", kisi: 4, sure: "90 dk (+1 gece ıslatma)",
     m: ["2 su bardağı kuru fasulye", "1 tane kuru soğan", "2 yemek kaşığı domates salçası|salça", "3 yemek kaşığı sıvı yağ|yağ",
-        "200 gr kuşbaşı et (isteğe göre)|et", "Tuz", "Pul biber"],
+        "200 gr kuşbaşı et|et", "Tuz", "Pul biber"],
     y: ["Fasulyeyi bir gece önceden ıslat, ertesi gün haşlayıp suyunu süz.",
-        "Soğanı yağda kavur, varsa eti ekleyip suyunu çekene kadar pişir.",
+        "Soğanı yağda kavur, eti ekleyip suyunu çekene kadar pişir.",
         "Salçayı ekleyip çevir, fasulyeyi ve sıcak suyu ilave et.",
         "Kısık ateşte fasulyeler yumuşayana kadar pişir."] },
 
-  { ad: "Nohut Yemeği", kat: "Ana Yemek", kisi: 4, sure: "60 dk (+1 gece ıslatma)",
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kuru Fasulye", kat: "Ana Yemek", kisi: 4, sure: "90 dk (+1 gece ıslatma)",
+    m: ["2 su bardağı kuru fasulye", "1 tane kuru soğan", "2 yemek kaşığı domates salçası|salça", "3 yemek kaşığı sıvı yağ|yağ", "Tuz", "Pul biber"],
+    y: ["Fasulyeyi bir gece önceden ıslat, ertesi gün haşlayıp suyunu süz.",
+        "Soğanı yağda kavur.",
+        "Salçayı ekleyip çevir, fasulyeyi ve sıcak suyu ilave et.",
+        "Kısık ateşte fasulyeler yumuşayana kadar pişir."] },
+
+  { ad: "Etli Nohut Yemeği", kat: "Ana Yemek", kisi: 4, sure: "60 dk (+1 gece ıslatma)",
     m: ["2 su bardağı nohut", "1 tane kuru soğan", "1 yemek kaşığı domates salçası|salça", "3 yemek kaşığı sıvı yağ|yağ",
-        "200 gr kuşbaşı et (isteğe göre)|et", "Tuz", "Pul biber"],
+        "200 gr kuşbaşı et|et", "Tuz", "Pul biber"],
+    y: ["Nohutu bir gece ıslat, haşla.",
+        "Soğanı yağda kavur, eti ekleyip suyunu çekene kadar pişir, salçayı ekle.",
+        "Nohutu ve sıcak suyu ekleyip kısık ateşte 30-40 dakika pişir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Nohut Yemeği", kat: "Ana Yemek", kisi: 4, sure: "60 dk (+1 gece ıslatma)",
+    m: ["2 su bardağı nohut", "1 tane kuru soğan", "1 yemek kaşığı domates salçası|salça", "3 yemek kaşığı sıvı yağ|yağ", "Tuz", "Pul biber"],
     y: ["Nohutu bir gece ıslat, haşla.",
         "Soğanı yağda kavur, salçayı ekle.",
         "Nohutu ve sıcak suyu ekleyip kısık ateşte 30-40 dakika pişir."] },
@@ -143,12 +158,20 @@ var TARIFLER = [
         "Salçalı suyu üzerine dök, 190 derece fırında 25 dakika pişir."],
     e: ["fırın"] },
 
-  { ad: "Patates Oturtma", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
+  { ad: "Etli Patates Oturtma", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
     m: ["5 tane patates", "300 gr kıyma", "1 tane kuru soğan", "2 tane domates", "1 yemek kaşığı domates salçası|salça",
         "Sıvı yağ|yağ", "Tuz", "Karabiber"],
     y: ["Patatesleri halka doğrayıp hafifçe kızart.",
         "Soğanlı kıymayı pişir, domatesi ekle.",
         "Patatesleri tencereye ya da tepsiye diz, üzerine kıymayı yay.",
+        "Salçalı suyu ekleyip kısık ateşte veya fırında 20 dakika pişir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Patates Oturtma", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
+    m: ["5 tane patates", "1 tane kuru soğan", "2 tane domates", "1 yemek kaşığı domates salçası|salça", "Sıvı yağ|yağ", "Tuz", "Karabiber"],
+    y: ["Patatesleri halka doğrayıp hafifçe kızart.",
+        "Soğanı kavur, doğranmış domatesi ekleyip birkaç dakika pişir.",
+        "Patatesleri tencereye ya da tepsiye diz, üzerine domatesli harcı yay.",
         "Salçalı suyu ekleyip kısık ateşte veya fırında 20 dakika pişir."] },
 
   { ad: "Kıymalı Patates", kat: "Ana Yemek", kisi: 4, sure: "35 dk",
@@ -165,10 +188,17 @@ var TARIFLER = [
         "Soğanı ekleyip pembeleştir, salça ve domatesi ilave et.",
         "Sıcak su ekleyip et yumuşayana kadar kısık ateşte 1 saat pişir."] },
 
-  { ad: "Bezelye Yemeği", kat: "Ana Yemek", kisi: 4, sure: "40 dk",
-    m: ["500 gr bezelye", "1 tane havuç", "2 tane patates", "1 tane kuru soğan", "200 gr kıyma (isteğe göre)|kıyma",
+  { ad: "Etli Bezelye Yemeği", kat: "Ana Yemek", kisi: 4, sure: "40 dk",
+    m: ["500 gr bezelye", "1 tane havuç", "2 tane patates", "1 tane kuru soğan", "200 gr kıyma|kıyma",
         "1 yemek kaşığı domates salçası|salça", "3 yemek kaşığı sıvı yağ|yağ", "Tuz"],
-    y: ["Soğanı (varsa kıymayla) kavur, salçayı ekle.",
+    y: ["Soğanı kıymayla kavur, salçayı ekle.",
+        "Küp doğranmış havuç ve patatesi ekleyip çevir.",
+        "Bezelye ve sıcak suyu ekleyip sebzeler yumuşayana kadar pişir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Bezelye Yemeği", kat: "Ana Yemek", kisi: 4, sure: "40 dk",
+    m: ["500 gr bezelye", "1 tane havuç", "2 tane patates", "1 tane kuru soğan", "1 yemek kaşığı domates salçası|salça", "3 yemek kaşığı sıvı yağ|yağ", "Tuz"],
+    y: ["Soğanı kavur, salçayı ekle.",
         "Küp doğranmış havuç ve patatesi ekleyip çevir.",
         "Bezelye ve sıcak suyu ekleyip sebzeler yumuşayana kadar pişir."] },
 
@@ -278,10 +308,17 @@ var TARIFLER = [
         "Yufkaları üçgen dilimlere kes, geniş kenara harç koyup sigara gibi sar.",
         "Kızgın yağda iki tarafı altın rengi olana kadar kızart."] },
 
-  { ad: "Gözleme", kat: "Hamur İşi", kisi: 4, sure: "40 dk",
+  { ad: "Kıymalı Gözleme", kat: "Hamur İşi", kisi: 4, sure: "40 dk",
     m: ["4 tane yufka", "200 gr beyaz peynir", "1 demet maydanoz", "2 yemek kaşığı tereyağı",
-        "250 gr kıyma veya patates (isteğe göre)|kıyma/patates"],
-    y: ["İç harcı hazırla (peynir-maydanoz, kıyma ya da patates püresi).",
+        "250 gr kıyma|kıyma"],
+    y: ["İç harcı hazırla: ezilmiş beyaz peynir, maydanoz ve soğanla kavrulmuş kıyma.",
+        "Yufkayı ikiye katla, yarısına harç koyup kapat.",
+        "Tavada tereyağıyla iki tarafını kızart."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Patatesli Peynirli Gözleme", kat: "Hamur İşi", kisi: 4, sure: "40 dk",
+    m: ["4 tane yufka", "200 gr beyaz peynir", "1 demet maydanoz", "2 yemek kaşığı tereyağı", "2 tane haşlanmış patates|patates"],
+    y: ["İç harcı hazırla: ezilmiş beyaz peynir, maydanoz ve patates püresi.",
         "Yufkayı ikiye katla, yarısına harç koyup kapat.",
         "Tavada tereyağıyla iki tarafını kızart."] },
 
@@ -514,6 +551,14 @@ var TARIFLER = [
         "Sıcak suyu kepçe kepçe ekleyerek, her seferinde çekmesini bekleyip karıştır (yaklaşık 20 dakika).",
         "Ocaktan alırken peynir ve bir parça tereyağıyla kremsi hale getir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Mantarlı Risotto", kat: "İtalyan Mutfağı", kisi: 4, sure: "40 dk",
+    m: ["1,5 su bardağı pirinç (baldo)|pirinç", "300 gr mantar", "1 tane kuru soğan", "2 yemek kaşığı tereyağı", "5 su bardağı sıcak sebze suyu (ya da su)|su", "Rendelenmiş parmesan veya kaşar|kaşar/parmesan", "Tuz", "Karabiber"],
+    y: ["Soğanı tereyağında yumuşat, mantarları ekleyip sotele.",
+        "Pirinci ekleyip 2 dakika çevir.",
+        "Sıcak suyu kepçe kepçe ekleyerek, her seferinde çekmesini bekleyip karıştır (yaklaşık 20 dakika).",
+        "Ocaktan alırken peynir ve bir parça tereyağıyla kremsi hale getir."] },
+
   { ad: "Tavuk Fajita", kat: "Dünya Mutfağı", kisi: 4, sure: "30 dk",
     m: ["500 gr tavuk göğsü|tavuk", "3 tane renkli biber|biber", "1 tane kuru soğan", "8 tane lavaş|lavaş/tortilla",
         "2 yemek kaşığı sıvı yağ|yağ", "1 çay kaşığı kimyon", "1 çay kaşığı toz biber", "Yoğurt (servis için)|yoğurt", "Tuz"],
@@ -577,12 +622,20 @@ var TARIFLER = [
         "Kekin üzerine çatalla delikler açıp sosun yarısını dök, keserek kalan sosla servis et."],
     e: ["fırın", "mikser"] },
 
-  { ad: "Mini Pizza", kat: "Aperatifler", kisi: 6, sure: "45 dk",
+  { ad: "Sucuklu Mini Pizza", kat: "Aperatifler", kisi: 6, sure: "45 dk",
     m: ["3 su bardağı un", "1 paket kuru maya|maya", "1 su bardağı ılık su", "2 yemek kaşığı zeytinyağı", "2 yemek kaşığı domates salçası|salça",
         "200 gr kaşar|kaşar", "100 gr sucuk|sucuk", "1 tane sivri biber", "Kekik", "Tuz"],
     y: ["Un, maya, su, zeytinyağı ve tuzla hamur yoğurup 30 dakika mayalandır.",
         "Küçük daireler açıp üzerine salçalı sos sür.",
         "Kaşar, sucuk ve biberle süsle; 200 derece fırında 12-15 dakika pişir."],
+    e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Mini Pizza", kat: "Aperatifler", kisi: 6, sure: "45 dk",
+    m: ["3 su bardağı un", "1 paket kuru maya|maya", "1 su bardağı ılık su", "2 yemek kaşığı zeytinyağı", "2 yemek kaşığı domates salçası|salça", "200 gr kaşar|kaşar", "1 tane sivri biber", "Kekik", "Tuz"],
+    y: ["Un, maya, su, zeytinyağı ve tuzla hamur yoğurup 30 dakika mayalandır.",
+        "Küçük daireler açıp üzerine salçalı sos sür.",
+        "Kaşar ve biberle süsle; 200 derece fırında 12-15 dakika pişir."],
     e: ["fırın"] },
 
   // ------------------------- MEZELER (Felekten bir gece) -------------------------
@@ -764,6 +817,13 @@ var TARIFLER = [
         "Üzerine labne sür.",
         "Salatalık, füme et, zeytin ve domatesle farklı kombinasyonlar yapıp dereotuyla süsle."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Karışık Kanepe", kat: "Aperatifler", kisi: 8, sure: "20 dk",
+    m: ["1 tane baget ekmek|ekmek", "200 gr labne|labne/krem peynir", "1 tane salatalık", "10 tane zeytin", "6 tane çeri domates|domates", "Yarım demet dereotu"],
+    y: ["Ekmeği ince dilimleyip tavada ya da fırında hafifçe kızart.",
+        "Üzerine labne sür.",
+        "Salatalık, zeytin ve domatesle farklı kombinasyonlar yapıp dereotuyla süsle."] },
+
   { ad: "Bruşetta", kat: "Aperatifler", kisi: 6, sure: "15 dk",
     m: ["1 tane baget ekmek|ekmek", "4 tane domates", "2 diş sarımsak", "3 yemek kaşığı zeytinyağı", "Taze fesleğen veya kekik|fesleğen/kekik", "Tuz"],
     y: ["Ekmeği dilimleyip kızart, sıcakken sarımsakla ov.",
@@ -775,6 +835,13 @@ var TARIFLER = [
         "1 tane salatalık", "Marul yaprağı|marul", "2 yemek kaşığı mayonez"],
     y: ["Ekmeklere ince mayonez sür.",
         "Kaşar, füme, domates, salatalık ve marulu kat kat diz.",
+        "Kapatıp dörde keserek kürdanla tuttur."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Mini Sandviç", kat: "Aperatifler", kisi: 8, sure: "15 dk",
+    m: ["1 paket sandviç ekmeği|ekmek", "200 gr kaşar|kaşar", "1 tane domates", "1 tane salatalık", "Marul yaprağı|marul", "2 yemek kaşığı mayonez"],
+    y: ["Ekmeklere ince mayonez sür.",
+        "Kaşar, domates, salatalık ve marulu kat kat diz.",
         "Kapatıp dörde keserek kürdanla tuttur."] },
 
   { ad: "Tuzlu Kurabiye", kat: "Aperatifler", kisi: 10, sure: "40 dk",
@@ -951,7 +1018,7 @@ var TARIFLER = [
         "Tuz ve karabiberle tatlandır. İstersen blenderdan geçirerek kremalı da yapabilirsin."] },
 
   // ------------------------- ANA YEMEKLER -------------------------
-  { ad: "Kabak Oturtma", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
+  { ad: "Etli Kabak Oturtma", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
     m: ["4 tane kabak", "250 gr kıyma", "1 tane kuru soğan", "2 tane domates", "1 tane sivri biber|biber",
         "1 yemek kaşığı domates salçası|salça", "Yarım su bardağı sıvı yağ|yağ", "1 su bardağı sıcak su", "Tuz", "Karabiber"],
     y: ["Kabakları kalın halkalar halinde doğra, yağda hafifçe kızartıp kağıt havluya al.",
@@ -960,11 +1027,28 @@ var TARIFLER = [
         "Salçayı sıcak suda açıp tepsiye dök, 180 derece fırında 25 dakika pişir."],
     e: ["fırın"] },
 
-  { ad: "Türlü", kat: "Ana Yemek", kisi: 5, sure: "1 saat",
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kabak Oturtma", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
+    m: ["4 tane kabak", "1 tane kuru soğan", "2 tane domates", "1 tane sivri biber|biber", "1 yemek kaşığı domates salçası|salça", "Yarım su bardağı sıvı yağ|yağ", "1 su bardağı sıcak su", "Tuz", "Karabiber"],
+    y: ["Kabakları kalın halkalar halinde doğra, yağda hafifçe kızartıp kağıt havluya al.",
+        "Soğanı kavur, doğranmış domates ve biberi ekleyip birkaç dakika pişir.",
+        "Kabakları tepsiye diz, domatesli harcı üzerlerine paylaştır.",
+        "Salçayı sıcak suda açıp tepsiye dök, 180 derece fırında 25 dakika pişir."],
+    e: ["fırın"] },
+
+  { ad: "Etli Türlü", kat: "Ana Yemek", kisi: 5, sure: "1 saat",
     m: ["300 gr kuşbaşı et|et", "1 tane patlıcan", "1 tane kabak", "1 tane patates", "1 avuç taze fasulye",
         "2 tane sivri biber|biber", "2 tane domates", "1 tane kuru soğan", "1 yemek kaşığı domates salçası|salça",
         "3 yemek kaşığı sıvı yağ|yağ", "2 su bardağı sıcak su", "Tuz"],
     y: ["Eti yağda suyunu salıp çekene kadar kavur, soğanı ekle.",
+        "Salçayı ekleyip çevir, sonra fasulye ve patatesi ilave et.",
+        "Patlıcan, kabak, biber ve domatesi iri doğrayıp tencereye ekle.",
+        "Sıcak suyu dök, kapağı kapalı kısık ateşte sebzeler yumuşayana kadar yaklaşık 40 dakika pişir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Türlü", kat: "Ana Yemek", kisi: 5, sure: "1 saat",
+    m: ["1 tane patlıcan", "1 tane kabak", "1 tane patates", "1 avuç taze fasulye", "2 tane sivri biber|biber", "2 tane domates", "1 tane kuru soğan", "1 yemek kaşığı domates salçası|salça", "3 yemek kaşığı sıvı yağ|yağ", "2 su bardağı sıcak su", "Tuz"],
+    y: ["Soğanı yağda pembeleşene kadar kavur.",
         "Salçayı ekleyip çevir, sonra fasulye ve patatesi ilave et.",
         "Patlıcan, kabak, biber ve domatesi iri doğrayıp tencereye ekle.",
         "Sıcak suyu dök, kapağı kapalı kısık ateşte sebzeler yumuşayana kadar yaklaşık 40 dakika pişir."] },
@@ -1111,6 +1195,14 @@ var TARIFLER = [
         "1 tane kuru soğan", "3 yemek kaşığı tereyağı", "1 tatlı kaşığı yenibahar", "1 tatlı kaşığı tarçın", "3 su bardağı sıcak su", "Dereotu", "Tuz"],
     y: ["Pirinci ılık tuzlu suda 20 dakika beklet, süz.",
         "Tereyağında fıstığı pembeleştir, soğanı ekle. Küçük doğranmış ciğeri ekleyip kavur.",
+        "Pirinci ekleyip çevir, kuş üzümü, baharatlar ve sıcak suyu ilave et.",
+        "Suyunu çekene kadar kısık ateşte pişir, dereotunu ekleyip 10 dakika demlendir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz İç Pilav", kat: "Pilav & Makarna", kisi: 6, sure: "45 dk",
+    m: ["2 su bardağı pirinç", "2 yemek kaşığı dolmalık fıstık|fıstık", "2 yemek kaşığı kuş üzümü|kuru üzüm", "1 tane kuru soğan", "3 yemek kaşığı tereyağı", "1 tatlı kaşığı yenibahar", "1 tatlı kaşığı tarçın", "3 su bardağı sıcak su", "Dereotu", "Tuz"],
+    y: ["Pirinci ılık tuzlu suda 20 dakika beklet, süz.",
+        "Tereyağında fıstığı pembeleştir, soğanı ekleyip kavur.",
         "Pirinci ekleyip çevir, kuş üzümü, baharatlar ve sıcak suyu ilave et.",
         "Suyunu çekene kadar kısık ateşte pişir, dereotunu ekleyip 10 dakika demlendir."] },
 
@@ -1368,6 +1460,15 @@ var TARIFLER = [
         "Yumurta sarılarını sütle çırp, sıcak çorbadan azar azar ekleyerek ılıt ve tencereye dök; tuzunu ayarlayıp bir taşım kaynat.",
         "Kaselere paylaştır, istersen üzerine kaşar serpip fırında kızart."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Terbiyeli Soğan Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
+    m: ["10 su bardağı sebze suyu (ya da su)|su", "3-4 tane kuru soğan", "2 yemek kaşığı tereyağı", "2 kahve fincanı un|un", "#Terbiyesi için", "2 tane yumurta sarısı|yumurta", "2 su bardağı süt", "Rendelenmiş kaşar (isteğe göre)|kaşar", "Tuz"],
+    y: ["Soğanları ince yarım ay şeklinde doğrayıp tereyağında hafif renk alana kadar kavur.",
+        "Unu ekleyip 2-3 dakika çevir, sebze suyunu ilave et ve kısık ateşte yarım saat pişir.",
+        "Yumurta sarılarını sütle çırp, sıcak çorbadan azar azar ekleyerek ılıt ve tencereye dök; tuzunu ayarlayıp bir taşım kaynat.",
+        "Kaselere paylaştır, istersen üzerine kaşar serpip fırında kızart."],
+    e: ["fırın"] },
+
   { ad: "Terbiyeli Patates Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
     m: ["10 su bardağı et suyu|et suyu", "2 tane kuru soğan", "3-4 tane patates", "1 kahve fincanı un|un", "2 yemek kaşığı tereyağı", "1 çay kaşığı muskat (isteğe göre)|muskat", "Tuz",
         "#Terbiyesi için", "1 su bardağı süt", "2 tane yumurta sarısı|yumurta",
@@ -1378,10 +1479,28 @@ var TARIFLER = [
         "Kıtırlar için yumurta akı, kaşar, toz biber ve maydanozu karıştırıp ekmeklere sür, fırında kızart ve küp küp kesip çorbanın üstüne koy."],
     e: ["blender", "fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Terbiyeli Patates Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
+    m: ["10 su bardağı sebze suyu (ya da su)|su", "2 tane kuru soğan", "3-4 tane patates", "1 kahve fincanı un|un", "2 yemek kaşığı tereyağı", "1 çay kaşığı muskat (isteğe göre)|muskat", "Tuz", "#Terbiyesi için", "1 su bardağı süt", "2 tane yumurta sarısı|yumurta", "#Kıtırlar için", "2 tane yumurta akı|yumurta", "1 çay bardağı rendelenmiş kaşar|kaşar", "1 çay kaşığı toz biber", "1 yemek kaşığı maydanoz", "2-3 dilim bayat ekmek|ekmek"],
+    y: ["Küçük doğranmış soğanı tereyağında pembeleştir, unu ekleyip kokusu çıkana kadar kavur.",
+        "Sebze suyunu, küp doğranmış patatesleri, muskatı ve tuzu ekle; patatesler dağılana kadar yarım saat pişir, sonra blenderdan geçir.",
+        "Süt ve yumurta sarısını çırpıp sıcak çorbayla ılıt, tencereye ekleyip bir taşım kaynat.",
+        "Kıtırlar için yumurta akı, kaşar, toz biber ve maydanozu karıştırıp ekmeklere sür, fırında kızart ve küp küp kesip çorbanın üstüne koy."],
+    e: ["blender","fırın"] },
+
   { ad: "Kuru Bezelye Çorbası", kat: "Çorba", kisi: 6, sure: "1 saat + ıslatma",
     m: ["1 su bardağı kuru bezelye|bezelye", "10 su bardağı et suyu|et suyu", "2 tane kuru soğan", "1 tane havuç", "2 yemek kaşığı un", "2 yemek kaşığı tereyağı", "Tuz",
         "#Terbiyesi için", "1 su bardağı süt", "2 tane yumurta sarısı|yumurta"],
     y: ["Kuru bezelyeyi birkaç saat ıslat, süzüp et suyu, doğranmış soğan ve havuçla yumuşayana kadar haşla.",
+        "Ayrı bir tencerede tereyağında unu kavur, haşlanan karışımı blenderdan geçirip üzerine ekle.",
+        "Tuzunu ayarla, süt ve yumurta sarısıyla hazırladığın terbiyeyi ılıtarak ekle.",
+        "Bir taşım kaynatıp ocaktan al; kızarmış ekmek küpleriyle servis et."],
+    e: ["blender"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kuru Bezelye Çorbası", kat: "Çorba", kisi: 6, sure: "1 saat + ıslatma",
+    m: ["1 su bardağı kuru bezelye|bezelye", "10 su bardağı sebze suyu (ya da su)|su", "2 tane kuru soğan", "1 tane havuç", "2 yemek kaşığı un", "2 yemek kaşığı tereyağı", "Tuz", "#Terbiyesi için", "1 su bardağı süt", "2 tane yumurta sarısı|yumurta"],
+    y: ["Kuru bezelyeyi birkaç saat ıslat, süzüp sebze suyu, doğranmış soğan ve havuçla yumuşayana kadar haşla.",
         "Ayrı bir tencerede tereyağında unu kavur, haşlanan karışımı blenderdan geçirip üzerine ekle.",
         "Tuzunu ayarla, süt ve yumurta sarısıyla hazırladığın terbiyeyi ılıtarak ekle.",
         "Bir taşım kaynatıp ocaktan al; kızarmış ekmek küpleriyle servis et."],
@@ -1392,6 +1511,15 @@ var TARIFLER = [
         "#Terbiyesi için", "1 su bardağı süt", "2 tane yumurta sarısı|yumurta"],
     y: ["Soğanı ince doğrayıp tereyağında kavur, unu ekleyip birkaç dakika çevir.",
         "Yıkanmış mercimeği ve et suyunu ekle, mercimek tamamen dağılana kadar pişir.",
+        "Blenderdan geçirip pürüzsüz hale getir, tuzunu ayarla.",
+        "Süt ve yumurta sarısını çorbayla ılıtıp ekle, bir taşım kaynatıp limonla servis et."],
+    e: ["blender"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Terbiyeli Kırmızı Mercimek Çorbası", kat: "Çorba", kisi: 6, sure: "30 dk",
+    m: ["1 su bardağı kırmızı mercimek", "10 su bardağı sebze suyu (ya da su)|su", "1 tane büyük kuru soğan|kuru soğan", "1 kahve fincanı un|un", "2 yemek kaşığı tereyağı", "Tuz", "#Terbiyesi için", "1 su bardağı süt", "2 tane yumurta sarısı|yumurta"],
+    y: ["Soğanı ince doğrayıp tereyağında kavur, unu ekleyip birkaç dakika çevir.",
+        "Yıkanmış mercimeği ve sebze suyunu ekle, mercimek tamamen dağılana kadar pişir.",
         "Blenderdan geçirip pürüzsüz hale getir, tuzunu ayarla.",
         "Süt ve yumurta sarısını çorbayla ılıtıp ekle, bir taşım kaynatıp limonla servis et."],
     e: ["blender"] },
@@ -1410,10 +1538,26 @@ var TARIFLER = [
         "Kısık ateşte 10 dakika pişir, sütü ekle.",
         "Tuzunu ayarlayıp bir taşım daha kaynat ve sıcak servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz İrmik Çorbası", kat: "Çorba", kisi: 4, sure: "20 dk",
+    m: ["8 su bardağı sebze suyu (ya da su)|su", "2 kahve fincanı irmik", "2 yemek kaşığı tereyağı", "1,5 su bardağı süt", "Tuz"],
+    y: ["İrmiği tereyağında açık renk alana kadar kavur.",
+        "Kaynayan sebze suyunu yavaş yavaş ve sürekli karıştırarak ekle ki topaklanmasın.",
+        "Kısık ateşte 10 dakika pişir, sütü ekle.",
+        "Tuzunu ayarlayıp bir taşım daha kaynat ve sıcak servis et."] },
+
   { ad: "Kremalı Mantar Çorbası", kat: "Çorba", kisi: 6, sure: "40 dk",
     m: ["250 gr taze mantar|mantar", "8 su bardağı et suyu|et suyu", "Yarım limonun suyu|limon", "1 çay bardağı un|un", "1 su bardağı süt", "1 yemek kaşığı tereyağı", "Yarım çay kaşığı toz biber", "Bir tutam muskat|muskat", "Tuz"],
     y: ["Mantarları ince dilimle, kararmasın diye limon suyuyla karıştır.",
         "Tereyağında unu kavur, et suyunu azar azar ekleyip pürüzsüz bir çorba kıvamı yakala.",
+        "Mantarları ekle ve 15-20 dakika kısık ateşte pişir.",
+        "Sütü, tuzu, toz biberi ve muskatı ekleyip bir taşım kaynat."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kremalı Mantar Çorbası", kat: "Çorba", kisi: 6, sure: "40 dk",
+    m: ["250 gr taze mantar|mantar", "8 su bardağı sebze suyu (ya da su)|su", "Yarım limonun suyu|limon", "1 çay bardağı un|un", "1 su bardağı süt", "1 yemek kaşığı tereyağı", "Yarım çay kaşığı toz biber", "Bir tutam muskat|muskat", "Tuz"],
+    y: ["Mantarları ince dilimle, kararmasın diye limon suyuyla karıştır.",
+        "Tereyağında unu kavur, sebze suyunu azar azar ekleyip pürüzsüz bir çorba kıvamı yakala.",
         "Mantarları ekle ve 15-20 dakika kısık ateşte pişir.",
         "Sütü, tuzu, toz biberi ve muskatı ekleyip bir taşım kaynat."] },
 
@@ -1464,6 +1608,14 @@ var TARIFLER = [
         "Her soğan katmanına bir kaşık harç koyup sar, tencereye sıkıca diz.",
         "Tavuk suyunu ekleyip kısık ateşte 25-30 dakika pişir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kaşarlı Soğan Dolması", kat: "Ana Yemek", kisi: 4, sure: "1 saat",
+    m: ["5-6 tane iri kuru soğan|kuru soğan", "1 su bardağı pirinç", "1 su bardağı rendelenmiş kaşar|kaşar", "2 yemek kaşığı sıvı yağ|yağ", "1 fincan sebze suyu (ya da su)|su", "1 diş sarımsak", "1 demet dereotu", "Tuz", "Karabiber"],
+    y: ["Soğanları soyup bir ucundan çizerek kaynar suda 5 dakika haşla, katmanlarını tek tek ayır.",
+        "Pirinci yağda çevirip yarım bardak su ve tuzla diriliğini koruyacak kadar pişir; sarımsak, dereotu ve kaşarı karıştır.",
+        "Her soğan katmanına bir kaşık harç koyup sar, tencereye sıkıca diz.",
+        "Sebze suyunu ekleyip kısık ateşte 25-30 dakika pişir."] },
+
   { ad: "Zeytinyağlı Pırasa Dolması", kat: "Zeytinyağlı", kisi: 4, sure: "1 saat",
     m: ["Yarım kilo pırasa|pırasa", "1 su bardağı pirinç", "1 tane havuç", "1 tane patlıcan", "1 tane domates", "Yarım demet dereotu", "2 tatlı kaşığı kuru nane", "2 yemek kaşığı zeytinyağı", "Kimyon", "Tuz",
         "#Üzeri için", "2 su bardağı yoğurt"],
@@ -1506,11 +1658,26 @@ var TARIFLER = [
         "Et suyunu, ince kıyılmış lahanayı, defneyi, şeker ve sirkeyi ekle; sebzeler yumuşayana kadar 30-40 dakika pişir.",
         "Eti ve ezilmiş sarımsağı ekleyip tuzunu ayarla; her kaseye bir kaşık ekşi krema ve maydanozla servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Borş Çorbası (Pancar Çorbası)", kat: "Dünya Mutfağı", kisi: 8, sure: "1 saat 30 dk",
+    m: ["12 su bardağı sebze suyu (ya da su)|su", "2 tane pancar", "1 tane havuç", "1 tane küçük kereviz|kereviz", "Çeyrek lahana|lahana", "2 tane kuru soğan", "2 yemek kaşığı domates salçası|salça", "3 diş sarımsak", "100 gr tereyağı", "1 tane defne yaprağı|defne", "1 tatlı kaşığı toz şeker|şeker", "1 yemek kaşığı sirke", "1 yemek kaşığı un", "Tuz", "Maydanoz", "#Üzeri için", "Ekşi krema ya da yoğurt|krema/yoğurt"],
+    y: ["Pancar, havuç ve kerevizi jülyen kes; soğanla birlikte tereyağında kavur, salça ve unu ekleyip çevir.",
+        "Sebze suyunu, ince kıyılmış lahanayı, defneyi, şeker ve sirkeyi ekle; sebzeler yumuşayana kadar 30-40 dakika pişir.",
+        "Ezilmiş sarımsağı ekleyip tuzunu ayarla; her kaseye bir kaşık ekşi krema ve maydanozla servis et."] },
+
   { ad: "Bahar Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
     m: ["10 su bardağı et suyu|et suyu", "1 su bardağı un|un", "4 yemek kaşığı tereyağı", "1 tane havuç", "1 tane küçük kereviz|kereviz", "1 tane kabak", "1 avuç taze fasulye", "1 çay kaşığı toz biber", "Tuz",
         "#Terbiyesi için", "3 tane yumurta sarısı|yumurta", "1,5 tane limon|limon"],
     y: ["Bütün sebzeleri minik küp doğra.",
         "Tereyağında unu kavur, et suyunu azar azar ekle ve sebzeleri ilave et.",
+        "Sebzeler yumuşayana kadar 20-25 dakika pişir, tuzunu ayarla.",
+        "Yumurta sarısı ve limonu çorbayla ılıtıp ekle, bir taşım kaynatıp toz biberle servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Bahar Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
+    m: ["10 su bardağı sebze suyu (ya da su)|su", "1 su bardağı un|un", "4 yemek kaşığı tereyağı", "1 tane havuç", "1 tane küçük kereviz|kereviz", "1 tane kabak", "1 avuç taze fasulye", "1 çay kaşığı toz biber", "Tuz", "#Terbiyesi için", "3 tane yumurta sarısı|yumurta", "1,5 tane limon|limon"],
+    y: ["Bütün sebzeleri minik küp doğra.",
+        "Tereyağında unu kavur, sebze suyunu azar azar ekle ve sebzeleri ilave et.",
         "Sebzeler yumuşayana kadar 20-25 dakika pişir, tuzunu ayarla.",
         "Yumurta sarısı ve limonu çorbayla ılıtıp ekle, bir taşım kaynatıp toz biberle servis et."] },
 
@@ -1542,6 +1709,15 @@ var TARIFLER = [
         "Çorbayı fırına dayanıklı kaselere paylaştır, üzerine birer dilim ekmek koy.",
         "Kaşarı serpip ızgarası açık fırında peynir eriyip kızarana kadar tut."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Fransız Soğan Çorbası", kat: "Fransız Mutfağı", kisi: 6, sure: "1 saat",
+    m: ["5-6 tane kuru soğan", "8 su bardağı sebze suyu (ya da su)|su", "4 yemek kaşığı tereyağı", "1 su bardağı rendelenmiş kaşar|kaşar", "7-8 dilim tost ekmeği", "Tuz", "Karabiber"],
+    y: ["Soğanları ince ince doğra, tereyağında kısık ateşte ara ara karıştırarak koyu karamel rengine dönene kadar yaklaşık 30 dakika pişir.",
+        "Sebze suyunu ekleyip 15-20 dakika kaynat, tuz ve karabiberle tatlandır.",
+        "Çorbayı fırına dayanıklı kaselere paylaştır, üzerine birer dilim ekmek koy.",
+        "Kaşarı serpip ızgarası açık fırında peynir eriyip kızarana kadar tut."],
+    e: ["fırın"] },
+
   { ad: "Sebzeli Balık Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
     m: ["8 su bardağı balık suyu|balık", "1 tane kuru soğan", "1 tane havuç", "1 tane küçük kereviz|kereviz", "1 tane patates", "1 kahve fincanı pirinç|pirinç", "Tuz",
         "#Terbiyesi için", "2 yemek kaşığı un", "2 tane yumurta sarısı|yumurta", "Yarım kahve fincanı limon suyu|limon"],
@@ -1557,10 +1733,26 @@ var TARIFLER = [
         "Yumurta sarılarını limon suyuyla çırp, birkaç kepçe sıcak çorbayla ılıt.",
         "Terbiyeyi tencereye karıştırarak dök, kaynatmadan ocaktan al."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Terbiyeli Şehriye Çorbası", kat: "Çorba", kisi: 6, sure: "25 dk",
+    m: ["10 su bardağı sebze suyu (ya da su)|su", "100 gr tel şehriye", "3 tane yumurta sarısı|yumurta", "1 tane limon", "Tuz"],
+    y: ["Sebze suyunu kaynat, tel şehriyeyi ekle.",
+        "Şehriye yumuşayınca tuzunu ayarla.",
+        "Yumurta sarılarını limon suyuyla çırp, birkaç kepçe sıcak çorbayla ılıt.",
+        "Terbiyeyi tencereye karıştırarak dök, kaynatmadan ocaktan al."] },
+
   { ad: "Domatesli Şehriye Çorbası", kat: "Çorba", kisi: 6, sure: "25 dk",
     m: ["10 su bardağı et suyu|et suyu", "100 gr tel şehriye", "3 tane domates", "1 yemek kaşığı tereyağı", "Yarım demet maydanoz", "Tuz"],
     y: ["Domatesleri rendeleyip tereyağında 5 dakika pişir.",
         "Et suyunu ekleyip kaynat.",
+        "Şehriyeyi ilave et, 7-8 dakika pişir.",
+        "Tuzunu ayarla, kıyılmış maydanozla servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Domatesli Şehriye Çorbası", kat: "Çorba", kisi: 6, sure: "25 dk",
+    m: ["10 su bardağı sebze suyu (ya da su)|su", "100 gr tel şehriye", "3 tane domates", "1 yemek kaşığı tereyağı", "Yarım demet maydanoz", "Tuz"],
+    y: ["Domatesleri rendeleyip tereyağında 5 dakika pişir.",
+        "Sebze suyunu ekleyip kaynat.",
         "Şehriyeyi ilave et, 7-8 dakika pişir.",
         "Tuzunu ayarla, kıyılmış maydanozla servis et."] },
 
@@ -1571,10 +1763,26 @@ var TARIFLER = [
         "Pirinç iyice yumuşayana kadar 20 dakika kısık ateşte pişir.",
         "Tuzunu ayarlayıp kıyılmış maydanozla servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Domatesli Pirinç Çorbası", kat: "Çorba", kisi: 6, sure: "30 dk",
+    m: ["10 su bardağı sebze suyu (ya da su)|su", "Üç çeyrek su bardağı pirinç|pirinç", "3 tane olgun domates|domates", "1 yemek kaşığı tereyağı", "7-8 sap maydanoz|maydanoz", "Tuz"],
+    y: ["Domatesleri rendele, tereyağında birkaç dakika çevir.",
+        "Sebze suyunu ekle, kaynayınca yıkanmış pirinci ilave et.",
+        "Pirinç iyice yumuşayana kadar 20 dakika kısık ateşte pişir.",
+        "Tuzunu ayarlayıp kıyılmış maydanozla servis et."] },
+
   { ad: "Pirinç Çorbası", kat: "Çorba", kisi: 6, sure: "30 dk",
     m: ["10 su bardağı et suyu|et suyu", "Üç çeyrek su bardağı pirinç|pirinç", "1 yemek kaşığı tereyağı", "7-8 sap maydanoz|maydanoz", "Tuz"],
     y: ["Pirinci yıkayıp süz.",
         "Et suyunu kaynatıp pirinci ekle.",
+        "Kısık ateşte pirinç tane tane açılıp yumuşayana kadar 20 dakika pişir.",
+        "Tereyağı ve tuzu ekle, maydanozla servis et. İstersen limonlu yumurta terbiyesi de yapabilirsin."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Pirinç Çorbası", kat: "Çorba", kisi: 6, sure: "30 dk",
+    m: ["10 su bardağı sebze suyu (ya da su)|su", "Üç çeyrek su bardağı pirinç|pirinç", "1 yemek kaşığı tereyağı", "7-8 sap maydanoz|maydanoz", "Tuz"],
+    y: ["Pirinci yıkayıp süz.",
+        "Sebze suyunu kaynatıp pirinci ekle.",
         "Kısık ateşte pirinç tane tane açılıp yumuşayana kadar 20 dakika pişir.",
         "Tereyağı ve tuzu ekle, maydanozla servis et. İstersen limonlu yumurta terbiyesi de yapabilirsin."] },
 
@@ -1876,6 +2084,15 @@ var TARIFLER = [
         "Şehriyeyi tereyağında kızartıp pirinç, et, sebzeler, baharatlar ve 4,5 bardak et suyuyla pilavı demlendir.",
         "Yağlanmış kalıba yufka ser, pilavı doldurup yufkayı kapat; 200 derece fırında üzeri kızarınca ters çevirerek servis et."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Buhara Pilavı", kat: "Pilav & Makarna", kisi: 8, sure: "1 saat 15 dk",
+    m: ["3 su bardağı pirinç", "2 tane kuru soğan", "3 tane havuç", "1 su bardağı badem", "100 gr kuru kayısı", "100 gr tel şehriye", "5 yemek kaşığı tereyağı", "Yenibahar", "Karabiber", "Tuz", "1 tane yufka", "4,5 su bardağı sebze suyu (ya da sıcak su)|su"],
+    y: ["Pirinci sıcak tuzlu suda yarım saat beklet. Bademleri haşlayıp kabuğunu soy.",
+        "Soğan ve bademi tereyağında kavur; jülyen havuç ve doğranmış kayısıyı ekle.",
+        "Şehriyeyi tereyağında kızartıp pirinç, sebzeler, baharatlar ve 4,5 bardak sebze suyuyla pilavı demlendir.",
+        "Yağlanmış kalıba yufka ser, pilavı doldurup yufkayı kapat; 200 derece fırında üzeri kızarınca ters çevirerek servis et."],
+    e: ["fırın"] },
+
   { ad: "Etli Yaprak Sarması", kat: "Ana Yemek", kisi: 6, sure: "1 saat 15 dk",
     m: ["250 gr asma yaprağı", "250 gr kıyma", "3 tane kuru soğan", "1 kahve fincanı pirinç|pirinç", "Yarım demet maydanoz", "Yarım demet dereotu", "1 yemek kaşığı domates salçası|salça", "Tuz", "Karabiber", "Yoğurt"],
     y: ["Salamura yaprakları birkaç kez yıkayıp kaynar suda 3-4 dakika haşla.",
@@ -1896,6 +2113,14 @@ var TARIFLER = [
     y: ["Pirinci yıkayıp sıcak tuzlu suda yarım saat beklet ve süz.",
         "Brüksel lahanalarını tuzlu suda 8 dakika haşlayıp ikiye kes.",
         "Et suyu, 2 kaşık tereyağı ve tuzu kaynatıp pirinci ekle, suyunu çekene kadar kısık ateşte pişir.",
+        "Lahanaları kalan tereyağında çevirip pilava kat, 10 dakika demlendir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Brüksel Lahanalı Pilav", kat: "Pilav & Makarna", kisi: 4, sure: "45 dk",
+    m: ["2 su bardağı pirinç", "250 gr brüksel lahanası|lahana", "2 su bardağı sebze suyu (ya da su)|su", "3 yemek kaşığı tereyağı", "Tuz"],
+    y: ["Pirinci yıkayıp sıcak tuzlu suda yarım saat beklet ve süz.",
+        "Brüksel lahanalarını tuzlu suda 8 dakika haşlayıp ikiye kes.",
+        "Sebze suyu, 2 kaşık tereyağı ve tuzu kaynatıp pirinci ekle, suyunu çekene kadar kısık ateşte pişir.",
         "Lahanaları kalan tereyağında çevirip pilava kat, 10 dakika demlendir."] },
 
   { ad: "Pazılı Krep", kat: "Hamur İşi", kisi: 4, sure: "1 saat",
@@ -2148,6 +2373,15 @@ var TARIFLER = [
         "Mantıları yağlanmış tepsiye dizip 180 derece fırında kızart, sonra üzerine 2 bardak sıcak et suyu dökerek 10 dakika daha pişir.",
         "Sarımsaklı yoğurt ve pul biberli tereyağıyla servis et."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Sebzeli Yufka Mantısı", kat: "Hamur İşi", kisi: 6, sure: "50 dk",
+    m: ["3 tane yufka", "1 su bardağı soya kıyması|soya kıyması", "3 tane havuç", "2 tane kabak", "1 tane kuru soğan", "Tuz", "Karabiber", "#Üzeri için", "2 su bardağı yoğurt|yoğurt", "2-3 diş sarımsak", "2 yemek kaşığı tereyağı", "Pul biber", "2 su bardağı sebze suyu (ya da sıcak su)|su"],
+    y: ["Soya kıymasını sıcak suda 10 dakika bekletip süz, soğanla kavur; rendelenmiş havuç ve suyu sıkılmış kabağı ekleyip pişir, baharatla tatlandır.",
+        "Yufkaları kareler halinde kes, ortalarına harç koyup bohça şeklinde kapat.",
+        "Mantıları yağlanmış tepsiye dizip 180 derece fırında kızart, sonra üzerine 2 bardak sıcak sebze suyu dökerek 10 dakika daha pişir.",
+        "Sarımsaklı yoğurt ve pul biberli tereyağıyla servis et."],
+    e: ["fırın"] },
+
   { ad: "Kıymalı Patlıcan Graten", kat: "Ana Yemek", kisi: 6, sure: "1 saat",
     m: ["1 kilo patlıcan", "Kızartma için sıvı yağ|yağ", "150 gr kıyma", "2 tane kuru soğan", "1 tane domates", "Tuz", "Karabiber",
         "#Beyaz sos için", "2 yemek kaşığı tereyağı", "2 yemek kaşığı un", "1 su bardağı süt", "Rendelenmiş kaşar|kaşar"],
@@ -2162,6 +2396,14 @@ var TARIFLER = [
         "Soğan ve biberi yağda kavur; doğranmış domates, pirinç, şeker ve tuzu ekle.",
         "Patlıcanları tencereye dizip harcı üzerlerine yay.",
         "Et suyunu ekleyip kısık ateşte pirinç pişene kadar 25 dakika pişir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Pirinçli Patlıcan", kat: "Zeytinyağlı", kisi: 4, sure: "50 dk",
+    m: ["500 gr patlıcan", "1 tane kuru soğan", "2 tane domates", "1 tane dolmalık biber", "Yarım kahve fincanı pirinç|pirinç", "1 su bardağı sebze suyu (ya da su)|su", "1 kahve fincanı zeytinyağı", "1 tatlı kaşığı toz şeker|şeker", "Tuz"],
+    y: ["Patlıcanları alacalı soyup uzunlamasına ikiye kes, tuzlu suda beklet ve hafifçe kızart.",
+        "Soğan ve biberi yağda kavur; doğranmış domates, pirinç, şeker ve tuzu ekle.",
+        "Patlıcanları tencereye dizip harcı üzerlerine yay.",
+        "Sebze suyunu ekleyip kısık ateşte pirinç pişene kadar 25 dakika pişir."] },
 
   { ad: "Fırında Domatesli Patlıcan", kat: "Zeytinyağlı", kisi: 4, sure: "45 dk",
     m: ["1 kilo patlıcan", "4 tane domates", "1 diş sarımsak", "2 yemek kaşığı zeytinyağı", "Kekik", "Maydanoz", "Tuz", "Karabiber", "Kızartma için sıvı yağ|yağ"],
@@ -2699,6 +2941,14 @@ var TARIFLER = [
         "Peynir, tavuk ve füme eti şerit şerit kesip yeşilliklerin üzerine diz.",
         "Zeytin, domates ve yumurta dilimleriyle süsle, sosu gezdirip servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Şef Salatası", kat: "Salata", kisi: 2, sure: "25 dk",
+    m: ["Yarım göbek marul|marul", "1 avuç roka", "2 dilim kaşar ya da gravyer|kaşar", "4 tane zeytin", "1 tane domates", "1 tane haşlanmış yumurta|yumurta", "#Sosu için", "1 yemek kaşığı mayonez", "1 yemek kaşığı yoğurt", "1 çay kaşığı hardal", "Limon suyu|limon"],
+    y: ["Sos malzemelerini bir kasede çırp.",
+        "Marul ve rokayı yıkayıp doğra, tabağa yay.",
+        "Peyniri şerit şerit kesip yeşilliklerin üzerine diz.",
+        "Zeytin, domates ve yumurta dilimleriyle süsle, sosu gezdirip servis et."] },
+
   { ad: "Kırmızı Turplu Bahar Salatası", kat: "Salata", kisi: 4, sure: "15 dk",
     m: ["1 demet kırmızı turp|turp", "1 tane salatalık", "3 dal yeşil soğan|taze soğan", "Yarım demet dereotu", "1 tane limon", "3 yemek kaşığı zeytinyağı", "Tuz"],
     y: ["Turpları ve salatalığı ince dilimle.",
@@ -2713,6 +2963,15 @@ var TARIFLER = [
         "Yufkayı aç, yüzeyine beşamelin yarısını sür.",
         "Jambon ve rendelenmiş peyniri serpip rulo yap, yağlı tepsiye kıvırarak yerleştir.",
         "Üzerine yumurta sarısı sürüp 190 derece fırında 25 dakika pişir."], e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Beşamelli Peynirli Börek", kat: "Hamur İşi", kisi: 4, sure: "40 dk",
+    m: ["2 tane yufka", "125 gr dil peyniri|dil peyniri", "1 tane yumurta", "#Beşamel için", "60 gr tereyağı", "60 gr un", "2 su bardağı süt", "Tuz"],
+    y: ["Tereyağında unu kavur, sütü ekleyerek koyu bir beşamel yap ve tuzla.",
+        "Yufkayı aç, yüzeyine beşamelin yarısını sür.",
+        "Rendelenmiş peyniri serpip rulo yap, yağlı tepsiye kıvırarak yerleştir.",
+        "Üzerine yumurta sarısı sürüp 190 derece fırında 25 dakika pişir."],
+    e: ["fırın"] },
 
   { ad: "Boşnak Böreği", kat: "Hamur İşi", kisi: 8, sure: "1 saat 30 dk",
     m: ["1 kilo un", "1 fincan sıvı yağ|yağ", "1 tane yumurta sarısı|yumurta", "Yeteri kadar ılık su|su", "200 gr beyaz peynir", "1 demet maydanoz", "1 su bardağı sıvı yağ (aralara)|yağ", "Tuz"],
@@ -2742,9 +3001,25 @@ var TARIFLER = [
         "Rendelenmiş domates, soya sosu ve sarımsak tozunu ekle.",
         "Pilavı sebzelerle harmanlayıp birkaç dakika birlikte çevir, sıcak servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Uzakdoğu Usulü Sebzeli Pilav", kat: "Asya Mutfağı", kisi: 4, sure: "35 dk",
+    m: ["400 gr pirinç", "1 tane büyük kuru soğan|kuru soğan", "1 tane domates", "2 tane sivri biber", "1 tane havuç", "1 su bardağı bezelye", "2 yemek kaşığı soya sosu", "1 çay kaşığı sarımsak tozu", "2 yemek kaşığı sıvı yağ|yağ", "sebze suyu (ya da su)|su"],
+    y: ["Pirinci sebze suyunda tane tane pişir.",
+        "Soğanı yağda kavur, küp doğranmış havuç, biber ve bezelyeyi ekleyip yüksek ateşte çevir.",
+        "Rendelenmiş domates, soya sosu ve sarımsak tozunu ekle.",
+        "Pilavı sebzelerle harmanlayıp birkaç dakika birlikte çevir, sıcak servis et."] },
+
   { ad: "Yufkalı Kubbe Pilavı", kat: "Pilav & Makarna", kisi: 8, sure: "1 saat",
     m: ["4 su bardağı pirinç", "250 gr tereyağı", "1 tane yufka", "6 su bardağı et suyu|et suyu", "Karabiber", "Tuz"],
     y: ["Pirinci tereyağının yarısında çevirip et suyu ve tuzla pişir, demlendir.",
+        "Derin bir tencerenin içini tereyağıyla iyice yağla, yufkayı kenarlardan taşacak şekilde ser.",
+        "Pilavı yufkanın içine bastırarak doldur, karabiber serp ve yufkanın kenarlarını üzerine kapat.",
+        "Kalan tereyağını üstüne sür, kısık ateşte ya da fırında altı kızarana kadar pişirip ters çevirerek servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Yufkalı Kubbe Pilavı", kat: "Pilav & Makarna", kisi: 8, sure: "1 saat",
+    m: ["4 su bardağı pirinç", "250 gr tereyağı", "1 tane yufka", "6 su bardağı sebze suyu (ya da su)|su", "Karabiber", "Tuz"],
+    y: ["Pirinci tereyağının yarısında çevirip sebze suyu ve tuzla pişir, demlendir.",
         "Derin bir tencerenin içini tereyağıyla iyice yağla, yufkayı kenarlardan taşacak şekilde ser.",
         "Pilavı yufkanın içine bastırarak doldur, karabiber serp ve yufkanın kenarlarını üzerine kapat.",
         "Kalan tereyağını üstüne sür, kısık ateşte ya da fırında altı kızarana kadar pişirip ters çevirerek servis et."] },
@@ -2847,6 +3122,13 @@ var TARIFLER = [
         "Soğanı tereyağında kavur, domates ve pirinci ekleyip et suyu ile pişir.",
         "Et ve patlıcanı pilava katıp demlendir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Patlıcanlı Pilav", kat: "Pilav & Makarna", kisi: 6, sure: "1 saat 15 dk",
+    m: ["2 tane patlıcan", "2 tane kuru soğan", "2 su bardağı pirinç", "3 yemek kaşığı tereyağı", "1 tane domates", "Kızartma için sıvı yağ|yağ", "Tuz", "Karabiber", "3 su bardağı sıcak su"],
+    y: ["Patlıcanları küp doğrayıp tuzlu suda beklet, kurulayıp kızart.",
+        "Soğanı tereyağında kavur, domates ve pirinci ekleyip sıcak suyla pişir.",
+        "Patlıcanı pilava katıp demlendir."] },
+
   { ad: "Bademli Tavuklu Perde Pilavı", kat: "Pilav & Makarna", kisi: 8, sure: "2 saat",
     m: ["#Hamuru için", "250 gr tereyağı", "4 yemek kaşığı yoğurt", "3 tane yumurta", "1 çay kaşığı karbonat", "Yarım kilo un", "Tuz",
         "#İçi için", "2 tane tavuk göğsü|tavuk göğsü", "Yarım kilo pirinç|pirinç", "250 gr badem", "Karabiber", "1 çay bardağı sıvı yağ|yağ"],
@@ -2883,6 +3165,14 @@ var TARIFLER = [
         "Doğranmış domatesi ekle, bulguru ilave edip çevir.",
         "Et suyu ve 1 bardak sıcak suyla suyunu çekene kadar pişir, demlendir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Patlıcanlı Sebzeli Bulgur", kat: "Pilav & Makarna", kisi: 6, sure: "40 dk",
+    m: ["2 su bardağı pilavlık bulgur|bulgur", "1 tane patlıcan", "4 tane çarliston biber|biber", "3 tane domates", "3 tane kuru soğan", "1 kahve fincanı tereyağı|tereyağı", "2 su bardağı sebze suyu (ya da su)|su", "Tuz"],
+    y: ["Patlıcanı küp doğrayıp tuzlu suda beklet ve süz.",
+        "Soğanı tereyağında kavur, biber ve patlıcanı ekleyip yumuşat.",
+        "Doğranmış domatesi ekle, bulguru ilave edip çevir.",
+        "Sebze suyu ve 1 bardak sıcak suyla suyunu çekene kadar pişir, demlendir."] },
+
   { ad: "Soğuk Makarna Salatası", kat: "Salata", kisi: 6, sure: "30 dk",
     m: ["250 gr makarna", "3 yemek kaşığı yoğurt", "3 yemek kaşığı mayonez", "1 su bardağı haşlanmış bezelye|bezelye", "1 su bardağı haşlanmış havuç|havuç", "2 tane salatalık", "2 tane kornişon turşu|turşu", "Yarım limonun suyu|limon", "2-3 diş sarımsak", "Tuz"],
     y: ["Makarnayı haşlayıp soğuk sudan geçir ve süz.",
@@ -2895,6 +3185,14 @@ var TARIFLER = [
     y: ["Yağı tencerede kızdır.",
         "Arpa şehriyeyi ekleyip altın rengi olana kadar kavur.",
         "Sıcak tavuk suyu ve tuzu ekleyip kısık ateşte suyunu çekene kadar pişir.",
+        "Tereyağını ekleyip 10 dakika demlendir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Arpa Şehriye Pilavı", kat: "Pilav & Makarna", kisi: 4, sure: "25 dk",
+    m: ["1,5 su bardağı arpa şehriye", "2,5 yemek kaşığı sıvı yağ|yağ", "1 yemek kaşığı tereyağı", "3 su bardağı sebze suyu (ya da su)|su", "Tuz"],
+    y: ["Yağı tencerede kızdır.",
+        "Arpa şehriyeyi ekleyip altın rengi olana kadar kavur.",
+        "Sıcak sebze suyu ve tuzu ekleyip kısık ateşte suyunu çekene kadar pişir.",
         "Tereyağını ekleyip 10 dakika demlendir."] },
 
   { ad: "Kıymalı Fırın Makarna", kat: "Pilav & Makarna", kisi: 6, sure: "50 dk",
@@ -2953,6 +3251,14 @@ var TARIFLER = [
         "Mayonez, yoğurt ve limonu karıştır.",
         "Hepsini sosla harmanla, parmesan serpip servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Peynirli Salata", kat: "Salata", kisi: 4, sure: "20 dk",
+    m: ["100 gr kaşar", "2 yemek kaşığı parmesan|parmesan", "1 tane marul", "2 tane domates", "2 yemek kaşığı mayonez", "2 yemek kaşığı yoğurt", "1 tane limon"],
+    y: ["Kaşarı küçük küp doğra.",
+        "Marulu ince kıy, domatesi doğra.",
+        "Mayonez, yoğurt ve limonu karıştır.",
+        "Hepsini sosla harmanla, parmesan serpip servis et."] },
+
   { ad: "Yoğurtlu Pirinç Salatası", kat: "Salata", kisi: 4, sure: "30 dk",
     m: ["1 su bardağı pirinç", "2 su bardağı yoğurt", "2 yemek kaşığı mayonez", "1 yemek kaşığı sıvı yağ|yağ", "Yarım demet maydanoz", "Yarım demet dereotu", "2 yaprak fesleğen", "Tuz"],
     y: ["Pirinci diriliğini kaybetmeyecek şekilde haşlayıp soğut.",
@@ -2972,6 +3278,14 @@ var TARIFLER = [
     y: ["Patatesleri kabuklu haşla, soyup küp doğra.",
         "Arpacık soğanları tereyağında kavur, patatesi ekleyip kızart.",
         "Et suyu ve sirkeyi ekleyip birkaç dakika kaynat.",
+        "Haşlanmış erişteyi ekleyip harmanla, maydanoz ve karabiberle servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Akşam Sefası (Patatesli Erişte)", kat: "Pilav & Makarna", kisi: 6, sure: "45 dk",
+    m: ["400 gr patates", "500 gr erişte", "5 tane arpacık soğan|kuru soğan", "1,5 kahve fincanı tereyağı|tereyağı", "2 yemek kaşığı sirke", "2 su bardağı sebze suyu (ya da su)|su", "Yarım demet maydanoz", "Tuz", "Karabiber"],
+    y: ["Patatesleri kabuklu haşla, soyup küp doğra.",
+        "Arpacık soğanları tereyağında kavur, patatesi ekleyip kızart.",
+        "Sebze suyu ve sirkeyi ekleyip birkaç dakika kaynat.",
         "Haşlanmış erişteyi ekleyip harmanla, maydanoz ve karabiberle servis et."] },
 
   { ad: "Defneli Alabalık Izgara", kat: "Deniz Mahsulleri", kisi: 4, sure: "25 dk",
@@ -3198,6 +3512,14 @@ var TARIFLER = [
         "Köfte malzemelerini yoğurup misket köfteler yap.",
         "Soğanı yağda kavur, salça ve rendelenmiş domatesi ekle; fasulye ve haşlama suyunu ilave et.",
         "Karışımı güvece al, köfteleri üzerine diz; 180 derece fırında 45 dakika pişir."], e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Güveçte Kuru Fasulye", kat: "Ana Yemek", kisi: 6, sure: "2 saat + ıslatma",
+    m: ["2 su bardağı kuru fasulye", "1 tane kuru soğan", "2 tane domates", "1,5 yemek kaşığı domates salçası|salça", "1 çay bardağı sıvı yağ|yağ", "Tuz", "Karabiber"],
+    y: ["Fasulyeyi bir gece ıslatıp dağılmayacak şekilde haşla.",
+        "Soğanı yağda kavur, salça ve rendelenmiş domatesi ekle; fasulye ve haşlama suyunu ilave et.",
+        "Karışımı güvece al; 180 derece fırında 45 dakika pişir."],
+    e: ["fırın"] },
 
   { ad: "Hasan Paşa Köftesi", kat: "Ana Yemek", kisi: 4, sure: "1 saat",
     m: ["500 gr kıyma", "1 tane kuru soğan", "2 dilim bayat ekmek|ekmek", "1 tane yumurta", "Tuz", "Karabiber",
@@ -3663,6 +3985,14 @@ var TARIFLER = [
         "Küp patates, bezelye, bulyon ve 2 bardak sıcak suyu ekle.",
         "Patatesler yumuşayana kadar 25 dakika kısık ateşte pişir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Bezelyeli Patates Yemeği", kat: "Ana Yemek", kisi: 4, sure: "45 dk",
+    m: ["3 tane patates", "2 tane havuç", "1 su bardağı bezelye", "2 diş sarımsak", "2 yemek kaşığı domates salçası|salça", "1 tane sebze bulyon|bulyon", "Yarım çay bardağı sıvı yağ|yağ", "2 çay kaşığı tuz|tuz"],
+    y: ["Sarımsak ve küp havucu yağda çevir.",
+        "Salçayı ekleyip çevir.",
+        "Küp patates, bezelye, bulyon ve 2 bardak sıcak suyu ekle.",
+        "Patatesler yumuşayana kadar 25 dakika kısık ateşte pişir."] },
+
   { ad: "Tavuklu Dalyan Köfte", kat: "Ana Yemek", kisi: 6, sure: "1 saat",
     m: ["500 gr tavuk kıyması|tavuk", "1 su bardağı ufalanmış ekmek içi|ekmek", "1 tane kuru soğan", "1 diş sarımsak", "1 tane yumurta", "Pul biber", "Karabiber", "Tuz",
         "#İç harcı için", "1 tane havuç", "1 tane patates", "Yarım su bardağı bezelye", "2 tane haşlanmış yumurta|yumurta"],
@@ -3699,6 +4029,14 @@ var TARIFLER = [
         "Salçayı ekleyip birkaç dakika kavur.",
         "Mercimek ve 2 bardak sıcak suyu ekleyip kısık ateşte 25 dakika pişir; pul biberle servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Yeşil Mercimek Yemeği", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
+    m: ["1 su bardağı yeşil mercimek", "1 tane kuru soğan", "2 yemek kaşığı zeytinyağı", "1 tatlı kaşığı domates salçası|salça", "Pul biber", "Tuz"],
+    y: ["Mercimeği yıkayıp yarı pişene kadar haşla.",
+        "Soğanı zeytinyağında kavur.",
+        "Salçayı ekleyip birkaç dakika kavur.",
+        "Mercimek ve 2 bardak sıcak suyu ekleyip kısık ateşte 25 dakika pişir; pul biberle servis et."] },
+
   { ad: "Tahin Soslu Tavuk Izgara", kat: "Ana Yemek", kisi: 6, sure: "30 dk + marine",
     m: ["1 kilo tavuk göğsü|tavuk göğsü", "2 yemek kaşığı tahin", "2 yemek kaşığı sıvı yağ|yağ", "1 tane limon", "Pul biber", "Tuz", "Karabiber", "2 tane domates"],
     y: ["Tahin, yağ, limon suyu ve baharatları karıştır.",
@@ -3727,11 +4065,27 @@ var TARIFLER = [
         "Pirinci ekleyip kavur; bulyonu sıcak suda eritip ekle.",
         "Suyunu çekene kadar kısık ateşte pişirip 15 dakika demlendir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Garnitürlü Pirinç Pilavı", kat: "Pilav & Makarna", kisi: 6, sure: "40 dk",
+    m: ["2 su bardağı baldo pirinç|pirinç", "500 gr garnitür (bezelye-havuç-mısır)|bezelye/havuç/mısır", "2,5 su bardağı sıcak su|su", "1 tane sebze bulyon|bulyon", "1 yemek kaşığı tereyağı", "2 yemek kaşığı sıvı yağ|yağ", "1 çay kaşığı tuz|tuz"],
+    y: ["Pirinci yarım saat ılık tuzlu suda beklet, süz.",
+        "Yağ ve tereyağında garnitürü birkaç dakika çevir.",
+        "Pirinci ekleyip kavur; bulyonu sıcak suda eritip ekle.",
+        "Suyunu çekene kadar kısık ateşte pişirip 15 dakika demlendir."] },
+
   { ad: "Hurmalı Portakallı Pilav", kat: "Pilav & Makarna", kisi: 4, sure: "45 dk",
     m: ["1 su bardağı baldo pirinç|pirinç", "6-7 tane hurma", "1 tane portakal", "1 yemek kaşığı tereyağı", "1,5 su bardağı et suyu|et suyu", "Yenibahar", "Tuz", "Karabiber"],
     y: ["Pirinci ılık suda yarım saat ıslatıp yıka.",
         "Portakal kabuğunu ince şeritler halinde kesip haşlayarak acılığını al; hurmaları doğra.",
         "Tereyağında pirinci çevir, et suyu ve baharatlarla pişir.",
+        "Hurma ve portakal kabuğunu pilava katıp demlendir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Hurmalı Portakallı Pilav", kat: "Pilav & Makarna", kisi: 4, sure: "45 dk",
+    m: ["1 su bardağı baldo pirinç|pirinç", "6-7 tane hurma", "1 tane portakal", "1 yemek kaşığı tereyağı", "1,5 su bardağı sebze suyu (ya da su)|su", "Yenibahar", "Tuz", "Karabiber"],
+    y: ["Pirinci ılık suda yarım saat ıslatıp yıka.",
+        "Portakal kabuğunu ince şeritler halinde kesip haşlayarak acılığını al; hurmaları doğra.",
+        "Tereyağında pirinci çevir, sebze suyu ve baharatlarla pişir.",
         "Hurma ve portakal kabuğunu pilava katıp demlendir."] },
 
   { ad: "Ispanaklı Bulgur Pilavı", kat: "Pilav & Makarna", kisi: 4, sure: "35 dk",
@@ -3755,11 +4109,28 @@ var TARIFLER = [
         "Pilavı doldurup milföyün kenarlarını üzerine kapat, ters çevirerek tepsiye diz.",
         "Yumurta sarısı sürüp 200 derece fırında kızarana kadar 20 dakika pişir."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Milföy Kaplamalı İç Pilav", kat: "Pilav & Makarna", kisi: 6, sure: "1 saat",
+    m: ["2 su bardağı baldo pirinç|pirinç", "1 su bardağı garnitür|bezelye/havuç", "2 yemek kaşığı kuş üzümü|kuru üzüm", "1 tane sebze bulyon|bulyon", "4,5 su bardağı sıcak su|su", "1 çay kaşığı kuru nane", "1 çay kaşığı yenibahar", "1 tatlı kaşığı tuz|tuz", "3 yemek kaşığı sıvı yağ|yağ", "6 tane milföy hamuru|milföy", "1 tane yumurta sarısı|yumurta"],
+    y: ["Pirinci yağda 4 dakika kavur; garnitür, üzüm, baharatlar, bulyon ve suyla pilavı pişir.",
+        "Kaselerin içini yağlayıp milföy karelerini ser.",
+        "Pilavı doldurup milföyün kenarlarını üzerine kapat, ters çevirerek tepsiye diz.",
+        "Yumurta sarısı sürüp 200 derece fırında kızarana kadar 20 dakika pişir."],
+    e: ["fırın"] },
+
   { ad: "Nohutlu Pirinç Pilavı", kat: "Pilav & Makarna", kisi: 4, sure: "45 dk + ıslatma",
     m: ["2 su bardağı pirinç", "1 çay bardağı nohut", "2 yemek kaşığı tereyağı", "3,5 su bardağı et suyu ya da su|et suyu/su", "Tuz"],
     y: ["Nohudu bir gece ılık suda ıslatıp haşla.",
         "Pirinci tuzlu ılık suda beklet, süz.",
         "Tereyağında pirinci çevir, nohut, sıcak et suyu ve tuzu ekle.",
+        "Suyunu çekene kadar kısık ateşte pişirip demlendir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Nohutlu Pirinç Pilavı", kat: "Pilav & Makarna", kisi: 4, sure: "45 dk + ıslatma",
+    m: ["2 su bardağı pirinç", "1 çay bardağı nohut", "2 yemek kaşığı tereyağı", "3,5 su bardağı sebze suyu (ya da su)|su", "Tuz"],
+    y: ["Nohudu bir gece ılık suda ıslatıp haşla.",
+        "Pirinci tuzlu ılık suda beklet, süz.",
+        "Tereyağında pirinci çevir, nohut, sıcak sebze suyu ve tuzu ekle.",
         "Suyunu çekene kadar kısık ateşte pişirip demlendir."] },
 
   { ad: "Sarımsaklı Bulgur Pilavı", kat: "Pilav & Makarna", kisi: 4, sure: "35 dk",
@@ -3779,6 +4150,14 @@ var TARIFLER = [
 
   { ad: "Yeşil Mercimekli Cevizli Bulgur", kat: "Pilav & Makarna", kisi: 6, sure: "40 dk",
     m: ["2 su bardağı bulgur", "1 su bardağı haşlanmış yeşil mercimek|yeşil mercimek", "1 tane kuru soğan", "Yarım çay bardağı sıvı yağ|yağ", "2 yemek kaşığı zeytinyağı", "1 tane et bulyon|bulyon", "Yarım su bardağı ceviz", "1,5 çay kaşığı tuz|tuz", "Pul biber"],
+    y: ["Soğanı yağda kavur, bulguru ekleyip çevir.",
+        "Bulyonu 3,5 bardak sıcak suda eritip tencereye ekle.",
+        "Mercimeği ve tuzu ilave edip suyunu çekene kadar pişir.",
+        "Kırılmış cevizi zeytinyağında hafifçe kavurup pilava kat, demlendir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Yeşil Mercimekli Cevizli Bulgur", kat: "Pilav & Makarna", kisi: 6, sure: "40 dk",
+    m: ["2 su bardağı bulgur", "1 su bardağı haşlanmış yeşil mercimek|yeşil mercimek", "1 tane kuru soğan", "Yarım çay bardağı sıvı yağ|yağ", "2 yemek kaşığı zeytinyağı", "1 tane sebze bulyon|bulyon", "Yarım su bardağı ceviz", "1,5 çay kaşığı tuz|tuz", "Pul biber"],
     y: ["Soğanı yağda kavur, bulguru ekleyip çevir.",
         "Bulyonu 3,5 bardak sıcak suda eritip tencereye ekle.",
         "Mercimeği ve tuzu ilave edip suyunu çekene kadar pişir.",
@@ -3808,6 +4187,14 @@ var TARIFLER = [
   { ad: "Havuçlu Yoğurtlu Ispanak Çorbası", kat: "Çorba", kisi: 6, sure: "35 dk",
     m: ["1 bağ ıspanak|ıspanak", "2 tane havuç", "1 tane küçük kuru soğan|kuru soğan", "3 yemek kaşığı sıvı yağ|yağ", "1 tane tavuk bulyon|bulyon", "2 çay kaşığı tuz|tuz",
         "#Terbiyesi için", "1 tane yumurta", "1,5 su bardağı yoğurt", "2 yemek kaşığı un"],
+    y: ["Soğan ve rendelenmiş havucu yağda kavur.",
+        "Doğranmış ıspanak, bulyon ve 6 bardak sıcak suyu ekleyip 15 dakika pişir.",
+        "Yumurta, yoğurt ve unu çırpıp sıcak çorbayla ılıt.",
+        "Terbiyeyi tencereye ekleyip karıştırarak bir taşım kaynat, tuzunu ayarla."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Havuçlu Yoğurtlu Ispanak Çorbası", kat: "Çorba", kisi: 6, sure: "35 dk",
+    m: ["1 bağ ıspanak|ıspanak", "2 tane havuç", "1 tane küçük kuru soğan|kuru soğan", "3 yemek kaşığı sıvı yağ|yağ", "1 tane sebze bulyon|bulyon", "2 çay kaşığı tuz|tuz", "#Terbiyesi için", "1 tane yumurta", "1,5 su bardağı yoğurt", "2 yemek kaşığı un"],
     y: ["Soğan ve rendelenmiş havucu yağda kavur.",
         "Doğranmış ıspanak, bulyon ve 6 bardak sıcak suyu ekleyip 15 dakika pişir.",
         "Yumurta, yoğurt ve unu çırpıp sıcak çorbayla ılıt.",
@@ -3969,6 +4356,14 @@ var TARIFLER = [
         "Kabakları doldurup tencereye dik diz.",
         "Kalan salça, yağ ve tereyağını sıcak suyla açıp ekle; kısık ateşte 40 dakika pişir, sarımsaklı yoğurtla servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Yoğurtlu Etsiz Kabak Dolması", kat: "Ana Yemek", kisi: 6, sure: "1 saat",
+    m: ["1 kilo dolmalık kabak|kabak", "1 su bardağı pirinç", "2 tane domates", "2 tatlı kaşığı domates salçası|salça", "Yarım çay bardağı sıvı yağ|yağ", "1 yemek kaşığı tereyağı", "Dereotu", "Tuz", "Karabiber", "Sarımsaklı yoğurt|yoğurt/sarımsak", "1 tane kuru soğan"],
+    y: ["Kabakların içini oyup kabukları dolma için hazırla.",
+        "Pirinci ince doğranmış soğan, rendelenmiş domates, salçanın yarısı, dereotu ve baharatlarla karıştır.",
+        "Kabakları doldurup tencereye dik diz.",
+        "Kalan salça, yağ ve tereyağını sıcak suyla açıp ekle; kısık ateşte 40 dakika pişir, sarımsaklı yoğurtla servis et."] },
+
   { ad: "Amerikan Salatası", kat: "Salata", kisi: 6, sure: "40 dk",
     m: ["5-6 tane orta boy patates|patates", "2 kase garnitür (bezelye-havuç)|bezelye/havuç", "5-6 tane kornişon turşu|turşu", "2 yemek kaşığı mısır", "2 diş sarımsak", "1 yemek kaşığı mayonez", "5-6 yemek kaşığı yoğurt", "Tuz"],
     y: ["Patatesleri haşlayıp küçük küp doğra.",
@@ -4105,6 +4500,15 @@ var TARIFLER = [
         "Rendelenmiş domates, salça ve kekikle sos hazırla.",
         "Hamurdan küçük bezeler alıp yuvarlak aç, sos sür; sucuk, mantar, biber ve kaşar koy.",
         "220 derece fırında 12-15 dakika pişir."], e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Yoğurtlu Karışık Mini Pizza", kat: "Hamur İşi", kisi: 8, sure: "1 saat 15 dk",
+    m: ["3 su bardağı un", "4-5 yemek kaşığı yoğurt", "1 tane yumurta", "1 çay bardağı sıvı yağ|yağ", "1 paket kuru maya|maya", "2 çay kaşığı tuz|tuz", "Ilık süt|süt", "#Üzeri için", "2 tane domates", "1 yemek kaşığı domates salçası|salça", "Mantar|mantar", "Biber|dolmalık biber", "Rendelenmiş kaşar|kaşar", "Kekik"],
+    y: ["Maya, yoğurt, yumurta, yağ, tuz, ılık süt ve unla yumuşak hamur yoğurup 40 dakika mayalandır.",
+        "Rendelenmiş domates, salça ve kekikle sos hazırla.",
+        "Hamurdan küçük bezeler alıp yuvarlak aç, sos sür; mantar, biber ve kaşar koy.",
+        "220 derece fırında 12-15 dakika pişir."],
+    e: ["fırın"] },
 
   { ad: "Kaşarlı Beyaz Peynirli Gözleme", kat: "Hamur İşi", kisi: 4, sure: "45 dk",
     m: ["3 su bardağı un", "1 tane yumurta", "2 yemek kaşığı yoğurt", "1 tatlı kaşığı tuz|tuz", "Ilık su|su", "200 gr beyaz peynir", "200 gr kaşar", "7 dal taze soğan|taze soğan", "1 tutam maydanoz", "Tereyağı"],
@@ -4267,6 +4671,14 @@ var TARIFLER = [
         "Sebzeleri doldurup tencereye diz.",
         "Salça, kalan domates, yağ ve 4 bardak sıcak suyu ekleyip kısık ateşte 50 dakika pişir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kuru Patlıcan ve Kabak Dolması", kat: "Ana Yemek", kisi: 6, sure: "1 saat 30 dk",
+    m: ["10 tane kuru patlıcan|kuru patlıcan", "10 tane kuru kabak|kuru kabak", "1 su bardağı pirinç", "5-6 tane domates", "1 yemek kaşığı domates salçası|salça", "5-6 diş sarımsak", "1 tatlı kaşığı kişniş", "3 yemek kaşığı sıvı yağ|yağ", "Tuz", "Karabiber"],
+    y: ["Kuru sebzeleri kaynar suda yumuşayana kadar haşla.",
+        "Pirinci rendelenmiş domatesin yarısı, sarımsak, kişniş ve baharatlarla karıştır.",
+        "Sebzeleri doldurup tencereye diz.",
+        "Salça, kalan domates, yağ ve 4 bardak sıcak suyu ekleyip kısık ateşte 50 dakika pişir."] },
+
   { ad: "Mısır Unlu Asma Yaprağı Pidesi", kat: "Hamur İşi", kisi: 6, sure: "50 dk",
     m: ["2 su bardağı mısır unu", "1,5 su bardağı yoğurt", "Bir parmak eksik 1 su bardağı sıvı yağ|yağ", "1 demet taze soğan|taze soğan", "Yarım demet taze nane", "1 tatlı kaşığı tuz|tuz", "1 tatlı kaşığı toz şeker|şeker", "Pul biber", "1 paket kabartma tozu", "15-20 tane asma yaprağı"],
     y: ["Mısır unu, yoğurt, yağ, tuz, şeker, kabartma tozu ve pul biberi karıştır.",
@@ -4306,6 +4718,14 @@ var TARIFLER = [
   { ad: "Salamlı Peynirli Patates Kroket", kat: "Ara Sıcak", kisi: 4, sure: "45 dk",
     m: ["3 tane orta boy patates|patates", "2 tane yumurta", "1 tatlı kaşığı nişasta", "2 yemek kaşığı beyaz peynir", "3-4 dilim salam|salam", "Yarım su bardağı un", "Yarım su bardağı galeta unu", "Tuz", "Karabiber", "Kızartma için sıvı yağ|yağ"],
     y: ["Patatesleri haşlayıp ez; bir yumurta sarısı, nişasta, peynir, küçük doğranmış salam ve baharatla yoğur.",
+        "Harçtan parmak şeklinde kroketler yap.",
+        "Una, çırpılmış yumurtaya ve galeta ununa bula.",
+        "Kızgın yağda her tarafı kızarana kadar kızart."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Peynirli Patates Kroket", kat: "Ara Sıcak", kisi: 4, sure: "45 dk",
+    m: ["3 tane orta boy patates|patates", "2 tane yumurta", "1 tatlı kaşığı nişasta", "2 yemek kaşığı beyaz peynir", "Yarım su bardağı un", "Yarım su bardağı galeta unu", "Tuz", "Karabiber", "Kızartma için sıvı yağ|yağ"],
+    y: ["Patatesleri haşlayıp ez; bir yumurta sarısı, nişasta, peynir ve baharatla yoğur.",
         "Harçtan parmak şeklinde kroketler yap.",
         "Una, çırpılmış yumurtaya ve galeta ununa bula.",
         "Kızgın yağda her tarafı kızarana kadar kızart."] },
@@ -4785,6 +5205,15 @@ var TARIFLER = [
         "Et suyunu gezdir, dil peynirini ve parmesanı serp.",
         "Kırılmış bademi yayıp 200 derece fırında 25 dakika pişir, maydanozla servis et."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Bademli Peynirli Fırın Sebze", kat: "Ana Yemek", kisi: 4, sure: "50 dk",
+    m: ["800 gr patates", "200 gr bezelye", "1 tane kuru soğan", "100 gr dil peyniri|dil peyniri", "4 tane domates", "60 gr badem", "Yarım su bardağı sebze suyu (ya da su)|su", "2 yemek kaşığı rendelenmiş parmesan|parmesan", "Maydanoz", "Tuz", "Karabiber"],
+    y: ["Patatesleri küp doğrayıp yarı haşla, bezelyeyle birlikte fırın kabına al.",
+        "Soğanı doğrayıp ekle, domates dilimlerini üzerine diz.",
+        "Sebze suyunu gezdir, dil peynirini ve parmesanı serp.",
+        "Kırılmış bademi yayıp 200 derece fırında 25 dakika pişir, maydanozla servis et."],
+    e: ["fırın"] },
+
   { ad: "Kremalı Tereyağlı Mantar", kat: "Ara Sıcak", kisi: 4, sure: "20 dk",
     m: ["500-600 gr mantar", "75 gr tereyağı", "1 tatlı kaşığı un", "1 kutu krema|krema", "1 demet maydanoz", "Yarım limonun suyu|limon", "Tuz", "Karabiber"],
     y: ["Mantarları dilimleyip limon suyuyla karıştır.",
@@ -4819,6 +5248,15 @@ var TARIFLER = [
         "Soğan ve sarımsağı yağda kavur, kabak içi, domates, pirinç ve baharatı ekleyip yarım bardak suyla yarı pişir.",
         "Doğranmış jambonu kat, kabak kayıklarına doldur.",
         "Kaşar serpip 190 derece fırında 25 dakika pişir."], e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Pirinçli Kabak Dolması", kat: "Ana Yemek", kisi: 4, sure: "1 saat",
+    m: ["4 tane kabak", "75 gr kuru soğan|kuru soğan", "1-2 diş sarımsak", "225 gr doğranmış domates|domates", "150 gr pirinç", "1 tatlı kaşığı karışık baharat|baharat", "1 yemek kaşığı sıvı yağ|yağ", "Rendelenmiş kaşar|kaşar", "Tuz"],
+    y: ["Kabakları uzunlamasına ikiye kesip içlerini oy, kabukları tuzlu suda 3 dakika haşla.",
+        "Soğan ve sarımsağı yağda kavur, kabak içi, domates, pirinç ve baharatı ekleyip yarım bardak suyla yarı pişir.",
+        "Harcı kabak kayıklarına doldur.",
+        "Kaşar serpip 190 derece fırında 25 dakika pişir."],
+    e: ["fırın"] },
 
   { ad: "Salatalıklı Yoğurt Sosu", kat: "Meze", kisi: 4, sure: "10 dk",
     m: ["Yarım kilo yoğurt", "1 dilim bayat ekmek içi|ekmek", "2 yemek kaşığı süt", "1 tane salatalık", "5 diş sarımsak", "1 yemek kaşığı zeytinyağı", "Tuz"],
@@ -4905,6 +5343,13 @@ var TARIFLER = [
         "Küp doğranmış patates, patlıcan, kabak, brüksel lahanası ve biberi ekle.",
         "Domatesi ilave edip sebzeler yumuşayana kadar 25 dakika pişir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Brüksel Lahanalı Sebze Yemeği", kat: "Ana Yemek", kisi: 4, sure: "1 saat 15 dk",
+    m: ["1 tane kuru soğan", "2 tane domates", "3 tane sivri biber", "1 tane patates", "1 tane patlıcan", "1 tane kabak", "6 tane brüksel lahanası|lahana", "1,5 yemek kaşığı tereyağı", "Tuz", "Karabiber", "2 su bardağı sıcak su"],
+    y: ["Soğanı tereyağında pembeleştir.",
+        "Küp doğranmış patates, patlıcan, kabak, brüksel lahanası ve biberi ekle.",
+        "Domatesi ve sıcak suyu ilave edip sebzeler yumuşayana kadar 25 dakika pişir."] },
+
   { ad: "Yumurtalı Taze Fasulye Kavurması", kat: "Ana Yemek", kisi: 4, sure: "35 dk",
     m: ["Yarım kilo taze fasulye", "2 tane kuru soğan", "1 tane havuç", "2 tane domates", "2 tane yumurta", "3 yemek kaşığı tereyağı", "Tuz", "Karabiber"],
     y: ["Fasulyeleri ince doğrayıp tuzlu suda 10 dakika haşla, süz.",
@@ -4926,12 +5371,30 @@ var TARIFLER = [
         "Üzeri folyolu 190 derece fırında 15 dakika pişir.",
         "Folyoyu açıp kaşar serp, 10 dakika daha kızart; maydanozla servis et."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Fırında Kaşarlı Kabak", kat: "Ana Yemek", kisi: 4, sure: "35 dk",
+    m: ["3 tane kabak", "1 su bardağı küp doğranmış domates|domates", "Çeyrek su bardağı rendelenmiş kaşar|kaşar", "1 yemek kaşığı kıyılmış maydanoz", "2 yemek kaşığı su|su", "Tuz", "Karabiber"],
+    y: ["Kabakları halka halka doğrayıp fırın kabına yay, suyu ekle.",
+        "Domatesi üzerine serp, tuz ve karabiber ekle.",
+        "Üzeri folyolu 190 derece fırında 15 dakika pişir.",
+        "Folyoyu açıp kaşar serp, 10 dakika daha kızart; maydanozla servis et."],
+    e: ["fırın"] },
+
   { ad: "İrmikli Mısırlı Fırın Lahana", kat: "Ana Yemek", kisi: 6, sure: "1 saat",
     m: ["600 gr beyaz lahana|lahana", "4 tane yumurta", "3 tane domates", "140 gr mısır", "200 gr irmik", "200 gr krema", "1 litre süt", "1 tane kırmızı dolmalık biber|kapya", "100 gr salam|salam", "Tuz", "Karabiber"],
     y: ["Lahanayı ince doğrayıp tuzlu suda 5 dakika haşla, süz.",
         "Sütü kaynatıp irmiği ekle, koyulaşınca ocaktan al; yumurta ve kremayı çırparak kat.",
         "Lahana, mısır, doğranmış biber ve salamı irmikli karışımla birleştir, tuz ve karabiber ekle.",
         "Yağlanmış kaba dökün, domates dilimleriyle kaplayıp 180 derece fırında 35 dakika pişirin."], e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz İrmikli Mısırlı Fırın Lahana", kat: "Ana Yemek", kisi: 6, sure: "1 saat",
+    m: ["600 gr beyaz lahana|lahana", "4 tane yumurta", "3 tane domates", "140 gr mısır", "200 gr irmik", "200 gr krema", "1 litre süt", "1 tane kırmızı dolmalık biber|kapya", "Tuz", "Karabiber"],
+    y: ["Lahanayı ince doğrayıp tuzlu suda 5 dakika haşla, süz.",
+        "Sütü kaynatıp irmiği ekle, koyulaşınca ocaktan al; yumurta ve kremayı çırparak kat.",
+        "Lahana, mısır ve doğranmış biberi irmikli karışımla birleştir, tuz ve karabiber ekle.",
+        "Yağlanmış kaba dökün, domates dilimleriyle kaplayıp 180 derece fırında 35 dakika pişirin."],
+    e: ["fırın"] },
 
   { ad: "Fırında Peynirli Kabak", kat: "Ana Yemek", kisi: 4, sure: "40 dk",
     m: ["4 tane kabak", "150 gr beyaz peynir", "1 tane yumurta", "1 kahve fincanı rendelenmiş kaşar|kaşar", "2 yemek kaşığı zeytinyağı", "Yarım demet dereotu", "Pul biber", "Tuz"],
@@ -4961,6 +5424,15 @@ var TARIFLER = [
         "Karışımı küçük güveç kaplarına paylaştır.",
         "Kaşar serpip 200 derece fırında üzeri kızarana kadar 15 dakika pişir."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Fırında Kremalı Mısır", kat: "Ara Sıcak", kisi: 4, sure: "35 dk",
+    m: ["2 kutu mısır konservesi|mısır", "2 diş sarımsak", "3 yemek kaşığı tereyağı", "4 yemek kaşığı un", "2 su bardağı süt", "Yarım kutu krema|krema", "Rendelenmiş kaşar|kaşar", "Tuz"],
+    y: ["Tereyağında sarımsak ve unu kavur, sütü ekleyerek koyu bir sos yap; kremayı kat.",
+        "Süzülmüş mısırı sosa ekle, tuzla.",
+        "Karışımı küçük güveç kaplarına paylaştır.",
+        "Kaşar serpip 200 derece fırında üzeri kızarana kadar 15 dakika pişir."],
+    e: ["fırın"] },
+
   { ad: "Fırında Yumurtalı Kıymalı Ispanak", kat: "Ana Yemek", kisi: 4, sure: "45 dk",
     m: ["500 gr ıspanak", "250 gr kıyma", "1 tane kuru soğan", "4 tane yumurta", "Yarım su bardağı rendelenmiş kaşar|kaşar", "Yarım su bardağı sıvı yağ|yağ", "100 gr pastırma (isteğe göre)|pastırma", "Tuz", "Karabiber"],
     y: ["Soğan ve kıymayı yağda kavur, doğranmış ıspanağı ekleyip söndür.",
@@ -4972,6 +5444,14 @@ var TARIFLER = [
     m: ["1 yemek tabağı kurutulmuş taze fasulye|kuru fasulye", "200 gr kuşbaşı kuzu eti|kuzu eti", "2 tane kuru soğan", "2 tane patates", "Yarım çay bardağı pirinç|pirinç", "1 yemek kaşığı domates salçası|salça", "2 yemek kaşığı tereyağı", "Tuz", "Pul biber"],
     y: ["Kurutulmuş fasulyeyi birkaç saat ılık suda ıslatıp haşla ve süz.",
         "Eti ve soğanı tereyağında kavur, salçayı ekle.",
+        "Fasulye ve sıcak suyu ekleyip 30 dakika pişir.",
+        "Küp patates ve pirinci ekleyip 20 dakika daha pişir, pul biberle tatlandır."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Gelin Fasulyesi", kat: "Ana Yemek", kisi: 4, sure: "1 saat 30 dk + ıslatma",
+    m: ["1 yemek tabağı kurutulmuş taze fasulye|kuru fasulye", "2 tane kuru soğan", "2 tane patates", "Yarım çay bardağı pirinç|pirinç", "1 yemek kaşığı domates salçası|salça", "2 yemek kaşığı tereyağı", "Tuz", "Pul biber"],
+    y: ["Kurutulmuş fasulyeyi birkaç saat ılık suda ıslatıp haşla ve süz.",
+        "Soğanı tereyağında kavur, salçayı ekle.",
         "Fasulye ve sıcak suyu ekleyip 30 dakika pişir.",
         "Küp patates ve pirinci ekleyip 20 dakika daha pişir, pul biberle tatlandır."] },
 
@@ -5004,6 +5484,15 @@ var TARIFLER = [
         "Her dilime harçtan koyup bir kaşık kaşar serp.",
         "Kekik serpip 200 derece fırında peynir eriyene kadar 10 dakika pişir."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kepek Ekmeğinden Kolay Pizza", kat: "Aperatifler", kisi: 4, sure: "30 dk",
+    m: ["12 dilim kepekli ekmek|ekmek", "200 gr mantar", "2 tane sivri biber", "1 tane kuru soğan", "1 tane iri domates|domates", "3-4 diş sarımsak", "1 yemek kaşığı tereyağı", "12 yemek kaşığı rendelenmiş kaşar|kaşar", "Kekik", "Tuz"],
+    y: ["Soğan ve sarımsağı tereyağında kavur; mantar, biber ve domatesi ekleyip suyunu çektir.",
+        "Ekmek dilimlerini tepsiye diz.",
+        "Her dilime harçtan koyup bir kaşık kaşar serp.",
+        "Kekik serpip 200 derece fırında peynir eriyene kadar 10 dakika pişir."],
+    e: ["fırın"] },
+
   { ad: "Mantarlı Pizza", kat: "Hamur İşi", kisi: 4, sure: "1 saat 15 dk",
     m: ["2 su bardağı un", "1 tatlı kaşığı kuru maya|maya", "30 gr tereyağı", "1 su bardağı ılık süt|süt", "1 yemek kaşığı sıvı yağ|yağ", "Tuz",
         "#Üzeri için", "Yarım kilo mantar", "1 tane kuru soğan", "2 yemek kaşığı domates salçası|salça", "100 gr rendelenmiş kaşar|kaşar", "Kekik"],
@@ -5035,6 +5524,15 @@ var TARIFLER = [
         "Ekmek dilimlerinin üzerine kalınca yay, kaşar serp.",
         "200 derece fırında 12-15 dakika pişir."], e: ["fırın"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Kabaklı Peynirli Ekmek Dilimleri", kat: "Kahvaltılık", kisi: 4, sure: "25 dk",
+    m: ["4 dilim kepekli ekmek|ekmek", "1 tane kuru soğan", "1 tane kabak", "1 yemek kaşığı un", "1 çay kaşığı kabartma tozu", "2 tatlı kaşığı kıyılmış maydanoz", "2 tane yumurta", "Rendelenmiş kaşar|kaşar", "Tuz"],
+    y: ["Kabağı rendeleyip suyunu sık, soğanı küçük doğra.",
+        "Yumurta, un, kabartma tozu, maydanoz ve tuzla karıştır.",
+        "Ekmek dilimlerinin üzerine kalınca yay, kaşar serp.",
+        "200 derece fırında 12-15 dakika pişir."],
+    e: ["fırın"] },
+
   { ad: "Sucuklu Pizza", kat: "Hamur İşi", kisi: 4, sure: "1 saat 15 dk",
     m: ["3 su bardağı un", "1 tatlı kaşığı kuru maya|maya", "1 su bardağı ılık su|su", "1 tatlı kaşığı tuz|tuz", "2 yemek kaşığı zeytinyağı",
         "#Üzeri için", "1 kangal sucuk|sucuk", "3 tane orta boy domates|domates", "2 tane sivri biber", "1 su bardağı rendelenmiş kaşar|kaşar", "Kekik"],
@@ -5050,6 +5548,14 @@ var TARIFLER = [
         "Üzerine domates dilimleri, sosis, sucuk, ezilmiş sarımsak, kaşar ve kekik yay.",
         "Kapağı kapalı kısık ateşte altı kızarıp peynir eriyene kadar 10 dakika pişir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Tavada Yufka Pizza", kat: "Aperatifler", kisi: 2, sure: "20 dk",
+    m: ["2 tane yufka", "1 çay bardağı süt", "1 tane yumurta", "100 gr rendelenmiş kaşar|kaşar", "1 tane domates", "1 diş sarımsak", "1 yemek kaşığı kekik", "1 tatlı kaşığı sıvı yağ|yağ"],
+    y: ["Yumurta ve sütü çırp.",
+        "Yağlı tavaya bir yufkayı katlayarak yerleştir, süt karışımının yarısını sür; ikinci yufkayı koyup kalanını sür.",
+        "Üzerine domates dilimleri, ezilmiş sarımsak, kaşar ve kekik yay.",
+        "Kapağı kapalı kısık ateşte altı kızarıp peynir eriyene kadar 10 dakika pişir."] },
+
   { ad: "Temel Pizza Hamuru", kat: "İtalyan Mutfağı", kisi: 4, sure: "1 saat 15 dk",
     m: ["4 su bardağı un", "1 küp yaş maya|maya", "4 yemek kaşığı zeytinyağı", "2 tatlı kaşığı tuz|tuz", "1,5 su bardağı ılık su|su", "1 çay kaşığı toz şeker|şeker"],
     y: ["Mayayı ılık su ve şekerle eritip 5 dakika beklet.",
@@ -5063,6 +5569,15 @@ var TARIFLER = [
         "Yufkaları tepsiye buruşturarak katla, aralarına sostan gezdir.",
         "Üzerine ketçap sür; dilimlenmiş sosis, mısır ve kaşar yay.",
         "Kekik serpip 190 derece fırında kızarana kadar 25 dakika pişir."], e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Yufkalı Fırın Pizza", kat: "Hamur İşi", kisi: 6, sure: "45 dk",
+    m: ["3 tane yufka", "3 tane yumurta", "2 su bardağı süt", "Yarım çay bardağı sıvı yağ|yağ", "1 yemek kaşığı yoğurt", "1 yemek kaşığı ketçap", "2 yemek kaşığı mısır", "Rendelenmiş kaşar|kaşar", "Kekik"],
+    y: ["Yumurta, süt, yağ ve yoğurdu çırp.",
+        "Yufkaları tepsiye buruşturarak katla, aralarına sostan gezdir.",
+        "Üzerine ketçap sür; mısır ve kaşar yay.",
+        "Kekik serpip 190 derece fırında kızarana kadar 25 dakika pişir."],
+    e: ["fırın"] },
 
   { ad: "Beyaz Çikolatalı Parfe", kat: "Tatlı", kisi: 8, sure: "30 dk + dondurma",
     m: ["225 gr beyaz çikolata|çikolata", "2,5 su bardağı krema|krema", "Yarım su bardağı süt", "5 tane yumurta sarısı|yumurta", "1 yemek kaşığı toz şeker|şeker", "1 çay bardağı hindistan cevizi", "1 su bardağı antep fıstığı|fıstık"],
@@ -5244,6 +5759,14 @@ var TARIFLER = [
         "Tereyağında soğan, biber ve salçayı kavur; patlıcan ve domatesi ekleyip pişir.",
         "Köfteleri ve kalan et suyunu ekleyip 15 dakika pişir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Yarmalı Patlıcanlı Köfte", kat: "Ana Yemek", kisi: 6, sure: "1 saat 15 dk",
+    m: ["1 su bardağı yarma (200 gr)|buğday", "600 gr patlıcan", "150 gr yeşil sivri biber|sivri biber", "2 tane kuru soğan", "2 tane domates", "50 gr tereyağı", "1 yemek kaşığı biber salçası|salça", "5 su bardağı sebze suyu (ya da su)|su", "Tuz", "Pul biber"],
+    y: ["Yarmayı sebze suyunda yumuşayana kadar haşla, süz ve yoğurarak köfte hamuru yap; küçük köfteler şekillendir.",
+        "Patlıcanları küp doğrayıp tuzlu suda beklet.",
+        "Tereyağında soğan, biber ve salçayı kavur; patlıcan ve domatesi ekleyip pişir.",
+        "Köfteleri ve kalan sebze suyunu ekleyip 15 dakika pişir."] },
+
   { ad: "Peynirli Hindi Köftesi", kat: "Ana Yemek", kisi: 4, sure: "35 dk",
     m: ["Yarım kilo hindi kıyması|hindi", "1 su bardağı rendelenmiş kaşar|kaşar", "2 tane kuru soğan", "Yarım demet maydanoz", "1 tane yumurta", "1-2 su bardağı un", "Tuz", "Karabiber", "Kızartma için sıvı yağ|yağ"],
     y: ["Hindi kıymasını rendelenmiş soğan, kaşar, maydanoz, yumurta ve baharatlarla yoğur.",
@@ -5284,6 +5807,14 @@ var TARIFLER = [
   { ad: "Karnabaharlı Sebze Köftesi", kat: "Ara Sıcak", kisi: 4, sure: "45 dk",
     m: ["2 tane havuç", "1 tane kereviz", "4-5 çiçek karnabahar|karnabahar", "1 yemek kaşığı tereyağı", "1,5 yemek kaşığı un", "2 su bardağı et suyu|et suyu", "1 tane yumurta", "1 su bardağı galeta unu", "Tuz", "Karabiber", "Kızartma için sıvı yağ|yağ"],
     y: ["Sebzeleri et suyunda yumuşayana kadar haşla, süzüp ez.",
+        "Tereyağında unu kavur, sebzeleri ekleyip koyulaşana kadar karıştır ve soğut.",
+        "Köfte şekli verip yumurtaya ve galeta ununa bula.",
+        "Kızgın yağda kızart."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Karnabaharlı Sebze Köftesi", kat: "Ara Sıcak", kisi: 4, sure: "45 dk",
+    m: ["2 tane havuç", "1 tane kereviz", "4-5 çiçek karnabahar|karnabahar", "1 yemek kaşığı tereyağı", "1,5 yemek kaşığı un", "2 su bardağı sebze suyu (ya da su)|su", "1 tane yumurta", "1 su bardağı galeta unu", "Tuz", "Karabiber", "Kızartma için sıvı yağ|yağ"],
+    y: ["Sebzeleri sebze suyunda yumuşayana kadar haşla, süzüp ez.",
         "Tereyağında unu kavur, sebzeleri ekleyip koyulaşana kadar karıştır ve soğut.",
         "Köfte şekli verip yumurtaya ve galeta ununa bula.",
         "Kızgın yağda kızart."] },
@@ -5672,6 +6203,14 @@ var TARIFLER = [
         "Erişteyi tabağa yay, sarımsaklı yoğurdu üzerine dök.",
         "Etli nohudu yerleştirip pul biberli tereyağı gezdir."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Avunya Mantısı (Nohutlu Erişte)", kat: "Pilav & Makarna", kisi: 4, sure: "1 saat",
+    m: ["Yarım kilo erişte", "1 kase haşlanmış nohut|nohut", "1 tane kuru soğan", "1 tane domates", "2 yemek kaşığı tereyağı", "2 su bardağı yoğurt", "3 diş sarımsak", "Pul biber", "Tuz", "Karabiber"],
+    y: ["Soğanı tereyağında kavur, domatesi ekleyip az suyla pişir; nohudu ekle.",
+        "Erişteyi haşlayıp süz.",
+        "Erişteyi tabağa yay, sarımsaklı yoğurdu üzerine dök.",
+        "Nohutlu harcı yerleştirip pul biberli tereyağı gezdir."] },
+
   { ad: "Bonfile Soslu Linguine", kat: "İtalyan Mutfağı", kisi: 1, sure: "25 dk",
     m: ["80 gr bonfile|dana eti", "110 gr linguine makarna|makarna", "3 tane kestane mantarı|mantar", "Çeyrek kuru soğan|kuru soğan", "1 diş sarımsak", "1 çay bardağı et suyu|et suyu", "1 yemek kaşığı krema", "1 yemek kaşığı zeytinyağı", "Parmesan|parmesan", "Tuz", "Karabiber"],
     y: ["Makarnayı haşla.",
@@ -5753,6 +6292,14 @@ var TARIFLER = [
         "Et suyu ve muskatla balkabağı dağılana kadar pişirip ez, sos kıvamına getir.",
         "Makarnayı ve dilimlenmiş zeytini sosla harmanla."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Balkabağı Soslu Zeytinli Pappardelle", kat: "İtalyan Mutfağı", kisi: 1, sure: "25 dk",
+    m: ["110 gr pappardelle makarna|makarna", "40 gr balkabağı|balkabağı", "Çeyrek kuru soğan|kuru soğan", "1 diş sarımsak", "5 tane çekirdeksiz zeytin|zeytin", "1 çay bardağı sebze suyu (ya da su)|su", "Yarım çay kaşığı muskat|muskat", "1 yemek kaşığı zeytinyağı", "Tuz", "Beyaz biber|karabiber"],
+    y: ["Makarnayı haşla.",
+        "Soğan ve sarımsağı zeytinyağında yumuşat, küp balkabağını ekle.",
+        "Sebze suyu ve muskatla balkabağı dağılana kadar pişirip ez, sos kıvamına getir.",
+        "Makarnayı ve dilimlenmiş zeytini sosla harmanla."] },
+
   { ad: "Kalamarlı Makarna", kat: "Deniz Mahsulleri", kisi: 4, sure: "25 dk",
     m: ["Yarım paket spagetti|makarna", "300 gr kalamar", "1 tane kuru soğan", "2 diş sarımsak", "2 yemek kaşığı zeytinyağı", "4-5 dal maydanoz", "Yarım limon|limon", "Pul biber", "Tuz"],
     y: ["Makarnayı haşla.",
@@ -5788,10 +6335,26 @@ var TARIFLER = [
         "Patlıcanları sosa kat.",
         "Haşlanmış makarnayı sosla harmanlayıp servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Patlıcanlı Makarna", kat: "Pilav & Makarna", kisi: 4, sure: "45 dk",
+    m: ["1 paket makarna", "3 tane patlıcan", "3 tane domates", "2 tane sivri biber", "2 yemek kaşığı tereyağı", "Kızartma için sıvı yağ|yağ", "Tuz", "Karabiber"],
+    y: ["Patlıcanları küp doğrayıp tuzlu suda beklet ve kızart.",
+        "Biberi tereyağında sotele, doğranmış domatesi ekleyip pişir.",
+        "Patlıcanları sosa kat.",
+        "Haşlanmış makarnayı sosla harmanlayıp servis et."] },
+
   { ad: "Peynir Soslu Cevizli Pappardelle", kat: "İtalyan Mutfağı", kisi: 1, sure: "20 dk",
     m: ["110 gr pappardelle makarna|makarna", "1 kibrit kutusu beyaz peynir|peynir", "2 yemek kaşığı ceviz", "Yarım çay bardağı tavuk suyu|tavuk suyu", "1 yemek kaşığı krema", "1 yemek kaşığı zeytinyağı", "Birkaç yaprak taze nane|nane"],
     y: ["Makarnayı haşla.",
         "Tavuk suyu ve kremayı ısıtıp ufalanmış peyniri erit.",
+        "Kırılmış cevizi ve kıyılmış naneyi ekle.",
+        "Makarnayı sosla harmanlayıp zeytinyağı gezdir."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Peynir Soslu Cevizli Pappardelle", kat: "İtalyan Mutfağı", kisi: 1, sure: "20 dk",
+    m: ["110 gr pappardelle makarna|makarna", "1 kibrit kutusu beyaz peynir|peynir", "2 yemek kaşığı ceviz", "Yarım çay bardağı sebze suyu (ya da su)|su", "1 yemek kaşığı krema", "1 yemek kaşığı zeytinyağı", "Birkaç yaprak taze nane|nane"],
+    y: ["Makarnayı haşla.",
+        "Sebze suyu ve kremayı ısıtıp ufalanmış peyniri erit.",
         "Kırılmış cevizi ve kıyılmış naneyi ekle.",
         "Makarnayı sosla harmanlayıp zeytinyağı gezdir."] },
 
@@ -5821,6 +6384,14 @@ var TARIFLER = [
     y: ["Makarnayı haşla.",
         "Havuç, biber ve mantarı yağda sotele.",
         "Jambon, mısır ve taze soğanı ekleyip birkaç dakika çevir.",
+        "Makarnayı ekleyip harmanla, sıcak servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Sebzeli Makarna", kat: "Pilav & Makarna", kisi: 4, sure: "25 dk",
+    m: ["Yarım paket çubuk makarna|makarna", "100 gr mantar", "1 tane kırmızı dolmalık biber|kapya", "1 tane havuç", "130 gr mısır", "3 dal taze soğan|taze soğan", "2 yemek kaşığı sıvı yağ|yağ", "Tuz", "Karabiber"],
+    y: ["Makarnayı haşla.",
+        "Havuç, biber ve mantarı yağda sotele.",
+        "Mısır ve taze soğanı ekleyip birkaç dakika çevir.",
         "Makarnayı ekleyip harmanla, sıcak servis et."] },
 
   { ad: "Mantarlı Kremalı Tavuklu Fırın Makarna", kat: "Pilav & Makarna", kisi: 6, sure: "50 dk",
@@ -5896,6 +6467,15 @@ var TARIFLER = [
         "Lor, yumurta, küp salam ve baharatla karıştır.",
         "Kokot kaplarına paylaştır, kaşar serp.",
         "200 derece fırında kabarıp kızarana kadar 15 dakika pişir."], e: ["fırın"] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Lorlu Kokot", kat: "Ara Sıcak", kisi: 4, sure: "30 dk",
+    m: ["225 gr lor ya da labne|lor", "1 tane küçük kuru soğan|kuru soğan", "100 gr mantar", "2 tane yumurta", "1 yemek kaşığı sıvı yağ|yağ", "Rendelenmiş kaşar|kaşar", "Tuz", "Karabiber"],
+    y: ["Soğan ve mantarı yağda sotele.",
+        "Lor, yumurta ve baharatla karıştır.",
+        "Kokot kaplarına paylaştır, kaşar serp.",
+        "200 derece fırında kabarıp kızarana kadar 15 dakika pişir."],
+    e: ["fırın"] },
 
   { ad: "Muammara", kat: "Meze", kisi: 6, sure: "15 dk",
     m: ["2 su bardağı çekilmiş ceviz|ceviz", "1 dilim bayat ekmek içi|ekmek", "2 tane közlenmiş kırmızı biber|közlenmiş biber", "1 yemek kaşığı biber salçası|salça", "2 diş sarımsak", "2 yemek kaşığı tahin", "1 kahve fincanı zeytinyağı", "1 yemek kaşığı nar ekşisi|nar ekşisi", "Yarım limonun suyu|limon", "Kimyon", "Pul biber", "Maydanoz"],
@@ -6032,6 +6612,14 @@ var TARIFLER = [
         "Yoğurt ve yumurtayı çırpıp sıcak çorbayla ılıt, tencereye ekle.",
         "Karıştırarak bir taşım kaynat, tuz ve karabiberle servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Bolu Usulü Taze Fasulye Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
+    m: ["750 gr taze fasulye", "1 tane domates", "4 yemek kaşığı un", "2 yemek kaşığı tereyağı", "1 yemek kaşığı domates salçası|salça", "2 su bardağı yoğurt", "1 tane yumurta", "6 su bardağı sebze suyu (ya da su)|su", "Tuz", "Karabiber"],
+    y: ["Fasulyeleri küçük doğrayıp sebze suyunda yumuşayana kadar haşla.",
+        "Tereyağında unu, salçayı ve rendelenmiş domatesi kavurup çorbaya ekle.",
+        "Yoğurt ve yumurtayı çırpıp sıcak çorbayla ılıt, tencereye ekle.",
+        "Karıştırarak bir taşım kaynat, tuz ve karabiberle servis et."] },
+
   { ad: "Brüksel Lahanası Çorbası", kat: "Çorba", kisi: 4, sure: "40 dk",
     m: ["150 gr brüksel lahanası|lahana", "1 tane kuru soğan", "1 tane havuç", "1 tane patates", "3 diş sarımsak", "Yarım çay bardağı sıvı yağ|yağ", "1 tatlı kaşığı tereyağı", "6 su bardağı su|su", "1 tane yumurta sarısı|yumurta", "Yarım limonun suyu|limon", "Tuz"],
     y: ["Soğan ve sarımsağı yağ ve tereyağında kavur.",
@@ -6072,6 +6660,14 @@ var TARIFLER = [
     y: ["Mantarları dilimleyip zeytinyağında kısa süre sotele.",
         "Marul ve semizotunu doğra, soğanı halka kes.",
         "Kurutulmuş domates ve jambonu şerit kes.",
+        "Hepsini birleştirip zeytinyağı, sirke, tuz ve karabiberle sosla."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kurutulmuş Domatesli Yeşil Salata", kat: "Salata", kisi: 4, sure: "15 dk",
+    m: ["100 gr semizotu", "1 tane kıvırcık marul|kıvırcık", "1 tane kırmızı soğan|kuru soğan", "100 gr kurutulmuş domates", "100 gr mantar", "5 yemek kaşığı zeytinyağı", "1 yemek kaşığı sirke", "Tuz", "Karabiber"],
+    y: ["Mantarları dilimleyip zeytinyağında kısa süre sotele.",
+        "Marul ve semizotunu doğra, soğanı halka kes.",
+        "Kurutulmuş domatesi şerit kes.",
         "Hepsini birleştirip zeytinyağı, sirke, tuz ve karabiberle sosla."] },
 
   { ad: "Yeşillikli Peynirli Bezelye", kat: "Ara Sıcak", kisi: 4, sure: "20 dk",
@@ -6127,6 +6723,14 @@ var TARIFLER = [
     m: ["650 gr küçük patates|patates", "300 ml et suyu|et suyu", "2 demet taze soğan|taze soğan", "1 sap kereviz|kereviz", "1 tane kuru soğan", "2 yemek kaşığı tane hardal|hardal", "50 gr tereyağı", "3 yemek kaşığı sirke", "Tuz", "Karabiber"],
     y: ["Patatesleri kabuklu haşlayıp soy, halka dilimle.",
         "Soğanı tereyağında yumuşatıp et suyu, sirke ve hardalla bir taşım kaynat.",
+        "Sıcak sosu patateslerin üzerine dökerek emmesini bekle.",
+        "Doğranmış taze soğan ve kerevizi ekleyip ılık servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Alman Usulü Sirkeli Patates Salatası", kat: "Salata", kisi: 4, sure: "40 dk",
+    m: ["650 gr küçük patates|patates", "300 ml sebze suyu (ya da su)|su", "2 demet taze soğan|taze soğan", "1 sap kereviz|kereviz", "1 tane kuru soğan", "2 yemek kaşığı tane hardal|hardal", "50 gr tereyağı", "3 yemek kaşığı sirke", "Tuz", "Karabiber"],
+    y: ["Patatesleri kabuklu haşlayıp soy, halka dilimle.",
+        "Soğanı tereyağında yumuşatıp sebze suyu, sirke ve hardalla bir taşım kaynat.",
         "Sıcak sosu patateslerin üzerine dökerek emmesini bekle.",
         "Doğranmış taze soğan ve kerevizi ekleyip ılık servis et."] },
 
@@ -6259,6 +6863,15 @@ var TARIFLER = [
         "Kestane ve tavuk suyunu ekleyip patatesler dağılana kadar pişir.",
         "Blenderdan geçirip kremayı ekle, tuz ve biberle tatlandır."], e: ["blender"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Kestane Çorbası", kat: "Çorba", kisi: 6, sure: "45 dk",
+    m: ["350 gr kestane", "2 tane pırasa", "4 tane patates", "2 tane kuru soğan", "3 yemek kaşığı tereyağı", "6 su bardağı sebze suyu (ya da su)|su", "2 çay kaşığı beyaz biber|karabiber", "Yarım su bardağı krema|krema", "Tuz"],
+    y: ["Kestaneleri haşlayıp kabuklarını soy.",
+        "Pırasa ve soğanı tereyağında yumuşat, küp patatesi ekle.",
+        "Kestane ve sebze suyunu ekleyip patatesler dağılana kadar pişir.",
+        "Blenderdan geçirip kremayı ekle, tuz ve biberle tatlandır."],
+    e: ["blender"] },
+
   { ad: "Deniz Ürünlü Spagetti", kat: "İtalyan Mutfağı", kisi: 4, sure: "35 dk",
     m: ["400 gr spagetti|makarna", "450 gr kabuklu midye|midye", "225 gr ayıklanmış karides|karides", "3 diş sarımsak", "400 gr domates", "4 yemek kaşığı zeytinyağı", "Yarım su bardağı balık suyu|balık", "Maydanoz", "Pul biber", "Tuz"],
     y: ["Midyeleri temizleyip balık suyuyla kapağı kapalı ağızları açılana kadar pişir.",
@@ -6379,6 +6992,14 @@ var TARIFLER = [
         "Bezelye ve kremayı ekleyip 3 dakika kaynat.",
         "Makarnayı ekleyip kaşarla harmanla."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Bezelyeli Kremalı Rigatoni", kat: "İtalyan Mutfağı", kisi: 4, sure: "30 dk",
+    m: ["400 gr rigatoni|makarna", "250 gr bezelye", "4 dal taze soğan|taze soğan", "50 gr tereyağı", "200 ml krema|krema", "100 gr rendelenmiş kaşar|kaşar", "Tuz", "Karabiber"],
+    y: ["Makarnayı haşla, bezelyeyi ayrı haşla.",
+        "Tereyağında taze soğanı çevir.",
+        "Bezelye ve kremayı ekleyip 3 dakika kaynat.",
+        "Makarnayı ekleyip kaşarla harmanla."] },
+
   { ad: "Brokolili Patatesli Sebze Lazanyası", kat: "İtalyan Mutfağı", kisi: 6, sure: "1 saat 15 dk",
     m: ["1 paket lazanya yaprağı|makarna", "1 tane büyük kuru soğan|kuru soğan", "2 tane kabak", "4 tane haşlanmış patates|patates", "250 gr haşlanmış brokoli|brokoli", "250 gr küp domates|domates", "3 yemek kaşığı zeytinyağı", "Rendelenmiş kaşar|kaşar", "Tuz", "Karabiber",
         "#Beşameli için", "3 yemek kaşığı tereyağı", "3 yemek kaşığı un", "3 su bardağı süt"],
@@ -6418,6 +7039,15 @@ var TARIFLER = [
         "Hamur parçalarına harç koyup rulo yap, fırın kabına diz.",
         "Beşameli üzerine dök, parmesan serpip 190 derece fırında 25 dakika pişir."], e: ["fırın", "oklava"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Ispanaklı Cannelloni", kat: "İtalyan Mutfağı", kisi: 6, sure: "1 saat 30 dk",
+    m: ["#Hamuru için", "250 gr un", "2 tane yumurta", "4 yemek kaşığı zeytinyağı", "Tuz", "#İçi için", "Yarım kilo ıspanak", "1 tane kuru soğan", "200 gr lor|lor", "Tuz", "Karabiber", "#Beşameli için", "3 yemek kaşığı tereyağı", "3 yemek kaşığı un", "3 su bardağı süt", "Rendelenmiş parmesan|parmesan"],
+    y: ["Un, yumurta, zeytinyağı ve tuzla hamur yoğurup dinlendir; ince açıp 10x12 cm dikdörtgenler kes, 2 dakika haşla.",
+        "Soğanı kavurup ıspanağı söndür; lorla karıştır.",
+        "Hamur parçalarına harç koyup rulo yap, fırın kabına diz.",
+        "Beşameli üzerine dök, parmesan serpip 190 derece fırında 25 dakika pişir."],
+    e: ["fırın","oklava"] },
+
   { ad: "Sarımsaklı Karidesli Spagetti", kat: "İtalyan Mutfağı", kisi: 4, sure: "20 dk",
     m: ["300 gr spagetti|makarna", "12 tane orta boy karides|karides", "4 diş sarımsak", "1 demet maydanoz", "2 yemek kaşığı tereyağı", "2 yemek kaşığı zeytinyağı", "Pul biber", "Tuz"],
     y: ["Spagettiyi haşla, bir kepçe suyunu ayır.",
@@ -6451,6 +7081,14 @@ var TARIFLER = [
     y: ["Sebzeleri küçük doğra.",
         "Tereyağında soğanı yumuşat, pirinci ekleyip parlayana kadar çevir.",
         "Sıcak et suyunu kepçe kepçe, her seferinde çekmesini bekleyerek ekle; sebzeleri yarıda ilave et.",
+        "Pirinç kremamsı ve diri kıvamda olunca parmesanla karıştırıp servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Sebzeli Risotto", kat: "İtalyan Mutfağı", kisi: 4, sure: "40 dk",
+    m: ["200 gr risotto pirinci ya da baldo|pirinç", "1 tane kuru soğan", "2 tane havuç", "1 çay bardağı taze fasulye", "1 çay bardağı bezelye", "2 tane kırmızı biber|kapya", "2 yemek kaşığı tereyağı", "Yarım litre sıcak sebze suyu (ya da su)|su", "Parmesan|parmesan", "Tuz"],
+    y: ["Sebzeleri küçük doğra.",
+        "Tereyağında soğanı yumuşat, pirinci ekleyip parlayana kadar çevir.",
+        "Sıcak sebze suyunu kepçe kepçe, her seferinde çekmesini bekleyerek ekle; sebzeleri yarıda ilave et.",
         "Pirinç kremamsı ve diri kıvamda olunca parmesanla karıştırıp servis et."] },
 
   { ad: "Zeytin Soslu Fener Balığı", kat: "Deniz Mahsulleri", kisi: 4, sure: "30 dk",
@@ -6516,6 +7154,14 @@ var TARIFLER = [
         "Ocaktan almadan rendelenmiş peynirleri ekleyip eriyene kadar karıştır.",
         "Karabiberle hemen servis et."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Üç Peynirli Risotto", kat: "İtalyan Mutfağı", kisi: 4, sure: "40 dk",
+    m: ["300 gr risotto pirinci ya da baldo|pirinç", "1 litre sıcak sebze suyu (ya da su)|su", "1 tane kuru soğan", "3 yemek kaşığı zeytinyağı", "50 gr parmesan|parmesan", "50 gr hellim|hellim", "50 gr gravyer ya da kaşar|kaşar", "Tuz", "Karabiber"],
+    y: ["Soğanı zeytinyağında yumuşat, pirinci ekleyip parlayana kadar çevir.",
+        "Sıcak sebze suyunu kepçe kepçe ekleyerek, sürekli karıştırarak 18-20 dakika pişir.",
+        "Ocaktan almadan rendelenmiş peynirleri ekleyip eriyene kadar karıştır.",
+        "Karabiberle hemen servis et."] },
+
   { ad: "Yengeçli Sebzeli Börek (Spring Roll)", kat: "Asya Mutfağı", kisi: 4, sure: "40 dk",
     m: ["100 gr jülyen lahana|lahana", "100 gr ince kıyılmış havuç|havuç", "50 gr soya filizi|filiz", "100 gr taze soğan|taze soğan", "115 gr yengeç eti|yengeç", "10 gr pirinç sirkesi|sirke", "10 gr soya sosu", "10 yaprak yufka ya da spring roll hamuru|yufka", "Kızartma için sıvı yağ|yağ", "Yer fıstığı ezmesi (sos için)|fıstık ezmesi"],
     y: ["Lahana, havuç, filiz ve taze soğanı yüksek ateşte kısa süre sotele; yengeç, sirke ve soya sosuyla karıştır.",
@@ -6535,6 +7181,14 @@ var TARIFLER = [
     y: ["Bütün sebzeleri küçük küp doğra.",
         "Zeytinyağında pırasa, soğan, kereviz ve havucu yumuşat; patates ve kabağı ekle.",
         "Tavuk suyu ve domatesi ekleyip 20 dakika pişir.",
+        "Barbunya ve makarnayı ekleyip 10 dakika daha pişir; parmesanla servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Minestrone", kat: "İtalyan Mutfağı", kisi: 6, sure: "50 dk",
+    m: ["1 tane pırasa", "1 tane kuru soğan", "2 sap kereviz|kereviz", "1 tane havuç", "1 tane patates", "1 tane kabak", "1 su bardağı haşlanmış barbunya|barbunya", "2 tane domates", "Yarım su bardağı küçük makarna|makarna", "1 litre sebze suyu (ya da su)|su", "2 yemek kaşığı zeytinyağı", "Parmesan|parmesan", "Tuz", "Karabiber"],
+    y: ["Bütün sebzeleri küçük küp doğra.",
+        "Zeytinyağında pırasa, soğan, kereviz ve havucu yumuşat; patates ve kabağı ekle.",
+        "Sebze suyu ve domatesi ekleyip 20 dakika pişir.",
         "Barbunya ve makarnayı ekleyip 10 dakika daha pişir; parmesanla servis et."] },
 
   { ad: "Milano Usulü İncik (Osso Buco)", kat: "İtalyan Mutfağı", kisi: 4, sure: "2 saat 30 dk",
@@ -6641,6 +7295,15 @@ var TARIFLER = [
         "Şalgam, tavuk suyu ve şekeri ekleyip yumuşayana kadar pişir; blenderdan geçir.",
         "Limon ve kremayla tatlandırıp servis et."], e: ["blender"] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Körili Şalgam Çorbası", kat: "Asya Mutfağı", kisi: 4, sure: "40 dk",
+    m: ["500 gr küçük şalgam|şalgam", "1 tane küçük kuru soğan|kuru soğan", "25 gr tereyağı", "2 çay kaşığı köri", "600 ml sebze suyu (ya da su)|su", "1 çay kaşığı toz şeker|şeker", "Yarım limonun suyu|limon", "Yarım su bardağı krema|krema", "Tuz"],
+    y: ["Şalgamları soyup küp doğra.",
+        "Soğanı tereyağında yumuşat, köriyi ekleyip 1 dakika çevir.",
+        "Şalgam, sebze suyu ve şekeri ekleyip yumuşayana kadar pişir; blenderdan geçir.",
+        "Limon ve kremayla tatlandırıp servis et."],
+    e: ["blender"] },
+
   { ad: "Krutonlu Çılbır", kat: "Kahvaltılık", kisi: 3, sure: "20 dk",
     m: ["6 tane yumurta", "1,5 su bardağı yoğurt", "2 diş sarımsak", "3 yemek kaşığı tereyağı", "2 dilim bayat ekmek (kruton için)|ekmek", "1 çay kaşığı toz biber", "Sirke", "3-4 dal maydanoz"],
     y: ["Ekmekleri küp kesip tereyağında kıtırlaştır.",
@@ -6688,6 +7351,14 @@ var TARIFLER = [
     y: ["Mantarları dilimleyip limon suyuyla karıştır.",
         "Tereyağında suyunu salıp çekene kadar sotele.",
         "Unu serpip çevir, tavuk suyunu ekleyerek koyulaştır.",
+        "Kremayı ekleyip tuz ve karabiberle tatlandır."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Limonlu Kremalı Mantar Sosu", kat: "Fransız Mutfağı", kisi: 4, sure: "25 dk",
+    m: ["400 gr mantar", "75 gr tereyağı", "1 limonun suyu|limon", "2 yemek kaşığı un", "1,5 su bardağı sebze suyu (ya da su)|su", "Yarım su bardağı krema|krema", "Tuz", "Karabiber"],
+    y: ["Mantarları dilimleyip limon suyuyla karıştır.",
+        "Tereyağında suyunu salıp çekene kadar sotele.",
+        "Unu serpip çevir, sebze suyunu ekleyerek koyulaştır.",
         "Kremayı ekleyip tuz ve karabiberle tatlandır."] },
 
   { ad: "Aioli Soslu Uskumru", kat: "Fransız Mutfağı", kisi: 4, sure: "30 dk",
@@ -6826,6 +7497,14 @@ var TARIFLER = [
     m: ["1 tane kıvırcık marul|kıvırcık", "Yarım demet roka", "100 gr mantar", "2 dilim dana füme|füme et", "2 diş sarımsak", "9 yemek kaşığı zeytinyağı", "2 yemek kaşığı elma sirkesi|sirke", "1 çay kaşığı hardal", "Kruton|ekmek", "Tuz", "Karabiber"],
     y: ["Yeşillikleri doğrayıp kaseye al.",
         "Mantar ve şerit füme eti zeytinyağının bir kısmında sarımsakla sotele.",
+        "Kalan zeytinyağı, sirke, hardal, tuz ve karabiberi çırp.",
+        "Sıcak mantarlı karışımı ve sosu yeşilliklerin üzerine dök, krutonla hemen servis et."] },
+
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Ilık Tiède Salatası", kat: "Fransız Mutfağı", kisi: 4, sure: "20 dk",
+    m: ["1 tane kıvırcık marul|kıvırcık", "Yarım demet roka", "100 gr mantar", "2 diş sarımsak", "9 yemek kaşığı zeytinyağı", "2 yemek kaşığı elma sirkesi|sirke", "1 çay kaşığı hardal", "Kruton|ekmek", "Tuz", "Karabiber"],
+    y: ["Yeşillikleri doğrayıp kaseye al.",
+        "Mantarı zeytinyağının bir kısmında sarımsakla sotele.",
         "Kalan zeytinyağı, sirke, hardal, tuz ve karabiberi çırp.",
         "Sıcak mantarlı karışımı ve sosu yeşilliklerin üzerine dök, krutonla hemen servis et."] },
 
@@ -7120,6 +7799,14 @@ var TARIFLER = [
         "Soya filizini ekleyip 3 dakika kaynat.",
         "Yumurta ve limonla terbiye yapıp ılıtarak ekle."] },
 
+  // Etsiz hali (otomatik eklendi)
+  { ad: "Etsiz Yumurtalı Soya Filizi Çorbası", kat: "Asya Mutfağı", kisi: 4, sure: "30 dk",
+    m: ["200 gr soya filizi|filiz", "1 tane patates", "3 yemek kaşığı pirinç", "3 yemek kaşığı tereyağı", "4 yemek kaşığı un", "1 tane yumurta", "Yarım limonun suyu|limon", "6 su bardağı sebze suyu (ya da su)|su", "Tuz"],
+    y: ["Tereyağında unu kavur, sebze suyunu ekleyerek kaynat.",
+        "Küp patates ve pirinci ekleyip 15 dakika pişir.",
+        "Soya filizini ekleyip 3 dakika kaynat.",
+        "Yumurta ve limonla terbiye yapıp ılıtarak ekle."] },
+
   { ad: "Bulgurlu Meksika Karması", kat: "Dünya Mutfağı", kisi: 6, sure: "1 saat + ıslatma",
     m: ["1,5 su bardağı kuru barbunya|barbunya", "Yarım su bardağı köftelik bulgur|bulgur", "1,5 su bardağı domates suyu|domates", "1 tane kuru soğan", "1 tane kırmızı biber|kapya", "1 tatlı kaşığı kimyon", "1 tatlı kaşığı pul biber", "3 yemek kaşığı zeytinyağı", "Maydanoz", "Tuz"],
     y: ["Barbunyayı ıslatıp haşla.",
@@ -7155,7 +7842,7 @@ var SOFRA_MODLARI = [
     kurslar: [
       { ad: "Başlangıç", sayi: 1, adaylar: ["Sezar Salata", "Kinoalı Salata", "Mantar Çorbası", "Domates Çorbası"] },
       { ad: "Ana yemek", sayi: 2, adaylar: ["Spagetti Bolonez", "Tavuk Fajita", "Mantarlı Risotto", "Tavuklu Kremalı Makarna", "Fırında Somon"] },
-      { ad: "Atıştırmalık", sayi: 2, adaylar: ["Humus", "Bruşetta", "Falafel", "Mini Pizza", "Babagannuş"] },
+      { ad: "Atıştırmalık", sayi: 2, adaylar: ["Humus", "Bruşetta", "Falafel", "Sucuklu Mini Pizza", "Babagannuş"] },
       { ad: "Tatlı", sayi: 1, adaylar: ["Tiramisu", "Muhallebi"] }
     ] },
   { id: "altin", ad: "Altın Günü Lezzetleri", ikon: "☕", aciklama: "Tuzlusu, tatlısı, çayı; misafirlik gibi misafirlik.",
@@ -7168,7 +7855,7 @@ var SOFRA_MODLARI = [
   { id: "atistirmalik", ad: "Atıştırmalık", ikon: "🍿", aciklama: "Maç gecesi, film gecesi ya da ayak üstü sohbet.",
     ipucu: "Küçük porsiyonlar, bol peçete ve kürdan hazırla. Soslar için küçük kaseler kullan.",
     kurslar: [
-      { ad: "Tuzlu atıştırmalıklar", sayi: 3, adaylar: ["Karışık Kanepe", "Mini Pizza", "Bruşetta", "Mini Sandviç", "Tuzlu Kurabiye", "Susamlı Çubuk Kraker", "Karamelli Patlamış Mısır", "Patates Köftesi", "Paçanga Böreği", "Sigara Böreği", "Mücver", "Airfryer Baharatlı Patates", "Patates Kızartması"] },
+      { ad: "Tuzlu atıştırmalıklar", sayi: 3, adaylar: ["Karışık Kanepe", "Sucuklu Mini Pizza", "Bruşetta", "Mini Sandviç", "Tuzlu Kurabiye", "Susamlı Çubuk Kraker", "Karamelli Patlamış Mısır", "Patates Köftesi", "Paçanga Böreği", "Sigara Böreği", "Mücver", "Airfryer Baharatlı Patates", "Patates Kızartması"] },
       { ad: "Soslar & dipler", sayi: 2, adaylar: ["Humus", "Muhammara", "Haydari", "Ezme", "Atom", "Babagannuş"] },
       { ad: "Tatlı", sayi: 1, adaylar: ["Damla Çikolatalı Kurabiye", "Islak Kek", "Cevizli Hurma Topları", "Sade Kek"] }
     ] },
@@ -7189,5 +7876,5 @@ var FAVORI_ETIKETLERI = {
   "Balık": ["Kalamar Tava", "Midye Tava", "Fırında Levrek", "Hamsi Tava", "Fırında Somon", "Karides Güveç", "Hamsili Pilav"],
   "Diyet": ["Cevizli Hurma Topları", "Közlenmiş Biber", "Yoğurtlu Semizotu", "Barbunya Pilaki", "Kinoalı Salata", "Izgara Tavuk Salatası", "Fırında Somon", "Fırında Levrek", "Mercimek Çorbası", "Zeytinyağlı Taze Fasulye",
             "Zeytinyağlı Pırasa", "Çoban Salata", "Cacık", "Tavuk Sote"],
-  "Hamur İşi": ["Tuzlu Kurabiye", "Susamlı Çubuk Kraker", "İçli Köfte", "Peynirli Poğaça", "Sigara Böreği", "Paçanga Böreği", "Gözleme", "Pişi", "Mini Pizza", "Mantı (Hıngel)"]
+  "Hamur İşi": ["Tuzlu Kurabiye", "Susamlı Çubuk Kraker", "İçli Köfte", "Peynirli Poğaça", "Sigara Böreği", "Paçanga Böreği", "Kıymalı Gözleme", "Pişi", "Sucuklu Mini Pizza", "Mantı (Hıngel)"]
 };
