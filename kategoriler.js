@@ -24,12 +24,12 @@ var YIYECEK_REYONLARI = [
   { ad: "Bakliyat & Tahıl", ikon: "🌾", urunler: ["pirinç", "bulgur", "mercimek", "kırmızı mercimek", "yeşil mercimek", "nohut", "kuru fasulye", "barbunya",
     "un", "patlamış mısır", "patlayan mısır", "popcorn mısırı", "cin mısır", "irmik", "yulaf", "mısır unu", "pirinç unu", "galeta unu", "kinoa", "chia", "susam", "çörek otu"] },
   { ad: "Makarna & Hamur", ikon: "🍝", urunler: ["makarna", "spagetti", "erişte", "şehriye", "mantı", "hıngel", "lazanya", "noodle", "tel şehriye", "arpa şehriye"] },
-  { ad: "Yağlar", ikon: "🫒", urunler: ["yağ", "sıvı yağ", "ayçiçek yağı", "zeytinyağı", "mısır yağı", "fındık yağı", "kızartma yağı"] },
+  { ad: "Yağlar", ikon: "🌻", urunler: ["yağ", "sıvı yağ", "ayçiçek yağı", "zeytinyağı", "mısır yağı", "fındık yağı", "kızartma yağı"] },
   { ad: "Soslar & Salçalar", ikon: "🥫", urunler: ["salça", "domates salçası", "biber salçası", "nar ekşisi", "ketçap", "mayonez", "hardal", "sirke", "elma sirkesi",
     "üzüm sirkesi", "soya sosu", "acı sos", "barbekü sos", "limon sosu", "tavuk suyu", "et suyu", "bulyon", "domates sosu", "pesto"] },
   { ad: "Baharatlar", ikon: "🧂", urunler: ["tuz", "karabiber", "pul biber", "toz biber", "isot", "isot biber", "kimyon", "kekik", "nane", "kuru nane", "sarımsak tozu", "soğan tozu", "tarçın",
     "zerdeçal", "sumak", "köri", "yenibahar", "karanfil", "defne", "biberiye", "fesleğen", "muskat", "zencefil tozu", "limon tuzu", "köfte baharatı"] },
-  { ad: "Konserve & Turşu", ikon: "🫙", urunler: ["konserve", "ton balığı", "turşu", "közlenmiş biber", "mısır konservesi", "bezelye konservesi", "nohut konservesi",
+  { ad: "Konserve & Turşu", ikon: "🥫", urunler: ["konserve", "ton balığı", "turşu", "közlenmiş biber", "mısır konservesi", "bezelye konservesi", "nohut konservesi",
     "fasulye konservesi", "domates konservesi", "kapari", "zeytin ezmesi"] },
   { ad: "Şeker & Pastacılık", ikon: "🍰", urunler: ["şeker", "toz şeker", "pudra şekeri", "esmer şeker", "kakao", "vanilya", "vanilin", "kabartma tozu",
     "karbonat", "maya", "kuru maya", "yaş maya", "nişasta", "mısır nişastası", "jelatin", "bitter çikolata", "damla çikolata", "hindistan cevizi", "krem şanti"] },
@@ -68,7 +68,7 @@ var TEMIZLIK_REYONLARI = [
   { ad: "Kişisel Bakım", ikon: "🧴", urunler: ["şampuan", "saç kremi", "duş jeli", "sabun", "sıvı sabun", "el sabunu", "katı sabun", "kolonya", "deodorant",
     "parfüm", "nemlendirici", "el kremi", "vücut losyonu", "güneş kremi", "tıraş köpüğü", "tıraş bıçağı", "jilet", "pamuk", "kulak çubuğu", "ped",
     "hijyenik ped", "tampon", "bebek bezi", "bebek şampuanı", "makyaj temizleme", "tarak", "lif", "banyo lifi", "bornoz"] },
-  { ad: "Ağız Bakımı", ikon: "🪥", urunler: ["diş macunu", "diş fırçası", "diş ipi", "ağız gargarası", "gargara", "ağız bakım suyu", "arayüz fırçası",
+  { ad: "Ağız Bakımı", ikon: "🦷", urunler: ["diş macunu", "diş fırçası", "diş ipi", "ağız gargarası", "gargara", "ağız bakım suyu", "arayüz fırçası",
     "protez temizleyici", "diş beyazlatıcı"] }
 ];
 

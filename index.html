@@ -33,6 +33,25 @@
 
   * { box-sizing: border-box; }
   body { font-family: "Segoe UI", Arial, sans-serif; background: var(--zemin); color: var(--yazi); margin: 0; }
+
+  /* ---------- DESENLİ ARKA PLAN (WhatsApp tarzı silik yemek çizimleri) ----------
+     Tek bir döşeme resmi tekrar eder; rengi temanın ana renginden gelir. */
+  :root { --desen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath transform='translate(19.6 21.7) rotate(4) scale(1.19) translate(-16 -16)' d='M9 6h14l-2 21h-10z M9.6 12h12.8 M13 6l1-2h4l1 2'/%3E%3Cpath transform='translate(19.6 421.7) rotate(4) scale(1.19) translate(-16 -16)' d='M9 6h14l-2 21h-10z M9.6 12h12.8 M13 6l1-2h4l1 2'/%3E%3Cpath transform='translate(419.6 21.7) rotate(4) scale(1.19) translate(-16 -16)' d='M9 6h14l-2 21h-10z M9.6 12h12.8 M13 6l1-2h4l1 2'/%3E%3Cpath transform='translate(419.6 421.7) rotate(4) scale(1.19) translate(-16 -16)' d='M9 6h14l-2 21h-10z M9.6 12h12.8 M13 6l1-2h4l1 2'/%3E%3Cpath transform='translate(74.0 25.5) rotate(5) scale(1.32) translate(-16 -16)' d='M14 18c-4-4-2-12 5-13 6-1 10 4 9 9-1 6-8 8-12 6z M14 18l-5 5 M9 23c-1-2-4-2-4 0s2 2 2 2 M9 23c2 1 2 4 0 4s-2-2-2-2 M18 9c2-1 4 0 5 2'/%3E%3Cpath transform='translate(74.0 425.5) rotate(5) scale(1.32) translate(-16 -16)' d='M14 18c-4-4-2-12 5-13 6-1 10 4 9 9-1 6-8 8-12 6z M14 18l-5 5 M9 23c-1-2-4-2-4 0s2 2 2 2 M9 23c2 1 2 4 0 4s-2-2-2-2 M18 9c2-1 4 0 5 2'/%3E%3Cpath transform='translate(127.2 20.2) rotate(5) scale(1.21) translate(-16 -16)' d='M5 26c-2-2 0-6 4-10l8-8c4-4 8-6 10-4s0 6-4 10l-8 8c-4 4-8 6-10 4z M11 17l3 3 M15 13l3 3 M19 9l3 3'/%3E%3Cpath transform='translate(127.2 420.2) rotate(5) scale(1.21) translate(-16 -16)' d='M5 26c-2-2 0-6 4-10l8-8c4-4 8-6 10-4s0 6-4 10l-8 8c-4 4-8 6-10 4z M11 17l3 3 M15 13l3 3 M19 9l3 3'/%3E%3Cpath transform='translate(170.2 27.5) rotate(5) scale(1.34) translate(-16 -16)' d='M16 10c-4-3-11-1-11 6 0 6 4 11 7 11 2 0 3-1 4-1s2 1 4 1c3 0 7-5 7-11 0-7-7-9-11-6z M16 10c0-3 1-5 3-6 M16 9c2-3 5-3 7-2-1 2-4 3-7 2'/%3E%3Cpath transform='translate(170.2 427.5) rotate(5) scale(1.34) translate(-16 -16)' d='M16 10c-4-3-11-1-11 6 0 6 4 11 7 11 2 0 3-1 4-1s2 1 4 1c3 0 7-5 7-11 0-7-7-9-11-6z M16 10c0-3 1-5 3-6 M16 9c2-3 5-3 7-2-1 2-4 3-7 2'/%3E%3Cpath transform='translate(225.0 25.4) rotate(19) scale(1.29) translate(-16 -16)' d='M4 15h24 M5 15c0 7 5 11 11 11s11-4 11-11 M12 26h8 M12 11c-1-2 1-3 0-5 M16 11c-1-2 1-3 0-5 M20 11c-1-2 1-3 0-5'/%3E%3Cpath transform='translate(225.0 425.4) rotate(19) scale(1.29) translate(-16 -16)' d='M4 15h24 M5 15c0 7 5 11 11 11s11-4 11-11 M12 26h8 M12 11c-1-2 1-3 0-5 M16 11c-1-2 1-3 0-5 M20 11c-1-2 1-3 0-5'/%3E%3Cpath transform='translate(280.1 23.3) rotate(-18) scale(1.20) translate(-16 -16)' d='M4 16c4-6 13-8 19-2 M4 16c4 6 13 8 19 2 M23 14l6-5v14l-6-5 M9 15h.1 M14 11c1 3 1 7 0 10'/%3E%3Cpath transform='translate(280.1 423.3) rotate(-18) scale(1.20) translate(-16 -16)' d='M4 16c4-6 13-8 19-2 M4 16c4 6 13 8 19 2 M23 14l6-5v14l-6-5 M9 15h.1 M14 11c1 3 1 7 0 10'/%3E%3Cpath transform='translate(328.4 20.0) rotate(-14) scale(1.30) translate(-16 -16)' d='M16 5c6 0 11 5 11 11s-5 11-11 11-11-5-11-11 5-11 11-11z M12 12h.1 M19 11h.1 M21 18h.1 M13 20h.1 M16 16h.1'/%3E%3Cpath transform='translate(328.4 420.0) rotate(-14) scale(1.30) translate(-16 -16)' d='M16 5c6 0 11 5 11 11s-5 11-11 11-11-5-11-11 5-11 11-11z M12 12h.1 M19 11h.1 M21 18h.1 M13 20h.1 M16 16h.1'/%3E%3Cpath transform='translate(-26.9 24.4) rotate(8) scale(1.17) translate(-16 -16)' d='M10 4v8c0 3 2 4 4 4v12 M14 4v7 M18 4v8c0 3-2 4-4 4 M23 4c-2 3-2 9 0 11v13'/%3E%3Cpath transform='translate(-26.9 424.4) rotate(8) scale(1.17) translate(-16 -16)' d='M10 4v8c0 3 2 4 4 4v12 M14 4v7 M18 4v8c0 3-2 4-4 4 M23 4c-2 3-2 9 0 11v13'/%3E%3Cpath transform='translate(373.1 24.4) rotate(8) scale(1.17) translate(-16 -16)' d='M10 4v8c0 3 2 4 4 4v12 M14 4v7 M18 4v8c0 3-2 4-4 4 M23 4c-2 3-2 9 0 11v13'/%3E%3Cpath transform='translate(373.1 424.4) rotate(8) scale(1.17) translate(-16 -16)' d='M10 4v8c0 3 2 4 4 4v12 M14 4v7 M18 4v8c0 3-2 4-4 4 M23 4c-2 3-2 9 0 11v13'/%3E%3Cpath transform='translate(50.1 71.0) rotate(-11) scale(1.43) translate(-16 -16)' d='M9 10h14 M10 7h12v3h-12z M9 10c-2 3-2 13 0 16 2 1 12 1 14 0 2-3 2-13 0-16 M12 14c0 3 2 3 2 0 M15 14h7'/%3E%3Cpath transform='translate(99.1 80.5) rotate(-30) scale(1.32) translate(-16 -16)' d='M5 16c0-6 5-9 11-9s11 3 11 9-5 9-11 9-11-3-11-9z M5 16h-2 M27 16h2 M10 14c1-2 3-3 5-3'/%3E%3Cpath transform='translate(153.5 78.8) rotate(-11) scale(1.26) translate(-16 -16)' d='M6 25c-2-2-1-5 2-8l9-9c3-3 6-4 8-2s1 5-2 8l-9 9c-3 3-6 4-8 2z M12 18h.1 M16 14h.1 M20 10h.1 M15 20h.1 M19 16h.1'/%3E%3Cpath transform='translate(200.0 78.6) rotate(-30) scale(1.18) translate(-16 -16)' d='M16 4c-3 0-5 3-5 6s2 5 5 5 5-2 5-5-2-6-5-6z M16 15v13'/%3E%3Cpath transform='translate(247.2 77.4) rotate(-30) scale(1.37) translate(-16 -16)' d='M4 28l24-24 M10 22m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0 M16 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0 M22 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0'/%3E%3Cpath transform='translate(297.7 75.9) rotate(13) scale(1.28) translate(-16 -16)' d='M19 11l-13 15c4 0 10-4 15-11z M19 11l2 4 M18 10c0-3 1-5 3-6 M20 11c2-2 5-2 7-1 M19 10c2-2 4-5 4-7 M11 20l2 1 M14 16l2 1'/%3E%3Cpath transform='translate(352.6 79.6) rotate(-11) scale(1.43) translate(-16 -16)' d='M26 10c-2-4-8-6-13-4-6 3-8 10-4 15 2 3 6 4 8 2 M9 21l-4 5 M9 21l-1 6 M14 8l2 5 M19 7l1 5 M24 9l-1 4 M26 10l3-4 M25 9l4-1'/%3E%3Cpath transform='translate(-1.7 76.3) rotate(-0) scale(1.22) translate(-16 -16)' d='M16 28v-10 M16 18c-5 0-10-4-10-10 6 0 10 4 10 10z M16 18c5 0 10-4 10-10-6 0-10 4-10 10z M16 18c-2-5-1-10 0-13 1 3 2 8 0 13'/%3E%3Cpath transform='translate(398.3 76.3) rotate(-0) scale(1.22) translate(-16 -16)' d='M16 28v-10 M16 18c-5 0-10-4-10-10 6 0 10 4 10 10z M16 18c5 0 10-4 10-10-6 0-10 4-10 10z M16 18c-2-5-1-10 0-13 1 3 2 8 0 13'/%3E%3Cpath transform='translate(22.4 127.9) rotate(-7) scale(1.43) translate(-16 -16)' d='M5 24h22v-9l-22 0z M5 15l15-8 7 8 M5 19h22 M20 7c0-2 1-3 2-3'/%3E%3Cpath transform='translate(422.4 127.9) rotate(-7) scale(1.43) translate(-16 -16)' d='M5 24h22v-9l-22 0z M5 15l15-8 7 8 M5 19h22 M20 7c0-2 1-3 2-3'/%3E%3Cpath transform='translate(75.0 121.0) rotate(-7) scale(1.23) translate(-16 -16)' d='M8 10c3-4 11-4 16-1 4 3 5 8 2 12-3 5-11 7-16 4-5-3-5-10-2-15z M12 14h.1 M19 13h.1 M16 20h.1'/%3E%3Cpath transform='translate(120.6 124.2) rotate(4) scale(1.36) translate(-16 -16)' d='M16 9c-6 0-11 4-11 9s5 9 11 9 11-4 11-9-5-9-11-9z M16 9c-3 0-4 4-4 9s1 9 4 9 M16 9c3 0 4 4 4 9s-1 9-4 9 M16 9c0-3 1-4 3-5'/%3E%3Cpath transform='translate(180.8 127.2) rotate(-8) scale(1.22) translate(-16 -16)' d='M10 22m-5 0a5 5 0 1 0 10 0a5 5 0 1 0-10 0 M22 24m-5 0a5 5 0 1 0 10 0a5 5 0 1 0-10 0 M10 17c2-6 6-10 11-12 M22 19c0-6 0-10-1-14 M21 5c2-1 5 0 6 2'/%3E%3Cpath transform='translate(220.0 120.8) rotate(11) scale(1.15) translate(-16 -16)' d='M14 18l-2 9h8l-2-9 M10 18c-4 0-5-5-2-7 0-4 5-5 7-3 2-3 7-2 8 1 4 0 5 5 2 7 0 2-2 3-4 2z'/%3E%3Cpath transform='translate(279.0 121.2) rotate(-15) scale(1.19) translate(-16 -16)' d='M4 22l22-12v12z M4 22v4h22v-4 M15 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M21 16h.1 M9 24h.1'/%3E%3Cpath transform='translate(325.4 126.3) rotate(-13) scale(1.19) translate(-16 -16)' d='M8 15c0-6 4-9 8-9s8 3 8 9 M8 15c-2 4-4 6-6 6 M12 16c0 5-2 8-4 10 M16 16v11 M20 16c0 5 2 8 4 10 M24 15c2 4 4 6 6 6 M13 11h.1 M19 11h.1'/%3E%3Cpath transform='translate(-20.7 130.4) rotate(11) scale(1.37) translate(-16 -16)' d='M20 7c-2 0-3 2-4 4-2 3-7 5-8 10-1 4 2 7 6 6 5-1 7-6 8-10 1-3 1-6-2-10z M20 7l2-3 M17 9c1 2 4 2 6 1'/%3E%3Cpath transform='translate(379.3 130.4) rotate(11) scale(1.37) translate(-16 -16)' d='M20 7c-2 0-3 2-4 4-2 3-7 5-8 10-1 4 2 7 6 6 5-1 7-6 8-10 1-3 1-6-2-10z M20 7l2-3 M17 9c1 2 4 2 6 1'/%3E%3Cpath transform='translate(49.5 179.5) rotate(32) scale(1.35) translate(-16 -16)' d='M6 12h16v8c0 4-3 7-8 7s-8-3-8-7z M22 14h2c2 0 3 1 3 3s-1 3-3 3h-2 M11 9c-1-2 1-3 0-5 M16 9c-1-2 1-3 0-5'/%3E%3Cpath transform='translate(100.7 173.8) rotate(-7) scale(1.29) translate(-16 -16)' d='M16 4c-4 0-6 5-7 9-2 3-3 6-2 9 1 4 5 6 9 6s8-2 9-6c1-3 0-6-2-9-1-4-3-9-7-9z M16 20m-4 0a4 4 0 1 0 8 0a4 4 0 1 0-8 0'/%3E%3Cpath transform='translate(148.8 171.3) rotate(34) scale(1.28) translate(-16 -16)' d='M6 13h20v10c0 2-2 3-4 3h-12c-2 0-4-1-4-3z M3 14h3 M26 14h3 M5 13c0-2 2-3 4-3h14c2 0 4 1 4 3 M14 10c0-2 1-2 2-2s2 0 2 2'/%3E%3Cpath transform='translate(195.3 176.2) rotate(-28) scale(1.32) translate(-16 -16)' d='M22 6c-1 2-3 3-3 5 M19 11c3 0 5 2 4 5-2 6-8 11-15 11 4-3 6-6 7-10 0-3 1-6 4-6z'/%3E%3Cpath transform='translate(250.4 180.4) rotate(8) scale(1.17) translate(-16 -16)' d='M4 21c0-7 5-12 12-12s12 5 12 12z M8 21c1-2 2-2 3 0 1-2 2-2 3 0 1-2 2-2 3 0 1-2 2-2 3 0 1-2 2-2 3 0'/%3E%3Cpath transform='translate(296.5 173.5) rotate(9) scale(1.44) translate(-16 -16)' d='M8 9c4-4 10-3 13 0 4 2 7 6 5 11-2 5-8 6-13 5-5 0-9-4-8-9 0-3 1-5 3-7z M16 17m-4 0a4 4 0 1 0 8 0a4 4 0 1 0-8 0'/%3E%3Cpath transform='translate(351.2 174.7) rotate(-27) scale(1.30) translate(-16 -16)' d='M16 6v3 M16 6c2-2 4-2 5-1 M16 9c-3 0-4 3-4 6-3 2-5 5-4 8 1 4 5 5 8 5s7-1 8-5c1-3-1-6-4-8 0-3-1-6-4-6z'/%3E%3Cpath transform='translate(5.7 174.8) rotate(-13) scale(1.19) translate(-16 -16)' d='M4 20c0-6 5-11 12-11s12 5 12 11 M4 20c3 2 6 2 7 0 M28 20c-3 2-6 2-7 0 M11 20l-1-8 M21 20l1-8 M16 18v-9'/%3E%3Cpath transform='translate(405.7 174.8) rotate(-13) scale(1.19) translate(-16 -16)' d='M4 20c0-6 5-11 12-11s12 5 12 11 M4 20c3 2 6 2 7 0 M28 20c-3 2-6 2-7 0 M11 20l-1-8 M21 20l1-8 M16 18v-9'/%3E%3Cpath transform='translate(28.0 227.9) rotate(-1) scale(1.36) translate(-16 -16)' d='M16 27c-6-4-10-9-9-15 1-3 5-3 9-2 4-1 8-1 9 2 1 6-3 11-9 15z M12 10l4 3 4-3 M16 13v-8 M11 16h.1 M16 18h.1 M21 16h.1 M13 22h.1 M19 22h.1'/%3E%3Cpath transform='translate(428.0 227.9) rotate(-1) scale(1.36) translate(-16 -16)' d='M16 27c-6-4-10-9-9-15 1-3 5-3 9-2 4-1 8-1 9 2 1 6-3 11-9 15z M12 10l4 3 4-3 M16 13v-8 M11 16h.1 M16 18h.1 M21 16h.1 M13 22h.1 M19 22h.1'/%3E%3Cpath transform='translate(75.2 221.5) rotate(32) scale(1.26) translate(-16 -16)' d='M16 9c-7 0-11 4-11 9s5 9 11 9 11-4 11-9-4-9-11-9z M16 9l-4-3 M16 9l4-3 M16 9v-4 M16 9l-5 1 M16 9l5 1'/%3E%3Cpath transform='translate(124.4 230.2) rotate(34) scale(1.44) translate(-16 -16)' d='M4 15h24 M5 15c0 7 5 11 11 11s11-4 11-11 M12 26h8 M12 11c-1-2 1-3 0-5 M16 11c-1-2 1-3 0-5 M20 11c-1-2 1-3 0-5'/%3E%3Cpath transform='translate(173.4 221.6) rotate(-19) scale(1.21) translate(-16 -16)' d='M14 18l-2 9h8l-2-9 M10 18c-4 0-5-5-2-7 0-4 5-5 7-3 2-3 7-2 8 1 4 0 5 5 2 7 0 2-2 3-4 2z'/%3E%3Cpath transform='translate(221.5 226.5) rotate(28) scale(1.40) translate(-16 -16)' d='M22 6c-1 2-3 3-3 5 M19 11c3 0 5 2 4 5-2 6-8 11-15 11 4-3 6-6 7-10 0-3 1-6 4-6z'/%3E%3Cpath transform='translate(274.8 226.8) rotate(21) scale(1.18) translate(-16 -16)' d='M26 10c-2-4-8-6-13-4-6 3-8 10-4 15 2 3 6 4 8 2 M9 21l-4 5 M9 21l-1 6 M14 8l2 5 M19 7l1 5 M24 9l-1 4 M26 10l3-4 M25 9l4-1'/%3E%3Cpath transform='translate(326.9 229.9) rotate(20) scale(1.38) translate(-16 -16)' d='M8 10c3-4 11-4 16-1 4 3 5 8 2 12-3 5-11 7-16 4-5-3-5-10-2-15z M12 14h.1 M19 13h.1 M16 20h.1'/%3E%3Cpath transform='translate(-25.3 221.1) rotate(20) scale(1.25) translate(-16 -16)' d='M4 22l22-12v12z M4 22v4h22v-4 M15 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M21 16h.1 M9 24h.1'/%3E%3Cpath transform='translate(374.7 221.1) rotate(20) scale(1.25) translate(-16 -16)' d='M4 22l22-12v12z M4 22v4h22v-4 M15 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M21 16h.1 M9 24h.1'/%3E%3Cpath transform='translate(53.6 280.7) rotate(-7) scale(1.27) translate(-16 -16)' d='M4 28l24-24 M10 22m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0 M16 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0 M22 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0'/%3E%3Cpath transform='translate(105.4 277.7) rotate(-23) scale(1.19) translate(-16 -16)' d='M5 16c0-6 5-9 11-9s11 3 11 9-5 9-11 9-11-3-11-9z M5 16h-2 M27 16h2 M10 14c1-2 3-3 5-3'/%3E%3Cpath transform='translate(145.8 279.9) rotate(21) scale(1.19) translate(-16 -16)' d='M10 22m-5 0a5 5 0 1 0 10 0a5 5 0 1 0-10 0 M22 24m-5 0a5 5 0 1 0 10 0a5 5 0 1 0-10 0 M10 17c2-6 6-10 11-12 M22 19c0-6 0-10-1-14 M21 5c2-1 5 0 6 2'/%3E%3Cpath transform='translate(203.9 280.8) rotate(11) scale(1.26) translate(-16 -16)' d='M16 5c6 0 11 5 11 11s-5 11-11 11-11-5-11-11 5-11 11-11z M12 12h.1 M19 11h.1 M21 18h.1 M13 20h.1 M16 16h.1'/%3E%3Cpath transform='translate(250.6 270.6) rotate(-34) scale(1.44) translate(-16 -16)' d='M16 9c-7 0-11 4-11 9s5 9 11 9 11-4 11-9-4-9-11-9z M16 9l-4-3 M16 9l4-3 M16 9v-4 M16 9l-5 1 M16 9l5 1'/%3E%3Cpath transform='translate(301.8 275.3) rotate(30) scale(1.28) translate(-16 -16)' d='M10 4v8c0 3 2 4 4 4v12 M14 4v7 M18 4v8c0 3-2 4-4 4 M23 4c-2 3-2 9 0 11v13'/%3E%3Cpath transform='translate(354.5 278.9) rotate(-20) scale(1.23) translate(-16 -16)' d='M8 15c0-6 4-9 8-9s8 3 8 9 M8 15c-2 4-4 6-6 6 M12 16c0 5-2 8-4 10 M16 16v11 M20 16c0 5 2 8 4 10 M24 15c2 4 4 6 6 6 M13 11h.1 M19 11h.1'/%3E%3Cpath transform='translate(-2.5 271.9) rotate(6) scale(1.23) translate(-16 -16)' d='M16 4c-3 0-5 3-5 6s2 5 5 5 5-2 5-5-2-6-5-6z M16 15v13'/%3E%3Cpath transform='translate(397.5 271.9) rotate(6) scale(1.23) translate(-16 -16)' d='M16 4c-3 0-5 3-5 6s2 5 5 5 5-2 5-5-2-6-5-6z M16 15v13'/%3E%3Cpath transform='translate(24.0 320.6) rotate(29) scale(1.26) translate(-16 -16)' d='M16 6v3 M16 6c2-2 4-2 5-1 M16 9c-3 0-4 3-4 6-3 2-5 5-4 8 1 4 5 5 8 5s7-1 8-5c1-3-1-6-4-8 0-3-1-6-4-6z'/%3E%3Cpath transform='translate(424.0 320.6) rotate(29) scale(1.26) translate(-16 -16)' d='M16 6v3 M16 6c2-2 4-2 5-1 M16 9c-3 0-4 3-4 6-3 2-5 5-4 8 1 4 5 5 8 5s7-1 8-5c1-3-1-6-4-8 0-3-1-6-4-6z'/%3E%3Cpath transform='translate(74.5 326.0) rotate(28) scale(1.28) translate(-16 -16)' d='M16 9c-6 0-11 4-11 9s5 9 11 9 11-4 11-9-5-9-11-9z M16 9c-3 0-4 4-4 9s1 9 4 9 M16 9c3 0 4 4 4 9s-1 9-4 9 M16 9c0-3 1-4 3-5'/%3E%3Cpath transform='translate(130.0 325.0) rotate(2) scale(1.31) translate(-16 -16)' d='M19 11l-13 15c4 0 10-4 15-11z M19 11l2 4 M18 10c0-3 1-5 3-6 M20 11c2-2 5-2 7-1 M19 10c2-2 4-5 4-7 M11 20l2 1 M14 16l2 1'/%3E%3Cpath transform='translate(169.2 324.3) rotate(-22) scale(1.15) translate(-16 -16)' d='M6 25c-2-2-1-5 2-8l9-9c3-3 6-4 8-2s1 5-2 8l-9 9c-3 3-6 4-8 2z M12 18h.1 M16 14h.1 M20 10h.1 M15 20h.1 M19 16h.1'/%3E%3Cpath transform='translate(228.6 321.1) rotate(-2) scale(1.37) translate(-16 -16)' d='M16 27c-6-4-10-9-9-15 1-3 5-3 9-2 4-1 8-1 9 2 1 6-3 11-9 15z M12 10l4 3 4-3 M16 13v-8 M11 16h.1 M16 18h.1 M21 16h.1 M13 22h.1 M19 22h.1'/%3E%3Cpath transform='translate(275.7 322.9) rotate(1) scale(1.32) translate(-16 -16)' d='M4 21c0-7 5-12 12-12s12 5 12 12z M8 21c1-2 2-2 3 0 1-2 2-2 3 0 1-2 2-2 3 0 1-2 2-2 3 0 1-2 2-2 3 0'/%3E%3Cpath transform='translate(328.4 320.3) rotate(4) scale(1.22) translate(-16 -16)' d='M4 20c0-6 5-11 12-11s12 5 12 11 M4 20c3 2 6 2 7 0 M28 20c-3 2-6 2-7 0 M11 20l-1-8 M21 20l1-8 M16 18v-9'/%3E%3Cpath transform='translate(-27.7 328.3) rotate(1) scale(1.32) translate(-16 -16)' d='M9 10h14 M10 7h12v3h-12z M9 10c-2 3-2 13 0 16 2 1 12 1 14 0 2-3 2-13 0-16 M12 14c0 3 2 3 2 0 M15 14h7'/%3E%3Cpath transform='translate(372.3 328.3) rotate(1) scale(1.32) translate(-16 -16)' d='M9 10h14 M10 7h12v3h-12z M9 10c-2 3-2 13 0 16 2 1 12 1 14 0 2-3 2-13 0-16 M12 14c0 3 2 3 2 0 M15 14h7'/%3E%3Cpath transform='translate(53.1 -20.1) rotate(-4) scale(1.33) translate(-16 -16)' d='M5 24h22v-9l-22 0z M5 15l15-8 7 8 M5 19h22 M20 7c0-2 1-3 2-3'/%3E%3Cpath transform='translate(53.1 379.9) rotate(-4) scale(1.33) translate(-16 -16)' d='M5 24h22v-9l-22 0z M5 15l15-8 7 8 M5 19h22 M20 7c0-2 1-3 2-3'/%3E%3Cpath transform='translate(100.1 -24.9) rotate(13) scale(1.29) translate(-16 -16)' d='M16 28v-10 M16 18c-5 0-10-4-10-10 6 0 10 4 10 10z M16 18c5 0 10-4 10-10-6 0-10 4-10 10z M16 18c-2-5-1-10 0-13 1 3 2 8 0 13'/%3E%3Cpath transform='translate(100.1 375.1) rotate(13) scale(1.29) translate(-16 -16)' d='M16 28v-10 M16 18c-5 0-10-4-10-10 6 0 10 4 10 10z M16 18c5 0 10-4 10-10-6 0-10 4-10 10z M16 18c-2-5-1-10 0-13 1 3 2 8 0 13'/%3E%3Cpath transform='translate(150.4 -25.3) rotate(31) scale(1.36) translate(-16 -16)' d='M9 6h14l-2 21h-10z M9.6 12h12.8 M13 6l1-2h4l1 2'/%3E%3Cpath transform='translate(150.4 374.7) rotate(31) scale(1.36) translate(-16 -16)' d='M9 6h14l-2 21h-10z M9.6 12h12.8 M13 6l1-2h4l1 2'/%3E%3Cpath transform='translate(204.5 -19.7) rotate(-17) scale(1.32) translate(-16 -16)' d='M5 26c-2-2 0-6 4-10l8-8c4-4 8-6 10-4s0 6-4 10l-8 8c-4 4-8 6-10 4z M11 17l3 3 M15 13l3 3 M19 9l3 3'/%3E%3Cpath transform='translate(204.5 380.3) rotate(-17) scale(1.32) translate(-16 -16)' d='M5 26c-2-2 0-6 4-10l8-8c4-4 8-6 10-4s0 6-4 10l-8 8c-4 4-8 6-10 4z M11 17l3 3 M15 13l3 3 M19 9l3 3'/%3E%3Cpath transform='translate(255.3 -20.9) rotate(-25) scale(1.19) translate(-16 -16)' d='M20 7c-2 0-3 2-4 4-2 3-7 5-8 10-1 4 2 7 6 6 5-1 7-6 8-10 1-3 1-6-2-10z M20 7l2-3 M17 9c1 2 4 2 6 1'/%3E%3Cpath transform='translate(255.3 379.1) rotate(-25) scale(1.19) translate(-16 -16)' d='M20 7c-2 0-3 2-4 4-2 3-7 5-8 10-1 4 2 7 6 6 5-1 7-6 8-10 1-3 1-6-2-10z M20 7l2-3 M17 9c1 2 4 2 6 1'/%3E%3Cpath transform='translate(299.3 369.9) rotate(-18) scale(1.17) translate(-16 -16)' d='M14 18c-4-4-2-12 5-13 6-1 10 4 9 9-1 6-8 8-12 6z M14 18l-5 5 M9 23c-1-2-4-2-4 0s2 2 2 2 M9 23c2 1 2 4 0 4s-2-2-2-2 M18 9c2-1 4 0 5 2'/%3E%3Cpath transform='translate(352.0 -21.6) rotate(28) scale(1.20) translate(-16 -16)' d='M4 16c4-6 13-8 19-2 M4 16c4 6 13 8 19 2 M23 14l6-5v14l-6-5 M9 15h.1 M14 11c1 3 1 7 0 10'/%3E%3Cpath transform='translate(352.0 378.4) rotate(28) scale(1.20) translate(-16 -16)' d='M4 16c4-6 13-8 19-2 M4 16c4 6 13 8 19 2 M23 14l6-5v14l-6-5 M9 15h.1 M14 11c1 3 1 7 0 10'/%3E%3Cpath transform='translate(2.6 -23.1) rotate(-25) scale(1.41) translate(-16 -16)' d='M6 13h20v10c0 2-2 3-4 3h-12c-2 0-4-1-4-3z M3 14h3 M26 14h3 M5 13c0-2 2-3 4-3h14c2 0 4 1 4 3 M14 10c0-2 1-2 2-2s2 0 2 2'/%3E%3Cpath transform='translate(2.6 376.9) rotate(-25) scale(1.41) translate(-16 -16)' d='M6 13h20v10c0 2-2 3-4 3h-12c-2 0-4-1-4-3z M3 14h3 M26 14h3 M5 13c0-2 2-3 4-3h14c2 0 4 1 4 3 M14 10c0-2 1-2 2-2s2 0 2 2'/%3E%3Cpath transform='translate(402.6 -23.1) rotate(-25) scale(1.41) translate(-16 -16)' d='M6 13h20v10c0 2-2 3-4 3h-12c-2 0-4-1-4-3z M3 14h3 M26 14h3 M5 13c0-2 2-3 4-3h14c2 0 4 1 4 3 M14 10c0-2 1-2 2-2s2 0 2 2'/%3E%3Cpath transform='translate(402.6 376.9) rotate(-25) scale(1.41) translate(-16 -16)' d='M6 13h20v10c0 2-2 3-4 3h-12c-2 0-4-1-4-3z M3 14h3 M26 14h3 M5 13c0-2 2-3 4-3h14c2 0 4 1 4 3 M14 10c0-2 1-2 2-2s2 0 2 2'/%3E%3Cpath transform='translate(27.8 -1.7) rotate(6) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(27.8 398.3) rotate(6) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(427.8 -1.7) rotate(6) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(427.8 398.3) rotate(6) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(77.3 -2.0) rotate(14) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(77.3 398.0) rotate(14) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(126.2 3.0) rotate(25) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(126.2 403.0) rotate(25) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(174.5 -0.9) rotate(5) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(174.5 399.1) rotate(5) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(222.1 0.3) rotate(28) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(222.1 400.3) rotate(28) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(274.3 0.1) rotate(18) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(274.3 400.1) rotate(18) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(327.8 -2.3) rotate(14) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(327.8 397.7) rotate(14) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(-27.5 -1.4) rotate(11) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(-27.5 398.6) rotate(11) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(372.5 -1.4) rotate(11) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(372.5 398.6) rotate(11) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(1.5 51.9) rotate(16) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(401.5 51.9) rotate(16) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(47.9 52.5) rotate(36) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(101.2 47.5) rotate(3) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(149.6 47.4) rotate(1) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(201.8 47.5) rotate(14) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(248.6 47.7) rotate(0) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(303.0 49.5) rotate(17) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(347.8 50.2) rotate(15) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(27.8 98.6) rotate(11) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(427.8 98.6) rotate(11) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(77.6 100.8) rotate(33) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(123.7 100.0) rotate(11) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(174.1 97.1) rotate(16) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(222.1 101.4) rotate(35) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(275.1 98.5) rotate(28) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(325.9 100.9) rotate(31) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(-23.0 99.4) rotate(32) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(377.0 99.4) rotate(32) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(1.1 152.9) rotate(21) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(401.1 152.9) rotate(21) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(52.0 151.2) rotate(40) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(99.4 149.1) rotate(3) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(147.1 150.8) rotate(16) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(198.0 147.5) rotate(24) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(251.0 148.7) rotate(15) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(297.3 148.1) rotate(17) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(347.0 149.2) rotate(21) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(23.9 197.2) rotate(19) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(423.9 197.2) rotate(19) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(74.1 197.0) rotate(24) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(124.8 200.0) rotate(12) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(175.0 197.0) rotate(16) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(222.9 200.5) rotate(25) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(273.8 200.8) rotate(5) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(327.7 202.1) rotate(9) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(-25.7 199.0) rotate(31) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(374.3 199.0) rotate(31) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(-1.3 250.7) rotate(9) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(398.7 250.7) rotate(9) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(51.9 251.3) rotate(32) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(101.4 251.9) rotate(8) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(151.5 250.4) rotate(1) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(201.8 251.3) rotate(14) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(247.2 247.8) rotate(23) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(299.3 249.7) rotate(3) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(350.8 251.1) rotate(31) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(22.0 301.8) rotate(32) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(422.0 301.8) rotate(32) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(72.6 300.2) rotate(30) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(126.9 302.1) rotate(15) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(173.4 300.9) rotate(29) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(227.1 297.5) rotate(18) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(275.7 300.9) rotate(4) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(322.9 298.5) rotate(19) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath transform='translate(-24.6 297.1) rotate(3) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(375.4 297.1) rotate(3) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(-1.4 351.0) rotate(13) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(398.6 351.0) rotate(13) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(48.7 350.1) rotate(29) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(99.8 347.7) rotate(35) scale(1.00) translate(-0 -0)' d='M-3 0h6 M0 -3v6'/%3E%3Cpath transform='translate(148.9 347.5) rotate(30) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(198.7 347.5) rotate(32) scale(1.00) translate(-0 -0)' d='M0 3c-4-3-5-5-3-6 1-1 3 0 3 1 0-1 2-2 3-1 2 1 1 3-3 6z'/%3E%3Cpath transform='translate(253.0 349.3) rotate(13) scale(1.00) translate(-0 -0)' d='M0 0m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0'/%3E%3Cpath transform='translate(300.5 347.9) rotate(33) scale(1.00) translate(-0 -0)' d='M0 -4c0 3 1 4 4 4-3 0-4 1-4 4 0-3-1-4-4-4 3 0 4-1 4-4z'/%3E%3Cpath transform='translate(352.7 347.8) rotate(40) scale(1.00) translate(-0 -0)' d='M0 0m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3C/g%3E%3C/svg%3E"); }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-color: var(--ana); opacity: .09;
+    -webkit-mask: var(--desen) 0 0 / 400px 400px repeat;
+            mask: var(--desen) 0 0 / 400px 400px repeat;
+  }
+  body.koyu::before { opacity: .10; }
+  /* Üstteki sabit menü şeridi de aynı desenle devam etsin (kesik görünmesin) */
+  nav::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-color: var(--ana); opacity: .09;
+    -webkit-mask: var(--desen) 0 0 / 400px 400px repeat;
+            mask: var(--desen) 0 0 / 400px 400px repeat;
+  }
+  body.koyu nav::before { opacity: .10; }
   header { background: var(--ana); color: white; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   header h1 { margin: 0; font-size: 24px; }
   header p { margin: 4px 0 0; opacity: .9; font-size: 14px; }
@@ -74,6 +93,15 @@
   .skt-rozet.gecti { background: var(--yok-zemin); color: var(--yok-yazi); }
   .skt-kart { border-left: 4px solid var(--turuncu); }
   .skt-kart h3 { margin: 0 0 6px; }
+  .skt-bas { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+  .skt-bas h3 { margin: 0; }
+  .skt-bas .btn { font-weight: 700; }
+  .skt-tavsiye { background: var(--az-zemin); border-radius: 12px; padding: 10px 12px; margin-top: 10px; font-size: 14px; }
+  .skt-tavsiye h4 { margin: 0 0 6px; font-size: 15px; }
+  .skt-tavsiye-satir { padding: 6px 0; border-bottom: 1px dashed var(--cizgi); line-height: 1.45; }
+  .skt-tavsiye-satir:last-child { border-bottom: none; }
+  .skt-tavsiye-satir .btn { margin-top: 6px; padding: 6px 10px; font-size: 13px; }
+  .one-cikan-bilgi { background: var(--az-zemin); color: var(--az-yazi); border-radius: 10px; padding: 8px 12px; margin: 8px 0; font-size: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
   .skt-kart .dugmeler { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
   .skt-satir { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--cizgi); font-size: 14px; }
   .skt-satir:last-child { border-bottom: none; }
@@ -430,17 +458,346 @@
     .alt-dugme, .play-rozet { font-size: 14px; }
     .alt-dugmeler { gap: 9px; }
   }
+
+  /* ---------- MUTFAK EŞYALI LOGO YAZISI (u fincan, t tahta kaşık, a tabak, k oklava, A şef şapkası, i zeytin, ı çatal) ---------- */
+  .logo-yazi { height: 1.45em; width: auto; max-width: 100%; vertical-align: middle; overflow: visible; }
+  header h1 { display: flex; align-items: center; }
+  .logo-yazi.buyuk { height: 1.75em; display: block; margin: 0 0 4px -2px; }
+
+  /* =====================================================================
+     CANLI MUTFAK (v66): çekmece pencereler, hareketli görseller,
+     buzdolabı gibi Ürünlerim, market rafı gibi alışveriş listesi
+     ===================================================================== */
+  :root { --dolap-govde1: #fbfcfd; --dolap-govde2: #e4e9ee; --dolap-ic: #f3faff; --dolap-don: #e6f3fc; --dolap-cam: rgba(150,190,215,.55);
+    --dolap-kulp: #b8c2cc; --ahsap1: #d8a56c; --ahsap2: #b9824a; --ahsap-raf: #9c6a3a; --kiler-ic: #fff7ec;
+    --market-arka: #fff8ee; --market-raf: #c99a68; --market-raf2: #a8784a; --fiyat: #ffd54f; --not-kagidi: #fffbe6; }
+  body.koyu { --dolap-govde1: #333944; --dolap-govde2: #262b34; --dolap-ic: #1b2430; --dolap-don: #172434; --dolap-cam: rgba(120,170,210,.35);
+    --dolap-kulp: #6c7784; --ahsap1: #7a5434; --ahsap2: #5c3d24; --ahsap-raf: #4a311d; --kiler-ic: #2a2219;
+    --market-arka: #242830; --market-raf: #6b4d33; --market-raf2: #4e3724; --fiyat: #e0b73a; --not-kagidi: #2b2a22; }
+
+  /* ---------- 1) ÇEKMECE GİBİ AÇILAN PENCERELER ---------- */
+  .perde.acik { animation: perdeBelir .22s ease-out; }
+  .perde.acik > .pencere { animation: cekmeceAc .36s cubic-bezier(.2,.9,.3,1.12); }
+  .perde.kapaniyor { animation: perdeSol .21s ease-in forwards; }
+  .perde.kapaniyor > .pencere { animation: cekmeceKapa .21s ease-in forwards; }
+  @keyframes perdeBelir { from { background: rgba(0,0,0,0); } }
+  @keyframes perdeSol { to { background: rgba(0,0,0,0); } }
+  @keyframes cekmeceAc { from { transform: translateY(70px); opacity: 0; } }
+  @keyframes cekmeceKapa { to { transform: translateY(90px); opacity: 0; } }
+  @media (max-width: 600px) {
+    .perde { align-items: flex-end; padding: 0; }
+    .perde > .pencere { max-width: none !important; border-radius: 22px 22px 0 0; padding-top: 32px; max-height: 92vh; overflow-y: auto;
+      box-shadow: 0 -8px 30px rgba(0,0,0,.25); }
+    .perde > .pencere::before { content: ""; position: absolute; top: 11px; left: 50%; width: 46px; height: 5px; margin-left: -23px;
+      border-radius: 3px; background: var(--cizgi); }
+    @keyframes cekmeceAc { from { transform: translateY(100%); } }
+    @keyframes cekmeceKapa { to { transform: translateY(100%); } }
+  }
+  .kullanici-menu.acik, .yazi-menu.acik { animation: menuKay .26s cubic-bezier(.2,.9,.3,1.1); transform-origin: top right; }
+  @keyframes menuKay { from { opacity: 0; transform: translateY(-12px) scaleY(.8); } }
+  .sss-cevap { transition: max-height .32s cubic-bezier(.2,.8,.3,1); }
+  .sss-oge.acik .sss-cevap-ic { animation: cekmeceIcerik .32s ease-out; }
+  @keyframes cekmeceIcerik { from { transform: translateY(-14px); opacity: 0; } }
+
+  /* Mutfak çekmeceleri: Ekipmanlarım ve Temizlik Malzemelerim */
+  .cekmece { margin-bottom: 14px; border-radius: 14px; }
+  .cekmece-on { position: relative; display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; cursor: pointer;
+    border: none; border-radius: 14px; padding: 18px 18px 22px; font-family: inherit; color: #fff;
+    background: linear-gradient(180deg, var(--ahsap1), var(--ahsap2));
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.25), inset 0 -3px 0 rgba(0,0,0,.18), 0 3px 8px rgba(0,0,0,.12);
+    transition: border-radius .25s, transform .15s; z-index: 1; }
+  .cekmece-on:active { transform: translateY(1px); }
+  .cekmece-on::before { content: ""; position: absolute; inset: 6px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,.18); pointer-events: none; }
+  .cekmece-ad { font-size: 18px; font-weight: 700; flex: 1; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+  .cekmece-sayi { font-size: 13px; background: rgba(0,0,0,.22); padding: 3px 10px; border-radius: 10px; white-space: nowrap; }
+  .cekmece-kulp { position: absolute; left: 50%; bottom: 7px; width: 70px; height: 9px; margin-left: -35px; border-radius: 6px;
+    background: linear-gradient(180deg, #eef1f4, #aab3bb); box-shadow: 0 2px 3px rgba(0,0,0,.3); }
+  .cekmece-ok { font-size: 13px; transition: transform .3s; }
+  .cekmece.acik .cekmece-ok { transform: rotate(180deg); }
+  .cekmece.acik .cekmece-on { border-radius: 14px 14px 4px 4px; }
+  .cekmece-ic { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .38s cubic-bezier(.2,.8,.3,1); }
+  .cekmece.acik .cekmece-ic { grid-template-rows: 1fr; }
+  .cekmece-ic > div { overflow: hidden; min-height: 0; }
+  .cekmece-icerik { background: var(--kart); border-radius: 0 0 14px 14px; padding: 14px 16px 16px; margin: 0 8px;
+    box-shadow: inset 0 10px 12px -10px rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.06);
+    transform: translateY(-30px); opacity: 0; transition: transform .38s cubic-bezier(.2,.8,.3,1), opacity .25s; }
+  .cekmece.acik .cekmece-icerik { transform: none; opacity: 1; }
+  .cekmece .raf { margin-bottom: 4px; }
+
+  /* ---------- 2) ÜRÜNLERİM: BUZDOLABI ---------- */
+  .buzdolabi { position: relative; perspective: 1400px; margin: 4px 0 26px; }
+  .dolap-govde { position: relative; border-radius: 26px; padding: 14px 30px 14px 14px;
+    background: linear-gradient(90deg, var(--dolap-govde1), var(--dolap-govde2));
+    box-shadow: 0 10px 24px rgba(0,0,0,.14), inset 0 0 0 1px rgba(0,0,0,.05); }
+  .dolap-goz { position: relative; border-radius: 16px; padding: 14px 14px 12px; background: var(--dolap-ic);
+    box-shadow: inset 0 3px 10px rgba(0,0,0,.08), inset 0 0 0 1px rgba(0,0,0,.05); }
+  .dolap-goz + .dolap-goz { margin-top: 14px; }
+  .dolap-goz.dondurucu { background: linear-gradient(180deg, var(--dolap-don), var(--dolap-ic));
+    background-image: radial-gradient(circle at 12% 18%, rgba(255,255,255,.65) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 30%, rgba(255,255,255,.55) 0 2px, transparent 3px),
+      radial-gradient(circle at 40% 70%, rgba(255,255,255,.5) 0 1.5px, transparent 2.5px), linear-gradient(180deg, var(--dolap-don), var(--dolap-ic)); }
+  body.koyu .dolap-goz.dondurucu { background-image: radial-gradient(circle at 12% 18%, rgba(255,255,255,.12) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 30%, rgba(255,255,255,.1) 0 2px, transparent 3px), linear-gradient(180deg, var(--dolap-don), var(--dolap-ic)); }
+  .dolap-goz h3 { margin: 0 0 2px; font-size: 18px; }
+  .dolap-goz .dolap-isik { position: absolute; top: 8px; left: 50%; width: 60px; height: 5px; margin-left: -30px; border-radius: 4px;
+    background: #fff9d9; box-shadow: 0 0 14px 6px rgba(255,244,190,.55); opacity: .85; }
+  body.koyu .dolap-goz .dolap-isik { opacity: .45; }
+  .dolap-kulp { position: absolute; right: -22px; top: 22px; width: 9px; height: 90px; border-radius: 6px;
+    background: linear-gradient(90deg, #f4f6f8, var(--dolap-kulp)); box-shadow: 1px 2px 4px rgba(0,0,0,.25); }
+  .dolap-ayaklar { display: flex; justify-content: space-between; padding: 0 34px; }
+  .dolap-ayaklar span { width: 30px; height: 9px; background: var(--dolap-kulp); border-radius: 0 0 6px 6px; }
+  .raf { position: relative; padding: 6px 2px 8px; margin: 2px 0 10px; border-bottom: 7px solid var(--dolap-cam);
+    box-shadow: 0 6px 6px -4px rgba(0,0,0,.12); border-radius: 0 0 3px 3px; }
+  .raf .reyon-baslik { margin: 2px 0 4px; }
+  .raf-urunler { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 6px; }
+  .raf-urunler .etiket { margin: 0; }
+  .dolap-goz .raf-urunler .etiket, .kiler .raf-urunler .etiket { border-radius: 12px 12px 6px 6px; padding: 7px 11px 6px; font-size: 14px;
+    box-shadow: 0 2px 0 rgba(0,0,0,.08), inset 0 0 0 1px rgba(0,0,0,.06); }
+  .dolap-goz .raf-urunler .etiket.notr { background: var(--kart); }
+  .bos-raf { color: var(--soluk); font-size: 13px; text-align: center; padding: 22px 6px 10px; }
+  .dolap-not { margin-top: 10px; }
+  .dolap-not textarea { background: var(--not-kagidi); border-style: dashed; min-height: 70px; }
+  .dolap-not .aciklama { margin: 0 0 6px; }
+  .dolap-not-baslik { font-size: 13px; font-weight: 700; color: var(--soluk); margin: 0 0 6px; }
+  /* Kapı: Ürünlerim açılınca buzdolabının kapağı açılır */
+  .dolap-kapagi { display: none; position: absolute; inset: 0 0 9px 0; border-radius: 26px; z-index: 3; pointer-events: none;
+    transform-origin: left center; background: linear-gradient(90deg, var(--dolap-govde1), var(--dolap-govde2));
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.08), 0 10px 24px rgba(0,0,0,.18); }
+  .dolap-kapagi::after { content: ""; position: absolute; right: 18px; top: 40px; width: 10px; height: 120px; border-radius: 6px;
+    background: linear-gradient(90deg, #f4f6f8, var(--dolap-kulp)); box-shadow: 1px 2px 4px rgba(0,0,0,.25); }
+  .dolap-kapagi::before { content: "🧊"; position: absolute; left: 50%; top: 40%; font-size: 40px; transform: translateX(-50%); opacity: .5; }
+  .buzdolabi.aciliyor .dolap-kapagi { display: block; animation: kapakAc 1s .08s cubic-bezier(.5,0,.3,1) both; }
+  .buzdolabi.aciliyor .dolap-goz { animation: dolapIsigi 1.4s ease-out; }
+  @keyframes kapakAc { 0% { transform: rotateY(0); opacity: 1; } 75% { opacity: 1; } 100% { transform: rotateY(-115deg); opacity: 0; visibility: hidden; } }
+  @keyframes dolapIsigi { 0% { filter: brightness(.75); } 60% { filter: brightness(1.12); } 100% { filter: none; } }
+
+  /* Kiler: ahşap dolap */
+  .kiler { border-radius: 18px; padding: 12px; margin-bottom: 18px; background: linear-gradient(180deg, var(--ahsap1), var(--ahsap2));
+    box-shadow: 0 8px 18px rgba(0,0,0,.14); }
+  .kiler-ic { background: var(--kiler-ic); border-radius: 12px; padding: 14px; box-shadow: inset 0 3px 10px rgba(0,0,0,.12); }
+  .kiler-ic h3 { margin: 0 0 2px; font-size: 18px; }
+  .kiler .raf { border-bottom: 9px solid var(--ahsap-raf); }
+
+  /* ---------- 3) ALIŞVERİŞ LİSTESİ: MARKET RAFI ---------- */
+  .market { background: var(--market-arka); border-radius: 14px; padding: 10px 10px 4px; margin: 8px 0 6px;
+    box-shadow: inset 0 0 0 1px var(--cizgi); }
+  .market-tabela { text-align: center; font-weight: 700; font-size: 15px; margin: 0 0 8px; }
+  .market-tabela small { display: block; font-weight: 400; color: var(--soluk); font-size: 12px; }
+  .m-raf { margin-bottom: 14px; }
+  .m-raf-urunler { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; padding: 6px 4px 0; }
+  .m-raf-tahta { height: 12px; border-radius: 3px; background: linear-gradient(180deg, var(--market-raf), var(--market-raf2));
+    box-shadow: 0 5px 6px -3px rgba(0,0,0,.3); position: relative; }
+  .m-raf-etiket { display: inline-block; position: relative; top: -2px; margin-left: 10px; background: var(--fiyat); color: #3b2f00;
+    font-size: 11px; font-weight: 700; padding: 2px 8px 3px; border-radius: 0 0 6px 6px; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .m-urun { position: relative; flex: 1 1 96px; max-width: 150px; min-width: 96px; }
+  .m-urun-al { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; cursor: pointer; font-family: inherit;
+    border: none; color: var(--yazi); background: var(--kart); border-radius: 12px 12px 5px 5px; padding: 0 6px 8px; overflow: hidden;
+    box-shadow: 0 2px 0 rgba(0,0,0,.1), inset 0 0 0 1px rgba(0,0,0,.07); transition: transform .15s; }
+  .m-urun-al:hover { transform: translateY(-3px); }
+  .m-urun-al:active { transform: translateY(1px) scale(.97); }
+  .m-urun-al::before { content: ""; display: block; align-self: stretch; height: 7px; margin: 0 -6px 4px; background: var(--paket, var(--ana)); }
+  .m-paket { font-size: 26px; line-height: 1.1; }
+  .m-ad { font-size: 14px; font-weight: 700; line-height: 1.25; text-align: center; word-break: break-word; }
+  .m-kaynak { font-size: 11px; color: var(--soluk); text-align: center; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden; }
+  .m-sil { position: absolute; top: 8px; right: 2px; background: none; border: none; color: var(--soluk); font-size: 14px; cursor: pointer;
+    padding: 2px 5px; line-height: 1; }
+  .m-bos { text-align: center; color: var(--soluk); padding: 14px 6px; font-size: 14px; }
+  /* Sepet: aşağıda sabit durur, aldıkların buraya düşer */
+  .sepet-cubugu { position: sticky; bottom: 10px; z-index: 4; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    background: var(--kart); border: 2px solid var(--yesil); border-radius: 16px; padding: 8px 12px; margin: 10px 0 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.16); }
+  .sepet-simge { position: relative; width: 54px; height: 46px; flex: 0 0 auto; }
+  .sepet-simge svg { width: 100%; height: 100%; display: block; }
+  .sepet-sayi { position: absolute; top: -6px; right: -6px; min-width: 22px; height: 22px; border-radius: 11px; background: var(--kirmizi);
+    color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
+  .sepet-sayi:empty { display: none; }
+  .sepet-ic { flex: 1 1 160px; min-width: 0; }
+  .sepet-ic b { font-size: 14px; }
+  .sepet-urunler { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; max-height: 76px; overflow-y: auto; }
+  .sepet-urunler button { border: none; cursor: pointer; font-family: inherit; font-size: 12px; padding: 3px 8px; border-radius: 10px;
+    background: var(--var-zemin); color: var(--var-yazi); }
+  .sepet-cubugu .btn { white-space: nowrap; }
+  .sepet-simge.sallan { animation: sepetSallan .45s ease; }
+  @keyframes sepetSallan { 30% { transform: rotate(-10deg) scale(1.12); } 60% { transform: rotate(7deg); } }
+  .ucan-urun { position: fixed; z-index: 9999; pointer-events: none; display: flex; flex-direction: column; align-items: center;
+    background: var(--kart); color: var(--yazi); border-radius: 12px; box-shadow: 0 8px 18px rgba(0,0,0,.3); padding: 6px 8px;
+    font: 700 13px "Segoe UI", Arial, sans-serif; will-change: transform; }
+  .ucan-urun span { font-size: 26px; }
+
+  /* ---------- 4) ANA SAYFA: HAREKETLİ GÖRSELLER ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .canli svg .buhar, .canli svg .kapak-oyna, .canli svg .gunes-nabiz, .canli svg .yaprak-salla, .canli svg .kalp-uc,
+    .canli svg .alev, .canli svg .tabak-don, .canli svg .tencere-zipla, .canli svg .sepet-zipla, .canli svg .ampuller circle {
+      transform-box: fill-box; transform-origin: center; }
+    .canli svg .buhar { transform-origin: center bottom; animation: buharYuksel 3.4s ease-in-out infinite; }
+    .canli svg .buhar.b2 { animation-delay: -1.15s; } .canli svg .buhar.b3 { animation-delay: -2.3s; }
+    @keyframes buharYuksel { 0% { transform: translateY(10px) scaleY(.7); opacity: 0; } 30% { opacity: .95; } 100% { transform: translateY(-22px) scaleY(1.15); opacity: 0; } }
+    .canli svg .kapak-oyna { transform-origin: center bottom; animation: kapakOyna 3s ease-in-out infinite; }
+    @keyframes kapakOyna { 0%, 64%, 100% { transform: none; } 70% { transform: translateY(-5px) rotate(-3deg); } 76% { transform: none; } 82% { transform: translateY(-3px) rotate(2deg); } 88% { transform: none; } }
+    .canli svg .gunes-nabiz { animation: gunesNabiz 4s ease-in-out infinite; }
+    @keyframes gunesNabiz { 50% { transform: scale(1.1); } }
+    .canli svg .yaprak-salla { transform-origin: center bottom; animation: yaprakSalla 4.5s ease-in-out infinite; }
+    @keyframes yaprakSalla { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+    .canli svg .kalp-uc { animation: kalpUc 4s ease-in-out infinite; }
+    .canli svg .kalp-uc.k2 { animation-delay: -2s; }
+    @keyframes kalpUc { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.12); } }
+    .canli svg .ampuller circle { animation: ampulYan 2.4s ease-in-out infinite; }
+    .canli svg .ampuller circle:nth-child(4n+1), .canli svg .ampuller circle:nth-child(4n+2) { animation-delay: -1.2s; }
+    @keyframes ampulYan { 50% { opacity: .45; } }
+    .canli svg .alev { transform-origin: center bottom; animation: alevTitre .9s ease-in-out infinite alternate; }
+    .canli svg .alev.a2 { animation-delay: -.45s; }
+    @keyframes alevTitre { 0% { transform: scale(1, 1) rotate(-3deg); } 100% { transform: scale(.9, 1.15) rotate(3deg); } }
+    .canli svg .tabak-don { animation: tabakDon 5s ease-in-out infinite; }
+    @keyframes tabakDon { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg) translateY(-2px); } }
+    .canli svg .tencere-zipla { transform-origin: center bottom; animation: tencereZipla 2.6s ease-in-out infinite; }
+    @keyframes tencereZipla { 0%, 100% { transform: none; } 50% { transform: scale(1.03, .97); } }
+    .canli svg .sepet-zipla { animation: sepetZipla 2.8s ease-in-out infinite; }
+    @keyframes sepetZipla { 0%, 100% { transform: translateY(0); } 15% { transform: translateY(-9px); } 30% { transform: translateY(0); } }
+    .canli svg .ok-akis { animation: okAkis 1.4s linear infinite; }
+    @keyframes okAkis { to { stroke-dashoffset: -38; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .perde.acik, .perde.acik > .pencere, .kullanici-menu.acik, .yazi-menu.acik, .sss-oge.acik .sss-cevap-ic { animation: none; }
+    .cekmece-ic, .cekmece-icerik, .sss-cevap { transition: none; }
+    .buzdolabi.aciliyor .dolap-kapagi { display: none; }
+    .buzdolabi.aciliyor .dolap-goz { animation: none; }
+  }
+
+  /* ---------- MÜZİK DÜĞMELERİ ---------- */
+  .muzik-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 2px; background: rgba(255,255,255,.2);
+    border: none; color: #fff; border-radius: 10px; padding: 7px 8px; cursor: pointer; min-width: 38px; min-height: 38px; }
+  .muzik-btn small { font-size: 9px; font-weight: 800; letter-spacing: .03em; }
+  .muzik-btn small:empty { display: none; }
+  .muzik-btn.caliyor { background: rgba(255,255,255,.32); }
+  .muzik-btn.caliyor svg { animation: notaSalla 1s ease-in-out infinite; }
+  .muzik-btn.sonuk { opacity: .55; }
+  @keyframes notaSalla { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg) translateY(-2px); } }
+  @media (max-width: 600px) {
+    .muzik-btn { padding: 5px 5px; min-width: 32px; min-height: 34px; }
+    .muzik-btn svg { width: 19px; height: 19px; }
+    .sag-ust { gap: 5px; }
+  }
+  @media (max-width: 400px) {
+    header { flex-wrap: wrap; row-gap: 8px; }
+    header > div:first-child { flex: 1 1 100%; }
+    .sag-ust { margin-left: auto; }
+  }
+
+  /* ---------- SOFRA PLANLA: arkada masa ve mutfak ---------- */
+  #sofra { position: relative; }
+  #sofra::before { content: ""; position: fixed; left: 0; right: 0; bottom: 0; height: 75vh; z-index: -1; pointer-events: none;
+    background: var(--sofra-sahne) center bottom / cover no-repeat; opacity: .32;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%); mask-image: linear-gradient(to bottom, transparent, #000 30%); }
+  body.koyu #sofra::before { opacity: .2; filter: saturate(.8) brightness(.9); }
+  html.yazi-buyuk #sofra::before { height: calc(75vh / var(--yz)); }
+
+  /* ---------- YEMEK TARİFLERİM: arkada hafif hareketli mutfak simgeleri ---------- */
+  .tarif-sahne { position: fixed; inset: 0; z-index: -1; pointer-events: none; color: var(--ana); opacity: .2; }
+  body.koyu .tarif-sahne { opacity: .26; }
+  .tarif-sahne svg { position: absolute; width: 150px; height: 150px; }
+  .tarif-sahne .ts-tencere { left: 2%; bottom: 6%; }
+  .tarif-sahne .ts-tahta { right: 2%; top: 34%; }
+  .tarif-sahne .ts-tava { left: 4%; top: 22%; }
+  @media (max-width: 600px) { .tarif-sahne svg { width: 112px; height: 112px; } .tarif-sahne .ts-tahta { top: 52%; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .tarif-sahne * { transform-box: fill-box; }
+    .ts-buhar { transform-origin: center bottom; animation: buharYuksel 3.4s ease-in-out infinite; }
+    .ts-buhar.b2 { animation-delay: -1.15s; } .ts-buhar.b3 { animation-delay: -2.3s; }
+    .ts-kapak { transform-origin: center bottom; animation: kapakOyna 3s ease-in-out infinite; }
+    .ts-bicak { transform-origin: right center; animation: bicakDogra .7s ease-in-out infinite; }
+    @keyframes bicakDogra { 0%, 100% { transform: translateY(-14px) rotate(-8deg); } 45%, 55% { transform: translateY(0) rotate(0); } }
+    .ts-dilim { animation: dilimKay 2.8s linear infinite; }
+    .ts-dilim.d2 { animation-delay: -.93s; } .ts-dilim.d3 { animation-delay: -1.86s; }
+    @keyframes dilimKay { 0% { transform: translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateX(-38px); opacity: 0; } }
+    .ts-tava-g { transform-origin: 70% 70%; animation: tavaSalla 2.4s ease-in-out infinite; }
+    @keyframes tavaSalla { 0%, 60%, 100% { transform: rotate(0); } 70% { transform: rotate(-10deg); } 80% { transform: rotate(3deg); } }
+    .ts-ucan { animation: tavaUc 2.4s ease-in-out infinite; }
+    .ts-ucan.u2 { animation-delay: .08s; } .ts-ucan.u3 { animation-delay: .16s; }
+    @keyframes tavaUc { 0%, 62%, 100% { transform: translateY(0) rotate(0); } 78% { transform: translateY(-34px) rotate(160deg); } 92% { transform: translateY(0) rotate(340deg); } }
+  }
+  @keyframes buharYuksel { 0% { transform: translateY(10px) scaleY(.7); opacity: 0; } 30% { opacity: .95; } 100% { transform: translateY(-22px) scaleY(1.15); opacity: 0; } }
+  @keyframes kapakOyna { 0%, 64%, 100% { transform: none; } 70% { transform: translateY(-5px) rotate(-3deg); } 76% { transform: none; } 82% { transform: translateY(-3px) rotate(2deg); } 88% { transform: none; } }
+  /* Sepet, alttaki yuvarlak düğmelerin (WhatsApp, yukarı ok) üstünde dursun */
+  .sepet-cubugu { bottom: 84px; }
+  html.yazi-buyuk .sepet-urunler { display: none; }
+  html.yazi-buyuk .sepet-cubugu { padding: 6px 10px; gap: 8px; }
+  html.yazi-buyuk .sepet-simge { width: 42px; height: 36px; }
+  html.yazi-buyuk .sepet-ic { flex-basis: 90px; }
+  .tarif-sahne { opacity: .26; }
+  :root { --sofra-sahne: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 450' preserveAspectRatio='xMidYMax slice'%3E %3Crect width='600' height='450' fill='%23fbe9d7'/%3E%3Crect y='0' width='600' height='14' fill='%23f3d6b8'/%3E %3Cg fill='%23f6dcc2'%3E%3Crect x='0' y='60' width='600' height='2'/%3E%3Crect x='0' y='120' width='600' height='2'/%3E%3Crect x='0' y='180' width='600' height='2'/%3E%3C/g%3E %3Crect x='40' y='50' width='150' height='120' rx='10' fill='%23bfe6ff' stroke='%23fff' stroke-width='8'/%3E%3Cline x1='115' y1='50' x2='115' y2='170' stroke='%23fff' stroke-width='6'/%3E%3Ccircle cx='160' cy='86' r='16' fill='%23ffd166'/%3E %3Cpath d='M40 150 Q80 125 115 150 T190 150 V170 H40z' fill='%239ad69a'/%3E %3Cpath d='M36 46 h158 v10 h-158z' fill='%23e17055'/%3E%3Cpath d='M36 56 q20 30 0 60 M194 56 q-20 30 0 60' stroke='%23e17055' stroke-width='10' fill='none'/%3E %3Crect x='380' y='60' width='190' height='8' rx='3' fill='%23b07a4f'/%3E%3Crect x='380' y='130' width='190' height='8' rx='3' fill='%23b07a4f'/%3E %3Crect x='392' y='30' width='24' height='30' rx='5' fill='%23ff8a65'/%3E%3Crect x='424' y='38' width='20' height='22' rx='5' fill='%23ffd166'/%3E%3Crect x='452' y='26' width='26' height='34' rx='5' fill='%2381c784'/%3E %3Ccircle cx='512' cy='44' r='16' fill='none' stroke='%2390a4ae' stroke-width='5'/%3E%3Cpath d='M496 44 h-14' stroke='%2390a4ae' stroke-width='5'/%3E %3Crect x='394' y='100' width='30' height='30' rx='4' fill='%23fff' stroke='%23d7ccc8' stroke-width='3'/%3E%3Crect x='432' y='96' width='30' height='34' rx='4' fill='%23fff' stroke='%23d7ccc8' stroke-width='3'/%3E%3Cpath d='M478 130 q22 -40 44 0z' fill='%23a1887f'/%3E %3Cline x1='300' y1='0' x2='300' y2='110' stroke='%236d4c41' stroke-width='3'/%3E%3Cpath d='M262 140 q38 -50 76 0z' fill='%236c5ce7'/%3E%3Cellipse cx='300' cy='146' rx='60' ry='16' fill='%23ffe9a8' opacity='.7'/%3E %3Crect x='0' y='300' width='600' height='150' fill='%23e8c9a8'/%3E %3Cpath d='M40 290 h520 l30 60 h-580z' fill='%23fff'/%3E%3Cpath d='M10 350 h580 v24 h-580z' fill='%23f1e6ff'/%3E %3Cg fill='%23e84393' opacity='.25'%3E%3Crect x='60' y='300' width='40' height='50'/%3E%3Crect x='180' y='300' width='40' height='50'/%3E%3Crect x='300' y='300' width='40' height='50'/%3E%3Crect x='420' y='300' width='40' height='50'/%3E%3C/g%3E %3Crect x='40' y='374' width='14' height='76' fill='%238d6e63'/%3E%3Crect x='546' y='374' width='14' height='76' fill='%238d6e63'/%3E %3Cg fill='%23fff' stroke='%23d9cff5' stroke-width='3'%3E%3Cellipse cx='110' cy='305' rx='34' ry='9'/%3E%3Cellipse cx='230' cy='305' rx='34' ry='9'/%3E%3Cellipse cx='370' cy='305' rx='34' ry='9'/%3E%3Cellipse cx='490' cy='305' rx='34' ry='9'/%3E%3C/g%3E %3Crect x='270' y='262' width='60' height='38' rx='10' fill='%23e17055'/%3E%3Crect x='262' y='256' width='76' height='9' rx='4' fill='%23c0563f'/%3E %3Cpath d='M286 246 q-8 -12 0 -24 M300 242 q-8 -12 0 -24 M314 246 q-8 -12 0 -24' stroke='%23fff' stroke-width='4' fill='none' stroke-linecap='round'/%3E %3Crect x='170' y='270' width='8' height='30' fill='%23fff' stroke='%23ddd'/%3E%3Cpath d='M174 256 q6 8 0 14 q-6 -6 0 -14z' fill='%23ffd166'/%3E %3Crect x='420' y='270' width='8' height='30' fill='%23fff' stroke='%23ddd'/%3E%3Cpath d='M424 256 q6 8 0 14 q-6 -6 0 -14z' fill='%23ffd166'/%3E %3Cg fill='%23dff9fb' stroke='%23b2ebf2' stroke-width='2'%3E%3Crect x='146' y='282' width='12' height='20' rx='2'/%3E%3Crect x='446' y='282' width='12' height='20' rx='2'/%3E%3C/g%3E %3Cpath d='M80 270 q6 -24 22 -30 q-4 18 -22 30z' fill='%2381c784'/%3E%3Crect x='72' y='268' width='22' height='28' rx='4' fill='%23ffd166'/%3E %3C/svg%3E"); }
+
+  /* ---------- SSS: mutfak ekipmanlı desen (2 renk) + hareketli çizimler ---------- */
+  :root { --desen-ekipman: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath transform='translate(42.2 43.9) rotate(17) scale(1.54) translate(-16 -16)' d='M8 20h12a6 6 0 0 1-12 0z M14 20l9-17 M22 3l3 1'/%3E%3Cpath transform='translate(208.0 42.4) rotate(22) scale(1.33) translate(-16 -16)' d='M10 18c-4 0-6-3-5-6 1-3 4-4 6-3 1-3 4-5 6-5s5 2 6 5c2-1 5 0 6 3 1 3-1 6-6 6z M10 18v8h13v-8 M10 22h13'/%3E%3Cpath transform='translate(351.2 35.5) rotate(-12) scale(1.53) translate(-16 -16)' d='M13 19l15-12c0 7-4 12-11 14z M13 19l-8 7 M4 24l3 3'/%3E%3Cpath transform='translate(162.1 114.0) rotate(-28) scale(1.52) translate(-16 -16)' d='M4 14h24c0 7-5 12-12 12s-12-5-12-12z M12 26h8 M20 14l6-10'/%3E%3Cpath transform='translate(316.2 127.4) rotate(2) scale(1.47) translate(-16 -16)' d='M8 14h16v5h-16z M8 16.5h-5 M24 16.5h5 M11 14v5 M21 14v5'/%3E%3Cpath transform='translate(47.1 196.8) rotate(-8) scale(1.34) translate(-16 -16)' d='M9 15h14v7c0 3-3 5-7 5s-7-2-7-5z M9 17c-3 0-5 2-5 5 M23 17l5-3 M12 15c0-3 2-4 4-4s4 1 4 4 M14 11c0-2 1-3 2-3s2 1 2 3 M16 8v-3'/%3E%3Cpath transform='translate(191.1 202.8) rotate(-9) scale(1.38) translate(-16 -16)' d='M6 13h20v10c0 2-2 3-4 3h-12c-2 0-4-1-4-3z M3 14h3 M26 14h3 M5 13c0-2 2-3 4-3h14c2 0 4 1 4 3 M14 10c0-2 1-2 2-2s2 0 2 2'/%3E%3Cpath transform='translate(363.7 192.9) rotate(27) scale(1.31) translate(-16 -16)' d='M16 29v-11 M11 18h10l1-13h-12z M14 8v7 M18 8v7'/%3E%3Cpath transform='translate(157.6 281.3) rotate(-27) scale(1.31) translate(-16 -16)' d='M5 13h22c0 7-5 11-11 11s-11-4-11-11z M3 13h2 M27 13h2 M11 17h.1 M16 18h.1 M21 17h.1 M13 21h.1 M19 21h.1 M13 24l-1 3h8l-1-3'/%3E%3Cpath transform='translate(327.7 287.1) rotate(-9) scale(1.39) translate(-16 -16)' d='M16 29v-9 M14 29h4 M16 20c-7-3-7-15 0-17 7 2 7 14 0 17z M16 20c-3-3-3-14 0-17 M16 20c3-3 3-14 0-17'/%3E%3Cpath transform='translate(45.4 365.8) rotate(-26) scale(1.54) translate(-16 -16)' d='M16 9a9 9 0 1 0 .1 0z M16 13v6l4 2 M13 4h6 M16 4v5'/%3E%3Cpath transform='translate(197.1 366.8) rotate(3) scale(1.38) translate(-16 -16)' d='M10 12h12l-2 14h-8z M22 14l8-3 M9 12h14 M14 8c-1-1 1-2 0-3 M18 8c-1-1 1-2 0-3'/%3E%3Cpath transform='translate(363.4 367.9) rotate(-19) scale(1.31) translate(-16 -16)' d='M10 27v-13c0-5 3-8 7-8s6 3 6 7v14z M10 17c-3-1-5 1-4 3l4 3 M10 24h13'/%3E%3C/g%3E%3C/svg%3E"); --desen-ekipman2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath transform='translate(124.3 46.8) rotate(-26) scale(1.42) translate(-16 -16)' d='M16 29v-9 M14 29h4 M16 20c-7-3-7-15 0-17 7 2 7 14 0 17z M16 20c-3-3-3-14 0-17 M16 20c3-3 3-14 0-17'/%3E%3Cpath transform='translate(279.4 35.9) rotate(2) scale(1.44) translate(-16 -16)' d='M16 9a9 9 0 1 0 .1 0z M16 13v6l4 2 M13 4h6 M16 4v5'/%3E%3Cpath transform='translate(84.8 114.6) rotate(17) scale(1.33) translate(-16 -16)' d='M10 12h12l-2 14h-8z M22 14l8-3 M9 12h14 M14 8c-1-1 1-2 0-3 M18 8c-1-1 1-2 0-3'/%3E%3Cpath transform='translate(234.8 115.4) rotate(27) scale(1.52) translate(-16 -16)' d='M10 27v-13c0-5 3-8 7-8s6 3 6 7v14z M10 17c-3-1-5 1-4 3l4 3 M10 24h13'/%3E%3Cpath transform='translate(-5.3 127.1) rotate(11) scale(1.54) translate(-16 -16)' d='M8 10h14v14c0 2-1 3-3 3h-8c-2 0-3-1-3-3z M22 13h3c2 0 2 6 0 6h-3 M11 15h3 M11 19h3 M11 23h3'/%3E%3Cpath transform='translate(394.7 127.1) rotate(11) scale(1.54) translate(-16 -16)' d='M8 10h14v14c0 2-1 3-3 3h-8c-2 0-3-1-3-3z M22 13h3c2 0 2 6 0 6h-3 M11 15h3 M11 19h3 M11 23h3'/%3E%3Cpath transform='translate(113.6 193.0) rotate(-11) scale(1.45) translate(-16 -16)' d='M3 16h18c0 6-3 9-9 9s-9-3-9-9z M21 17l9-4'/%3E%3Cpath transform='translate(285.7 199.7) rotate(-10) scale(1.42) translate(-16 -16)' d='M9 4v8c0 3 2 4 4 4v12 M13 4v7 M17 4v8c0 3-2 4-4 4 M22 4c-2 3-2 9 0 11v13'/%3E%3Cpath transform='translate(84.5 285.5) rotate(-27) scale(1.50) translate(-16 -16)' d='M10 9h12l2 19h-16z M13 9v-4h6v4 M12 14h2 M18 14h2 M12 19h2 M18 19h2 M12 24h2 M18 24h2'/%3E%3Cpath transform='translate(234.3 287.3) rotate(-17) scale(1.49) translate(-16 -16)' d='M8 20h12a6 6 0 0 1-12 0z M14 20l9-17 M22 3l3 1'/%3E%3Cpath transform='translate(0.4 284.4) rotate(-22) scale(1.49) translate(-16 -16)' d='M10 18c-4 0-6-3-5-6 1-3 4-4 6-3 1-3 4-5 6-5s5 2 6 5c2-1 5 0 6 3 1 3-1 6-6 6z M10 18v8h13v-8 M10 22h13'/%3E%3Cpath transform='translate(400.4 284.4) rotate(-22) scale(1.49) translate(-16 -16)' d='M10 18c-4 0-6-3-5-6 1-3 4-4 6-3 1-3 4-5 6-5s5 2 6 5c2-1 5 0 6 3 1 3-1 6-6 6z M10 18v8h13v-8 M10 22h13'/%3E%3Cpath transform='translate(112.6 357.5) rotate(6) scale(1.53) translate(-16 -16)' d='M13 19l15-12c0 7-4 12-11 14z M13 19l-8 7 M4 24l3 3'/%3E%3Cpath transform='translate(276.7 354.8) rotate(-24) scale(1.34) translate(-16 -16)' d='M4 14h24c0 7-5 12-12 12s-12-5-12-12z M12 26h8 M20 14l6-10'/%3E%3C/g%3E%3C/svg%3E"); }
+  body.sss-acik::before, body.sss-acik nav::before { -webkit-mask-image: var(--desen-ekipman); mask-image: var(--desen-ekipman); opacity: .11; }
+  body.koyu.sss-acik::before, body.koyu.sss-acik nav::before { opacity: .12; }
+  .sss-desen2 { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-color: var(--yesil); opacity: .12;
+    -webkit-mask: var(--desen-ekipman2) 0 0 / 400px 400px repeat; mask: var(--desen-ekipman2) 0 0 / 400px 400px repeat; }
+  body.koyu .sss-desen2 { opacity: .11; }
+  .sss-sahne { position: fixed; inset: 0; z-index: -1; pointer-events: none; color: var(--ana); opacity: .22; }
+  body.koyu .sss-sahne { opacity: .28; }
+  .sss-sahne svg { position: absolute; width: 140px; height: 140px; }
+  .sss-sahne .ss-tava, .sss-sahne .ss-rende, .sss-sahne .ss-oklava { color: var(--yesil); }
+  .ss-tencere { left: 2%; bottom: 5%; } .ss-tava { right: 2%; top: 16%; } .ss-cirpma { left: 3%; top: 20%; }
+  .ss-rende { right: 3%; bottom: 8%; } .ss-caydanlik { left: 6%; top: 52%; } .ss-oklava { right: 5%; top: 50%; }
+  @media (max-width: 1100px) { .sss-sahne svg { width: 110px; height: 110px; } .ss-caydanlik, .ss-oklava { display: none; } }
+  @media (max-width: 600px) { .sss-sahne svg { width: 92px; height: 92px; } .ss-cirpma { top: 64%; left: auto; right: 1%; } .ss-rende { display: none; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .sss-sahne * { transform-box: fill-box; }
+    .ss-buhar { transform-origin: center bottom; animation: buharYuksel 3.4s ease-in-out infinite; }
+    .ss-buhar.b2 { animation-delay: -1.15s; } .ss-buhar.b3 { animation-delay: -2.3s; }
+    .ss-kepce { transform-origin: left bottom; animation: kepceKaristir 2.6s ease-in-out infinite; }
+    @keyframes kepceKaristir { 0%, 100% { transform: rotate(-14deg) translateX(-6px); } 50% { transform: rotate(10deg) translateX(8px); } }
+    .ss-tava-g { transform-origin: 70% 70%; animation: ssTavaSalla 2.6s ease-in-out infinite; }
+    @keyframes ssTavaSalla { 0%, 60%, 100% { transform: rotate(0); } 70% { transform: rotate(-9deg); } 80% { transform: rotate(3deg); } }
+    .ss-zipla { animation: ssZipla 2.6s ease-in-out infinite; }
+    .ss-zipla.z2 { animation-delay: .08s; } .ss-zipla.z3 { animation-delay: .16s; }
+    @keyframes ssZipla { 0%, 62%, 100% { transform: translateY(0) rotate(0); } 78% { transform: translateY(-36px) rotate(170deg); } 92% { transform: translateY(0) rotate(350deg); } }
+    .ss-tel { transform-origin: center bottom; animation: telCirp 1.1s ease-in-out infinite; }
+    @keyframes telCirp { 0%, 100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
+    .ss-damla { animation: damlaSicra 1.1s ease-out infinite; }
+    @keyframes damlaSicra { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-12px); opacity: 0; } }
+    .ss-rende-g { animation: rendeSurt 1.4s ease-in-out infinite; }
+    @keyframes rendeSurt { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    .ss-tel-d { animation: rendeDus 1.4s linear infinite; }
+    .ss-tel-d.d2 { animation-delay: -.47s; } .ss-tel-d.d3 { animation-delay: -.93s; }
+    @keyframes rendeDus { 0% { transform: translateY(-4px); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(8px); opacity: 0; } }
+    .ss-demlik { transform-origin: center bottom; animation: kapakOyna 3.2s ease-in-out infinite; }
+    .ss-oklava-g { animation: oklavaYuvarla 3.6s ease-in-out infinite; }
+    @keyframes oklavaYuvarla { 0%, 100% { transform: translateX(-14px); } 50% { transform: translateX(14px); } }
+    .ss-cizgi { animation: oklavaCizgi 3.6s ease-in-out infinite; }
+    @keyframes oklavaCizgi { 0%, 100% { transform: translateX(-6px); } 50% { transform: translateX(6px); } }
+  }
+  .sss-ozet { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 10px 0 4px; }
+  .sss-ozet a { font-size: 13px; padding: 5px 11px; border-radius: 99px; background: var(--kart); color: var(--yazi); text-decoration: none; border: 1px solid var(--cizgi); }
+  .sss-ozet a:hover { border-color: var(--ana); color: var(--ana); }
+  .sss-grup { scroll-margin-top: 80px; }
+
+  /* ---------- Geniş ekranda menü, üst şeridin ortasında ---------- */
+  header.menulu { position: sticky; top: 0; z-index: 6; padding-top: 12px; padding-bottom: 12px; }
+  header.menulu > div:first-child { flex: 0 1 auto; max-width: 290px; }
+  header.menulu p { font-size: 12px; line-height: 1.35; }
+  header.menulu nav { position: static; flex: 1 1 auto; min-width: 0; background: none; padding: 0; gap: 6px; flex-wrap: nowrap; justify-content: center; z-index: auto; }
+  header.menulu nav::before { display: none; }
+  header.menulu nav button { background: rgba(255,255,255,.14); color: #fff; white-space: nowrap; padding: 9px 12px; font-size: calc(14px * var(--yz)); }
+  @media (max-width: 1350px) { header.menulu nav { gap: 4px; } header.menulu nav button { padding: 8px 9px; font-size: calc(13.5px * var(--yz)); } header.menulu { gap: 8px; padding-left: 14px; padding-right: 14px; } }
+  header.menulu nav button:hover { background: rgba(255,255,255,.24); }
+  header.menulu nav button.aktif { background: #fff; color: var(--ana); font-weight: 600; }
+  body.koyu header.menulu nav button.aktif { color: var(--ana-koyu); }
+
 </style>
 
 <body>
   <header>
     <div>
-      <h1><img src="ikonlar/icon-192.png" alt="" style="width:32px;height:32px;border-radius:9px;vertical-align:-6px;margin-right:8px;box-shadow:0 0 0 2px rgba(255,255,255,.35)">Mutfak Asistanı</h1>
+      <h1><img src="ikonlar/icon-192.png" alt="" style="width:32px;height:32px;border-radius:9px;vertical-align:-6px;margin-right:8px;box-shadow:0 0 0 2px rgba(255,255,255,.35)"><svg class="logo-yazi" viewBox="0 0 674 112" role="img" aria-label="Mutfak Asistanı" xmlns="http://www.w3.org/2000/svg"><title>Mutfak Asistanı</title><g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M8,100 V24 L37,68 L66,24 V100"/><path d="M75,55 V78 Q75,100 96,100 Q117,100 117,78 V55"/><path d="M117,62 q13,0 13,10 t-13,10" stroke-width="7"/><path d="M89,46 q-6,-6 0,-12 t0,-12 M103,46 q-6,-6 0,-12 t0,-12" stroke-width="4.5" opacity=".55"/><path d="M157,44 V100"/><ellipse cx="157" cy="27" rx="9" ry="14" fill="#d9a066" stroke-width="5"/><path d="M144,58 H171"/><path d="M189,100 V40 Q189,22 205,22 H208"/><path d="M178,58 H204"/><circle cx="236" cy="77.5" r="22"/><circle cx="236" cy="77.5" r="10" stroke-width="3.5" opacity=".6"/><path d="M258,55 V100"/><rect x="265" y="30" width="15" height="62" rx="6" fill="#d9a066" stroke-width="5"/><path d="M272.5,14 V30 M272.5,92 V102" stroke-width="7"/><path d="M305,55 L281,76 L307,100"/><path d="M338,100 L357,44 M379,44 L398,100 M348,76 H388"/><path d="M353,42 H383" stroke-width="9"/><path d="M356,36 C344,34 344,16 356,18 C356,4 380,4 380,18 C392,16 392,34 380,36" stroke-width="6"/><path d="M439,61 C434,53 410,53 410,66 C410,79 441,73 441,88 C441,103 413,102 408,93"/><path d="M453,55 V100"/><ellipse cx="453" cy="31" rx="9" ry="11.5" fill="#7fa33a" stroke="none" transform="rotate(-20 453 32)"/><circle cx="450.5" cy="27" r="2.6" fill="#fff" stroke="none" opacity=".7"/><path d="M496,61 C491,53 467,53 467,66 C467,79 498,73 498,88 C498,103 470,102 465,93"/><path d="M519,32 V86 Q519,100 531,100 H535"/><path d="M508,58 H534"/><circle cx="563" cy="77.5" r="22"/><path d="M585,55 V100"/><path d="M595,55 V100 M595,78 C595,62 604,55 616,55 C628,55 637,62 637,78 V100"/><path d="M656,68 V100"/><path d="M646,40 V58 Q646,70 656,70 Q666,70 666,58 V40 M656,40 V66" stroke-width="5.5"/></g></svg></h1>
       <p>Mutfağındakini bil, ne pişireceğini bul, eksikleri listele.</p>
     </div>
     <div class="sag-ust">
       <button class="yazi-btn" id="yaziBtn" title="Yazı boyutu" aria-label="Yazı boyutunu değiştir"><small>A</small>A</button>
       <div class="yazi-menu" id="yaziMenu"></div>
+      <button class="muzik-btn" id="muzikBtn" aria-label="Müziği aç ya da türünü değiştir"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 18.5a3 3 0 1 1-2-2.83V5.2l11-2.2v12.5a3 3 0 1 1-2-2.83V7.4L9 8.8z" fill="currentColor"/></svg><small id="muzikTur"></small></button>
+      <button class="muzik-btn sonuk" id="muzikKapat" title="Müziği sustur" aria-label="Müziği sustur"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 18.5a3 3 0 1 1-2-2.83V5.2l11-2.2v12.5a3 3 0 1 1-2-2.83V7.4L9 8.8z" fill="currentColor" opacity=".9"/><path d="M3.5 3.5 20.5 20.5" stroke="var(--ana)" stroke-width="5" stroke-linecap="round"/><path d="M3.5 3.5 20.5 20.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
       <button class="tema-btn" onclick="temaDegistir()" title="Koyu / açık tema">🌙</button>
       <button class="kullanici-btn" id="kullaniciBtn"></button>
       <div class="kullanici-menu" id="kullaniciMenu"></div>
@@ -453,15 +810,15 @@
     <button data-bolum="sofra">🍽️ Sofra Planla</button>
     <button data-bolum="tarifler">🍲 Yemek Tariflerim</button>
     <button data-bolum="alisveris">🛒 Alışveriş Listelerim</button>
-    <button data-bolum="online">🛍️ Online Alışveriş</button>
+    <!-- Online Alışveriş şimdilik gizli. Geri getirmek için bu satırı aç: <button data-bolum="online">🛍️ Online Alışveriş</button> -->
   </nav>
 
   <!-- ===================== ANA SAYFA (TANITIM) ===================== -->
-  <section id="anasayfa" class="bolum aktif" style="max-width:none;padding:0">
+  <section id="anasayfa" class="bolum aktif canli" style="max-width:none;padding:0">
     <div class="tanitim">
       <div class="kahraman">
         <div>
-          <h2>Mutfak Asistanı<br><span>her an yanınızda.</span></h2>
+          <h2><svg class="logo-yazi buyuk" viewBox="0 0 674 112" role="img" aria-label="Mutfak Asistanı" xmlns="http://www.w3.org/2000/svg"><title>Mutfak Asistanı</title><g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M8,100 V24 L37,68 L66,24 V100"/><path d="M75,55 V78 Q75,100 96,100 Q117,100 117,78 V55"/><path d="M117,62 q13,0 13,10 t-13,10" stroke-width="7"/><path d="M89,46 q-6,-6 0,-12 t0,-12 M103,46 q-6,-6 0,-12 t0,-12" stroke-width="4.5" opacity=".55"/><path d="M157,44 V100"/><ellipse cx="157" cy="27" rx="9" ry="14" fill="#d9a066" stroke-width="5"/><path d="M144,58 H171"/><path d="M189,100 V40 Q189,22 205,22 H208"/><path d="M178,58 H204"/><circle cx="236" cy="77.5" r="22"/><circle cx="236" cy="77.5" r="10" stroke-width="3.5" opacity=".6"/><path d="M258,55 V100"/><rect x="265" y="30" width="15" height="62" rx="6" fill="#d9a066" stroke-width="5"/><path d="M272.5,14 V30 M272.5,92 V102" stroke-width="7"/><path d="M305,55 L281,76 L307,100"/><path d="M338,100 L357,44 M379,44 L398,100 M348,76 H388"/><path d="M353,42 H383" stroke-width="9"/><path d="M356,36 C344,34 344,16 356,18 C356,4 380,4 380,18 C392,16 392,34 380,36" stroke-width="6"/><path d="M439,61 C434,53 410,53 410,66 C410,79 441,73 441,88 C441,103 413,102 408,93"/><path d="M453,55 V100"/><ellipse cx="453" cy="31" rx="9" ry="11.5" fill="#7fa33a" stroke="none" transform="rotate(-20 453 32)"/><circle cx="450.5" cy="27" r="2.6" fill="#fff" stroke="none" opacity=".7"/><path d="M496,61 C491,53 467,53 467,66 C467,79 498,73 498,88 C498,103 470,102 465,93"/><path d="M519,32 V86 Q519,100 531,100 H535"/><path d="M508,58 H534"/><circle cx="563" cy="77.5" r="22"/><path d="M585,55 V100"/><path d="M595,55 V100 M595,78 C595,62 604,55 616,55 C628,55 637,62 637,78 V100"/><path d="M656,68 V100"/><path d="M646,40 V58 Q646,70 656,70 Q666,70 666,58 V40 M656,40 V66" stroke-width="5.5"/></g></svg><span>her an yanınızda.</span></h2>
           <p>"Bugün ne pişireceğim?" derdine son. Evindekileri yaz, sana uygun yemekleri bulalım, eksikleri tek tuşla alışveriş listene ekleyelim.</p>
           <button class="btn" id="anaButon">Hemen başla →</button>
           <p id="hosgeldin" style="font-size:15px;margin-top:14px"></p>
@@ -473,7 +830,7 @@
             <rect y="300" width="600" height="140" fill="#e8c9a8"/>
             <!-- pencere -->
             <rect x="60" y="40" width="170" height="130" rx="10" fill="#bfe6ff" stroke="#fff" stroke-width="8"/>
-            <circle cx="190" cy="80" r="22" fill="#ffd166"/>
+            <circle class="gunes-nabiz" cx="190" cy="80" r="22" fill="#ffd166"/>
             <path d="M68 150 Q110 120 150 150 T230 150 V162 H68 Z" fill="#8fd18f"/>
             <line x1="145" y1="40" x2="145" y2="170" stroke="#fff" stroke-width="6"/>
             <!-- üst dolaplar -->
@@ -494,13 +851,13 @@
             <line x1="480" y1="270" x2="480" y2="372" stroke="#6d4c41" stroke-width="3"/>
             <!-- tencere ve buhar -->
             <rect x="440" y="214" width="80" height="38" rx="8" fill="#455a64"/>
-            <rect x="430" y="208" width="100" height="10" rx="5" fill="#37474f"/>
-            <path d="M462 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
-            <path d="M482 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
-            <path d="M502 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+            <rect class="kapak-oyna" x="430" y="208" width="100" height="10" rx="5" fill="#37474f"/>
+            <path class="buhar b1" d="M462 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+            <path class="buhar b2" d="M482 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+            <path class="buhar b3" d="M502 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
             <!-- saksı -->
             <rect x="300" y="222" width="34" height="28" rx="4" fill="#e17055"/>
-            <path d="M317 222 q-18 -24 -4 -40 M317 222 q2 -30 16 -40 M317 222 q-4 -20 -20 -22" stroke="#43a047" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <path class="yaprak-salla" d="M317 222 q-18 -24 -4 -40 M317 222 q2 -30 16 -40 M317 222 q-4 -20 -20 -22" stroke="#43a047" stroke-width="6" fill="none" stroke-linecap="round"/>
             <!-- aile: baba -->
             <rect x="72" y="262" width="62" height="120" rx="26" fill="#0984e3"/>
             <circle cx="103" cy="236" r="28" fill="#f1c27d"/>
@@ -528,8 +885,8 @@
             <circle cx="34" cy="308" r="2.5" fill="#333"/><circle cx="46" cy="308" r="2.5" fill="#333"/>
             <path d="M33 316 q7 6 14 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
             <!-- kalpler -->
-            <path d="M260 210 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
-            <path d="M232 180 c-4 -7 -14 -3 -10 4 l10 8 l10 -8 c4 -7 -6 -11 -10 -4z" fill="#ff7675" opacity=".7"/>
+            <path class="kalp-uc" d="M260 210 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
+            <path class="kalp-uc k2" d="M232 180 c-4 -7 -14 -3 -10 4 l10 8 l10 -8 c4 -7 -6 -11 -10 -4z" fill="#ff7675" opacity=".7"/>
           </svg>
         </div>
       </div>
@@ -547,7 +904,7 @@
           <g fill="#fff" opacity=".8"><circle cx="60" cy="40" r="2"/><circle cx="150" cy="25" r="1.5"/><circle cx="330" cy="35" r="2"/><circle cx="380" cy="90" r="1.5"/><circle cx="100" cy="95" r="1.5"/></g>
           <!-- ışık zinciri -->
           <path d="M0 70 Q130 125 260 80 T520 85" stroke="#2a1a55" stroke-width="2" fill="none"/>
-          <g>
+          <g class="ampuller">
             <circle cx="40" cy="86" r="16" fill="url(#isik)"/><circle cx="40" cy="86" r="5" fill="#ffd166"/>
             <circle cx="100" cy="102" r="16" fill="url(#isik)"/><circle cx="100" cy="102" r="5" fill="#ff8fab"/>
             <circle cx="160" cy="104" r="16" fill="url(#isik)"/><circle cx="160" cy="104" r="5" fill="#ffd166"/>
@@ -591,13 +948,13 @@
           <g>
             <ellipse cx="225" cy="262" rx="18" ry="8" fill="#e17055"/><ellipse cx="225" cy="259" rx="14" ry="4" fill="#fab1a0"/>
             <ellipse cx="295" cy="262" rx="18" ry="8" fill="#00b894"/><ellipse cx="295" cy="259" rx="14" ry="4" fill="#55efc4"/>
-            <ellipse cx="260" cy="258" rx="30" ry="10" fill="#636e72"/><path d="M234 256 q26 -24 52 0" fill="#fdcb6e"/>
+            <g class="tabak-don"><ellipse cx="260" cy="258" rx="30" ry="10" fill="#636e72"/><path d="M234 256 q26 -24 52 0" fill="#fdcb6e"/></g>
           </g>
           <!-- mumlar -->
           <g>
-            <rect x="196" y="236" width="8" height="26" fill="#fff"/><path d="M200 222 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
+            <rect x="196" y="236" width="8" height="26" fill="#fff"/><path class="alev" d="M200 222 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
             <circle cx="200" cy="230" r="12" fill="url(#isik)"/>
-            <rect x="316" y="236" width="8" height="26" fill="#fff"/><path d="M320 222 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
+            <rect x="316" y="236" width="8" height="26" fill="#fff"/><path class="alev a2" d="M320 222 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
             <circle cx="320" cy="230" r="12" fill="url(#isik)"/>
           </g>
           <!-- bardaklar -->
@@ -616,8 +973,6 @@
         </div>
       </div>
 
-      <div id="sktKartiAna" style="max-width:1100px;margin:0 auto;padding:0 16px"></div>
-      <div id="planKartiAna" style="max-width:1100px;margin:18px auto 0;padding:0 16px"></div>
 
       <!-- Özellikler: kendi çizdiğimiz 4 illüstrasyonla -->
       <div class="ozellikler-yeni oz-c">
@@ -687,14 +1042,14 @@
                   <ellipse cx="104" cy="282" rx="26" ry="12" fill="#81c784"/><ellipse cx="160" cy="284" rx="22" ry="10" fill="#a5d6a7"/>
                 </g>
                 <!-- kesik ok -->
-                <path d="M220 150 q70 -70 140 -10" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-dasharray="10 9" stroke-linecap="round"/>
+                <path class="ok-akis" d="M220 150 q70 -70 140 -10" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-dasharray="10 9" stroke-linecap="round"/>
                 <path d="M352 126 l14 18 l-22 4" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <!-- tencere -->
-                <path d="M318 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-                <path d="M348 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
-                <path d="M378 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+                <path class="buhar b1" d="M318 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+                <path class="buhar b2" d="M348 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+                <path class="buhar b3" d="M378 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
                 <rect x="290" y="214" width="116" height="10" rx="5" fill="#5641d8"/>
-                <rect x="296" y="222" width="104" height="70" rx="16" fill="#6c5ce7"/>
+                <rect class="tencere-zipla" x="296" y="222" width="104" height="70" rx="16" fill="#6c5ce7"/>
                 <rect x="276" y="236" width="22" height="10" rx="5" fill="#5641d8"/><rect x="398" y="236" width="22" height="10" rx="5" fill="#5641d8"/>
                 <circle cx="334" cy="254" r="3.5" fill="#fff"/><circle cx="362" cy="254" r="3.5" fill="#fff"/>
                 <path d="M336 266 q12 10 24 0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
@@ -745,15 +1100,17 @@
                   <circle cx="334" cy="276" r="14" fill="#2d3436"/><circle cx="420" cy="276" r="14" fill="#2d3436"/>
                   <circle cx="334" cy="276" r="5" fill="#b2bec3"/><circle cx="420" cy="276" r="5" fill="#b2bec3"/>
                   <!-- içindekiler -->
+                  <g class="sepet-zipla">
                   <rect x="318" y="108" width="22" height="72" rx="10" fill="#e1a95f" transform="rotate(-18 329 144)"/>
                   <rect x="350" y="122" width="34" height="58" rx="5" fill="#dfe6e9"/><path d="M350 126 l17 -16 l17 16z" fill="#74b9ff"/><rect x="356" y="140" width="22" height="14" rx="2" fill="#74b9ff"/>
                   <circle cx="408" cy="164" r="18" fill="#d63031"/><path d="M408 146 q6 -10 14 -8" stroke="#43a047" stroke-width="4" fill="none" stroke-linecap="round"/>
                   <ellipse cx="438" cy="158" rx="12" ry="26" fill="#55efc4" transform="rotate(20 438 158)"/>
+                  </g>
                 </g>
                 <!-- dolaba geçiş oku -->
                 <rect x="452" y="30" width="48" height="80" rx="8" fill="#dfe6e9"/><line x1="452" y1="58" x2="500" y2="58" stroke="#b2bec3" stroke-width="3"/>
                 <rect x="490" y="40" width="4" height="12" rx="2" fill="#b2bec3"/><rect x="490" y="66" width="4" height="16" rx="2" fill="#b2bec3"/>
-                <path d="M396 104 q14 -50 48 -46" stroke="#e17055" stroke-width="5" fill="none" stroke-dasharray="9 8" stroke-linecap="round"/>
+                <path class="ok-akis" d="M396 104 q14 -50 48 -46" stroke="#e17055" stroke-width="5" fill="none" stroke-dasharray="9 8" stroke-linecap="round"/>
                 <path d="M434 48 l12 10 l-12 10" stroke="#e17055" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <text x="368" y="40" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#e17055">dolabına</text>
                 <path d="M258 70 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
@@ -820,6 +1177,12 @@
         </div>
       </div>
 
+      <!-- Haftalık / Aylık menü: "neler yapar?" bölümünün hemen altında -->
+      <div id="planKartiAna" style="max-width:1100px;margin:18px auto 0;padding:0 16px"></div>
+
+      <!-- Önce bunları kullan -->
+      <div id="sktKartiAna" style="max-width:1100px;margin:0 auto;padding:0 16px"></div>
+
       <!-- Mutfak Asistanı ailesine katıl -->
       <div class="kart aile" id="aileKarti"></div>
 
@@ -878,6 +1241,23 @@
 
   <!-- ===================== YEMEK TARİFLERİM ===================== -->
   <section id="tarifler" class="bolum">
+    <div class="tarif-sahne" aria-hidden="true">
+      <svg class="ts-tencere" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path class="ts-buhar b1" d="M46 46 q-8 -10 0 -20 q8 -10 0 -20"/><path class="ts-buhar b2" d="M60 42 q-8 -10 0 -20 q8 -10 0 -20"/><path class="ts-buhar b3" d="M74 46 q-8 -10 0 -20 q8 -10 0 -20"/>
+        <g class="ts-kapak"><path d="M24 62 h72"/><path d="M54 56 h12"/></g>
+        <path d="M28 66 h64 v26 q0 12 -12 12 h-40 q-12 0 -12 -12z"/><path d="M28 74 h-10 M92 74 h10"/>
+      </svg>
+      <svg class="ts-tahta" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="70" width="92" height="30" rx="8"/><circle cx="96" cy="85" r="3"/>
+        <g class="ts-dilim d1"><ellipse cx="34" cy="64" rx="4" ry="6"/></g><g class="ts-dilim d2"><ellipse cx="34" cy="64" rx="4" ry="6"/></g><g class="ts-dilim d3"><ellipse cx="34" cy="64" rx="4" ry="6"/></g>
+        <g class="ts-bicak"><path d="M38 60 l40 -2 q8 0 8 -6 l-46 0z"/><path d="M86 55 h22"/></g>
+      </svg>
+      <svg class="ts-tava" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ts-tava-g"><path d="M14 78 q0 16 18 16 h40 q18 0 18 -16z"/><path d="M90 80 l24 -6"/>
+          <circle class="ts-ucan u1" cx="38" cy="72" r="5"/><rect class="ts-ucan u2" x="50" y="66" width="10" height="7" rx="2"/><circle class="ts-ucan u3" cx="70" cy="72" r="4"/></g>
+      </svg>
+    </div>
+        <div id="sktKartiTarifler"></div>
     <div class="tarif-ust" style="align-items:center">
       <h2 class="buyuk">Yemek Tariflerim</h2>
       <button class="btn" id="tarifEkleBtn">＋ Tarif ekle</button>
@@ -955,20 +1335,51 @@
 
   <!-- ===================== SSS (SIK SORULAN SORULAR) ===================== -->
   <section id="sss" class="bolum">
+    <div class="sss-desen2" aria-hidden="true"></div>
+    <div class="sss-sahne" aria-hidden="true">
+      <svg class="ss-tencere" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path class="ss-buhar" d="M44 44 q-8 -10 0 -20 q8 -10 0 -20"/><path class="ss-buhar b2" d="M60 40 q-8 -10 0 -20 q8 -10 0 -20"/><path class="ss-buhar b3" d="M76 44 q-8 -10 0 -20 q8 -10 0 -20"/>
+        <g class="ss-kepce"><path d="M72 66 l18 -26"/><path d="M88 42 l6 -9"/></g>
+        <path d="M22 62 h76"/><path d="M28 66 h64 v24 q0 14 -14 14 h-36 q-14 0 -14 -14z"/><path d="M28 74 h-10 M92 74 h10"/>
+      </svg>
+      <svg class="ss-tava" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ss-tava-g"><path d="M12 80 q0 16 18 16 h40 q18 0 18 -16z"/><path d="M88 82 l26 -8"/>
+          <circle class="ss-zipla" cx="34" cy="72" r="5"/><path class="ss-zipla z2" d="M48 74 q6 -10 12 0z"/><circle class="ss-zipla z3" cx="70" cy="73" r="4"/></g>
+      </svg>
+      <svg class="ss-cirpma" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ss-tel"><path d="M60 72 v-10"/><path d="M60 62 c-16 -6 -16 -40 0 -46 c16 6 16 40 0 46z"/><path d="M60 62 c-7 -8 -7 -38 0 -46 M60 62 c7 -8 7 -38 0 -46"/><path d="M60 72 v-6"/></g>
+        <path d="M14 70 h92 q-4 34 -46 34 q-42 0 -46 -34z"/><path class="ss-damla" d="M30 66 h.1 M92 64 h.1"/>
+      </svg>
+      <svg class="ss-rende" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ss-rende-g"><path d="M38 24 h40 l8 64 h-56z"/><path d="M48 24 v-10 h20 v10"/><path d="M46 40 h6 M64 40 h6 M44 54 h6 M66 54 h6 M42 68 h6 M68 68 h6"/></g>
+        <path class="ss-tel-d" d="M50 96 v6"/><path class="ss-tel-d d2" d="M60 96 v6"/><path class="ss-tel-d d3" d="M70 96 v6"/>
+        <path d="M30 110 q30 -6 60 0"/>
+      </svg>
+      <svg class="ss-caydanlik" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path class="ss-buhar" d="M86 34 q-6 -8 0 -16 q6 -8 0 -16"/><path class="ss-buhar b2" d="M96 38 q-6 -8 0 -16 q6 -8 0 -16"/>
+        <g class="ss-demlik"><path d="M44 30 h32 v20 q0 6 -16 6 q-16 0 -16 -6z"/><path d="M54 30 q6 -8 12 0"/><path d="M76 38 l10 -6"/></g>
+        <path d="M30 60 h60 v24 q0 18 -30 18 q-30 0 -30 -18z"/><path d="M90 66 l14 -8"/><path d="M30 68 q-12 0 -12 12 q0 8 12 8"/>
+      </svg>
+      <svg class="ss-oklava" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 92 q50 -12 100 0 q-50 12 -100 0z"/>
+        <g class="ss-oklava-g"><rect x="28" y="70" width="64" height="16" rx="8"/><path d="M28 78 h-16 M92 78 h16"/><path class="ss-cizgi" d="M48 73 v10 M60 73 v10 M72 73 v10"/></g>
+      </svg>
+    </div>
     <button class="sss-geri" onclick="bolumAc('anasayfa')">← Ana sayfaya dön</button>
     <div class="sss-ust">
       <div class="balon">🤔💬</div>
       <h2 class="buyuk">Sık Sorulan Sorular</h2>
-      <p class="aciklama">Merak ettiklerin, kısa ve dürüst cevaplarla. Bir soruya dokun, açılsın. 👇</p>
+      <p class="aciklama">Uygulamaya dair merak ettiklerin, şaşırtıcı mutfak hileleri ve lezzet sırları: <b>50 soru</b>, kısa ve dürüst cevaplarla. Bir soruya dokun, açılsın. 👇</p>
     </div>
+    <div class="sss-ozet"><a href="#sss-gizlilik" onclick="return sssGit('sss-gizlilik')">🔒 Gizlilik & Verilerin</a><a href="#sss-ipucu" onclick="return sssGit('sss-ipucu')">🍳 Mutfak İpuçları</a><a href="#sss-hile" onclick="return sssGit('sss-hile')">💡 Mutfak Hileleri</a><a href="#sss-lezzet" onclick="return sssGit('sss-lezzet')">✨ Lezzet Sırları</a><a href="#sss-dogru" onclick="return sssGit('sss-dogru')">🔍 Doğru mu? Mitler & Gerçekler</a><a href="#sss-hijyen" onclick="return sssGit('sss-hijyen')">🧼 Hijyen & Güvenli Mutfak</a><a href="#sss-tasarruf" onclick="return sssGit('sss-tasarruf')">♻️ Tasarruf & Saklama</a></div>
 
-    <div class="sss-grup">🔒 Gizlilik & Verilerin</div>
+    <div class="sss-grup" id="sss-gizlilik">🔒 Gizlilik & Verilerin</div>
 
     <div class="sss-oge"><button class="sss-soru" data-sss="1"><span class="sss-simge">📱</span><span class="sss-metin">Yazdığım her şey nerede saklanıyor?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Dolabın, listelerin, notların ve tariflerin <b>sadece bu telefonun içinde</b> saklanır; bizim bir sunucumuza gönderilmez. Yalnızca Google ya da e-posta bağlantısıyla giriş yaparsan, sadece <b>e-postan ve adın</b> giriş için Google Firebase'e gider; başka hiçbir şey gitmez.</div></div></div>
 
     <div class="sss-oge"><button class="sss-soru" data-sss="2"><span class="sss-simge">✈️</span><span class="sss-metin">İnternet yokken de çalışır mı?</span><span class="sss-ok">▾</span></button>
-      <div class="sss-cevap"><div class="sss-cevap-ic">Evet. Uygulama bir kez açıldıktan sonra dosyalarını telefonuna kaydeder, böylece <b>uçak modunda ya da internetsiz</b> yerde bile açılıp çalışır. İnternet sadece güncelleme geldiğinde kullanılır.</div></div></div>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Büyük kısmı çalışır. Uygulama bir kez açıldıktan sonra dosyalarını telefonuna kaydeder. Böylece <b>uçak modunda ya da internetsiz</b> bir yerde bile Ürünlerim (buzdolabın), yemek tarifleri, alışveriş listen, Sofra Planla ve müzik çalışır.<br><br>Şunlar için ise <b>internet gerekir</b>: 🤖 yapay zekâ asistanı (Pro), giriş yapmak ve bilgilerini cihazlar arasında eşitlemek, listeyi WhatsApp ile paylaşmak ve yeni güncellemeleri almak. İnternet gelince bunlar kendiliğinden yeniden çalışır.</div></div></div>
 
     <div class="sss-oge"><button class="sss-soru" data-sss="3"><span class="sss-simge">🧹</span><span class="sss-metin">Verilerimi nasıl silerim?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">En alttaki <b>"Verilerimi sil"</b> düğmesine ya da sağ üstteki adına dokunup <b>"🧹 Verilerimi sil"</b>e basabilirsin. Dilersen hesabını tamamen de silebilirsin. Silme işlemi hemen ve kalıcıdır. Ayrıntılar <b>Gizlilik Politikası</b> sayfasında.</div></div></div>
@@ -979,7 +1390,7 @@
     <div class="sss-oge"><button class="sss-soru" data-sss="5"><span class="sss-simge">🔑</span><span class="sss-metin">Telefonumu başkası açarsa bilgilerimi görür mü?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Veriler telefonunda durduğu için, telefonunun kilidini açabilen biri uygulamayı da açabilir. Bu yüzden telefonunda <b>ekran kilidi</b> (parmak izi, yüz ya da şifre) kullanman en iyi korumadır.</div></div></div>
 
-    <div class="sss-grup">🍳 Mutfak İpuçları</div>
+    <div class="sss-grup" id="sss-ipucu">🍳 Mutfak İpuçları</div>
 
     <div class="sss-oge"><button class="sss-soru" data-sss="6"><span class="sss-simge">🥔</span><span class="sss-metin">Patates nasıl daha lezzetli olur?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Fırında pişen patates, dışı çıtır içi yumuşak olur. Dilimleri eşit büyüklükte kes, az zeytinyağı ve tuzla karıştır, 200°C fırında ara sıra çevirerek pişir. Haşlamaya göre genelde daha lezzetli bir sonuç verir.</div></div></div>
@@ -999,7 +1410,7 @@
     <div class="sss-oge"><button class="sss-soru" data-sss="11"><span class="sss-simge">🍚</span><span class="sss-metin">Pilav neden lapa oluyor?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Genelde fazla su ya da fazla karıştırmaktan. Pirinci önce yıkayıp süz, doğru su ölçüsüyle (çoğu pirinçte 1 ölçü pirince ~1,5 ölçü su) kıs kıs pişir ve pişince birkaç dakika kapağı kapalı dinlendir. Karıştırmayı en aza indir.</div></div></div>
 
-    <div class="sss-oge"><button class="sss-soru" data-sss="12"><span class="sss-simge">🫘</span><span class="sss-metin">Kuru fasulye, nohut çabuk pişsin istiyorum.</span><span class="sss-ok">▾</span></button>
+    <div class="sss-oge"><button class="sss-soru" data-sss="12"><span class="sss-simge">🥣</span><span class="sss-metin">Kuru fasulye, nohut çabuk pişsin istiyorum.</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Bir gece önceden bol suda ıslatmak hem pişme süresini kısaltır hem de daha kolay sindirilmelerine yardımcı olur. Islattığın suyu dök, temiz suyla pişir. Düdüklü tencere süreyi iyice kısaltır.</div></div></div>
 
     <div class="sss-oge"><button class="sss-soru" data-sss="13"><span class="sss-simge">🥩</span><span class="sss-metin">Et (biftek) nasıl daha lezzetli olur?</span><span class="sss-ok">▾</span></button>
@@ -1011,24 +1422,120 @@
     <div class="sss-oge"><button class="sss-soru" data-sss="15"><span class="sss-simge">🧅</span><span class="sss-metin">Soğan doğrarken gözüm yanmasın.</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Soğanı bir süre buzdolabında soğutmak ve <b>keskin</b> bir bıçak kullanmak gözü yakan maddenin yayılmasını azaltır. İyi havalanan bir yerde doğramak da işe yarar. Keskin bıçak ayrıca daha güvenlidir.</div></div></div>
 
-    <div class="sss-grup">🧼 Hijyen & Güvenli Mutfak</div>
+    <div class="sss-grup" id="sss-hile">💡 Mutfak Hileleri</div>
 
-    <div class="sss-oge"><button class="sss-soru" data-sss="16"><span class="sss-simge">🧽</span><span class="sss-metin">Mutfak hijyeni neden bu kadar önemli?</span><span class="sss-ok">▾</span></button>
+    <div class="sss-oge"><button class="sss-soru" data-sss="16"><span class="sss-simge">🥚</span><span class="sss-metin">Haşlanmış yumurta kabuğu nasıl kolay soyulur?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Yumurtalar piştiği an <b>buzlu ya da çok soğuk suya</b> al. Ani soğuma, beyazın kabuğun altındaki zardan ayrılmasına yardım eder; kabuk parça parça değil, büyük parçalar hâlinde çıkar. Küçük bir sır daha: <b>çok taze</b> yumurtalar zor soyulur, birkaç günlük yumurtalar çok daha kolay soyulur.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="17"><span class="sss-simge">🥚</span><span class="sss-metin">Yumurta taze mi, 10 saniyede nasıl anlarım?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Bir bardak suya bırak: <b>dibe yatıyorsa taze</b>. <b>Dik duruyorsa</b> biraz eskimiş demektir, birkaç gün içinde iyice pişirerek kullan. <b>Yüzüyorsa</b> çok eskidir; içindeki hava boşluğu büyümüştür, kullanmamak en iyisi. Test bozulmayı kesin göstermez, şüphelendiğinde ayrı bir kaba kır ve kokla. Islanan yumurtayı da dolaba geri koyma, hemen kullan.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="18"><span class="sss-simge">🧀</span><span class="sss-metin">Peynir rendeye yapışmasın</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Rendelemeden önce rendenin yüzeyine fırçayla ya da kâğıt havluyla <b>birkaç damla yağ</b> sür. Peynir ve hamur yapışmaz, rende de çok daha kolay yıkanır. Yumuşak kaşarı 15 dakika dondurucuda bekletirsen ayrıca daha düzgün rendelenir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="19"><span class="sss-simge">🧊</span><span class="sss-metin">Çorbanın fazla yağı buzla toplanır mı?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Evet! Bir buz küpünü kaşığın içine koy ve çorbanın yüzeyinde gezdir. Sıcak yağ soğuk buza değince donar ve ona tutunur; kaşığı silip tekrarla. Buz erimeden çabuk ol. Acelen yoksa çorbayı dolapta soğut, üstte donan yağ tabakasını kaşıkla kaldır.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="20"><span class="sss-simge">🍌</span><span class="sss-metin">Kek yaparken yumurta bitti!</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Panik yok: <b>1 yumurta yerine yarım olgun muzu</b> (yaklaşık 60 g) çatalla ezip kullan. Kek, muffin, pankek ve kurabiyede güzel sonuç verir. Kek hafif muz kokulu ve biraz daha yoğun olur. 1-2 yumurtaya kadar iyi çalışır; omlet ya da beze gibi yumurtanın asıl malzeme olduğu tariflerde işe yaramaz.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="21"><span class="sss-simge">🧄</span><span class="sss-metin">Sarımsağı saniyeler içinde soy</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Sarımsak dişlerini <b>10-15 saniye mikrodalgaya</b> koy; kabuk gevşer ve kolayca sıyrılır. Dişler hafifçe ısındığı için çiğ tadı biraz yumuşayabilir. Mikrodalga istemezsen dişi bıçağın yassı yüzüyle hafifçe ez; kabuk kendiliğinden ayrılır.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="22"><span class="sss-simge">🍋</span><span class="sss-metin">Limondan iki kat su çıkar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Limonu sıkmadan önce tezgâhta avucunla bastırarak birkaç kez yuvarla ya da 10 saniye mikrodalgada ılıt. İçindeki zarlar gevşer, çok daha fazla su çıkar. Buzdolabından yeni çıkmış soğuk limon en az suyu verir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="23"><span class="sss-simge">🍅</span><span class="sss-metin">Domatesin kabuğu 1 dakikada soyulur</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Domatesin altına bıçakla küçük bir <b>çarpı</b> çiz, 20-30 saniye kaynar suya at, hemen soğuk suya al. Kabuk çarpının ucundan tutunca kendiliğinden sıyrılır. Menemen, salça ve sos için birebir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="24"><span class="sss-simge">🔪</span><span class="sss-metin">Kesme tahtası tezgâhta kaymasın</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Tahtanın altına <b>nemli bir bez ya da ıslak kâğıt havlu</b> ser. Tahta yerinden oynamaz, doğramak hem daha hızlı hem çok daha güvenli olur. Kayan tahta, mutfak kazalarının en sık sebeplerinden biridir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="25"><span class="sss-simge">🍳</span><span class="sss-metin">Dibi tutmuş tencereyi nasıl kurtarırım?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Yanık tencerenin dibini kapatacak kadar su koy, <b>1-2 yemek kaşığı karbonat</b> ekle ve 10 dakika kaynat. Ilıyınca tahta kaşıkla kazı; yanık tabaka kolayca kalkar. Teflon tavaları tel ya da sert ovma teliyle ovma, kaplamaları çizilir.</div></div></div>
+
+    <div class="sss-grup" id="sss-lezzet">✨ Lezzet Sırları</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="26"><span class="sss-simge">🥩</span><span class="sss-metin">Et neden tavada kızarmıyor, haşlanıyor?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Çünkü ıslak! Pişirmeden önce eti <b>kâğıt havluyla iyice kurula</b>. Islak et tavayı soğutur, önce suyunu buharlaştırmak zorunda kalır ve kızarmak yerine haşlanır. Kuru et ise hemen o lezzetli kahverengi kabuğu oluşturur. Tavayı da kalabalık etme; parça parça pişir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="27"><span class="sss-simge">🍟</span><span class="sss-metin">Çıtır patates kızartmasının sırrı</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Doğradığın patatesleri <b>soğuk suda 20-30 dakika</b> beklet. Yüzeydeki fazla nişasta suya geçer; patatesler birbirine yapışmaz, dışı çıtır içi yumuşak olur. Sonra <b>çok iyi kurula</b>, yoksa yağ sıçrar. Bonus: bu bekletme, kızarırken oluşan zararlı akrilamid maddesini de azaltır.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="28"><span class="sss-simge">🍫</span><span class="sss-metin">Tatlıya bir tutam tuz!</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Kulağa garip gelir ama tatlılara eklenen <b>bir tutam tuz</b>, şekerin baskınlığını dengeler; çikolatanın, karamelin ve meyvenin tadını daha belirgin yapar. Şeflerin en sevdiği küçük hilelerden biri. Tuzlu tereyağı kullanıyorsan ayrıca ekleme.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="29"><span class="sss-simge">🍋</span><span class="sss-metin">Yemek güzel ama bir şey eksik gibi mi?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Çoğu zaman eksik olan ya biraz <b>tuz</b> ya da biraz <b>ekşiliktir</b>. Ocaktan almadan önce birkaç damla limon suyu ya da sirke eklemek yemeğin tadını bir anda canlandırır. Çorbada, kuru baklagilde ve sebze yemeklerinde özellikle işe yarar.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="30"><span class="sss-simge">🌶️</span><span class="sss-metin">Baharatlar neden kokusunu tam vermiyor?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Baharatı yemeğin üstüne serpmek yerine önce <b>sıcak yağda birkaç saniye çevir</b>. Pul biber, kimyon, kekik gibi baharatların kokusu yağda çözünerek bütün yemeğe yayılır. Yakmamaya dikkat et; yanan baharat acılaşır. Kuru fasulyedeki pul biberli yağ bu yüzden o kadar lezzetlidir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="31"><span class="sss-simge">🥄</span><span class="sss-metin">Sos sulu kaldı, topaklanmadan nasıl koyulaştırırım?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Eşit miktarda yumuşak <b>tereyağı ile unu</b> parmaklarınla yoğurup küçük bir hamur yap. Bu hamurdan fındık büyüklüğünde parçaları kaynayan sosa ekleyip çırp. Un, tereyağının içinde dağıldığı için topaklanmaz; sos hem koyulaşır hem parlar. Un tadı kalmasın diye 2-3 dakika daha kaynat.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="32"><span class="sss-simge">🔥</span><span class="sss-metin">Tereyağı tavada hemen yanıyor</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Tereyağındaki <b>süt parçacıkları</b> yüksek ateşte çabuk yanar. Biraz zeytinyağı eklemek yanmayı bir parça geciktirir ama tamamen önlemez. Asıl çözüm: <b>ateşi orta tut</b>, yüksek ateş gerekiyorsa önce sıvı yağla pişirip tereyağını sona ekle ya da süt parçacıkları alınmış <b>sade yağ</b> kullan.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="33"><span class="sss-simge">🧅</span><span class="sss-metin">Soğan daha çabuk ve tatlı kavrulsun</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Soğanı tavaya atınca <b>bir tutam tuz</b> ekle; tuz soğanın suyunu çıkarır, daha çabuk yumuşar. Sonra orta-kısık ateşte acele etmeden kavur; şekeri karamelleşip tatlanır. Sarımsağı ise sona doğru ekle, çünkü çok çabuk yanar ve acılaşır.</div></div></div>
+
+    <div class="sss-grup" id="sss-dogru">🔍 Doğru mu? Mitler & Gerçekler</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="34"><span class="sss-simge">🌶️</span><span class="sss-metin">Dolmalık biberin dibindeki tümsekler erkek mi dişi mi olduğunu gösterir mi?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">❌ <b>Efsane.</b> İnternette çok yayılan bir bilgi ama biberlerin erkeği dişisi olmaz; aynı çiçekte hem erkek hem dişi organ bulunur. Dipteki 3 ya da 4 tümsek, çeşide ve yetiştiği koşullara bağlıdır; tadı değiştirmez.<br><br><b>Tatlı biber seçmek için:</b> parlak, sert, eline ağır gelen ve rengi tam oturmuş olanları seç. Kırmızı ve sarı biberler, olgunlaştıkları için yeşil biberden daha tatlıdır.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="35"><span class="sss-simge">🥬</span><span class="sss-metin">Sebzeyi haşlarken suya limon ya da sirke eklemek rengini korur mu?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">❌ <b>Yeşil sebzelerde tam tersi!</b> Ekşi (limon ya da sirke), brokoli, fasulye ve ıspanak gibi yeşil sebzelerin rengini <b>soluk zeytin yeşiline</b> çevirir.<br><br>Yeşiller için sır: <b>bol, kaynar, tuzlu su</b>, kapağı açık ve kısa süre; ardından hemen <b>buzlu suya</b> al. Ekşinin işe yaradığı yer ise beyaz ve mor sebzelerdir: karnabahar ile enginar beyaz kalır, mor lahana morluğunu korur.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="36"><span class="sss-simge">🥔</span><span class="sss-metin">Fazla tuzlu yemeğe patates atınca tuzu çeker mi?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">❌ <b>Pek değil.</b> Patates pişerken tuzlu suyu emer ama yemeğin tuz oranını hissedilecek kadar düşürmez. Gerçek çare yemeği <b>çoğaltmaktır</b>: tuzsuz su, et suyu ya da tuzsuz malzeme ekle. Biraz limon ya da bir kaşık yoğurt da tuzu daha az hissettirir.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="37"><span class="sss-simge">🍝</span><span class="sss-metin">Makarna suyuna yağ koyunca makarna yapışmaz mı?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">❌ <b>Efsane.</b> Yağ suyun üstünde kalır, makarnaya neredeyse hiç değmez; üstelik sosun makarnaya tutunmasını zorlaştırır. Yapışmayı önleyen şey <b>bol su</b> ve makarnayı attıktan sonraki <b>ilk 1-2 dakika karıştırmaktır</b>.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="38"><span class="sss-simge">🍖</span><span class="sss-metin">Eti mühürlemek suyunu içinde hapseder mi?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">❌ <b>Efsane.</b> Mühürlemek etin dışında lezzetli, kahverengi bir kabuk oluşturur ama suyu içeride hapsetmez. Etin sulu kalmasını asıl sağlayan, <b>fazla pişirmemek</b> ve piştikten sonra birkaç dakika <b>dinlendirmektir</b>.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="39"><span class="sss-simge">🍲</span><span class="sss-metin">Yemeğe konan şarabın alkolü pişince tamamen uçar mı?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">❌ <b>Hayır, sanıldığı kadar değil.</b> Araştırmalara göre 15 dakika pişen yemekte alkolün yaklaşık <b>%40</b>'ı, 1 saat sonra <b>%25</b>'i, 2,5 saat sonra bile <b>%5</b>'i kalır. Alkolden tamamen uzak durmak istiyorsan şarap yerine üzüm suyu ya da biraz sirke ile sulandırılmış et suyu kullanabilirsin.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="40"><span class="sss-simge">🍅</span><span class="sss-metin">Domates buzdolabında daha iyi mi saklanır?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">❌ <b>Lezzet için hayır.</b> Soğuk, domatesin kokusunu ve tadını köreltir, dokusunu unlu yapar. Domatesi <b>tezgâhta, sapı aşağı</b> bakacak şekilde sakla. Çok olgunlaşıp yumuşamaya başladıysa dolaba koyabilirsin; yemeden önce biraz oda sıcaklığında beklet ki tadı geri gelsin.</div></div></div>
+
+    <div class="sss-grup" id="sss-hijyen">🧼 Hijyen & Güvenli Mutfak</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="41"><span class="sss-simge">🧽</span><span class="sss-metin">Mutfak hijyeni neden bu kadar önemli?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Temiz bir mutfak, yemeklerin güvenle ve lezzetli kalmasına yardımcı olur. Yemeğe başlamadan ve çiğ et-tavuk-balığa dokunduktan sonra ellerini sabunla yıka; tezgahı ve bıçakları temiz tut. Küçük alışkanlıklar büyük fark yaratır. ✨</div></div></div>
 
-    <div class="sss-oge"><button class="sss-soru" data-sss="17"><span class="sss-simge">🔪</span><span class="sss-metin">Çiğ et ile sebzeyi aynı tahtada doğrayabilir miyim?</span><span class="sss-ok">▾</span></button>
+    <div class="sss-oge"><button class="sss-soru" data-sss="42"><span class="sss-simge">🔪</span><span class="sss-metin">Çiğ et ile sebzeyi aynı tahtada doğrayabilir miyim?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">İyisi ayrı tahta kullanmak. Çiğ et, tavuk ve balık için ayrı; sebze, meyve ve ekmek için ayrı doğrama tahtası kullan. Aynı tahtayı kullanacaksan arada sıcak sabunlu suyla iyice yıka. Böylece çiğ gıdadan geçebilecek bakteriler diğer yiyeceklere bulaşmaz.</div></div></div>
 
-    <div class="sss-oge"><button class="sss-soru" data-sss="18"><span class="sss-simge">🧊</span><span class="sss-metin">Yiyecekleri nasıl saklamalıyım?</span><span class="sss-ok">▾</span></button>
-      <div class="sss-cevap"><div class="sss-cevap-ic">Çabuk bozulanları (et, süt, pişmiş yemek) buzdolabında, ağzı kapalı kaplarda sakla. Sıcak yemeği oda sıcaklığına yakın soğutup kaldır. Çiğ eti alt raflara koy ki suyu diğer yiyeceklere damlamasın. Uygulamadaki <b>son kullanma takibi</b> ile neyin önce biteceğini kolayca görebilirsin.</div></div></div>
+    <div class="sss-oge"><button class="sss-soru" data-sss="43"><span class="sss-simge">🧊</span><span class="sss-metin">Yiyecekleri nasıl saklamalıyım?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Çabuk bozulanları (et, süt, pişmiş yemek) buzdolabında, ağzı kapalı kaplarda sakla. Sıcak yemeği biraz ılıyınca, <b>en geç 2 saat içinde</b> buzdolabına kaldır; büyük tencereyi küçük kaplara bölersen daha çabuk soğur. Çiğ eti alt raflara koy ki suyu diğer yiyeceklere damlamasın. Uygulamadaki <b>son kullanma takibi</b> ile neyin önce biteceğini kolayca görebilirsin.</div></div></div>
 
-    <div class="sss-grup">♻️ Tasarruf & İsrafı Önleme</div>
+    <div class="sss-oge"><button class="sss-soru" data-sss="44"><span class="sss-simge">🐔</span><span class="sss-metin">Çiğ tavuğu pişirmeden önce yıkamalı mıyım?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">🚫 <b>Hayır, asla!</b> Yıkamak tavuktaki bakterileri yok etmez; aksine sıçrayan damlalarla <b>lavaboya, tezgâha ve yakındaki yiyeceklere</b> yayar. Bakterileri öldüren tek şey <b>iyice pişirmektir</b>: en kalın yerinde pembelik kalmamalı, suyu berrak akmalı. Kurulamak istersen kâğıt havlu kullan, havluyu hemen at ve ellerini yıka.</div></div></div>
 
-    <div class="sss-oge"><button class="sss-soru" data-sss="19"><span class="sss-simge">🌱</span><span class="sss-metin">İsrafı nasıl azaltırım?</span><span class="sss-ok">▾</span></button>
+    <div class="sss-oge"><button class="sss-soru" data-sss="45"><span class="sss-simge">🍚</span><span class="sss-metin">Pişmiş pilav dışarıda ne kadar bekleyebilir?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Sandığından kısa! Pirinçte bulunan bazı mikrop tohumları pişmeye dayanır ve oda sıcaklığında hızla çoğalır. Pilavı <b>1 saat içinde</b> soğutup dolaba kaldır, <b>1 gün içinde</b> tüket. Isıtırken her yerini iyice ısıt ve <b>yalnızca bir kez</b> ısıt.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="46"><span class="sss-simge">🍯</span><span class="sss-metin">Bebeklere bal verilir mi?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><b>1 yaşından küçük bebeklere asla bal verilmez</b>, bir damlası bile. Bal, yetişkinlere zarar vermeyen ama bebeklerin gelişmemiş sindiriminde ciddi bir zehirlenmeye (botulizm) yol açabilen mikrop tohumları taşıyabilir. Pişmiş ballı yiyecekler de buna dahil. 1 yaşından sonra gönül rahatlığıyla verebilirsin.</div></div></div>
+
+    <div class="sss-grup" id="sss-tasarruf">♻️ Tasarruf & Saklama</div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="47"><span class="sss-simge">🌱</span><span class="sss-metin">İsrafı nasıl azaltırım?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Önce evdekini kullan. Uygulamada dolabını yazınca sana <b>eldekilerle yapabileceğin</b> yemekleri önerir, son kullanma tarihi yaklaşanları hatırlatır. İhtiyacın kadar al, büyük porsiyonları paylaş ya da sakla. Hem bütçene hem doğaya iyi gelir. 💚</div></div></div>
 
-    <div class="sss-oge"><button class="sss-soru" data-sss="20"><span class="sss-simge">🥘</span><span class="sss-metin">Artan yemekleri nasıl değerlendiririm?</span><span class="sss-ok">▾</span></button>
+    <div class="sss-oge"><button class="sss-soru" data-sss="48"><span class="sss-simge">🥘</span><span class="sss-metin">Artan yemekleri nasıl değerlendiririm?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Artan pilav, et ya da sebzeler ertesi gün yeni bir yemeğe dönüşebilir: sebzeler çorbaya, et sandviçe ya da makarnaya, ekmek bayatlayınca kızartma veya galeta ununa. Uygun olanları kaplara bölüp dondurabilirsin. Atmadan önce bir kez daha düşün; çoğu şey kurtarılabilir. 🙌</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="49"><span class="sss-simge">🍞</span><span class="sss-metin">Ekmek buzdolabında neden daha çabuk bayatlar?</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Şaşırtıcı ama doğru: ekmek <b>buzdolabında, tezgâha göre çok daha hızlı</b> bayatlar, çünkü soğukta içindeki nişasta sertleşir. 1-2 günde bitecekse ekmek torbasında, oda sıcaklığında sakla; fazlasını dilimleyip <b>dondur</b>. Bayatlayan ekmeği hafifçe ıslatıp 180°C fırında 5 dakika ısıtırsan yeniden yumuşar.</div></div></div>
+
+    <div class="sss-oge"><button class="sss-soru" data-sss="50"><span class="sss-simge">🌿</span><span class="sss-metin">Maydanoz, dereotu çabuk soluyor</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Yeşillikleri bir çiçek gibi sakla: saplarının ucunu biraz kes, <b>içinde az su olan bir bardağa</b> koy, üstüne gevşekçe bir poşet geçir ve buzdolabına kaldır. Günlerce taze kalır. Fesleğen ise soğukta karardığı için tezgâhta, bardakta durmayı sever.</div></div></div>
 
     <p class="aciklama" style="text-align:center;margin-top:24px">Başka sorun mu var? <a href="https://wa.me/905541939113?text=Merhaba%2C%20Mutfak%20Asistan%C4%B1%20hakk%C4%B1nda%20bir%20sorum%20var." target="_blank" rel="noopener" style="color:var(--ana)">WhatsApp'tan bize yaz 💬</a></p>
   </section>
@@ -1193,7 +1700,7 @@
       <h3 style="font-size:20px">Merhaba, ben senin Mutfak Asistanın! 👩‍🍳</h3>
       <p class="aciklama" style="font-size:15px;line-height:1.6;margin:10px 0">Dolabını düzenlemene, "bugün ne pişirsem?" derdine ve alışverişine yardım etmek için buradayım.</p>
       <div style="background:var(--az-zemin);color:var(--az-yazi);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.55;margin:0 0 12px">
-        <b>Küçük bir uyarı:</b> Misafir olarak geziyorsun. Uygulamayı kapattığında eklediğin malzemeler, listeler ve menün <b>silinecek</b>. Sonra seni çok özleriz 🥲
+        <b>Küçük bir uyarı:</b> Misafir olarak geziyorsun. Uygulamayı kapattığında eklediğin malzemeler, listeler ve menün <b>silinecek</b>. Sonra seni çok özleriz 😢
       </div>
       <p class="aciklama" style="font-size:14px;margin:0 0 14px">Üye olursan dolabını hatırlarım, her gün sana daha iyi tarifler öneririm. Söz, 10 saniye sürer!</p>
       <button class="btn" style="width:100%;padding:13px;font-size:16px" onclick="perdeKapat('misafirPerdesi');uyelikAc()">🚀 Hızlı ve ücretsiz üye ol</button>
@@ -1635,14 +2142,65 @@
     if (tarif) tarifDetayAc(tarif);
   }
   function tarifeGit(ad) {
-    bolumAc("tarifler"); seciliKategori = "Tümü"; seciliKoleksiyon = null; sadeceYapabilir = false; kategoriFiltresiniCiz();
+    bolumAc("tarifler"); seciliKategori = "Tümü"; seciliKoleksiyon = null; sadeceYapabilir = false; acilOneCikar = false; kategoriFiltresiniCiz();
     document.getElementById("tarifArama").value = ad;
     var ilk = HAZIR_TARIFLER.find(function (t) { return t.ad === ad; });
     if (ilk) acikTarifler[ilk.no] = true;
     tarifleriGoster();
   }
 
-  // "Önce bunları kullan" kartı: ana sayfada ve Ürünlerim'in başında
+  // "Önce bunları kullan" danışmanlığı: SKT'si yaklaşan ürünü nasıl değerlendirirsin?
+  var acilOneCikar = false;   // Yemek Tarifleri'nde bu ürünleri kullanan tarifler en üstte
+  var SKT_TAVSIYELERI = [
+    [/(^| )süt$/, "Sütlaç, muhallebi, krep ya da pankek yap. Kalırsa yoğurt mayala ya da buz kalıbında dondur."],
+    [/yoğurt/, "Cacık, haydari, yayla çorbası ya da yoğurtlu kek yap. Etleri yoğurtla marine edebilirsin."],
+    [/(ayran|kefir)/, "Soğuk iç, yayla çorbasında ya da kek ve pankek hamurunda süt yerine kullan."],
+    [/yumurta/, "Menemen, omlet, kek ya da haşlayıp kahvaltıya. Su dolu bardağa koy: dibe batıyorsa taze, yüzüyorsa kullanma."],
+    [/(ekmek|lavaş|pide|simit|bazlama)/, "Bayatlayan ekmekten galeta unu, kıtır ekmek, yumurtalı ekmek ya da ekmek tatlısı yap. Dilimleyip dondurabilirsin."],
+    [/kıyma/, "Köfte, kıymalı makarna, karnıyarık ya da kıymalı börek yap. Bugün pişiremeyeceksen hemen dondurucuya al."],
+    [/(tavuk|hindi|piliç)/, "Sote, fırında tavuk, tavuk çorbası ya da pilav üstü yap. Bugün yarın pişmeyecekse dondurucuya al."],
+    [/(balık|hamsi|levrek|çipura|somon|palamut)/, "Balık en çabuk bozulan üründür, bugün pişir: fırında, ızgara ya da buğulama."],
+    [/(et|kuşbaşı|biftek|pirzola|antrikot|kuzu|dana)$/, "Haşlama, tas kebabı, sote ya da güveç yap. Pişiremeyeceksen dondurucuya al."],
+    [/(sucuk|salam|sosis|pastırma|jambon)/, "Yumurtalı kahvaltı, tost, pizza ya da kuru fasulyeye katarak bitir."],
+    [/(peynir|kaşar|lor|labne|krem peynir)/, "Börek, gözleme, omlet, tost ya da makarnaya rendele. Kaşarı rendeleyip dondurabilirsin."],
+    [/(krema|kaymak)/, "Makarna sosu, çorbaya ya da tatlıya kat."],
+    [/domates/, "Yumuşayan domates sos, menemen, çorba ya da salça için en iyisi. Rendeleyip dondurabilirsin."],
+    [/(biber|patlıcan|kabak)/, "Közleyip salata yap, dolma ya da sebze yemeğine kat. Közleyince dondurabilirsin."],
+    [/(ıspanak|pazı|marul|maydanoz|dereotu|roka|nane|semizotu)/, "Yeşillikler hızlı solar: ıspanak yemeği, börek, omlet ya da çorbaya kat. Maydanoz ve dereotunu doğrayıp dondur."],
+    [/(patates|havuç|soğan)/, "Çorba, fırında sebze, püre ya da yemeklerin tabanında kullan. Filizlenen kısmı ayıkla."],
+    [/(mantar)/, "Sote, omlet, makarna sosu ya da fırın yemeğine kat. Kararmadan kullan."],
+    [/muz/, "Kararan muz kek, smoothie ve pankek için harika. Soyup dondurabilirsin."],
+    [/(elma|armut|ayva)/, "Komposto, fırında elma, turta ya da kek yap."],
+    [/(çilek|kiraz|vişne|erik|şeftali|kayısı|üzüm)/, "Reçel, komposto, smoothie ya da meyveli kek yap. Yıkayıp dondurabilirsin."],
+    [/(limon|portakal|mandalina)/, "Suyunu sık, buz kalıbında dondur. Kabuğunu rendeleyip keklerde kullan."]
+  ];
+  var REYON_TAVSIYELERI = {
+    "Sebze": "Sote, çorba, sebze yemeği ya da fırında sebze yap. Haşlayıp dondurabilirsin.",
+    "Meyve": "Komposto, smoothie, reçel ya da meyveli kek yap.",
+    "Et, Tavuk & Balık": "Bugün pişir ya da hemen dondurucuya al.",
+    "Süt Ürünleri": "Börek, sos, tatlı ya da kahvaltıda değerlendir.",
+    "Şarküteri": "Kahvaltı, tost, pizza ya da omlette bitir.",
+    "Ekmek & Unlu Mamul": "Galeta unu, kıtır ekmek ya da ekmek tatlısı yap. Dondurabilirsin."
+  };
+  function sktTavsiyesi(alanId, u, d) {
+    var n = normalIsim(u.ad), yazi = null;
+    for (var i = 0; i < SKT_TAVSIYELERI.length && !yazi; i++) if (SKT_TAVSIYELERI[i][0].test(n)) yazi = SKT_TAVSIYELERI[i][1];
+    if (!yazi) yazi = REYON_TAVSIYELERI[reyonBul(reyonAdi(u), false).ad] || "Bu hafta yapacağın bir yemeğe ekle, böylece israf olmasın.";
+    if (d && d.kalan < 0) yazi = "Önce kokla ve görüntüsüne bak, bozulmuşsa kullanma. Sağlamsa: " + yazi.charAt(0).toLocaleLowerCase("tr") + yazi.slice(1);
+    return yazi;
+  }
+  function acilTarifleriOneCikar(ac) {
+    acilOneCikar = ac;
+    if (ac) {
+      bolumAc("tarifler"); seciliKategori = "Tümü"; seciliKoleksiyon = null; seciliDiyet = null; sadeceYapabilir = false;
+      document.getElementById("tarifArama").value = ""; kategoriFiltresiniCiz();
+      hareketEkle("⏰", "Önce kullanılacak ürünlerin tarifleri öne çıkarıldı");
+    }
+    tarifSiniriniSifirla(); tarifleriGoster(); sktKartlariniGoster();
+    if (ac) { var el = document.getElementById("sktKartiTarifler"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  }
+
+  // "Önce bunları kullan" kartı: ana sayfada, Yemek Tarifleri'nin en üstünde ve Ürünlerim'in başında
   function sktKartlariniGoster() {
     var acil = [];
     YIYECEK_ALANLARI.forEach(function (a) {
@@ -1659,7 +2217,9 @@
       var oneriler = typeof HAZIR_TARIFLER === "undefined" ? [] : HAZIR_TARIFLER.map(function (t) { return { t: t, d: tarifDurumu(t, evdekiler, ekipmanlar) }; })
         .filter(function (s) { return s.d.acilKullanir.length && s.d.eksikler.length <= 2; })
         .sort(function (x, y) { return (y.d.acilKullanir.length - x.d.acilKullanir.length) || (x.d.eksikler.length - y.d.eksikler.length); }).slice(0, 3);
-      html += '<h3>⏰ Önce bunları kullan</h3>' +
+      html += '<div class="skt-bas"><h3>⏰ Önce bunları kullan</h3>' +
+        '<button class="btn' + (acilOneCikar ? ' ikincil' : '') + '" data-acil-one-cikar="' + (acilOneCikar ? '0' : '1') + '">' +
+          (acilOneCikar ? '✖ Normal sıralamaya dön' : '⭐ Bu malzemeli tarifleri öne çıkar') + '</button></div>' +
         acil.slice(0, 6).map(function (x) {
           var yazi = x.d.kalan < 0 ? "SKT geçti, kontrol et" : x.d.kalan === 0 ? "bugün bitiyor" : x.d.kalan + " gün kaldı";
           return '<div class="skt-satir"><span data-skt="' + esc(sktAnahtar(x.alanId, x.u.ad)) + '" style="cursor:pointer"><b>' + esc(basHarfBuyuk(x.u.ad)) + '</b> <small class="aciklama">· ' + esc(ALAN_ADLARI[x.alanId]) + '</small></span>' +
@@ -1682,9 +2242,23 @@
           '<button class="btn ikincil" data-unut-bitti="' + esc(key) + '">🧺 Bitti, listeden kaldır</button>' +
         '</div></div>';
     }
-    ["sktKartiUrunler", "sktKartiAna"].forEach(function (id) {
+    // Danışmanlık: her ürün için nasıl kullanılır + en uygun tarif (Yemek Tarifleri'nde, öne çıkarınca)
+    var tavsiye = "";
+    if (acil.length && acilOneCikar && typeof HAZIR_TARIFLER !== "undefined") {
+      tavsiye = '<div class="skt-tavsiye"><h4>💡 Bunları nasıl kullanırsın?</h4>' +
+        acil.slice(0, 6).map(function (x) {
+          var tr = urunuKullananTarif(x.alanId, x.u);
+          return '<div class="skt-tavsiye-satir"><b>' + esc(basHarfBuyuk(x.u.ad)) + ':</b> ' + esc(sktTavsiyesi(x.alanId, x.u, x.d)) +
+            (tr ? '<br><button class="btn ikincil" data-tarif-detay="' + esc(tr.t.ad) + '">🍲 Öneri: ' + esc(tr.t.ad) +
+              (tr.d.eksikler.length ? ' <small>(' + tr.d.eksikler.length + ' eksik)</small>' : ' <small>(hemen yapabilirsin)</small>') + '</button>' : '') +
+            '</div>';
+        }).join("") +
+        '<p class="aciklama" style="margin:8px 0 0">Aşağıdaki liste bu ürünleri en çok kullanan tariflere göre sıralandı.</p></div>';
+    }
+    ["sktKartiUrunler", "sktKartiAna", "sktKartiTarifler"].forEach(function (id) {
       var el = document.getElementById(id); if (!el) return;
-      el.innerHTML = html ? '<div class="kart skt-kart"' + (id === "sktKartiAna" ? ' style="margin-top:18px"' : '') + '>' + html + '</div>' : "";
+      var ic = html + (id === "sktKartiTarifler" ? tavsiye : "");
+      el.innerHTML = html ? '<div class="kart skt-kart"' + (id === "sktKartiAna" ? ' style="margin-top:18px"' : '') + '>' + ic + '</div>' : "";
     });
   }
 
@@ -1738,19 +2312,70 @@
   // =====================================================================
   //  3) ÜRÜNLERİM: not defterleri, ayrıştırma, sesle ekleme
   // =====================================================================
-  function alanKartlariniCiz(alanlar, hedefId) {
-    document.getElementById(hedefId).innerHTML = alanlar.map(function (a) {
-      return '<div class="kart">' +
-        '<h3>' + a.baslik + '</h3>' +
+  // Ürünlerim: buzdolabı (buzdolabı + derin dondurucu), ahşap kiler, mutfak çekmeceleri (ekipman, temizlik)
+  function alanIcerigi(a, notBasligi) {
+    return '<h3>' + a.baslik + '</h3>' +
+      '<div id="anlasilan-' + a.id + '" class="raflar"></div>' +
+      '<div class="dolap-not">' +
+        (notBasligi ? '<p class="dolap-not-baslik">' + notBasligi + '</p>' : '') +
         '<p class="aciklama">' + a.aciklama + '</p>' +
         '<textarea id="not-' + a.id + '" data-alan="' + a.id + '" placeholder="Ör. ' + esc(a.ornek) + '"></textarea>' +
         '<div class="arac">' +
           '<button class="btn ikincil" data-ses="' + a.id + '">🎤 Sesle ekle</button>' +
           '<span class="sayac" id="sayac-' + a.id + '"></span>' +
         '</div>' +
-        '<div id="anlasilan-' + a.id + '"></div>' +
+      '</div>';
+  }
+  var cekmeceDurumu = oku("ma_cekmece", {});
+  function alanKartlariniCiz(alanlar, hedefId) {
+    var hedef = document.getElementById(hedefId);
+    if (hedefId === "yiyecekAlanlari") {
+      var dolaptakiler = alanlar.filter(function (a) { return a.id !== "kiler"; });
+      var kiler = alanlar.filter(function (a) { return a.id === "kiler"; });
+      hedef.innerHTML = '<div class="buzdolabi" id="buzdolabi">' +
+        '<div class="dolap-govde">' + dolaptakiler.map(function (a) {
+          return '<div class="dolap-goz ' + a.id + '"><span class="dolap-isik" aria-hidden="true"></span><span class="dolap-kulp" aria-hidden="true"></span>' +
+            alanIcerigi(a, a.id === "dondurucu" ? "✏️ Dondurucuya ekle ya da düzelt" : "✏️ Dolaba ekle ya da düzelt") + '</div>';
+        }).join("") + '</div>' +
+        '<div class="dolap-ayaklar" aria-hidden="true"><span></span><span></span></div>' +
+        '<div class="dolap-kapagi" aria-hidden="true"></div>' +
+      '</div>' +
+      kiler.map(function (a) { return '<div class="kiler"><div class="kiler-ic">' + alanIcerigi(a, "✏️ Kilere ekle ya da düzelt") + '</div></div>'; }).join("");
+      return;
+    }
+    // Ekipman ve temizlik: dokununca kayarak açılan mutfak çekmeceleri
+    hedef.innerHTML = alanlar.map(function (a) {
+      var acik = !!cekmeceDurumu[a.id];
+      return '<div class="cekmece' + (acik ? ' acik' : '') + '" id="cekmece-' + a.id + '">' +
+        '<button class="cekmece-on" data-cekmece="' + a.id + '" aria-expanded="' + acik + '">' +
+          '<span class="cekmece-ad">' + a.baslik + '</span><span class="cekmece-sayi" id="cs-' + a.id + '"></span>' +
+          '<span class="cekmece-ok" aria-hidden="true">▼</span><span class="cekmece-kulp" aria-hidden="true"></span></button>' +
+        '<div class="cekmece-ic"><div><div class="cekmece-icerik">' + alanIcerigi(a, "") + '</div></div></div>' +
       '</div>';
     }).join("");
+  }
+  function cekmeceAcKapa(id) {
+    var c = document.getElementById("cekmece-" + id);
+    if (!c) return;
+    var acik = c.classList.toggle("acik");
+    c.querySelector(".cekmece-on").setAttribute("aria-expanded", acik);
+    cekmeceDurumu[id] = acik; yaz("ma_cekmece", cekmeceDurumu);
+  }
+  function hareketAzMi() { return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+  var dolapGozcusu = null;
+  function dolapKapaginiAc() {
+    var d = document.getElementById("buzdolabi");
+    if (!d || hareketAzMi()) return;
+    function ac() {
+      d.classList.remove("aciliyor"); void d.offsetWidth; d.classList.add("aciliyor");
+      clearTimeout(d._z); d._z = setTimeout(function () { d.classList.remove("aciliyor"); }, 1500);
+    }
+    if (!("IntersectionObserver" in window)) { ac(); return; }
+    if (dolapGozcusu) dolapGozcusu.disconnect();
+    dolapGozcusu = new IntersectionObserver(function (g) {
+      if (g[0].isIntersecting) { dolapGozcusu.disconnect(); dolapGozcusu = null; ac(); }
+    }, { threshold: .3 });
+    setTimeout(function () { if (dolapGozcusu) dolapGozcusu.observe(d); }, 60);
   }
 
   function ekipmanAlaniMi(alanId) { return EKIPMAN_ALANLARI.some(function (a) { return a.id === alanId; }); }
@@ -1761,14 +2386,21 @@
     var urunler = notuAnla(notlar[alanId] || "");
     document.getElementById("sayac-" + alanId).textContent = urunler.length ? urunler.length + " kalem anladık 👇" : "";
     // Market reyonları gibi: kategori kategori, alfabetik, baş harfi büyük
+    var cs = document.getElementById("cs-" + alanId);
+    if (cs) cs.textContent = urunler.length ? urunler.length + " kalem" : "boş";
+    var rafli = !ekipmanAlaniMi(alanId) && !temizlikAlaniMi(alanId);
+    if (rafli && !urunler.length) {
+      document.getElementById("anlasilan-" + alanId).innerHTML = '<div class="raf bos-raf"><span>Bu raf boş. Aşağıya yaz, ürünler buraya dizilsin.</span></div>';
+      return;
+    }
     document.getElementById("anlasilan-" + alanId).innerHTML = reyonlaraAyir(urunler, reyonAdi, alanTuru(alanId)).map(function (g) {
-      return '<div class="reyon-baslik">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + ' · ' + g.urunler.length + '</div>' +
+      return '<div class="raf"><div class="reyon-baslik">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + ' · ' + g.urunler.length + '</div><div class="raf-urunler">' +
         g.urunler.map(function (u) {
           var ekip = ekipmanAlaniMi(alanId) || temizlikAlaniMi(alanId), d = ekip ? null : sktDurumu(alanId, u);
           return '<span class="etiket ' + (u.az ? "az" : "notr") + (ekip ? '' : ' sktli') + '"' +
             (ekip ? '' : ' data-skt="' + esc(sktAnahtar(alanId, u.ad)) + '" title="Son kullanma tarihini gör"') + '>' + esc(basHarfBuyuk(u.ad)) +
             (u.miktar ? ' <small>· ' + esc(u.miktar) + '</small>' : '') + (u.az ? ' ⚠️' : '') + (d ? sktRozeti(d) : '') + '</span>';
-        }).join("");
+        }).join("") + '</div></div>';
     }).join("");
   }
   // Yazılan satırdaki ürün adını büyük harfle başlatır, miktarı olduğu gibi bırakır: "1 tabak tavuk incik" → "1 tabak Tavuk İncik"
@@ -2333,6 +2965,7 @@
       if (seciliDiyet) { var bi = tarifBilgi(s.t); if (!bi || bi.diyet.indexOf(seciliDiyet) < 0) return false; }
       if (seciliKoleksiyon && s.t.koleksiyonlar.indexOf(seciliKoleksiyon) < 0) return false;
       if (sadeceYapabilir && s.d.eksikler.length > 0) return false;
+      if (acilOneCikar && !s.d.acilKullanir.length) return false;
       if (arama && normalIsim(s.t.ad).indexOf(arama) < 0 &&
           !s.t.gruplar.some(function (g) { return g.malzemeler.some(function (m) { return normalIsim(m.metin).indexOf(arama) >= 0; }); }))
         return false;
@@ -2341,13 +2974,17 @@
 
     // En az eksiği olan en üstte; eşitse evdekilerden en çok kullananı
     sonuc.sort(function (a, b) {
+      if (acilOneCikar) return (b.d.acilKullanir.length - a.d.acilKullanir.length) || (a.d.eksikler.length - b.d.eksikler.length) || (b.d.varSayisi - a.d.varSayisi);
       return (a.d.eksikler.length - b.d.eksikler.length) || (b.d.acilKullanir.length - a.d.acilKullanir.length) || (b.d.varSayisi - a.d.varSayisi);
     });
 
-    document.getElementById("tarifListesi").innerHTML = sonuc.length === 0
-      ? '<p class="bos">Bu filtrede tarif bulunamadı.</p>'
+    document.getElementById("tarifListesi").innerHTML = (acilOneCikar
+        ? '<div class="one-cikan-bilgi"><span>⭐ Son kullanma tarihi yaklaşan ürünlerini kullanan <b>' + sonuc.length + '</b> tarif gösteriliyor.</span>' +
+          '<button class="btn ikincil" data-acil-one-cikar="0">✖ Tüm tarifler</button></div>' : '') +
+      (sonuc.length === 0
+      ? '<p class="bos">' + (acilOneCikar ? 'Bu ürünleri kullanan tarif bulunamadı.' : 'Bu filtrede tarif bulunamadı.') + '</p>'
       : sonuc.slice(0, tarifSiniri).map(function (s) { return tarifKarti(s.t, s.d); }).join("") +
-        (sonuc.length > tarifSiniri ? '<button class="btn ikincil" id="dahaFazlaTarif" style="width:100%;padding:12px;margin:6px 0 16px">⬇️ Daha fazla göster (' + (sonuc.length - tarifSiniri) + ' tarif daha)</button>' : '');
+        (sonuc.length > tarifSiniri ? '<button class="btn ikincil" id="dahaFazlaTarif" style="width:100%;padding:12px;margin:6px 0 16px">⬇️ Daha fazla göster (' + (sonuc.length - tarifSiniri) + ' tarif daha)</button>' : ''));
   }
 
   function simgeHtml(t) { return t.simge ? '<span class="tarif-simge" aria-hidden="true">' + t.simge + '</span>' : ''; }
@@ -2442,7 +3079,7 @@
       if (/ıslatma/.test(s)) adimlar.push({ id: ad + "|isla", dk: ONCEKI_AKSAM + 2, metin: "💧 <b>" + esc(t.ad) + "</b> için bakliyatı suya koy, bir gece ıslansın." });
       if (/marine/.test(s)) adimlar.push({ id: ad + "|marine", dk: ONCEKI_AKSAM + 1, metin: "🥩 <b>" + esc(t.ad) + "</b> için eti marine et, kapağını kapatıp dolaba koy." });
       if ((t.kat === "Tatlı" && !sicakTatli) || sogur) { dk = ONCEKI_AKSAM; metin = "🍮 <b>" + esc(t.ad) + "</b> yap, soğuyunca dolaba koy. Bir gece dinlenince daha lezzetli olur."; }
-      else if (t.kat === "Meze" || t.kat === "Zeytinyağlı") { dk = ONCEKI_AKSAM; metin = "🫙 <b>" + esc(t.ad) + "</b> hazırla, üstünü kapatıp dolaba koy. Soğuk servis edilir."; }
+      else if (t.kat === "Meze" || t.kat === "Zeytinyağlı") { dk = ONCEKI_AKSAM; metin = "🥗 <b>" + esc(t.ad) + "</b> hazırla, üstünü kapatıp dolaba koy. Soğuk servis edilir."; }
       else if (t.kat === "İçecekler") { dk = ONCEKI_AKSAM; metin = "🥤 <b>" + esc(t.ad) + "</b> hazırla ve soğusun diye dolaba koy."; }
       else if (t.kat === "Salata") { dk = 40; metin = "🥗 <b>" + esc(t.ad) + "</b> için sebzeleri doğra. Sosunu servisten hemen önce dök ki salata sulanmasın."; }
       else if (t.kat === "Çorba") { dk = Math.max(sure, 30) + 20; metin = "🥣 <b>" + esc(t.ad) + "</b> pişirmeye başla (" + esc(t.sure) + "). Pişince ocağın altını kıs, servise kadar sıcak kalsın."; }
@@ -2559,6 +3196,8 @@
     hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster();
   }
 
+  // Alışveriş listesi market rafı gibi: alınacaklar reyon reyon raflarda, dokununca sepete düşer
+  var PAKET_RENKLERI = ["#e17055", "#00b894", "#0984e3", "#fdcb6e", "#e84393", "#6c5ce7", "#00cec9", "#d35400"];
   function eksikListesiniGoster() {
     var alan = document.getElementById("eksikListesi");
     if (liste.length === 0) {
@@ -2566,16 +3205,77 @@
       return;
     }
     var sirali = liste.map(function (x, i) { return { x: x, i: i }; });
-    alan.innerHTML = reyonlaraAyir(sirali, function (o) { return o.x.anahtar || o.x.metin; }, false).map(function (g) {
-      return '<div class="reyon-baslik">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + '</div>' + g.urunler.map(function (o) {
-        var x = o.x, i = o.i, u = notuAnla(x.metin)[0];
-        return '<div class="satir"><label>' +
-          '<input type="checkbox" data-alindi="' + i + '"' + (x.alindi ? " checked" : "") + '>' +
-          '<span><span class="' + (x.alindi ? "alindi-yazi" : "") + '">' + esc(u ? satiriGuzellestir(u) : x.metin) + '</span><br>' +
-          '<span class="kaynak">' + esc(x.kaynaklar.join(" · ")) + '</span></span></label>' +
-          '<button class="sil" data-listeden-sil="' + i + '" title="Sil">✕</button></div>';
-      }).join("");
+    var raftakiler = sirali.filter(function (o) { return !o.x.alindi; });
+    var sepettekiler = sirali.filter(function (o) { return o.x.alindi; });
+    function ad(x) { var u = notuAnla(x.metin)[0]; return u ? satiriGuzellestir(u) : x.metin; }
+    var raflar = reyonlaraAyir(raftakiler, function (o) { return o.x.anahtar || o.x.metin; }, false).map(function (g, gi) {
+      var renk = PAKET_RENKLERI[gi % PAKET_RENKLERI.length];
+      return '<div class="m-raf"><div class="m-raf-urunler">' + g.urunler.map(function (o) {
+        return '<div class="m-urun" style="--paket:' + renk + '">' +
+          '<button class="m-urun-al" data-raf-al="' + o.i + '" title="Aldım: sepete at">' +
+            '<span class="m-paket" aria-hidden="true">' + g.reyon.ikon + '</span>' +
+            '<span class="m-ad">' + esc(ad(o.x)) + '</span>' +
+            '<span class="m-kaynak">' + esc(o.x.kaynaklar.join(" · ")) + '</span></button>' +
+          '<button class="m-sil" data-listeden-sil="' + o.i + '" title="Listeden sil" aria-label="Listeden sil">✕</button></div>';
+      }).join("") + '</div><div class="m-raf-tahta"><span class="m-raf-etiket">' + g.reyon.ikon + ' ' + esc(g.reyon.ad) + '</span></div></div>';
     }).join("");
+    alan.innerHTML = '<div class="market"><div class="market-tabela">🏪 Market rafın<small>Aldığın ürüne dokun, sepete atılsın. Yanlışlıkla attıysan sepetteki ürüne dokun, rafa geri döner.</small></div>' +
+      (raflar || '<p class="m-bos">🎉 Raflarda alınacak bir şey kalmadı. Hepsi sepette!</p>') + '</div>' +
+      '<div class="sepet-cubugu" id="sepetCubugu">' +
+        '<div class="sepet-simge" id="sepetSimge" aria-hidden="true">' +
+          '<svg viewBox="0 0 64 54"><path d="M14 22 Q32 -4 50 22" fill="none" stroke="#8d5a2b" stroke-width="4" stroke-linecap="round"/>' +
+          '<path d="M4 20 H60 L54 50 Q53 53 50 53 H14 Q11 53 10 50 Z" fill="#c8894a"/>' +
+          '<g stroke="#9a6233" stroke-width="2.2"><path d="M7 30 H57 M9 40 H55"/><path d="M20 21 L22 52 M32 21 V52 M44 21 L42 52"/></g>' +
+          '<rect x="2" y="17" width="60" height="7" rx="3.5" fill="#a86d36"/></svg>' +
+          '<span class="sepet-sayi">' + (sepettekiler.length || "") + '</span></div>' +
+        '<div class="sepet-ic"><b>' + (sepettekiler.length ? '🧺 Sepette ' + sepettekiler.length + ' ürün' : '🧺 Sepetin boş') + '</b>' +
+          (sepettekiler.length ? '<div class="sepet-urunler">' + sepettekiler.map(function (o) {
+            return '<button data-raf-al="' + o.i + '" title="Rafa geri koy">✓ ' + esc(ad(o.x)) + '</button>';
+          }).join("") + '</div>' : '<div class="aciklama" style="margin:2px 0 0">Aldıkların buraya düşer.</div>') + '</div>' +
+        (sepettekiler.length ? '<button class="btn yesil" data-sepet-bosalt="1">🧊 Dolaba yerleştir</button>' : '') +
+      '</div>';
+  }
+
+  function rafdanSepete(i, buton) {
+    var x = liste[i];
+    if (!x) return;
+    x.alindi = !x.alindi;
+    var kaynakKutu = x.alindi && buton ? buton.getBoundingClientRect() : null;
+    var paket = buton && buton.querySelector(".m-paket") ? buton.querySelector(".m-paket").textContent : "🛒";
+    var adi = buton && buton.querySelector(".m-ad") ? buton.querySelector(".m-ad").textContent : x.metin;
+    hepsiniKaydet(); eksikListesiniGoster();
+    var simge = document.getElementById("sepetSimge");
+    if (!x.alindi || !kaynakKutu || !simge || hareketAzMi() || !document.documentElement.animate) {
+      if (simge && x.alindi) { simge.classList.remove("sallan"); void simge.offsetWidth; simge.classList.add("sallan"); }
+      return;
+    }
+    var hedefKutu = simge.getBoundingClientRect();
+    var u = document.createElement("div");
+    u.className = "ucan-urun";
+    u.innerHTML = '<span>' + esc(paket) + '</span>' + esc(adi.length > 18 ? adi.slice(0, 17) + "…" : adi);
+    u.style.left = kaynakKutu.left + "px"; u.style.top = kaynakKutu.top + "px";
+    // Büyük yazıda sayfa yakınlaştırılmış olur; uçan ürünü <html>'e ekleyince ölçüler ekranla birebir tutar
+    document.documentElement.appendChild(u);
+    var dx = hedefKutu.left + hedefKutu.width / 2 - (kaynakKutu.left + u.offsetWidth / 2);
+    var dy = hedefKutu.top + hedefKutu.height / 2 - (kaynakKutu.top + u.offsetHeight / 2);
+    var tepe = Math.min(-60, dy * .25 - 70);
+    u.animate([
+      { transform: "translate(0,0) scale(1) rotate(0)", opacity: 1 },
+      { transform: "translate(" + dx * .45 + "px," + tepe + "px) scale(.85) rotate(-12deg)", opacity: 1, offset: .4 },
+      { transform: "translate(" + dx + "px," + dy + "px) scale(.25) rotate(18deg)", opacity: .7 }
+    ], { duration: 720, easing: "cubic-bezier(.45,0,.6,1)" }).onfinish = function () {
+      u.remove();
+      var s = document.getElementById("sepetSimge");
+      if (s) { s.classList.remove("sallan"); void s.offsetWidth; s.classList.add("sallan"); }
+    };
+  }
+
+  function sepetiDolabaBosalt() {
+    var s = document.getElementById("sepetSimge");
+    if (s && !hareketAzMi() && s.animate) {
+      s.animate([{ transform: "none" }, { transform: "translateY(-14px) rotate(-25deg)" }, { transform: "none" }], { duration: 420 });
+      setTimeout(alinanlariUrunlereEkle, 380);
+    } else alinanlariUrunlereEkle();
   }
 
   function alinanlariUrunlereEkle() {
@@ -3017,7 +3717,12 @@
   }
 
   // ---------- Ortak: pencere kapatma ----------
-  function perdeKapat(id) { document.getElementById(id).classList.remove("acik"); }
+  function perdeKapat(id) {
+    var p = document.getElementById(id);
+    if (!p.classList.contains("acik") || hareketAzMi()) { p.classList.remove("acik"); return; }
+    p.classList.add("kapaniyor");
+    setTimeout(function () { p.classList.remove("acik", "kapaniyor"); }, 210);
+  }
   function menudenAc(id) {
     document.getElementById("kullaniciMenu").classList.remove("acik");
     document.getElementById(id).classList.add("acik");
@@ -3853,9 +4558,11 @@
   function bolumAc(id) {
     document.querySelectorAll(".bolum").forEach(function (b) { b.classList.toggle("aktif", b.id === id); });
     document.querySelectorAll("nav button").forEach(function (b) { b.classList.toggle("aktif", b.dataset.bolum === id); });
+    document.body.classList.toggle("sss-acik", id === "sss");
     if (id === "tarifler") { kategoriFiltresiniCiz(); tarifleriGoster(); }
     if (id === "sofra") sofraGoster();
     if (id === "plan") planGoster();
+    if (id === "urunler") dolapKapaginiAc();
     if (id === "alisveris") { eksikListesiniGoster(); hatirlatmaGoster(); tavsiyeleriGoster(); }
     window.scrollTo(0, 0);
   }
@@ -4049,6 +4756,7 @@
     else if (d.diyet) { tarifSiniriniSifirla(); seciliDiyet = seciliDiyet === d.diyet ? null : d.diyet; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (d.kategori) { tarifSiniriniSifirla(); seciliKategori = d.kategori; seciliKoleksiyon = null; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (d.koleksiyon) { tarifSiniriniSifirla(); seciliKoleksiyon = seciliKoleksiyon === d.koleksiyon ? null : d.koleksiyon; seciliKategori = "Tümü"; kategoriFiltresiniCiz(); tarifleriGoster(); }
+    else if (d.acilOneCikar !== undefined) acilTarifleriOneCikar(d.acilOneCikar === "1");
     else if (b.id === "sadeceYapabilir") { tarifSiniriniSifirla(); sadeceYapabilir = !sadeceYapabilir; kategoriFiltresiniCiz(); tarifleriGoster(); }
     else if (d.tarifAc !== undefined) {
       acikTarifler[d.tarifAc] = !acikTarifler[d.tarifAc];
@@ -4057,6 +4765,9 @@
     }
     else if (d.eksikEkle !== undefined) tarifEksikleriniEkle(+d.eksikEkle);
     else if (d.menu !== undefined) menuDegistir(+d.menu);
+    else if (d.rafAl !== undefined) rafdanSepete(+d.rafAl, b);
+    else if (d.sepetBosalt !== undefined) sepetiDolabaBosalt();
+    else if (d.cekmece) cekmeceAcKapa(d.cekmece);
     else if (d.alindi !== undefined) { liste[+d.alindi].alindi = b.checked; hepsiniKaydet(); eksikListesiniGoster(); }
     else if (d.listedenSil !== undefined) { liste.splice(+d.listedenSil, 1); hepsiniKaydet(); eksikListesiniGoster(); tavsiyeleriGoster(); }
     else if (d.gun !== undefined) {
@@ -4134,6 +4845,199 @@
   hepsiniKaydet();
   baglantiKontrolEt();
   acilisTamam = true;   // bundan sonraki kayıtlar kullanıcının kendi hareketidir
+
+  // =====================================================================
+  //  MÜZİK: elektro gitar soloları (blues, jazz, rock)
+  //  Hiçbir şarkı dosyası yok: solo, telefonda o an rastgele çalınır (Web Audio).
+  //  Telif derdi yok, internet gerekmez, uygulamayı ağırlaştırmaz.
+  //  Müzik kapalı başlar. 🎵 ilk basışta açılır, sonra bastıkça tür değişir.
+  // =====================================================================
+  var MUZIK_TURLERI = [
+    { ad: "Blues", kisa: "BLUES", dizi: [0, 3, 5, 6, 7, 10], tonlar: [40, 45, 43, 47], tempo: [68, 92], swing: .66, buk: .35, titresim: .8,
+      surus: 9, filtre: 2600, ses: ["sawtooth", "square"], sureler: [[1, 3], [.5, 4], [.33, 3], [2, 1], [1.5, 1]], ekoSure: .38, eko: .28, ara: [1, 2.5] },
+    { ad: "Jazz", kisa: "JAZZ", dizi: [0, 2, 3, 5, 7, 9, 10, 11], tonlar: [41, 46, 48, 43], tempo: [104, 142], swing: .64, buk: .05, titresim: .35,
+      surus: 1.6, filtre: 1500, ses: ["triangle", "sawtooth"], sureler: [[.5, 7], [1, 2], [.25, 2], [1.5, 1]], ekoSure: .3, eko: .14, ara: [.5, 1.5], kromatik: .25 },
+    { ad: "Rock", kisa: "ROCK", dizi: [0, 3, 5, 7, 10, 2, 8], tonlar: [40, 45, 38, 42], tempo: [118, 150], swing: .5, buk: .3, titresim: 1,
+      surus: 26, filtre: 3400, ses: ["sawtooth", "sawtooth"], sureler: [[.25, 5], [.5, 4], [1, 2], [2, 1]], ekoSure: .32, eko: .22, ara: [.5, 1.5] }
+  ];
+  var muzik = oku("ma_muzik", { acik: false, tur: 0 });
+  if (!(muzik.tur >= 0 && muzik.tur < MUZIK_TURLERI.length)) muzik.tur = 0;
+  var ses = null;   // { ctx, ana, giris, sekil, filtre, ... }
+  var muzikZaman = null, muzikDurum = null;
+
+  function rastgele(a, b) { return a + Math.random() * (b - a); }
+  function birini(dizi) { return dizi[Math.floor(Math.random() * dizi.length)]; }
+  function agirlikliSec(liste) {
+    var top = liste.reduce(function (t, x) { return t + x[1]; }, 0), r = Math.random() * top;
+    for (var i = 0; i < liste.length; i++) { r -= liste[i][1]; if (r <= 0) return liste[i][0]; }
+    return liste[0][0];
+  }
+  function bozulmaEgrisi(miktar) {
+    var n = 2048, e = new Float32Array(n);
+    for (var i = 0; i < n; i++) { var x = i * 2 / n - 1; e[i] = Math.tanh(x * miktar) / Math.tanh(miktar); }
+    return e;
+  }
+  function sesKur() {
+    if (ses) return ses;
+    var C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return null;
+    var ctx = new C(), s = { ctx: ctx };
+    s.ana = ctx.createGain(); s.ana.gain.value = 0;
+    s.giris = ctx.createGain(); s.giris.gain.value = 1;
+    s.sekil = ctx.createWaveShaper(); s.sekil.oversample = "4x";
+    s.alcak = ctx.createBiquadFilter(); s.alcak.type = "lowpass"; s.alcak.Q.value = .8;
+    s.gogus = ctx.createBiquadFilter(); s.gogus.type = "peaking"; s.gogus.frequency.value = 900; s.gogus.gain.value = 4;
+    s.yuksek = ctx.createBiquadFilter(); s.yuksek.type = "highpass"; s.yuksek.frequency.value = 90;
+    s.cikis = ctx.createGain();
+    s.eko = ctx.createDelay(1.5); s.ekoGeri = ctx.createGain(); s.ekoSus = ctx.createBiquadFilter(); s.ekoSus.type = "lowpass"; s.ekoSus.frequency.value = 2200;
+    s.giris.connect(s.sekil); s.sekil.connect(s.yuksek); s.yuksek.connect(s.gogus); s.gogus.connect(s.alcak); s.alcak.connect(s.cikis);
+    s.cikis.connect(s.ana);
+    s.cikis.connect(s.eko); s.eko.connect(s.ekoSus); s.ekoSus.connect(s.ekoGeri); s.ekoGeri.connect(s.eko); s.ekoGeri.connect(s.ana);
+    s.ana.connect(ctx.destination);
+    ses = s; return s;
+  }
+  function tonAyarla(t) {
+    var s = ses, z = s.ctx.currentTime;
+    s.sekil.curve = bozulmaEgrisi(t.surus);
+    s.giris.gain.setValueAtTime(t.surus > 5 ? .9 : .7, z);
+    s.cikis.gain.setValueAtTime(t.surus > 20 ? .32 : t.surus > 5 ? .45 : .8, z);
+    s.alcak.frequency.setValueAtTime(t.filtre, z);
+    s.eko.delayTime.setValueAtTime(t.ekoSure, z); s.ekoGeri.gain.setValueAtTime(t.eko, z);
+  }
+  function midiHz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+  // Tek bir gitar notası: pena vuruşu, istersen bükme (bend), titreşim (vibrato) ve kaydırma (slide)
+  function notaCal(t, m, sure, o) {
+    var ctx = ses.ctx, f = midiHz(m), bitis = t + sure;
+    var zarf = ctx.createGain(); zarf.gain.setValueAtTime(0, t);
+    var g = o.guc || .5;
+    zarf.gain.linearRampToValueAtTime(g, t + .006);
+    zarf.gain.exponentialRampToValueAtTime(g * .55, t + Math.min(.35, sure * .6) + .01);
+    zarf.gain.setValueAtTime(g * .55, Math.max(t + .02, bitis - .06));
+    zarf.gain.linearRampToValueAtTime(0.0001, bitis + .05);
+    zarf.connect(ses.giris);
+    var oscs = [];
+    o.tur.ses.forEach(function (dalga, i) {
+      var osc = ctx.createOscillator(); osc.type = dalga;
+      osc.detune.value = i ? -7 : 4;
+      var bas = o.kaydir ? midiHz(m + o.kaydir) : f;
+      osc.frequency.setValueAtTime(bas, t);
+      if (o.kaydir) osc.frequency.exponentialRampToValueAtTime(f, t + Math.min(.09, sure * .4));
+      if (o.buk) {
+        osc.frequency.setValueAtTime(f, t + sure * .25);
+        osc.frequency.exponentialRampToValueAtTime(midiHz(m + o.buk), t + sure * .25 + Math.min(.16, sure * .4));
+      }
+      var kg = ctx.createGain(); kg.gain.value = i ? .5 : .75;
+      osc.connect(kg); kg.connect(zarf);
+      osc.start(t); osc.stop(bitis + .1);
+      oscs.push(osc);
+    });
+    if (o.titre && sure > .3) {
+      var lfo = ctx.createOscillator(), lg = ctx.createGain();
+      lfo.frequency.value = rastgele(5, 6.3);
+      lg.gain.setValueAtTime(0, t); lg.gain.linearRampToValueAtTime(f * (o.buk ? 1.12 : 1) * .014 * o.titre, t + Math.min(.4, sure * .6));
+      lfo.connect(lg); oscs.forEach(function (x) { lg.connect(x.frequency); });
+      lfo.start(t); lfo.stop(bitis + .1);
+    }
+  }
+  // Rastgele bir solo "parçası" kur: ton, tempo ve ilk motif her seferinde farklı
+  function yeniParca() {
+    var t = MUZIK_TURLERI[muzik.tur];
+    muzikDurum = { tur: t, kok: birini(t.tonlar) + 12, tempo: rastgele(t.tempo[0], t.tempo[1]), sonraki: ses.ctx.currentTime + .15,
+      derece: 0, motif: null, tekrar: 0, bitis: ses.ctx.currentTime + rastgele(50, 80) };
+    tonAyarla(t);
+  }
+  function dereceNota(d) {
+    var t = muzikDurum.tur, n = t.dizi.length, oktav = Math.floor(d / n), i = ((d % n) + n) % n;
+    var sirali = t.dizi.slice().sort(function (a, b) { return a - b; });
+    return muzikDurum.kok + oktav * 12 + sirali[i];
+  }
+  function motifUret() {
+    var t = muzikDurum.tur, uz = Math.floor(rastgele(3, 8)), m = [], d = muzikDurum.derece;
+    for (var i = 0; i < uz; i++) {
+      var adim = birini([-2, -1, -1, 1, 1, 2, 0, 3, -3]);
+      d = Math.max(0, Math.min(t.dizi.length * 2 + 2, d + adim));
+      var son = i === uz - 1;
+      m.push({ d: son ? birini([0, t.dizi.length, Math.round(t.dizi.length / 2)]) + (d > t.dizi.length ? t.dizi.length : 0) : d,
+        sure: son ? agirlikliSec([[1.5, 2], [2, 2], [1, 1]]) : agirlikliSec(t.sureler),
+        buk: Math.random() < t.buk ? birini([1, 2, 2]) : 0, kaydir: Math.random() < .12 ? birini([-2, -1]) : 0 });
+    }
+    muzikDurum.derece = d;
+    return m;
+  }
+  function muzikPlanla() {
+    if (!ses || !muzik.acik) return;
+    var ctx = ses.ctx;
+    if (ctx.currentTime > muzikDurum.bitis) yeniParca();   // aynı türde sıradaki solo da rastgele
+    var dur = muzikDurum, t = dur.tur, vurus = 60 / dur.tempo;
+    while (dur.sonraki < ctx.currentTime + .6) {
+      if (!dur.motif || dur.tekrar <= 0) { dur.motif = motifUret(); dur.tekrar = Math.random() < .45 ? 2 : 1; }
+      var motif = dur.motif, z = dur.sonraki;
+      motif.forEach(function (n, i) {
+        var s = n.sure * vurus;
+        if (n.sure === .5 && t.swing > .5) s = vurus * (i % 2 ? 1 - t.swing : t.swing) * 1;   // swing
+        var nota = dereceNota(n.d);
+        if (t.kromatik && Math.random() < t.kromatik && i < motif.length - 1) nota += birini([-1, 1]);
+        if (dur.tekrar === 1 && motif.length > 3 && i === motif.length - 2 && Math.random() < .5) nota = dereceNota(n.d + 1);   // ufak değişiklik
+        notaCal(z, Math.min(88, nota), Math.max(.09, s * .95), { tur: t, buk: n.buk, kaydir: n.kaydir, titre: t.titresim, guc: rastgele(.38, .55) });
+        z += s;
+      });
+      dur.tekrar--;
+      dur.sonraki = z + vurus * rastgele(t.ara[0], t.ara[1]);   // nefes payı
+    }
+  }
+  function muzikBaslat() {
+    if (!sesKur()) { mesaj("Bu tarayıcı müzik çalamıyor 😔"); return; }
+    var ctx = ses.ctx;
+    if (ctx.state === "suspended") ctx.resume();
+    if (!muzikZaman) muzikZaman = setInterval(muzikPlanla, 120);
+    ses.ana.gain.cancelScheduledValues(ctx.currentTime);
+    ses.ana.gain.setValueAtTime(ses.ana.gain.value, ctx.currentTime);
+    ses.ana.gain.linearRampToValueAtTime(.3, ctx.currentTime + .4);
+    yeniParca(); muzikPlanla();
+  }
+  function muzikDurdur() {
+    if (muzikZaman) { clearInterval(muzikZaman); muzikZaman = null; }
+    if (ses) {
+      var z = ses.ctx.currentTime;
+      ses.ana.gain.cancelScheduledValues(z); ses.ana.gain.setValueAtTime(ses.ana.gain.value, z); ses.ana.gain.linearRampToValueAtTime(0, z + .25);
+      setTimeout(function () { if (!muzik.acik && ses) ses.ctx.suspend(); }, 400);
+    }
+  }
+  function muzikDugmeleriniGuncelle() {
+    var b = document.getElementById("muzikBtn"), k = document.getElementById("muzikKapat");
+    if (!b) return;
+    var t = MUZIK_TURLERI[muzik.tur];
+    b.classList.toggle("caliyor", muzik.acik);
+    document.getElementById("muzikTur").textContent = muzik.acik ? t.kisa : "";
+    b.title = muzik.acik ? t.ad + " çalıyor. Bas: tür değişsin" : "Müziği aç (blues, jazz, rock gitar soloları)";
+    k.classList.toggle("sonuk", !muzik.acik);
+  }
+  function muzikDugmesi() {
+    if (muzik.acik) muzik.tur = (muzik.tur + 1) % MUZIK_TURLERI.length;
+    muzik.acik = true; yaz("ma_muzik", muzik);
+    muzikBaslat(); muzikDugmeleriniGuncelle();
+    mesaj("🎸 " + MUZIK_TURLERI[muzik.tur].ad + " gitar solosu çalıyor. Tür değiştirmek için 🎵'ya bas.");
+  }
+  function muzikSustur() {
+    muzik.acik = false; yaz("ma_muzik", muzik);
+    muzikDurdur(); muzikDugmeleriniGuncelle();
+  }
+  document.getElementById("muzikBtn").addEventListener("click", function (e) { e.stopPropagation(); muzikDugmesi(); });
+  document.getElementById("muzikKapat").addEventListener("click", function (e) { e.stopPropagation(); if (muzik.acik) { muzikSustur(); mesaj("🔇 Müzik sustu"); } });
+  // Müziği seven kişide: bir sonraki açılışta ekrana ilk dokunuşta kendiliğinden başlar
+  if (muzik.acik) {
+    var ilkDokunus = function (e) {
+      document.removeEventListener("pointerup", ilkDokunus, true);
+      if (!muzik.acik || (e.target.closest && e.target.closest("#muzikBtn, #muzikKapat"))) return;
+      muzikBaslat();
+    };
+    document.addEventListener("pointerup", ilkDokunus, true);
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (!ses || !muzik.acik) return;
+    if (document.hidden) ses.ctx.suspend(); else { ses.ctx.resume(); muzikDurum.sonraki = Math.max(muzikDurum.sonraki, ses.ctx.currentTime + .1); }
+  });
+  muzikDugmeleriniGuncelle();
   </script>
 <script>
   // PWA: service worker'ı kaydet (çevrimdışı çalışma için)
@@ -4157,6 +5061,33 @@ function playYakinda(){
   if (typeof mesaj === "function") mesaj("🎉 Çok yakında Google Play'de! Şimdilik uygulamayı telefonuna ekleyebilirsin.");
   else alert("Çok yakında Google Play'de!");
 }
+function sssGit(id){
+  var e = document.getElementById(id); if (!e) return false;
+  var ust = 0; document.querySelectorAll("nav, header.menulu").forEach(function(x){ if (getComputedStyle(x).position === "sticky") ust = Math.max(ust, x.getBoundingClientRect().bottom); });
+  var z = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--yz")) || 1;
+  window.scrollTo({ top: e.getBoundingClientRect().top * (e.closest("header") ? 1 : 1) + window.scrollY - ust - 10, behavior: (window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth") });
+  return false;
+}
+(function(){
+  /* Geniş ekranda menüyü üst şeridin ortasına al; sığmazsa (dar ekran ya da büyük yazı) eski yerine dön */
+  var nav = document.querySelector("body > nav") || document.querySelector("nav");
+  var header = document.querySelector("header");
+  if (!nav || !header) return;
+  var yer = document.createComment("menu-yeri"); nav.parentNode.insertBefore(yer, nav);
+  var sag = header.querySelector(".sag-ust");
+  function yerlestir(){
+    if (window.innerWidth >= 1000) {
+      if (nav.parentNode !== header) { header.insertBefore(nav, sag); header.classList.add("menulu"); }
+      if (nav.scrollWidth > nav.clientWidth + 1 || header.scrollWidth > header.clientWidth + 1) geriAl();
+    } else geriAl();
+  }
+  function geriAl(){ if (nav.parentNode === header) { yer.parentNode.insertBefore(nav, yer.nextSibling); header.classList.remove("menulu"); } }
+  var zaman; function sonra(){ clearTimeout(zaman); zaman = setTimeout(yerlestir, 80); }
+  window.addEventListener("resize", sonra);
+  new MutationObserver(sonra).observe(document.documentElement, { attributes: true, attributeFilter: ["class", "style"] });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(yerlestir);
+  yerlestir();
+})();
 (function(){
   /* SSS açılır-kapanır */
   document.addEventListener("click", function(e){
