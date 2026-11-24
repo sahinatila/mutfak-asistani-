@@ -77,6 +77,44 @@
   textarea:focus, input:focus { outline: none; border-color: var(--ana); }
 
   .arac { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; align-items: center; }
+
+  /* ---------- ÜRÜN PENCERESİ: miktar, tarih, yenisini aldım ---------- */
+  .pencere [hidden] { display: none !important; }
+  input[type=date] {
+    width: 100%; padding: 11px 12px; font-size: 16px; font-family: inherit; border: 2px solid var(--cizgi); border-radius: 10px;
+    background: var(--kutu); color: var(--yazi); color-scheme: light; min-height: 48px;
+  }
+  body.koyu input[type=date] { color-scheme: dark; }
+  input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: .8; padding: 4px; border-radius: 6px; }
+  input[type=date]::-webkit-calendar-picker-indicator:hover { background: var(--temel-zemin); }
+  .skt-bolum { background: var(--kutu); border: 1px solid var(--cizgi); border-radius: 14px; padding: 12px; margin: 0 0 12px; }
+  .skt-bolum > label, .skt-baslik { display: block; font-size: 14px; margin-bottom: 8px; color: var(--yazi); }
+  .skt-bolum > label small, .skt-baslik small { color: var(--soluk); font-weight: normal; }
+  .pencere .skt-bolum input { margin-bottom: 0; }
+  .skt-bolum input[type=text], .skt-bolum input[type=date] { background: var(--kart); }
+  .skt-miktar { display: flex; gap: 8px; align-items: stretch; }
+  .skt-miktar input { flex: 1; min-width: 0; text-align: center; font-size: 17px !important; font-weight: 600; }
+  .skt-adim { flex: 0 0 48px; min-height: 48px; border: 2px solid var(--cizgi); border-radius: 10px; background: var(--kart); color: var(--ana);
+    font-size: 24px; font-weight: 700; line-height: 1; cursor: pointer; }
+  .skt-adim:hover { border-color: var(--ana); }
+  .skt-cipler { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center; }
+  .skt-cipler > span { font-size: 13px; color: var(--soluk); margin-right: 2px; }
+  .skt-cip { border: 1.5px solid var(--cizgi); background: var(--kart); color: var(--yazi); border-radius: 999px; padding: 7px 12px;
+    font-size: 13px; font-family: inherit; cursor: pointer; min-height: 36px; }
+  .skt-cip:hover { border-color: var(--ana); color: var(--ana); }
+  .skt-cip.secili { background: var(--ana); border-color: var(--ana); color: #fff; }
+  .skt-yeni { border: 2px solid var(--yesil); background: var(--var-zemin); }
+  .skt-yeni .skt-baslik { color: var(--var-yazi); font-size: 16px; }
+  .skt-onizleme { margin: 10px 0 0; font-size: 14px; color: var(--yazi); }
+  .skt-dugmeler { display: flex; gap: 8px; flex-wrap: wrap; }
+  .skt-dugmeler .btn { flex: 1 1 auto; min-height: 44px; font-size: 15px; }
+  .skt-dugmeler .btn.ana-is { flex-basis: 100%; }
+  .skt-miktar input { padding: 10px 6px !important; }
+  html.yazi-buyuk .skt-bolum { padding: 10px; }
+  html.yazi-buyuk .skt-miktar { gap: 6px; }
+  html.yazi-buyuk .skt-adim { flex-basis: 40px; font-size: 22px; }
+  html.yazi-buyuk .pencere { padding-left: 18px; padding-right: 18px; }
+  .skt-acildi { display: flex; gap: 8px; align-items: center; margin: 0 0 12px; font-size: 15px; }
   .btn { padding: 9px 14px; font-size: 14px; border: none; border-radius: 9px; background: var(--ana); color: white; cursor: pointer; }
   .btn:hover { background: var(--ana-koyu); }
   .btn.ikincil { background: var(--temel-zemin); color: var(--yazi); }
@@ -551,11 +589,11 @@
   .raf .reyon-baslik { margin: 2px 0 4px; }
   .raf-urunler { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 6px; }
   .raf-urunler .etiket { margin: 0; }
-  .dolap-goz .raf-urunler .etiket, .kiler .raf-urunler .etiket { border-radius: 12px 12px 6px 6px; padding: 7px 11px 6px; font-size: 14px;
+  .dolap-goz .raf-urunler .etiket, .kiler .raf-urunler .etiket, .kiler-cekmece .raf-urunler .etiket { border-radius: 12px 12px 6px 6px; padding: 7px 11px 6px; font-size: 14px;
     box-shadow: 0 2px 0 rgba(0,0,0,.08), inset 0 0 0 1px rgba(0,0,0,.06); }
   .dolap-goz .raf-urunler .etiket.notr { background: var(--kart); }
   .bos-raf { color: var(--soluk); font-size: 13px; text-align: center; padding: 22px 6px 10px; }
-  .dolap-not { margin-top: 10px; }
+  .dolap-not { margin: 4px 0 14px; }
   .dolap-not textarea { background: var(--not-kagidi); border-style: dashed; min-height: 70px; }
   .dolap-not .aciklama { margin: 0 0 6px; }
   .dolap-not-baslik { font-size: 13px; font-weight: 700; color: var(--soluk); margin: 0 0 6px; }
@@ -576,7 +614,9 @@
     box-shadow: 0 8px 18px rgba(0,0,0,.14); }
   .kiler-ic { background: var(--kiler-ic); border-radius: 12px; padding: 14px; box-shadow: inset 0 3px 10px rgba(0,0,0,.12); }
   .kiler-ic h3 { margin: 0 0 2px; font-size: 18px; }
-  .kiler .raf { border-bottom: 9px solid var(--ahsap-raf); }
+  .kiler .raf, .kiler-cekmece .raf { border-bottom: 9px solid var(--ahsap-raf); }
+  .kiler-cekmece { margin-bottom: 18px; }
+  .kiler-cekmece .cekmece-icerik { background: var(--kiler-ic); }
 
   /* ---------- 3) ALIŞVERİŞ LİSTESİ: MARKET RAFI ---------- */
   .market { background: var(--market-arka); border-radius: 14px; padding: 10px 10px 4px; margin: 8px 0 6px;
@@ -654,9 +694,66 @@
     @keyframes tencereZipla { 0%, 100% { transform: none; } 50% { transform: scale(1.03, .97); } }
     .canli svg .sepet-zipla { animation: sepetZipla 2.8s ease-in-out infinite; }
     @keyframes sepetZipla { 0%, 100% { transform: translateY(0); } 15% { transform: translateY(-9px); } 30% { transform: translateY(0); } }
+    .canli svg .urun { transform-box: fill-box; transform-origin: center bottom; animation: urunAzCok var(--s, 7s) ease-in-out infinite; animation-delay: var(--g, 0s); }
+    @keyframes urunAzCok { 0%, 8% { transform: scale(0); opacity: 0; } 18%, 62% { transform: scale(1); opacity: 1; } 22% { transform: scale(1.08); } 72%, 100% { transform: scale(0); opacity: 0; } }
+    .canli svg .yemek { transform-box: fill-box; transform-origin: center bottom; animation: yemekAzCok var(--s, 6s) ease-in-out infinite; animation-delay: var(--g, 0s); }
+    @keyframes yemekAzCok { 0%, 100% { transform: scale(1); } 12% { transform: scale(1.06, 1.1); } 55% { transform: scale(.55, .25); } 70% { transform: scale(.5, .2); } }
     .canli svg .ok-akis { animation: okAkis 1.4s linear infinite; }
+    /* Dolaptan yemeğe: tencere tüter, Hazır / 1 eksik rozetleri sırayla yanıp söner */
+    .canli svg .tutsu { transform-box: fill-box; transform-origin: center bottom; animation: tutsuYuksel 2.6s ease-out infinite; }
+    .canli svg .tutsu.b2 { animation-delay: -.85s; } .canli svg .tutsu.b3 { animation-delay: -1.7s; }
+    @keyframes tutsuYuksel { 0% { transform: translateY(14px) scale(.6, .5); opacity: 0; } 25% { opacity: 1; } 60% { transform: translateY(-14px) translateX(4px) scale(1, 1); opacity: .8; } 100% { transform: translateY(-38px) translateX(-4px) scale(1.25, 1.2); opacity: 0; } }
+    .canli svg .rozet-yan { transform-box: fill-box; transform-origin: center; animation: rozetYan 2.4s ease-in-out infinite; }
+    .canli svg .rozet-yan.r2 { animation-delay: -1.2s; }
+    @keyframes rozetYan { 0%, 100% { opacity: 1; transform: scale(1); } 15% { transform: scale(1.08); } 50% { opacity: .25; transform: scale(.96); } }
     @keyframes okAkis { to { stroke-dashoffset: -38; } }
+    /* Haftalık menü: seçili gün Pzt'den Paz'a ilerler, geçilen güne tik konur */
+    .canli svg .gun-cerceve { animation: gunIlerle 14s ease-in-out infinite; }
+    @keyframes gunIlerle { 0%, 12% { transform: translateX(0); opacity: 1; } 14.29%, 26.6% { transform: translateX(46px); } 28.57%, 40.9% { transform: translateX(92px); } 42.86%, 55.1% { transform: translateX(138px); } 57.14%, 69.4% { transform: translateX(184px); } 71.43%, 83.7% { transform: translateX(230px); } 85.71%, 96% { transform: translateX(276px); opacity: 1; } 98% { transform: translateX(276px); opacity: 0; } 98.1% { transform: translateX(0); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+    .canli svg .gun-tik { transform-box: fill-box; transform-origin: center; opacity: 0; animation: 14s ease-out infinite; }
+    .canli svg .gun-tik.t1 { animation-name: gunTik1; } @keyframes gunTik1 { 0%, 13.69% { opacity: 0; transform: scale(0); } 15.89% { opacity: 1; transform: scale(1.3); } 17.49%, 97% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    .canli svg .gun-tik.t2 { animation-name: gunTik2; } @keyframes gunTik2 { 0%, 27.97% { opacity: 0; transform: scale(0); } 30.17% { opacity: 1; transform: scale(1.3); } 31.77%, 97% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    .canli svg .gun-tik.t3 { animation-name: gunTik3; } @keyframes gunTik3 { 0%, 42.26% { opacity: 0; transform: scale(0); } 44.46% { opacity: 1; transform: scale(1.3); } 46.06%, 97% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    .canli svg .gun-tik.t4 { animation-name: gunTik4; } @keyframes gunTik4 { 0%, 56.54% { opacity: 0; transform: scale(0); } 58.74% { opacity: 1; transform: scale(1.3); } 60.34%, 97% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    .canli svg .gun-tik.t5 { animation-name: gunTik5; } @keyframes gunTik5 { 0%, 70.83% { opacity: 0; transform: scale(0); } 73.03% { opacity: 1; transform: scale(1.3); } 74.63%, 97% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    .canli svg .gun-tik.t6 { animation-name: gunTik6; } @keyframes gunTik6 { 0%, 85.11% { opacity: 0; transform: scale(0); } 87.31% { opacity: 1; transform: scale(1.3); } 88.91%, 97% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    .canli svg .gun-tik.t7 { animation-name: gunTik7; } @keyframes gunTik7 { 0%, 92.9% { opacity: 0; transform: scale(0); } 95.1% { opacity: 1; transform: scale(1.3); } 96.7%, 97% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    /* Sesle ekleme: balondaki söz ve ürünler sırayla sağdan gelip sola gider, ses dalgaları atar */
+    .canli svg .ses-kare { animation: sesKare 16s ease-in-out infinite backwards; }
+    .canli svg .ses-kare.k1 { animation-delay: -1s; } .canli svg .ses-kare.k2 { animation-delay: 3s; }
+    .canli svg .ses-kare.k3 { animation-delay: 7s; } .canli svg .ses-kare.k4 { animation-delay: 11s; }
+    @keyframes sesKare { 0% { transform: translateX(200px); opacity: 0; } 5% { transform: translateX(0); opacity: 1; } 22% { transform: translateX(0); opacity: 1; } 26%, 100% { transform: translateX(-200px); opacity: 0; } }
+    .canli svg .ses-tik { transform-box: fill-box; transform-origin: center; animation: sesTik 4s ease-out infinite; animation-delay: -1s; }
+    @keyframes sesTik { 0%, 18% { transform: scale(0); opacity: 0; } 28% { transform: scale(1.25); opacity: 1; } 36%, 86% { transform: scale(1); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
+    .canli svg .ses-dalga { transform-box: view-box; transform-origin: 400px 250px; animation: sesDalga 1.2s ease-in-out infinite; }
+    .canli svg .ses-dalga.d2 { animation-delay: .3s; }
+    @keyframes sesDalga { 0%, 100% { opacity: .35; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.06); } }
+    /* Alışveriş: 8 satırlık listede tikler gelip gider ve yanıp söner, ürünler sallanır, ok dolaba ürün taşır */
+    .canli svg .al-tik, .canli svg .al-urun, .canli svg .al-paylas, .canli svg .al-buton, .canli svg .al-dolap, .canli svg .al-ok-uc, .canli svg .al-ucan { transform-box: fill-box; transform-origin: center; }
+    .canli svg .al-tik { opacity: 0; animation: alTik var(--s, 6s) ease-in-out infinite; animation-delay: var(--g, 0s); }
+    @keyframes alTik { 0%, 8% { opacity: 0; transform: scale(0); } 14% { opacity: 1; transform: scale(1.3); } 18%, 34% { opacity: 1; transform: scale(1); } 40% { opacity: .2; } 46% { opacity: 1; } 52% { opacity: .2; } 58%, 78% { opacity: 1; transform: scale(1); } 86%, 100% { opacity: 0; transform: scale(.4); } }
+    .canli svg .al-satir { animation: alSatir var(--s, 6s) ease-in-out infinite; animation-delay: var(--g, 0s); }
+    @keyframes alSatir { 0%, 8%, 86%, 100% { opacity: 1; } 14%, 78% { opacity: .45; } }
+    .canli svg .al-urun { transform-origin: center bottom; animation: alUrun 3.2s ease-in-out infinite; }
+    .canli svg .al-urun.u2 { animation-delay: -.8s; } .canli svg .al-urun.u3 { animation-delay: -1.6s; } .canli svg .al-urun.u4 { animation-delay: -2.4s; }
+    @keyframes alUrun { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg) translateY(-3px); } }
+    .canli svg .al-paylas { animation: gunesNabiz 2.6s ease-in-out infinite; }
+    .canli svg .al-buton { animation: alButon 3s ease-in-out infinite; }
+    @keyframes alButon { 0%, 70%, 100% { transform: scale(1); } 78% { transform: scale(.92); } 86% { transform: scale(1.06); } }
+    .canli svg .al-ok-uc { animation: alOkUc 1.4s ease-in-out infinite; }
+    @keyframes alOkUc { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+    .canli svg .al-ucan { animation: alUcan 2.8s ease-in-out infinite; }
+    @keyframes alUcan { 0% { transform: translate(0, 0) scale(.5); opacity: 0; } 10% { transform: translate(0, 0) scale(1); opacity: 1; } 30% { transform: translate(8px, -24px); } 45% { transform: translate(19px, -36px); } 60% { transform: translate(32px, -45px); } 72% { transform: translate(46px, -46px) scale(.9); opacity: 1; } 80%, 100% { transform: translate(54px, -44px) scale(.3); opacity: 0; } }
+    .canli svg .al-dolap { transform-origin: center bottom; animation: alDolap 2.8s ease-in-out infinite; }
+    @keyframes alDolap { 0%, 70%, 100% { transform: scale(1); } 78% { transform: scale(1.06, .95); } 86% { transform: scale(.98, 1.03); } }
   }
+  /* Alışveriş: hareketsiz görünümde bazı satırlar tikli */
+  .al-tik.a3, .al-tik.a5, .al-tik.a7, .al-tik.a8 { opacity: 0; }
+  /* Sesle ekleme: hareketsiz görünümde yalnız ilk söz görünür */
+  .ses-kare.k2, .ses-kare.k3, .ses-kare.k4 { opacity: 0; }
+  /* Haftalık menü: hareketsiz görünüm (Perşembe seçili, ilk 3 gün tikli) */
+  .gun-cerceve { transform: translateX(138px); }
+  .gun-tik.t4, .gun-tik.t5, .gun-tik.t6, .gun-tik.t7 { opacity: 0; }
   @media (prefers-reduced-motion: reduce) {
     .perde.acik, .perde.acik > .pencere, .kullanici-menu.acik, .yazi-menu.acik, .sss-oge.acik .sss-cevap-ic { animation: none; }
     .cekmece-ic, .cekmece-icerik, .sss-cevap { transition: none; }
@@ -664,18 +761,7 @@
     .buzdolabi.aciliyor .dolap-goz { animation: none; }
   }
 
-  /* ---------- MÜZİK DÜĞMELERİ ---------- */
-  .muzik-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 2px; background: rgba(255,255,255,.2);
-    border: none; color: #fff; border-radius: 10px; padding: 7px 8px; cursor: pointer; min-width: 38px; min-height: 38px; }
-  .muzik-btn small { font-size: 9px; font-weight: 800; letter-spacing: .03em; }
-  .muzik-btn small:empty { display: none; }
-  .muzik-btn.caliyor { background: rgba(255,255,255,.32); }
-  .muzik-btn.caliyor svg { animation: notaSalla 1s ease-in-out infinite; }
-  .muzik-btn.sonuk { opacity: .55; }
-  @keyframes notaSalla { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg) translateY(-2px); } }
   @media (max-width: 600px) {
-    .muzik-btn { padding: 5px 5px; min-width: 32px; min-height: 34px; }
-    .muzik-btn svg { width: 19px; height: 19px; }
     .sag-ust { gap: 5px; }
   }
   @media (max-width: 400px) {
@@ -700,6 +786,68 @@
   .tarif-sahne .ts-tahta { right: 2%; top: 34%; }
   .tarif-sahne .ts-tava { left: 4%; top: 22%; }
   @media (max-width: 600px) { .tarif-sahne svg { width: 112px; height: 112px; } .tarif-sahne .ts-tahta { top: 52%; } }
+  /* Geniş ekranda 7 hareketli obje daha (toplam 10). Dar ekranda gizli, telefon görünümü aynı kalır. */
+  .tarif-sahne .ts-genis { display: none; }
+  @media (min-width: 1500px) {
+    .tarif-sahne .ts-genis { display: block; }
+    .tarif-sahne .ts-yumurta  { left: calc(50% - 560px); top: 3%; }
+    .tarif-sahne .ts-karistir { left: calc(50% - 560px); top: 40%; }
+    .tarif-sahne .ts-tava2    { left: calc(50% - 560px); bottom: 4%; }
+    .tarif-sahne .ts-mikser   { right: 2%; top: 4%; }
+    .tarif-sahne .ts-firin    { right: calc(50% - 560px); top: 14%; }
+    .tarif-sahne .ts-domates  { right: calc(50% - 560px); top: 56%; }
+    .tarif-sahne .ts-et       { right: 2%; bottom: 5%; }
+    .tarif-sahne .ts-tahta    { top: 36%; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    /* tüten tava: yağ cızırdar */
+    .ts-cizir { animation: cizir 1.6s ease-out infinite; opacity: 0; }
+    .ts-cizir.c2 { animation-delay: -.55s; } .ts-cizir.c3 { animation-delay: -1.1s; }
+    @keyframes cizir { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 60% { transform: translateY(-12px); opacity: 0; } 100% { opacity: 0; } }
+    /* karıştırılan tencere */
+    .ts-kasik { transform-origin: center bottom; animation: tsKaristir 2.2s ease-in-out infinite; }
+    @keyframes tsKaristir { 0%, 100% { transform: translateX(-12px) rotate(-16deg); } 50% { transform: translateX(12px) rotate(14deg); } }
+    .ts-dalga { animation: tsDalga 2.2s ease-in-out infinite; }
+    @keyframes tsDalga { 0%, 100% { transform: translateX(-4px); } 50% { transform: translateX(4px); } }
+    /* mikser */
+    .ts-mikser-g { animation: mikserTitre .14s linear infinite; }
+    @keyframes mikserTitre { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(.8px, -.6px); } 75% { transform: translate(-.8px, .6px); } }
+    .ts-cirpici { transform-origin: center; animation: cirpiciDon .3s linear infinite; }
+    .ts-cirpici.k2 { animation-delay: -.15s; }
+    @keyframes cirpiciDon { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(.2); } }
+    .ts-sicra { animation: sicra 1.4s ease-out infinite; opacity: 0; }
+    .ts-sicra.s2 { animation-delay: -.7s; }
+    @keyframes sicra { 0% { transform: translate(0, 0); opacity: 0; } 15% { opacity: 1; } 70% { transform: translate(var(--sx, -10px), -14px); opacity: 0; } 100% { opacity: 0; } }
+    /* fırın: kapak açılır, tepsi çıkar */
+    .ts-kapi { transform-origin: center bottom; animation: kapiAc 6s ease-in-out infinite; }
+    @keyframes kapiAc { 0%, 18%, 86%, 100% { transform: scaleY(1); } 30%, 72% { transform: scaleY(-.22); } }
+    .ts-tepsi { animation: tepsiCik 6s ease-in-out infinite; opacity: 0; }
+    @keyframes tepsiCik { 0%, 26% { transform: translateY(0) scale(1); opacity: 0; } 32% { opacity: 1; transform: translateY(0) scale(1); } 42%, 60% { transform: translateY(14px) scale(1.12); opacity: 1; } 70% { transform: translateY(0) scale(1); opacity: 1; } 76%, 100% { opacity: 0; } }
+    .ts-tepsi .ts-buhar { animation-duration: 2s; }
+    /* domates dilimleme */
+    .ts-dbicak { animation: dBicak .8s ease-in-out infinite; }
+    @keyframes dBicak { 0%, 100% { transform: translateY(-16px); } 45%, 55% { transform: translateY(0); } }
+    .ts-ddilim { animation: dDilim 2.4s linear infinite; opacity: 0; }
+    .ts-ddilim.d2 { animation-delay: -.8s; } .ts-ddilim.d3 { animation-delay: -1.6s; }
+    @keyframes dDilim { 0% { transform: translateX(0); opacity: 0; } 10%, 85% { opacity: 1; } 100% { transform: translateX(-36px); opacity: 0; } }
+    /* et: satırla doğrama */
+    .ts-satir { transform-origin: right center; animation: satirInd 1s cubic-bezier(.6, 0, .9, .4) infinite; }
+    @keyframes satirInd { 0%, 100% { transform: translateY(-18px) rotate(-6deg); } 50%, 60% { transform: translateY(0) rotate(0); } }
+    .ts-eserit { animation: etSerit 3s linear infinite; opacity: 0; }
+    .ts-eserit.e2 { animation-delay: -1s; } .ts-eserit.e3 { animation-delay: -2s; }
+    @keyframes etSerit { 0% { transform: translateX(0); opacity: 0; } 10%, 85% { opacity: 1; } 100% { transform: translateX(28px); opacity: 0; } }
+    /* yumurta kırılır */
+    .ts-yust, .ts-yalt { transform-origin: center; animation: 4s ease-in-out infinite; }
+    .ts-yust { animation-name: yUst; } .ts-yalt { animation-name: yAlt; }
+    .ts-yumurta-g { transform-origin: center bottom; animation: yTik 4s ease-in-out infinite; }
+    @keyframes yTik { 0%, 18%, 30%, 100% { transform: none; } 22% { transform: rotate(-8deg); } 26% { transform: rotate(4deg); } }
+    @keyframes yUst { 0%, 32% { transform: none; opacity: 1; } 44%, 70% { transform: translate(-12px, -6px) rotate(-32deg); opacity: 1; } 78% { transform: translate(-12px, -6px) rotate(-32deg); opacity: 0; } 82% { transform: none; opacity: 0; } 94%, 100% { transform: none; opacity: 1; } }
+    @keyframes yAlt { 0%, 32% { transform: none; opacity: 1; } 44%, 70% { transform: translate(12px, 4px) rotate(30deg); opacity: 1; } 78% { transform: translate(12px, 4px) rotate(30deg); opacity: 0; } 82% { transform: none; opacity: 0; } 94%, 100% { transform: none; opacity: 1; } }
+    .ts-sarisi { animation: sarisiDus 4s ease-in infinite; opacity: 0; }
+    @keyframes sarisiDus { 0%, 36% { transform: translateY(0); opacity: 0; } 40% { opacity: 1; transform: translateY(0); } 54% { transform: translateY(34px); opacity: 1; } 66%, 100% { transform: translateY(34px); opacity: 0; } }
+    .ts-halka { transform-origin: center; animation: halkaAc 4s ease-out infinite; opacity: 0; }
+    @keyframes halkaAc { 0%, 53% { transform: scale(.3); opacity: 0; } 56% { opacity: 1; } 72%, 100% { transform: scale(1.3); opacity: 0; } }
+  }
   @media (prefers-reduced-motion: no-preference) {
     .tarif-sahne * { transform-box: fill-box; }
     .ts-buhar { transform-origin: center bottom; animation: buharYuksel 3.4s ease-in-out infinite; }
@@ -790,14 +938,12 @@
 <body>
   <header>
     <div>
-      <h1><img src="ikonlar/icon-192.png" alt="" style="width:32px;height:32px;border-radius:9px;vertical-align:-6px;margin-right:8px;box-shadow:0 0 0 2px rgba(255,255,255,.35)"><svg class="logo-yazi" viewBox="0 0 674 112" role="img" aria-label="Mutfak Asistanı" xmlns="http://www.w3.org/2000/svg"><title>Mutfak Asistanı</title><g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M8,100 V24 L37,68 L66,24 V100"/><path d="M75,55 V78 Q75,100 96,100 Q117,100 117,78 V55"/><path d="M117,62 q13,0 13,10 t-13,10" stroke-width="7"/><path d="M89,46 q-6,-6 0,-12 t0,-12 M103,46 q-6,-6 0,-12 t0,-12" stroke-width="4.5" opacity=".55"/><path d="M157,44 V100"/><ellipse cx="157" cy="27" rx="9" ry="14" fill="#d9a066" stroke-width="5"/><path d="M144,58 H171"/><path d="M189,100 V40 Q189,22 205,22 H208"/><path d="M178,58 H204"/><circle cx="236" cy="77.5" r="22"/><circle cx="236" cy="77.5" r="10" stroke-width="3.5" opacity=".6"/><path d="M258,55 V100"/><rect x="265" y="30" width="15" height="62" rx="6" fill="#d9a066" stroke-width="5"/><path d="M272.5,14 V30 M272.5,92 V102" stroke-width="7"/><path d="M305,55 L281,76 L307,100"/><path d="M338,100 L357,44 M379,44 L398,100 M348,76 H388"/><path d="M353,42 H383" stroke-width="9"/><path d="M356,36 C344,34 344,16 356,18 C356,4 380,4 380,18 C392,16 392,34 380,36" stroke-width="6"/><path d="M439,61 C434,53 410,53 410,66 C410,79 441,73 441,88 C441,103 413,102 408,93"/><path d="M453,55 V100"/><ellipse cx="453" cy="31" rx="9" ry="11.5" fill="#7fa33a" stroke="none" transform="rotate(-20 453 32)"/><circle cx="450.5" cy="27" r="2.6" fill="#fff" stroke="none" opacity=".7"/><path d="M496,61 C491,53 467,53 467,66 C467,79 498,73 498,88 C498,103 470,102 465,93"/><path d="M519,32 V86 Q519,100 531,100 H535"/><path d="M508,58 H534"/><circle cx="563" cy="77.5" r="22"/><path d="M585,55 V100"/><path d="M595,55 V100 M595,78 C595,62 604,55 616,55 C628,55 637,62 637,78 V100"/><path d="M656,68 V100"/><path d="M646,40 V58 Q646,70 656,70 Q666,70 666,58 V40 M656,40 V66" stroke-width="5.5"/></g></svg></h1>
+      <h1><img src="ikonlar/icon-192.png" alt="" style="width:32px;height:32px;border-radius:9px;vertical-align:-6px;margin-right:8px;box-shadow:0 0 0 2px rgba(255,255,255,.35)"><svg class="logo-yazi" viewBox="0 0 752 112" role="img" aria-label="Mutfak Asistanı" xmlns="http://www.w3.org/2000/svg"><title>Mutfak Asistanı</title><g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M8,100 V24 L37,68 L66,24 V100"/><g transform="translate(10 0)"><path d="M75,55 V78 Q75,100 96,100 Q117,100 117,78 V55"/><path d="M117,62 q13,0 13,10 t-13,10" stroke-width="7"/><path d="M89,46 q-6,-6 0,-12 t0,-12 M103,46 q-6,-6 0,-12 t0,-12" stroke-width="4.5" opacity=".55"/></g><g transform="translate(14 0)"><path d="M157,44 V100"/><ellipse cx="157" cy="27" rx="9" ry="14" fill="#d9a066" stroke-width="5"/><path d="M144,58 H171"/></g><g transform="translate(18 0)"><path d="M189,100 V40 Q189,22 205,22 H208"/><path d="M178,58 H204"/></g><g transform="translate(25 0)"><circle cx="236" cy="77.5" r="22"/><circle cx="236" cy="77.5" r="10" stroke-width="3.5" opacity=".6"/><path d="M258,55 V100"/></g><g transform="translate(37 0)"><rect x="265" y="30" width="15" height="62" rx="6" fill="#d9a066" stroke-width="5"/><path d="M272.5,14 V30 M272.5,92 V102" stroke-width="7"/><path d="M305,55 L281,76 L307,100"/></g><g transform="translate(41 0)"><path d="M338,100 L357,44 M379,44 L398,100 M348,76 H388"/><path d="M353,42 H383" stroke-width="9"/><path d="M356,36 C344,34 344,16 356,18 C356,4 380,4 380,18 C392,16 392,34 380,36" stroke-width="6"/></g><g transform="translate(45 0)"><path d="M439,61 C434,53 410,53 410,66 C410,79 441,73 441,88 C441,103 413,102 408,93"/></g><g transform="translate(48 0)"><path d="M453,55 V100"/><ellipse cx="453" cy="31" rx="9" ry="11.5" fill="#7fa33a" stroke="none" transform="rotate(-20 453 32)"/><circle cx="450.5" cy="27" r="2.6" fill="#fff" stroke="none" opacity=".7"/></g><g transform="translate(51 0)"><path d="M496,61 C491,53 467,53 467,66 C467,79 498,73 498,88 C498,103 470,102 465,93"/></g><g transform="translate(55 0)"><path d="M519,32 V86 Q519,100 531,100 H535"/><path d="M508,58 H534"/></g><g transform="translate(62 0)"><circle cx="563" cy="77.5" r="22"/><path d="M585,55 V100"/></g><g transform="translate(74 0)"><path d="M595,55 V100 M595,78 C595,62 604,55 616,55 C628,55 637,62 637,78 V100"/></g><g transform="translate(78 0)"><path d="M656,68 V100"/><path d="M646,40 V58 Q646,70 656,70 Q666,70 666,58 V40 M656,40 V66" stroke-width="5.5"/></g></g></svg></h1>
       <p>Mutfağındakini bil, ne pişireceğini bul, eksikleri listele.</p>
     </div>
     <div class="sag-ust">
       <button class="yazi-btn" id="yaziBtn" title="Yazı boyutu" aria-label="Yazı boyutunu değiştir"><small>A</small>A</button>
       <div class="yazi-menu" id="yaziMenu"></div>
-      <button class="muzik-btn" id="muzikBtn" aria-label="Müziği aç ya da türünü değiştir"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 18.5a3 3 0 1 1-2-2.83V5.2l11-2.2v12.5a3 3 0 1 1-2-2.83V7.4L9 8.8z" fill="currentColor"/></svg><small id="muzikTur"></small></button>
-      <button class="muzik-btn sonuk" id="muzikKapat" title="Müziği sustur" aria-label="Müziği sustur"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 18.5a3 3 0 1 1-2-2.83V5.2l11-2.2v12.5a3 3 0 1 1-2-2.83V7.4L9 8.8z" fill="currentColor" opacity=".9"/><path d="M3.5 3.5 20.5 20.5" stroke="var(--ana)" stroke-width="5" stroke-linecap="round"/><path d="M3.5 3.5 20.5 20.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
       <button class="tema-btn" onclick="temaDegistir()" title="Koyu / açık tema">🌙</button>
       <button class="kullanici-btn" id="kullaniciBtn"></button>
       <div class="kullanici-menu" id="kullaniciMenu"></div>
@@ -818,46 +964,86 @@
     <div class="tanitim">
       <div class="kahraman">
         <div>
-          <h2><svg class="logo-yazi buyuk" viewBox="0 0 674 112" role="img" aria-label="Mutfak Asistanı" xmlns="http://www.w3.org/2000/svg"><title>Mutfak Asistanı</title><g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M8,100 V24 L37,68 L66,24 V100"/><path d="M75,55 V78 Q75,100 96,100 Q117,100 117,78 V55"/><path d="M117,62 q13,0 13,10 t-13,10" stroke-width="7"/><path d="M89,46 q-6,-6 0,-12 t0,-12 M103,46 q-6,-6 0,-12 t0,-12" stroke-width="4.5" opacity=".55"/><path d="M157,44 V100"/><ellipse cx="157" cy="27" rx="9" ry="14" fill="#d9a066" stroke-width="5"/><path d="M144,58 H171"/><path d="M189,100 V40 Q189,22 205,22 H208"/><path d="M178,58 H204"/><circle cx="236" cy="77.5" r="22"/><circle cx="236" cy="77.5" r="10" stroke-width="3.5" opacity=".6"/><path d="M258,55 V100"/><rect x="265" y="30" width="15" height="62" rx="6" fill="#d9a066" stroke-width="5"/><path d="M272.5,14 V30 M272.5,92 V102" stroke-width="7"/><path d="M305,55 L281,76 L307,100"/><path d="M338,100 L357,44 M379,44 L398,100 M348,76 H388"/><path d="M353,42 H383" stroke-width="9"/><path d="M356,36 C344,34 344,16 356,18 C356,4 380,4 380,18 C392,16 392,34 380,36" stroke-width="6"/><path d="M439,61 C434,53 410,53 410,66 C410,79 441,73 441,88 C441,103 413,102 408,93"/><path d="M453,55 V100"/><ellipse cx="453" cy="31" rx="9" ry="11.5" fill="#7fa33a" stroke="none" transform="rotate(-20 453 32)"/><circle cx="450.5" cy="27" r="2.6" fill="#fff" stroke="none" opacity=".7"/><path d="M496,61 C491,53 467,53 467,66 C467,79 498,73 498,88 C498,103 470,102 465,93"/><path d="M519,32 V86 Q519,100 531,100 H535"/><path d="M508,58 H534"/><circle cx="563" cy="77.5" r="22"/><path d="M585,55 V100"/><path d="M595,55 V100 M595,78 C595,62 604,55 616,55 C628,55 637,62 637,78 V100"/><path d="M656,68 V100"/><path d="M646,40 V58 Q646,70 656,70 Q666,70 666,58 V40 M656,40 V66" stroke-width="5.5"/></g></svg><span>her an yanınızda.</span></h2>
+          <h2><svg class="logo-yazi buyuk" viewBox="0 0 752 112" role="img" aria-label="Mutfak Asistanı" xmlns="http://www.w3.org/2000/svg"><title>Mutfak Asistanı</title><g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M8,100 V24 L37,68 L66,24 V100"/><g transform="translate(10 0)"><path d="M75,55 V78 Q75,100 96,100 Q117,100 117,78 V55"/><path d="M117,62 q13,0 13,10 t-13,10" stroke-width="7"/><path d="M89,46 q-6,-6 0,-12 t0,-12 M103,46 q-6,-6 0,-12 t0,-12" stroke-width="4.5" opacity=".55"/></g><g transform="translate(14 0)"><path d="M157,44 V100"/><ellipse cx="157" cy="27" rx="9" ry="14" fill="#d9a066" stroke-width="5"/><path d="M144,58 H171"/></g><g transform="translate(18 0)"><path d="M189,100 V40 Q189,22 205,22 H208"/><path d="M178,58 H204"/></g><g transform="translate(25 0)"><circle cx="236" cy="77.5" r="22"/><circle cx="236" cy="77.5" r="10" stroke-width="3.5" opacity=".6"/><path d="M258,55 V100"/></g><g transform="translate(37 0)"><rect x="265" y="30" width="15" height="62" rx="6" fill="#d9a066" stroke-width="5"/><path d="M272.5,14 V30 M272.5,92 V102" stroke-width="7"/><path d="M305,55 L281,76 L307,100"/></g><g transform="translate(41 0)"><path d="M338,100 L357,44 M379,44 L398,100 M348,76 H388"/><path d="M353,42 H383" stroke-width="9"/><path d="M356,36 C344,34 344,16 356,18 C356,4 380,4 380,18 C392,16 392,34 380,36" stroke-width="6"/></g><g transform="translate(45 0)"><path d="M439,61 C434,53 410,53 410,66 C410,79 441,73 441,88 C441,103 413,102 408,93"/></g><g transform="translate(48 0)"><path d="M453,55 V100"/><ellipse cx="453" cy="31" rx="9" ry="11.5" fill="#7fa33a" stroke="none" transform="rotate(-20 453 32)"/><circle cx="450.5" cy="27" r="2.6" fill="#fff" stroke="none" opacity=".7"/></g><g transform="translate(51 0)"><path d="M496,61 C491,53 467,53 467,66 C467,79 498,73 498,88 C498,103 470,102 465,93"/></g><g transform="translate(55 0)"><path d="M519,32 V86 Q519,100 531,100 H535"/><path d="M508,58 H534"/></g><g transform="translate(62 0)"><circle cx="563" cy="77.5" r="22"/><path d="M585,55 V100"/></g><g transform="translate(74 0)"><path d="M595,55 V100 M595,78 C595,62 604,55 616,55 C628,55 637,62 637,78 V100"/></g><g transform="translate(78 0)"><path d="M656,68 V100"/><path d="M646,40 V58 Q646,70 656,70 Q666,70 666,58 V40 M656,40 V66" stroke-width="5.5"/></g></g></svg><span>her an yanınızda.</span></h2>
           <p>"Bugün ne pişireceğim?" derdine son. Evindekileri yaz, sana uygun yemekleri bulalım, eksikleri tek tuşla alışveriş listene ekleyelim.</p>
           <button class="btn" id="anaButon">Hemen başla →</button>
           <p id="hosgeldin" style="font-size:15px;margin-top:14px"></p>
         </div>
         <div class="resim">
-          <!-- Kendi çizdiğimiz illüstrasyon: güneşli bir mutfakta mutlu bir aile -->
-          <svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mutfakta mutlu bir aile">
+          <!-- Kendi çizdiğimiz illüstrasyon: güneşli bir mutfakta mutlu bir aile (kiler ve buzdolabıyla) -->
+          <svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mutfakta mutlu bir aile, dolu bir kiler ve buzdolabı">
             <rect width="600" height="440" fill="#ffe9d6"/>
             <rect y="300" width="600" height="140" fill="#e8c9a8"/>
+            <!-- kiler (kapağı açık, raflarında ürünler azalıp çoğalıyor) -->
+            <path d="M4 40 L16 46 V292 L4 300 Z" fill="#c08a5c"/>
+            <rect x="16" y="34" width="112" height="270" rx="6" fill="#a1714a"/>
+            <rect x="24" y="44" width="96" height="252" rx="3" fill="#f6dcbc"/>
+            <rect x="22" y="100" width="100" height="6" rx="2" fill="#8d6e63"/>
+            <rect x="22" y="164" width="100" height="6" rx="2" fill="#8d6e63"/>
+            <rect x="22" y="230" width="100" height="6" rx="2" fill="#8d6e63"/>
+            <!-- kiler 1. raf: un çuvalı, kavanozlar -->
+            <g class="urun" style="--s:7s;--g:-1s"><path d="M30 100 V72 q0 -8 6 -10 l-3 -6 h20 l-3 6 q6 2 6 10 V100 Z" fill="#fff8ec"/><rect x="34" y="80" width="18" height="8" rx="2" fill="#ffd166"/></g>
+            <g class="urun" style="--s:8.5s;--g:-4s"><rect x="64" y="74" width="20" height="26" rx="5" fill="#ff8a65"/><rect x="62" y="70" width="24" height="6" rx="2" fill="#c0392b"/></g>
+            <g class="urun" style="--s:6.5s;--g:-2.5s"><rect x="92" y="80" width="22" height="20" rx="5" fill="#ffd166"/><rect x="90" y="76" width="26" height="6" rx="2" fill="#e17055"/></g>
+            <!-- kiler 2. raf: makarna kutusu, konserveler, yağ şişesi -->
+            <g class="urun" style="--s:9s;--g:-6s"><rect x="30" y="130" width="22" height="34" rx="3" fill="#0984e3"/><rect x="34" y="138" width="14" height="10" rx="2" fill="#fff" opacity=".85"/></g>
+            <g class="urun" style="--s:7.5s;--g:-0.5s"><rect x="58" y="146" width="18" height="18" rx="3" fill="#e84393"/><rect x="58" y="151" width="18" height="6" fill="#fff" opacity=".7"/></g>
+            <g class="urun" style="--s:6s;--g:-3.2s"><rect x="78" y="146" width="18" height="18" rx="3" fill="#00b894"/><rect x="78" y="151" width="18" height="6" fill="#fff" opacity=".7"/></g>
+            <g class="urun" style="--s:8s;--g:-5.1s"><path d="M104 164 V136 q0 -6 3 -9 V120 h6 v7 q3 3 3 9 V164 Z" fill="#fdcb6e"/></g>
+            <!-- kiler 3. raf: patates, soğan -->
+            <g class="urun" style="--s:7.2s;--g:-2s"><ellipse cx="36" cy="222" rx="10" ry="8" fill="#c8a165"/><ellipse cx="52" cy="224" rx="9" ry="6" fill="#b8915a"/></g>
+            <g class="urun" style="--s:9.4s;--g:-7s"><circle cx="72" cy="220" r="10" fill="#c56a3d"/><path d="M72 210 v-6" stroke="#8d6e63" stroke-width="3" stroke-linecap="round"/></g>
             <!-- pencere -->
-            <rect x="60" y="40" width="170" height="130" rx="10" fill="#bfe6ff" stroke="#fff" stroke-width="8"/>
-            <circle class="gunes-nabiz" cx="190" cy="80" r="22" fill="#ffd166"/>
-            <path d="M68 150 Q110 120 150 150 T230 150 V162 H68 Z" fill="#8fd18f"/>
-            <line x1="145" y1="40" x2="145" y2="170" stroke="#fff" stroke-width="6"/>
+            <rect x="140" y="40" width="118" height="130" rx="10" fill="#bfe6ff" stroke="#fff" stroke-width="8"/>
+            <circle class="gunes-nabiz" cx="226" cy="80" r="18" fill="#ffd166"/>
+            <path d="M148 150 Q178 124 206 150 T258 150 V162 H148 Z" fill="#8fd18f"/>
+            <line x1="199" y1="40" x2="199" y2="170" stroke="#fff" stroke-width="6"/>
             <!-- üst dolaplar -->
-            <rect x="290" y="30" width="270" height="90" rx="8" fill="#6c5ce7" style="fill:var(--ana)"/>
-            <line x1="380" y1="36" x2="380" y2="114" stroke="#5641d8" stroke-width="4" style="stroke:var(--ana-koyu)"/>
-            <line x1="470" y1="36" x2="470" y2="114" stroke="#5641d8" stroke-width="4" style="stroke:var(--ana-koyu)"/>
-            <circle cx="370" cy="96" r="4" fill="#fff"/><circle cx="390" cy="96" r="4" fill="#fff"/>
-            <circle cx="460" cy="96" r="4" fill="#fff"/><circle cx="480" cy="96" r="4" fill="#fff"/>
+            <rect x="282" y="30" width="158" height="90" rx="8" fill="#6c5ce7" style="fill:var(--ana)"/>
+            <line x1="361" y1="36" x2="361" y2="114" stroke="#5641d8" stroke-width="4" style="stroke:var(--ana-koyu)"/>
+            <circle cx="351" cy="96" r="4" fill="#fff"/><circle cx="371" cy="96" r="4" fill="#fff"/>
             <!-- raf ve kavanozlar -->
-            <rect x="60" y="200" width="170" height="8" rx="3" fill="#b07a4f"/>
-            <rect x="72" y="172" width="26" height="28" rx="5" fill="#ff8a65"/>
-            <rect x="108" y="178" width="22" height="22" rx="5" fill="#ffd166"/>
-            <rect x="140" y="168" width="28" height="32" rx="5" fill="#81c784"/>
+            <rect x="140" y="200" width="118" height="8" rx="3" fill="#b07a4f"/>
+            <rect x="152" y="174" width="18" height="26" rx="5" fill="#ff8a65"/>
+            <rect x="176" y="180" width="16" height="20" rx="5" fill="#81c784"/>
             <!-- tezgâh -->
-            <rect x="270" y="250" width="320" height="16" rx="4" fill="#5d4037"/>
-            <rect x="282" y="266" width="296" height="110" fill="#8d6e63"/>
-            <line x1="380" y1="270" x2="380" y2="372" stroke="#6d4c41" stroke-width="3"/>
-            <line x1="480" y1="270" x2="480" y2="372" stroke="#6d4c41" stroke-width="3"/>
+            <rect x="268" y="250" width="180" height="16" rx="4" fill="#5d4037"/>
+            <rect x="278" y="266" width="160" height="110" fill="#8d6e63"/>
+            <line x1="358" y1="270" x2="358" y2="372" stroke="#6d4c41" stroke-width="3"/>
             <!-- tencere ve buhar -->
-            <rect x="440" y="214" width="80" height="38" rx="8" fill="#455a64"/>
-            <rect class="kapak-oyna" x="430" y="208" width="100" height="10" rx="5" fill="#37474f"/>
-            <path class="buhar b1" d="M462 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
-            <path class="buhar b2" d="M482 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
-            <path class="buhar b3" d="M502 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+            <rect x="352" y="214" width="76" height="38" rx="8" fill="#455a64"/>
+            <rect class="kapak-oyna" x="342" y="208" width="96" height="10" rx="5" fill="#37474f"/>
+            <path class="buhar b1" d="M372 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+            <path class="buhar b2" d="M390 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+            <path class="buhar b3" d="M408 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
             <!-- saksı -->
-            <rect x="300" y="222" width="34" height="28" rx="4" fill="#e17055"/>
-            <path class="yaprak-salla" d="M317 222 q-18 -24 -4 -40 M317 222 q2 -30 16 -40 M317 222 q-4 -20 -20 -22" stroke="#43a047" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <rect x="284" y="222" width="34" height="28" rx="4" fill="#e17055"/>
+            <path class="yaprak-salla" d="M301 222 q-18 -24 -4 -40 M301 222 q2 -30 16 -40 M301 222 q-4 -20 -20 -22" stroke="#43a047" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <!-- buzdolabı (alt kapağı açık, içindekiler azalıp çoğalıyor) -->
+            <rect x="456" y="70" width="128" height="310" rx="12" fill="#dfe6ec"/>
+            <rect x="462" y="76" width="116" height="74" rx="8" fill="#f5f8fa"/>
+            <rect x="470" y="96" width="6" height="34" rx="3" fill="#b0bec5"/>
+            <rect x="464" y="158" width="112" height="214" rx="6" fill="#cdeaf7"/>
+            <path d="M584 160 L598 150 V384 L584 374 Z" fill="#f5f8fa"/>
+            <rect x="466" y="214" width="108" height="5" rx="2" fill="#fff"/>
+            <rect x="466" y="270" width="108" height="5" rx="2" fill="#fff"/>
+            <rect x="466" y="326" width="108" height="5" rx="2" fill="#fff"/>
+            <!-- buzdolabı 1. raf: süt, yumurtalar, peynir -->
+            <g class="urun" style="--s:7s;--g:-3s"><path d="M474 214 V182 l6 -8 h12 l6 8 V214 Z" fill="#fff"/><rect x="474" y="190" width="24" height="10" fill="#74b9ff"/></g>
+            <g class="urun" style="--s:8s;--g:-0.8s"><ellipse cx="510" cy="206" rx="6" ry="8" fill="#fff3e0"/><ellipse cx="524" cy="206" rx="6" ry="8" fill="#fff3e0"/></g>
+            <g class="urun" style="--s:6.4s;--g:-4.6s"><path d="M540 214 L568 214 L568 198 L540 206 Z" fill="#ffd166"/><circle cx="556" cy="206" r="2.5" fill="#f5b041"/></g>
+            <!-- buzdolabı 2. raf: domates, elma, yoğurt -->
+            <g class="urun" style="--s:7.8s;--g:-5.5s"><circle cx="482" cy="259" r="11" fill="#e74c3c"/><path d="M478 248 h8" stroke="#43a047" stroke-width="3" stroke-linecap="round"/></g>
+            <g class="urun" style="--s:6.8s;--g:-1.7s"><circle cx="506" cy="260" r="10" fill="#81c784"/><path d="M506 250 v-5" stroke="#6d4c41" stroke-width="2.5" stroke-linecap="round"/></g>
+            <g class="urun" style="--s:9.2s;--g:-6.4s"><path d="M528 270 L530 246 H552 L554 270 Z" fill="#fff"/><rect x="528" y="242" width="26" height="6" rx="2" fill="#e84393"/></g>
+            <g class="urun" style="--s:7.4s;--g:-2.2s"><circle cx="566" cy="262" r="8" fill="#e74c3c"/></g>
+            <!-- buzdolabı 3. raf: havuç, brokoli, su şişesi -->
+            <g class="urun" style="--s:8.6s;--g:-3.9s"><path d="M474 318 l20 -4 l-20 -6 Z" fill="#ff9f43"/><path d="M474 326 l22 -3 l-22 -6 Z" fill="#ff9f43"/></g>
+            <g class="urun" style="--s:7s;--g:-6s"><rect x="512" y="310" width="6" height="16" fill="#6ab04c"/><circle cx="508" cy="304" r="8" fill="#2e8b57"/><circle cx="520" cy="302" r="8" fill="#2e8b57"/><circle cx="514" cy="296" r="7" fill="#3aa16b"/></g>
+            <g class="urun" style="--s:6.2s;--g:-1.2s"><path d="M540 326 V296 q0 -6 5 -9 v-7 h8 v7 q5 3 5 9 V326 Z" fill="#a8dcf5" stroke="#fff" stroke-width="2"/></g>
+            <!-- buzdolabı alt göz: sebze çekmecesi -->
+            <rect x="470" y="340" width="100" height="26" rx="5" fill="#fff" opacity=".6"/>
+            <g class="urun" style="--s:8.2s;--g:-4.3s"><circle cx="492" cy="344" r="9" fill="#e17055"/><circle cx="510" cy="346" r="8" fill="#fdcb6e"/></g>
             <!-- aile: baba -->
             <rect x="72" y="262" width="62" height="120" rx="26" fill="#0984e3"/>
             <circle cx="103" cy="236" r="28" fill="#f1c27d"/>
@@ -894,76 +1080,73 @@
       <!-- 8 kişilik akşam yemeği / Sofra planlayıcı tanıtımı -->
       <div class="kart sofra-tanitim">
         <!-- Kendi çizdiğimiz illüstrasyon: ışıklar altında dostlarla akşam sofrası -->
-        <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dostlarla akşam sofrası">
+        <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sekiz kişilik uzun akşam sofrası">
           <defs>
             <linearGradient id="gece" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d1b69"/><stop offset="1" stop-color="#6c3fa0"/></linearGradient>
             <radialGradient id="isik" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".9"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient>
           </defs>
           <rect width="520" height="360" fill="url(#gece)"/>
-          <circle cx="440" cy="60" r="26" fill="#fff6d5"/><circle cx="452" cy="52" r="24" fill="#3a2480"/>
-          <g fill="#fff" opacity=".8"><circle cx="60" cy="40" r="2"/><circle cx="150" cy="25" r="1.5"/><circle cx="330" cy="35" r="2"/><circle cx="380" cy="90" r="1.5"/><circle cx="100" cy="95" r="1.5"/></g>
+          <circle cx="440" cy="52" r="24" fill="#fff6d5"/><circle cx="451" cy="45" r="22" fill="#33227a"/>
+          <g fill="#fff" opacity=".8"><circle cx="60" cy="32" r="2"/><circle cx="150" cy="20" r="1.5"/><circle cx="330" cy="28" r="2"/><circle cx="385" cy="62" r="1.5"/><circle cx="240" cy="40" r="1.5"/></g>
           <!-- ışık zinciri -->
-          <path d="M0 70 Q130 125 260 80 T520 85" stroke="#2a1a55" stroke-width="2" fill="none"/>
+          <path d="M0 62 Q130 112 260 72 T520 76" stroke="#2a1a55" stroke-width="2" fill="none"/>
           <g class="ampuller">
-            <circle cx="40" cy="86" r="16" fill="url(#isik)"/><circle cx="40" cy="86" r="5" fill="#ffd166"/>
-            <circle cx="100" cy="102" r="16" fill="url(#isik)"/><circle cx="100" cy="102" r="5" fill="#ff8fab"/>
-            <circle cx="160" cy="104" r="16" fill="url(#isik)"/><circle cx="160" cy="104" r="5" fill="#ffd166"/>
-            <circle cx="220" cy="92" r="16" fill="url(#isik)"/><circle cx="220" cy="92" r="5" fill="#8be9fd"/>
-            <circle cx="300" cy="80" r="16" fill="url(#isik)"/><circle cx="300" cy="80" r="5" fill="#ffd166"/>
-            <circle cx="370" cy="96" r="16" fill="url(#isik)"/><circle cx="370" cy="96" r="5" fill="#ff8fab"/>
-            <circle cx="440" cy="99" r="16" fill="url(#isik)"/><circle cx="440" cy="99" r="5" fill="#ffd166"/>
-            <circle cx="500" cy="88" r="16" fill="url(#isik)"/><circle cx="500" cy="88" r="5" fill="#8be9fd"/>
+            <circle cx="30" cy="74" r="15" fill="url(#isik)"/><circle cx="30" cy="74" r="5" fill="#ffd166"/>
+            <circle cx="85" cy="89" r="15" fill="url(#isik)"/><circle cx="85" cy="89" r="5" fill="#ff8fab"/>
+            <circle cx="140" cy="94" r="15" fill="url(#isik)"/><circle cx="140" cy="94" r="5" fill="#ffd166"/>
+            <circle cx="195" cy="88" r="15" fill="url(#isik)"/><circle cx="195" cy="88" r="5" fill="#8be9fd"/>
+            <circle cx="255" cy="74" r="15" fill="url(#isik)"/><circle cx="255" cy="74" r="5" fill="#ffd166"/>
+            <circle cx="315" cy="68" r="15" fill="url(#isik)"/><circle cx="315" cy="68" r="5" fill="#ff8fab"/>
+            <circle cx="375" cy="80" r="15" fill="url(#isik)"/><circle cx="375" cy="80" r="5" fill="#ffd166"/>
+            <circle cx="435" cy="89" r="15" fill="url(#isik)"/><circle cx="435" cy="89" r="5" fill="#8be9fd"/>
+            <circle cx="492" cy="80" r="15" fill="url(#isik)"/><circle cx="492" cy="80" r="5" fill="#ff8fab"/>
           </g>
-          <!-- arkadaşlar -->
+          <!-- sekiz arkadaş -->
           <g>
-            <rect x="52" y="200" width="56" height="80" rx="24" fill="#00b894"/><circle cx="80" cy="180" r="22" fill="#f1c27d"/>
-            <path d="M58 176 q22 -30 44 0 q-6 -18 -22 -18 q-16 0 -22 18z" fill="#3e2723"/>
-            <path d="M72 186 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <circle cx="73" cy="178" r="2.5" fill="#333"/><circle cx="87" cy="178" r="2.5" fill="#333"/>
-
-            <rect x="132" y="196" width="56" height="84" rx="24" fill="#fd79a8"/><circle cx="160" cy="176" r="22" fill="#e0ac69"/>
-            <path d="M136 182 q-2 -36 24 -36 q26 0 24 36 q-4 -22 -24 -22 q-20 0 -24 22z" fill="#6d4c41"/>
-            <path d="M152 182 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <circle cx="153" cy="174" r="2.5" fill="#333"/><circle cx="167" cy="174" r="2.5" fill="#333"/>
-
-            <rect x="332" y="198" width="56" height="82" rx="24" fill="#0984e3"/><circle cx="360" cy="178" r="22" fill="#f1c27d"/>
-            <path d="M338 172 q22 -26 44 0 q-4 -16 -22 -16 q-18 0 -22 16z" fill="#212121"/>
-            <path d="M352 184 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <circle cx="353" cy="176" r="2.5" fill="#333"/><circle cx="367" cy="176" r="2.5" fill="#333"/>
-
-            <rect x="412" y="202" width="56" height="78" rx="24" fill="#fdcb6e"/><circle cx="440" cy="182" r="22" fill="#c68642"/>
-            <circle cx="440" cy="158" r="12" fill="#3e2723"/>
-            <path d="M418 184 q-2 -30 22 -30 q24 0 22 30 q-6 -18 -22 -18 q-16 0 -22 18z" fill="#3e2723"/>
-            <path d="M432 188 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <circle cx="433" cy="180" r="2.5" fill="#333"/><circle cx="447" cy="180" r="2.5" fill="#333"/>
+            <g transform="translate(42 284) scale(0.8)"><rect x="-28" y="-80" width="56" height="80" rx="24" fill="#00b894"/><circle cy="-100" r="22" fill="#f1c27d"/><path d="M-22 -104 q22 -30 44 0 q-6 -18 -22 -18 q-16 0 -22 18z" fill="#3e2723"/><circle cx="-7" cy="-102" r="2.5" fill="#333"/><circle cx="7" cy="-102" r="2.5" fill="#333"/><path d="M-8 -94 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+            <g transform="translate(104 284) scale(0.82)"><rect x="-28" y="-82" width="56" height="82" rx="24" fill="#a29bfe"/><circle cy="-102" r="22" fill="#ffdbac"/><path d="M-22 -108 q22 -26 44 0 q-4 -16 -22 -16 q-18 0 -22 16z" fill="#b2bec3"/><circle cx="-7" cy="-104" r="2.5" fill="#333"/><circle cx="7" cy="-104" r="2.5" fill="#333"/><path d="M-8 -96 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/><g fill="none" stroke="#333" stroke-width="2"><circle cx="-7" cy="-104" r="6"/><circle cx="7" cy="-104" r="6"/><path d="M-1 -104 h2"/></g></g>
+            <g transform="translate(166 284) scale(0.8)"><rect x="-28" y="-84" width="56" height="84" rx="24" fill="#fd79a8"/><circle cy="-104" r="22" fill="#e0ac69"/><path d="M-24 -98 q-2 -36 24 -36 q26 0 24 36 q-4 -22 -24 -22 q-20 0 -24 22z" fill="#6d4c41"/><circle cx="-7" cy="-106" r="2.5" fill="#333"/><circle cx="7" cy="-106" r="2.5" fill="#333"/><path d="M-8 -98 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+            <g transform="translate(228 284) scale(0.81)"><rect x="-28" y="-80" width="56" height="80" rx="24" fill="#e17055"/><circle cy="-100" r="22" fill="#8d5524"/><g fill="#212121"><circle cx="-15" cy="-112" r="9"/><circle cx="-4" cy="-120" r="10"/><circle cx="9" cy="-119" r="10"/><circle cx="17" cy="-109" r="8"/></g><circle cx="-7" cy="-102" r="2.5" fill="#333"/><circle cx="7" cy="-102" r="2.5" fill="#333"/><path d="M-8 -94 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+            <g transform="translate(290 284) scale(0.82)"><rect x="-28" y="-82" width="56" height="82" rx="24" fill="#0984e3"/><circle cy="-102" r="22" fill="#f1c27d"/><path d="M-22 -108 q22 -26 44 0 q-4 -16 -22 -16 q-18 0 -22 16z" fill="#212121"/><circle cx="-7" cy="-104" r="2.5" fill="#333"/><circle cx="7" cy="-104" r="2.5" fill="#333"/><path d="M-8 -96 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+            <g transform="translate(352 284) scale(0.79)"><rect x="-28" y="-82" width="56" height="82" rx="24" fill="#d63031"/><circle cx="24" cy="-96" r="10" fill="#a0522d"/><circle cy="-102" r="22" fill="#ffdbac"/><path d="M-22 -104 q22 -30 44 0 q-6 -18 -22 -18 q-16 0 -22 18z" fill="#a0522d"/><circle cx="-7" cy="-104" r="2.5" fill="#333"/><circle cx="7" cy="-104" r="2.5" fill="#333"/><path d="M-8 -96 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+            <g transform="translate(414 284) scale(0.8)"><rect x="-28" y="-78" width="56" height="78" rx="24" fill="#fdcb6e"/><circle cy="-98" r="22" fill="#c68642"/><circle cy="-122" r="12" fill="#3e2723"/><path d="M-22 -96 q-2 -30 22 -30 q24 0 22 30 q-6 -18 -22 -18 q-16 0 -22 18z" fill="#3e2723"/><circle cx="-7" cy="-100" r="2.5" fill="#333"/><circle cx="7" cy="-100" r="2.5" fill="#333"/><path d="M-8 -92 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
+            <g transform="translate(476 284) scale(0.68)"><rect x="-28" y="-82" width="56" height="82" rx="24" fill="#74b9ff"/><circle cy="-102" r="22" fill="#e0ac69"/><path d="M-22 -108 q22 -26 44 0 q-4 -16 -22 -16 q-18 0 -22 16z" fill="#5d4037"/><circle cx="-7" cy="-104" r="2.5" fill="#333"/><circle cx="7" cy="-104" r="2.5" fill="#333"/><path d="M-8 -96 q8 7 16 0" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>
           </g>
           <!-- uzun masa -->
-          <rect x="20" y="262" width="480" height="20" rx="6" fill="#fff"/>
-          <path d="M20 282 h480 v40 q-240 22 -480 0z" fill="#f5f0ff"/>
-          <!-- tabaklar ve kaseler -->
+          <rect x="6" y="262" width="508" height="20" rx="6" fill="#fff"/>
+          <path d="M6 282 h508 v40 q-254 22 -508 0z" fill="#f5f0ff"/>
+          <!-- tabaklar: yemekler azalıp çoğalır -->
           <g fill="#fff" stroke="#d9cff5" stroke-width="2">
-            <ellipse cx="80" cy="268" rx="26" ry="7"/><ellipse cx="160" cy="268" rx="26" ry="7"/>
-            <ellipse cx="360" cy="268" rx="26" ry="7"/><ellipse cx="440" cy="268" rx="26" ry="7"/>
+            <ellipse cx="42" cy="268" rx="22" ry="6"/><ellipse cx="104" cy="268" rx="22" ry="6"/><ellipse cx="166" cy="268" rx="22" ry="6"/><ellipse cx="228" cy="268" rx="22" ry="6"/><ellipse cx="290" cy="268" rx="22" ry="6"/><ellipse cx="352" cy="268" rx="22" ry="6"/><ellipse cx="414" cy="268" rx="22" ry="6"/><ellipse cx="476" cy="268" rx="22" ry="6"/>
           </g>
           <g>
-            <ellipse cx="225" cy="262" rx="18" ry="8" fill="#e17055"/><ellipse cx="225" cy="259" rx="14" ry="4" fill="#fab1a0"/>
-            <ellipse cx="295" cy="262" rx="18" ry="8" fill="#00b894"/><ellipse cx="295" cy="259" rx="14" ry="4" fill="#55efc4"/>
-            <g class="tabak-don"><ellipse cx="260" cy="258" rx="30" ry="10" fill="#636e72"/><path d="M234 256 q26 -24 52 0" fill="#fdcb6e"/></g>
+            <path class="yemek" style="--s:5.2s;--g:-0.0s" d="M26 267 q16 -22 32 0z" fill="#fdcb6e"/>
+            <path class="yemek" style="--s:6.1s;--g:-0.7s" d="M88 267 q16 -22 32 0z" fill="#fab1a0"/>
+            <path class="yemek" style="--s:5.6s;--g:-2.2s" d="M150 267 q16 -22 32 0z" fill="#55efc4"/>
+            <path class="yemek" style="--s:6.6s;--g:-2.1s" d="M212 267 q16 -22 32 0z" fill="#ffeaa7"/>
+            <path class="yemek" style="--s:5.0s;--g:-4.5s" d="M274 267 q16 -22 32 0z" fill="#ff7675"/>
+            <path class="yemek" style="--s:6.3s;--g:-3.5s" d="M336 267 q16 -22 32 0z" fill="#81ecec"/>
+            <path class="yemek" style="--s:5.8s;--g:-6.7s" d="M398 267 q16 -22 32 0z" fill="#fdcb6e"/>
+            <path class="yemek" style="--s:6.9s;--g:-4.9s" d="M460 267 q16 -22 32 0z" fill="#fab1a0"/>
           </g>
+          <!-- servis kaseleri -->
+          <g>
+            <path class="yemek" style="--s:6.4s;--g:-1.2s" d="M62 260 q11 -16 22 0z" fill="#55efc4"/><ellipse cx="73" cy="262" rx="15" ry="6" fill="#00b894"/>
+            <path class="yemek" style="--s:5.4s;--g:-3.1s" d="M124 260 q11 -16 22 0z" fill="#fab1a0"/><ellipse cx="135" cy="262" rx="15" ry="6" fill="#e17055"/>
+            <path class="yemek" style="--s:5.9s;--g:-2.2s" d="M372 260 q11 -16 22 0z" fill="#ffeaa7"/><ellipse cx="383" cy="262" rx="15" ry="6" fill="#e1a73b"/>
+            <path class="yemek" style="--s:6.8s;--g:-4.4s" d="M434 260 q11 -16 22 0z" fill="#ff7675"/><ellipse cx="445" cy="262" rx="15" ry="6" fill="#c0392b"/>
+          </g>
+          <!-- ortadaki büyük tabak -->
+          <g class="tabak-don"><ellipse cx="259" cy="258" rx="28" ry="10" fill="#636e72"/><path class="yemek" style="--s:7s;--g:-2s" d="M235 256 q24 -24 48 0" fill="#fdcb6e"/></g>
           <!-- mumlar -->
           <g>
-            <rect x="196" y="236" width="8" height="26" fill="#fff"/><path class="alev" d="M200 222 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
-            <circle cx="200" cy="230" r="12" fill="url(#isik)"/>
-            <rect x="316" y="236" width="8" height="26" fill="#fff"/><path class="alev a2" d="M320 222 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
-            <circle cx="320" cy="230" r="12" fill="url(#isik)"/>
+            <rect x="193" y="238" width="8" height="24" fill="#fff"/><path class="alev" d="M197 224 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
+            <circle cx="197" cy="232" r="12" fill="url(#isik)"/>
+            <rect x="317" y="238" width="8" height="24" fill="#fff"/><path class="alev a2" d="M321 224 q6 8 0 14 q-6 -6 0 -14z" fill="#ffd166"/>
+            <circle cx="321" cy="232" r="12" fill="url(#isik)"/>
           </g>
-          <!-- bardaklar -->
-          <g fill="#dff9fb" opacity=".85">
-            <rect x="106" y="246" width="9" height="18" rx="2"/><rect x="186" y="246" width="9" height="18" rx="2"/>
-            <rect x="386" y="246" width="9" height="18" rx="2"/><rect x="466" y="246" width="9" height="18" rx="2"/>
-          </g>
-          <!-- kalpler -->
-          <path d="M260 196 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
+          <!-- kalp -->
+          <path class="kalp-uc" d="M259 160 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
         </svg>
         <div class="yazi">
           <h3>🍽️ 8 kişilik akşam yemeği mi var?<br><span>Asistanınız yanınızda.</span></h3>
@@ -979,7 +1162,7 @@
       <h3 class="oz-bolum-baslik">Mutfak Asistanı <span>neler yapar?</span></h3>
         <div class="kart oz-sekme">
           <div class="oz-notlar">
-            <button class="oz-not aktif" data-oz="0"><span class="oz-no">1</span><span><b>Yaz ya da söyle, <i>biz anlarız.</i></b><small>Form doldurmak yok. "Yarım kilo kıyma, az süt, gevrek" yaz ya da sesle söyle, biz anlarız.</small></span></button>
+            <button class="oz-not aktif" data-oz="0"><span class="oz-no">1</span><span><b>Yaz ya da söyle, <i>biz anlarız.</i></b><small>Form doldurmak yok. "Yarım kilo kıyma, az süt, 1 kg yoğurt" yaz ya da sesle söyle, biz anlarız.</small></span></button>
             <button class="oz-not" data-oz="1"><span class="oz-no">2</span><span><b>Ne pişireceğini bul, <i>eksiği biz söyleyelim.</i></b><small>Evindeki malzemelerle hemen yapabileceğin yemekleri öneririz. Eksik varsa söyleriz.</small></span></button>
             <button class="oz-not" data-oz="2"><span class="oz-no">3</span><span><b>Alışverişi kolaylaştır, <i>tek tuşla listede.</i></b><small>Eksikler tek tuşla listede. Aldıkların otomatik olarak dolabına geçer, listeyi paylaşabilirsin.</small></span></button>
             <button class="oz-not" data-oz="3"><span class="oz-no">4</span><span><b>Haftalık, aylık menün <i>hazır olsun.</i></b><small>Evindekilere göre haftalık ya da aylık yemek planını biz hazırlayalım. Her gün ne pişireceğin, ne alacağın belli olsun.</small></span></button>
@@ -993,21 +1176,40 @@
                 <!-- konuşma balonu -->
                 <rect x="222" y="38" width="270" height="140" rx="24" fill="#fff"/>
                 <path d="M250 172 l-30 34 l58 -30z" fill="#fff"/>
-                <text x="246" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">"Yarım kilo kıyma,</text>
-                <text x="246" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">az süt, gevrek"</text>
-                <!-- küçük ürün çizimleri -->
-                <ellipse cx="270" cy="146" rx="20" ry="13" fill="#ff8a8a"/><ellipse cx="270" cy="144" rx="12" ry="6" fill="#ffc0c0"/>
-                <rect x="312" y="124" width="26" height="38" rx="4" fill="#dfe6e9"/><path d="M312 128 l13 -12 l13 12z" fill="#74b9ff"/><rect x="316" y="138" width="18" height="10" rx="2" fill="#74b9ff"/>
-                <circle cx="380" cy="144" r="16" fill="none" stroke="#d58a3a" stroke-width="10"/>
-                <g fill="#fff3d6"><circle cx="372" cy="134" r="1.6"/><circle cx="388" cy="136" r="1.6"/><circle cx="392" cy="150" r="1.6"/><circle cx="370" cy="154" r="1.6"/><circle cx="380" cy="128" r="1.6"/></g>
-                <path d="M424 146 l10 10 l20 -22" stroke="#00b894" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- söylenen ürünler: sırayla sağdan gelip sola kayar -->
+                <clipPath id="sesBalonKirp"><rect x="226" y="42" width="262" height="80"/><rect x="226" y="120" width="190" height="54"/></clipPath>
+                <g clip-path="url(#sesBalonKirp)">
+                <g class="ses-kare k1">
+                  <text x="246" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">"Yarım kilo kıyma,</text>
+                  <text x="246" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">az süt, 1 kg yoğurt"</text>
+                  <ellipse cx="270" cy="146" rx="20" ry="13" fill="#ff8a8a"/><ellipse cx="270" cy="144" rx="12" ry="6" fill="#ffc0c0"/><rect x="312" y="124" width="26" height="38" rx="4" fill="#dfe6e9"/><path d="M312 128 l13 -12 l13 12z" fill="#74b9ff"/><rect x="316" y="138" width="18" height="10" rx="2" fill="#74b9ff"/><path d="M362 134 h36 l-4 26 h-28z" fill="#fff" stroke="#b2bec3" stroke-width="2"/><rect x="359" y="126" width="42" height="9" rx="3" fill="#74b9ff"/><rect x="367" y="143" width="26" height="7" rx="2" fill="#a29bfe" opacity=".55"/>
+                </g>
+                <g class="ses-kare k2">
+                  <text x="246" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">"10 yumurta, ekmek,</text>
+                  <text x="246" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">2 kg domates"</text>
+                  <ellipse cx="261" cy="148" rx="11" ry="14" fill="#fff3d6" stroke="#e0c48a" stroke-width="2"/><ellipse cx="280" cy="146" rx="11" ry="14" fill="#fff3d6" stroke="#e0c48a" stroke-width="2"/><path d="M303 158 q-5 -32 22 -32 q27 0 22 32z" fill="#e1a95f"/><path d="M314 136 l-4 10 M325 134 l-4 10 M336 136 l-4 10" stroke="#b9772f" stroke-width="2.5" stroke-linecap="round"/><circle cx="380" cy="146" r="16" fill="#ff6b6b"/><path d="M372 132 l8 4 l8 -4 l-3 6 h-10z" fill="#00b894"/><circle cx="374" cy="142" r="3.5" fill="#fff" opacity=".45"/>
+                </g>
+                <g class="ses-kare k3">
+                  <text x="246" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">"1 kg patates, soğan,</text>
+                  <text x="246" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">beyaz peynir"</text>
+                  <ellipse cx="262" cy="150" rx="14" ry="10" fill="#d4a373"/><ellipse cx="280" cy="142" rx="13" ry="10" fill="#c9965f"/><g fill="#8d6e4a"><circle cx="258" cy="148" r="1.5"/><circle cx="266" cy="153" r="1.5"/><circle cx="283" cy="140" r="1.5"/></g><path d="M325 124 q-2 8 -12 18 q-8 10 2 18 q10 6 20 0 q10 -8 2 -18 q-10 -10 -12 -18z" fill="#c084d8"/><path d="M325 130 q-6 14 0 30 M325 130 q6 14 0 30" stroke="#a55fc1" stroke-width="2" fill="none"/><rect x="360" y="130" width="40" height="28" rx="4" fill="#fff" stroke="#b2bec3" stroke-width="2"/><circle cx="371" cy="141" r="3" fill="#dfe6e9"/><circle cx="388" cy="149" r="3.5" fill="#dfe6e9"/><circle cx="386" cy="137" r="2" fill="#dfe6e9"/>
+                </g>
+                <g class="ses-kare k4">
+                  <text x="246" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">"1 kg tavuk but,</text>
+                  <text x="246" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#2d3436">elma, tereyağı"</text>
+                  <ellipse cx="276" cy="142" rx="15" ry="12" fill="#e08a3c" transform="rotate(-30 276 142)"/><path d="M265 152 l-9 9" stroke="#fff3d6" stroke-width="5" stroke-linecap="round"/><circle cx="254" cy="160" r="3.5" fill="#fff3d6"/><circle cx="259" cy="164" r="3.5" fill="#fff3d6"/><circle cx="325" cy="147" r="15" fill="#ff6b6b"/><path d="M325 133 q0 -6 3 -9" stroke="#6d4c41" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="333" cy="128" rx="6" ry="3.5" fill="#00b894" transform="rotate(-25 333 128)"/><rect x="360" y="134" width="40" height="24" rx="3" fill="#ffe08a"/><rect x="360" y="134" width="40" height="8" rx="3" fill="#fff3c4"/><path d="M360 150 h40" stroke="#f0c75e" stroke-width="2"/>
+                </g>
+                </g>
+                <path class="ses-tik" d="M424 146 l10 10 l20 -22" stroke="#00b894" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <!-- mikrofon ve ses dalgaları -->
                 <circle cx="400" cy="250" r="38" fill="#6c5ce7"/>
                 <rect x="390" y="226" width="20" height="32" rx="10" fill="#fff"/>
                 <path d="M382 250 q0 18 18 18 q18 0 18 -18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
                 <line x1="400" y1="268" x2="400" y2="276" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-                <path d="M452 228 q12 22 0 44 M466 216 q20 34 0 68" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" opacity=".55"/>
-                <path d="M348 228 q-12 22 0 44 M334 216 q-20 34 0 68" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" opacity=".55"/>
+                <g stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" opacity=".55">
+                  <path class="ses-dalga d1" d="M452 228 q12 22 0 44 M348 228 q-12 22 0 44"/>
+                  <path class="ses-dalga d2" d="M466 216 q20 34 0 68 M334 216 q-20 34 0 68"/>
+                </g>
                 <!-- kişi -->
                 <rect x="62" y="214" width="96" height="140" rx="38" fill="#00b894"/>
                 <circle cx="110" cy="176" r="38" fill="#f1c27d"/>
@@ -1045,10 +1247,10 @@
                 <path class="ok-akis" d="M220 150 q70 -70 140 -10" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-dasharray="10 9" stroke-linecap="round"/>
                 <path d="M352 126 l14 18 l-22 4" stroke="#6c5ce7" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <!-- tencere -->
-                <path class="buhar b1" d="M318 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-                <path class="buhar b2" d="M348 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
-                <path class="buhar b3" d="M378 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-                <rect x="290" y="214" width="116" height="10" rx="5" fill="#5641d8"/>
+                <path class="tutsu b1" d="M318 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+                <path class="tutsu b2" d="M348 192 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+                <path class="tutsu b3" d="M378 196 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+                <rect class="kapak-oyna" x="290" y="214" width="116" height="10" rx="5" fill="#5641d8"/>
                 <rect class="tencere-zipla" x="296" y="222" width="104" height="70" rx="16" fill="#6c5ce7"/>
                 <rect x="276" y="236" width="22" height="10" rx="5" fill="#5641d8"/><rect x="398" y="236" width="22" height="10" rx="5" fill="#5641d8"/>
                 <circle cx="334" cy="254" r="3.5" fill="#fff"/><circle cx="362" cy="254" r="3.5" fill="#fff"/>
@@ -1056,12 +1258,12 @@
                 <rect x="280" y="292" width="136" height="12" rx="6" fill="#636e72"/>
                 <!-- öneri kartları -->
                 <g>
-                  <rect x="404" y="40" width="102" height="54" rx="12" fill="#fff"/>
+                  <g class="rozet-yan r1"><rect x="404" y="40" width="102" height="54" rx="12" fill="#fff"/>
                   <circle cx="426" cy="67" r="12" fill="#00b894"/><path d="M420 67 l5 5 l8 -9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                  <text x="444" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#00875a">Hazır</text>
-                  <rect x="420" y="108" width="92" height="50" rx="12" fill="#fff"/>
+                  <text x="444" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#00875a">Hazır</text></g>
+                  <g class="rozet-yan r2"><rect x="420" y="108" width="92" height="50" rx="12" fill="#fff"/>
                   <circle cx="440" cy="133" r="11" fill="#e17055"/><text x="440" y="138" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">1</text>
-                  <text x="456" y="138" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#c0392b">eksik</text>
+                  <text x="456" y="138" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#c0392b">eksik</text></g>
                 </g>
                 <path d="M250 60 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4 l10 -4z" fill="#fdcb6e"/>
                 <path d="M470 220 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3z" fill="#fdcb6e"/>
@@ -1077,21 +1279,23 @@
                 <rect x="60" y="50" width="140" height="40" rx="12" fill="#6c5ce7"/><rect x="60" y="76" width="140" height="14" fill="#6c5ce7"/>
                 <text x="130" y="76" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#fff">Eksikler</text>
                 <g>
-                  <rect x="74" y="106" width="20" height="20" rx="5" fill="#00b894"/><path d="M78 116 l4 4 l8 -9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                  <rect x="102" y="111" width="76" height="9" rx="4" fill="#dfe6e9"/>
-                  <rect x="74" y="142" width="20" height="20" rx="5" fill="#00b894"/><path d="M78 152 l4 4 l8 -9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                  <rect x="102" y="147" width="60" height="9" rx="4" fill="#dfe6e9"/>
-                  <rect x="74" y="178" width="20" height="20" rx="5" fill="none" stroke="#b2bec3" stroke-width="3"/>
-                  <rect x="102" y="183" width="70" height="9" rx="4" fill="#b2bec3"/>
-                  <rect x="74" y="214" width="20" height="20" rx="5" fill="none" stroke="#b2bec3" stroke-width="3"/>
-                  <rect x="102" y="219" width="54" height="9" rx="4" fill="#b2bec3"/>
+                  <rect x="74" y="102" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a1" style="--s:5.2s;--g:-0.4s"><rect x="74" y="102" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 109 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a1" style="--s:5.2s;--g:-0.4s" x="96" y="105.5" width="76" height="7" rx="3.5" fill="#b2bec3"/>
+                  <rect x="74" y="120" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a2" style="--s:6.4s;--g:-3.1s"><rect x="74" y="120" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 127 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a2" style="--s:6.4s;--g:-3.1s" x="96" y="123.5" width="60" height="7" rx="3.5" fill="#b2bec3"/>
+                  <rect x="74" y="138" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a3" style="--s:7.1s;--g:-5.6s"><rect x="74" y="138" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 145 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a3" style="--s:7.1s;--g:-5.6s" x="96" y="141.5" width="70" height="7" rx="3.5" fill="#b2bec3"/>
+                  <rect x="74" y="156" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a4" style="--s:5.8s;--g:-1.9s"><rect x="74" y="156" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 163 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a4" style="--s:5.8s;--g:-1.9s" x="96" y="159.5" width="54" height="7" rx="3.5" fill="#b2bec3"/>
+                  <rect x="74" y="174" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a5" style="--s:6.9s;--g:-4.3s"><rect x="74" y="174" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 181 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a5" style="--s:6.9s;--g:-4.3s" x="96" y="177.5" width="66" height="7" rx="3.5" fill="#b2bec3"/>
+                  <rect x="74" y="192" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a6" style="--s:4.9s;--g:-2.6s"><rect x="74" y="192" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 199 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a6" style="--s:4.9s;--g:-2.6s" x="96" y="195.5" width="48" height="7" rx="3.5" fill="#b2bec3"/>
+                  <rect x="74" y="210" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a7" style="--s:7.6s;--g:-6.2s"><rect x="74" y="210" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 217 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a7" style="--s:7.6s;--g:-6.2s" x="96" y="213.5" width="72" height="7" rx="3.5" fill="#b2bec3"/>
+                  <rect x="74" y="228" width="14" height="14" rx="4" fill="none" stroke="#b2bec3" stroke-width="2.5"/><g class="al-tik a8" style="--s:6.1s;--g:-0.9s"><rect x="74" y="228" width="14" height="14" rx="4" fill="#00b894"/><path d="M77.5 235 l3 3 l6 -6.5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="al-satir a8" style="--s:6.1s;--g:-0.9s" x="96" y="231.5" width="58" height="7" rx="3.5" fill="#b2bec3"/>
                 </g>
-                <rect x="78" y="252" width="104" height="28" rx="14" fill="#6c5ce7"/>
-                <text x="130" y="271" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">+ Tek tuşla</text>
+                <g class="al-buton"><rect x="78" y="252" width="104" height="28" rx="14" fill="#6c5ce7"/>
+                <text x="130" y="271" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">+ Tek tuşla</text></g>
                 <!-- paylaş simgesi -->
+                <g class="al-paylas">
                 <circle cx="214" cy="46" r="24" fill="#00b894"/>
                 <g fill="#fff"><circle cx="205" cy="46" r="5"/><circle cx="222" cy="37" r="5"/><circle cx="222" cy="55" r="5"/></g>
                 <path d="M205 46 l17 -9 M205 46 l17 9" stroke="#fff" stroke-width="3"/>
+                </g>
                 <!-- sepet -->
                 <g>
                   <path d="M268 156 h24 l22 92 h120 l20 -70 h-138" fill="none" stroke="#5641d8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1101,19 +1305,20 @@
                   <circle cx="334" cy="276" r="5" fill="#b2bec3"/><circle cx="420" cy="276" r="5" fill="#b2bec3"/>
                   <!-- içindekiler -->
                   <g class="sepet-zipla">
-                  <rect x="318" y="108" width="22" height="72" rx="10" fill="#e1a95f" transform="rotate(-18 329 144)"/>
-                  <rect x="350" y="122" width="34" height="58" rx="5" fill="#dfe6e9"/><path d="M350 126 l17 -16 l17 16z" fill="#74b9ff"/><rect x="356" y="140" width="22" height="14" rx="2" fill="#74b9ff"/>
-                  <circle cx="408" cy="164" r="18" fill="#d63031"/><path d="M408 146 q6 -10 14 -8" stroke="#43a047" stroke-width="4" fill="none" stroke-linecap="round"/>
-                  <ellipse cx="438" cy="158" rx="12" ry="26" fill="#55efc4" transform="rotate(20 438 158)"/>
+                  <g class="al-urun u1"><rect x="318" y="108" width="22" height="72" rx="10" fill="#e1a95f" transform="rotate(-18 329 144)"/></g>
+                  <g class="al-urun u2"><rect x="350" y="122" width="34" height="58" rx="5" fill="#dfe6e9"/><path d="M350 126 l17 -16 l17 16z" fill="#74b9ff"/><rect x="356" y="140" width="22" height="14" rx="2" fill="#74b9ff"/></g>
+                  <g class="al-urun u3"><circle cx="408" cy="164" r="18" fill="#d63031"/><path d="M408 146 q6 -10 14 -8" stroke="#43a047" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+                  <g class="al-urun u4"><ellipse cx="438" cy="158" rx="12" ry="26" fill="#55efc4" transform="rotate(20 438 158)"/></g>
                   </g>
                 </g>
                 <!-- dolaba geçiş oku -->
-                <rect x="452" y="30" width="48" height="80" rx="8" fill="#dfe6e9"/><line x1="452" y1="58" x2="500" y2="58" stroke="#b2bec3" stroke-width="3"/>
-                <rect x="490" y="40" width="4" height="12" rx="2" fill="#b2bec3"/><rect x="490" y="66" width="4" height="16" rx="2" fill="#b2bec3"/>
+                <g class="al-dolap"><rect x="452" y="30" width="48" height="80" rx="8" fill="#dfe6e9"/><line x1="452" y1="58" x2="500" y2="58" stroke="#b2bec3" stroke-width="3"/>
+                <rect x="490" y="40" width="4" height="12" rx="2" fill="#b2bec3"/><rect x="490" y="66" width="4" height="16" rx="2" fill="#b2bec3"/></g>
                 <path class="ok-akis" d="M396 104 q14 -50 48 -46" stroke="#e17055" stroke-width="5" fill="none" stroke-dasharray="9 8" stroke-linecap="round"/>
-                <path d="M434 48 l12 10 l-12 10" stroke="#e17055" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="al-ok-uc" d="M434 48 l12 10 l-12 10" stroke="#e17055" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle class="al-ucan" cx="396" cy="104" r="7" fill="#fdcb6e" stroke="#e17055" stroke-width="2" opacity="0"/>
                 <text x="368" y="40" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#e17055">dolabına</text>
-                <path d="M258 70 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
+                <path class="kalp-uc" d="M258 70 c-6 -10 -20 -4 -14 6 l14 12 l14 -12 c6 -10 -8 -16 -14 -6z" fill="#ff7675"/>
               </svg>
             </div>
             <div class="oz-res" data-oz="3">
@@ -1133,7 +1338,7 @@
                   <rect x="174" y="182" width="36" height="46" rx="8"/><rect x="220" y="182" width="36" height="46" rx="8"/><rect x="266" y="182" width="36" height="46" rx="8"/><rect x="312" y="182" width="36" height="46" rx="8"/><rect x="358" y="182" width="36" height="46" rx="8"/><rect x="404" y="182" width="36" height="46" rx="8"/><rect x="450" y="182" width="36" height="46" rx="8"/>
                   <rect x="174" y="236" width="36" height="46" rx="8"/><rect x="220" y="236" width="36" height="46" rx="8"/><rect x="266" y="236" width="36" height="46" rx="8"/><rect x="312" y="236" width="36" height="46" rx="8"/><rect x="358" y="236" width="36" height="46" rx="8"/><rect x="404" y="236" width="36" height="46" rx="8"/><rect x="450" y="236" width="36" height="46" rx="8"/>
                 </g>
-                <rect x="312" y="128" width="36" height="46" rx="8" fill="none" stroke="#6c5ce7" stroke-width="3"/>
+                <rect class="gun-cerceve" x="174" y="128" width="36" height="46" rx="8" fill="none" stroke="#6c5ce7" stroke-width="3"/>
                 <!-- küçük yemek kaseleri -->
                 <g>
                   <path d="M182 152 h20 q0 14 -10 14 q-10 0 -10 -14z" fill="#e17055"/><ellipse cx="192" cy="152" rx="10" ry="3" fill="#fab1a0"/>
@@ -1156,7 +1361,7 @@
                 </g>
                 <!-- geçmiş günlere tik -->
                 <g stroke="#00b894" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M196 136 l4 4 l7 -7"/><path d="M242 136 l4 4 l7 -7"/><path d="M288 136 l4 4 l7 -7"/>
+                  <path class="gun-tik t1" d="M196 136 l4 4 l7 -7"/><path class="gun-tik t2" d="M242 136 l4 4 l7 -7"/><path class="gun-tik t3" d="M288 136 l4 4 l7 -7"/><path class="gun-tik t4" d="M334 136 l4 4 l7 -7"/><path class="gun-tik t5" d="M380 136 l4 4 l7 -7"/><path class="gun-tik t6" d="M426 136 l4 4 l7 -7"/><path class="gun-tik t7" d="M472 136 l4 4 l7 -7"/>
                 </g>
                 <!-- aşçı şapkalı kişi, takvimi gösteriyor -->
                 <rect x="36" y="206" width="90" height="134" rx="36" fill="#e84393"/>
@@ -1215,7 +1420,7 @@
   <!-- ===================== ÜRÜNLERİM ===================== -->
   <section id="urunler" class="bolum">
     <div class="ipucu">✍️ Form yok! Not defterine yazar gibi yaz, araya virgül koy yeter.
-      <br><small>Örnek: <i>yarım kilo kıyma, 5 büyük boy patates, az süt, 10 yumurta, gevrek</i></small>
+      <br><small>Örnek: <i>yarım kilo kıyma, 5 büyük boy patates, az süt, 10 yumurta, 1 kg yoğurt</i></small>
       <br><small>📅 Bir ürüne dokun: son kullanma tarihini gör, değiştir ya da "açıldı" diye işaretle.</small></div>
     <h2 class="buyuk">Ürünlerim</h2>
     <div id="sktKartiUrunler"></div>
@@ -1255,6 +1460,54 @@
       <svg class="ts-tava" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
         <g class="ts-tava-g"><path d="M14 78 q0 16 18 16 h40 q18 0 18 -16z"/><path d="M90 80 l24 -6"/>
           <circle class="ts-ucan u1" cx="38" cy="72" r="5"/><rect class="ts-ucan u2" x="50" y="66" width="10" height="7" rx="2"/><circle class="ts-ucan u3" cx="70" cy="72" r="4"/></g>
+      </svg>
+      <!-- geniş ekran ek objeler -->
+      <svg class="ts-genis ts-tava2" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path class="ts-buhar b1" d="M38 62 q-7 -9 0 -18 q7 -9 0 -18"/><path class="ts-buhar b2" d="M52 58 q-7 -9 0 -18 q7 -9 0 -18"/><path class="ts-buhar b3" d="M66 62 q-7 -9 0 -18 q7 -9 0 -18"/>
+        <circle class="ts-cizir c1" cx="28" cy="74" r="1.5"/><circle class="ts-cizir c2" cx="62" cy="72" r="1.5"/><circle class="ts-cizir c3" cx="78" cy="74" r="1.5"/>
+        <path d="M12 78 q0 16 18 16 h44 q16 0 16 -16z"/><path d="M90 80 l26 -6"/>
+        <ellipse cx="46" cy="76" rx="14" ry="3"/><circle cx="46" cy="74" r="3"/>
+      </svg>
+      <svg class="ts-genis ts-karistir" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ts-kasik"><path d="M60 64 L60 14"/><path d="M56 14 h8"/></g>
+        <path d="M20 62 h80"/><path class="ts-dalga" d="M34 70 q6 -4 12 0 t12 0 t12 0 t12 0" stroke-width="3"/>
+        <path d="M24 62 v30 q0 12 12 12 h48 q12 0 12 -12 v-30"/><path d="M24 72 h-10 M96 72 h10"/>
+      </svg>
+      <svg class="ts-genis ts-mikser" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ts-mikser-g">
+          <path d="M36 28 q0 -10 10 -10 h36 q10 0 10 10 v8 q0 6 -6 6 h-44 q-6 0 -6 -6z"/><path d="M54 18 q10 -14 22 0"/><circle cx="82" cy="30" r="2"/>
+          <path d="M54 42 v18 M72 42 v18"/>
+          <ellipse class="ts-cirpici k1" cx="54" cy="68" rx="5" ry="9"/><ellipse class="ts-cirpici k2" cx="72" cy="68" rx="5" ry="9"/>
+        </g>
+        <circle class="ts-sicra s1" cx="40" cy="78" r="2" style="--sx:-10px"/><circle class="ts-sicra s2" cx="86" cy="78" r="2" style="--sx:10px"/>
+        <path d="M16 80 h94 q-4 26 -47 26 q-43 0 -47 -26z"/>
+      </svg>
+      <svg class="ts-genis ts-firin" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="12" y="12" width="96" height="86" rx="8"/><path d="M12 32 h96"/>
+        <circle cx="26" cy="22" r="3"/><circle cx="40" cy="22" r="3"/><rect x="70" y="18" width="28" height="8" rx="2"/>
+        <g class="ts-tepsi"><path d="M28 82 h64"/><path d="M40 80 q20 -20 40 0"/><path class="ts-buhar b1" d="M52 62 q-5 -6 0 -12 q5 -6 0 -12" stroke-width="3"/><path class="ts-buhar b2" d="M66 62 q-5 -6 0 -12 q5 -6 0 -12" stroke-width="3"/></g>
+        <g class="ts-kapi"><rect x="20" y="40" width="80" height="52" rx="4"/><rect x="32" y="58" width="56" height="26" rx="3" stroke-width="3"/><path d="M34 48 h52"/></g>
+      </svg>
+      <svg class="ts-genis ts-domates" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="80" width="104" height="24" rx="8"/><circle cx="102" cy="92" r="3"/>
+        <path d="M70 78 a14 14 0 1 1 26 0z"/><path d="M78 52 l5 4 l5 -4"/>
+        <g class="ts-ddilim d1"><path d="M48 78 a8 8 0 0 1 16 0z"/></g><g class="ts-ddilim d2"><path d="M48 78 a8 8 0 0 1 16 0z"/></g><g class="ts-ddilim d3"><path d="M48 78 a8 8 0 0 1 16 0z"/></g>
+        <g class="ts-dbicak"><path d="M66 32 h10 v34 l-10 10z"/><path d="M71 32 v-20" stroke-width="7"/></g>
+      </svg>
+      <svg class="ts-genis ts-et" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="80" width="104" height="24" rx="8"/><circle cx="16" cy="92" r="3"/>
+        <path d="M58 80 v-22 q-20 -6 -36 2 q-12 6 -8 20z"/><path d="M24 72 q12 -8 30 -6" stroke-width="3"/>
+        <g class="ts-eserit e1"><rect x="62" y="64" width="6" height="16" rx="2"/></g><g class="ts-eserit e2"><rect x="62" y="64" width="6" height="16" rx="2"/></g><g class="ts-eserit e3"><rect x="62" y="64" width="6" height="16" rx="2"/></g>
+        <g class="ts-satir"><rect x="58" y="50" width="26" height="28" rx="2"/><circle cx="78" cy="56" r="2"/><path d="M84 56 h24" stroke-width="7"/></g>
+      </svg>
+      <svg class="ts-genis ts-yumurta" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ts-yumurta-g">
+          <path class="ts-yust" d="M46 42 q0 -24 14 -24 q14 0 14 24 l-5 -4 l-4 4 l-5 -4 l-5 4 l-4 -4 z"/>
+          <path class="ts-yalt" d="M46 45 l5 -4 l4 4 l5 -4 l5 4 l4 -4 l5 4 q0 15 -14 15 q-14 0 -14 -15z"/>
+        </g>
+        <circle class="ts-sarisi" cx="60" cy="48" r="5"/>
+        <ellipse class="ts-halka" cx="60" cy="86" rx="14" ry="3" stroke-width="3"/>
+        <path d="M18 84 h84 q-4 22 -42 22 q-38 0 -42 -22z"/>
       </svg>
     </div>
         <div id="sktKartiTarifler"></div>
@@ -1379,7 +1632,7 @@
       <div class="sss-cevap"><div class="sss-cevap-ic">Dolabın, listelerin, notların ve tariflerin <b>sadece bu telefonun içinde</b> saklanır; bizim bir sunucumuza gönderilmez. Yalnızca Google ya da e-posta bağlantısıyla giriş yaparsan, sadece <b>e-postan ve adın</b> giriş için Google Firebase'e gider; başka hiçbir şey gitmez.</div></div></div>
 
     <div class="sss-oge"><button class="sss-soru" data-sss="2"><span class="sss-simge">✈️</span><span class="sss-metin">İnternet yokken de çalışır mı?</span><span class="sss-ok">▾</span></button>
-      <div class="sss-cevap"><div class="sss-cevap-ic">Büyük kısmı çalışır. Uygulama bir kez açıldıktan sonra dosyalarını telefonuna kaydeder. Böylece <b>uçak modunda ya da internetsiz</b> bir yerde bile Ürünlerim (buzdolabın), yemek tarifleri, alışveriş listen, Sofra Planla ve müzik çalışır.<br><br>Şunlar için ise <b>internet gerekir</b>: 🤖 yapay zekâ asistanı (Pro), giriş yapmak ve bilgilerini cihazlar arasında eşitlemek, listeyi WhatsApp ile paylaşmak ve yeni güncellemeleri almak. İnternet gelince bunlar kendiliğinden yeniden çalışır.</div></div></div>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Büyük kısmı çalışır. Uygulama bir kez açıldıktan sonra dosyalarını telefonuna kaydeder. Böylece <b>uçak modunda ya da internetsiz</b> bir yerde bile Ürünlerim (buzdolabın), yemek tarifleri, alışveriş listen ve Sofra Planla çalışır.<br><br>Şunlar için ise <b>internet gerekir</b>: 🤖 yapay zekâ asistanı (Pro), giriş yapmak ve bilgilerini cihazlar arasında eşitlemek, listeyi WhatsApp ile paylaşmak ve yeni güncellemeleri almak. İnternet gelince bunlar kendiliğinden yeniden çalışır.</div></div></div>
 
     <div class="sss-oge"><button class="sss-soru" data-sss="3"><span class="sss-simge">🧹</span><span class="sss-metin">Verilerimi nasıl silerim?</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">En alttaki <b>"Verilerimi sil"</b> düğmesine ya da sağ üstteki adına dokunup <b>"🧹 Verilerimi sil"</b>e basabilirsin. Dilersen hesabını tamamen de silebilirsin. Silme işlemi hemen ve kalıcıdır. Ayrıntılar <b>Gizlilik Politikası</b> sayfasında.</div></div></div>
@@ -2066,23 +2319,62 @@
     var durum = !d ? "Bu ürün için tahmini süre yok. İstersen tarihi kendin gir."
       : d.kalan < 0 ? "⛔ Son kullanma tarihi " + (-d.kalan) + " gün önce geçti."
       : d.kalan === 0 ? "⏰ Son kullanma tarihi bugün." : "Son kullanma tarihine " + d.kalan + " gün var.";
+    var miktar = (b.u.miktar || "").trim();
+    sktPencere = { key: key, eskiTarih: tarihDegeri, yeniTur: "ekle" };
+    var gunCipleri = [[3, "+3 gün"], [7, "+1 hafta"], [30, "+1 ay"], [90, "+3 ay"], [365, "+1 yıl"]].map(function (g) {
+      return '<button type="button" class="skt-cip" data-skt-gun="' + g[0] + '">' + g[1] + '</button>';
+    }).join("");
     document.getElementById("sktIcerik").innerHTML =
       '<h3>' + esc(basHarfBuyuk(b.u.ad)) + '</h3>' +
       '<p class="aciklama" style="margin:0 0 12px">' + esc(ALAN_ADLARI[b.alanId]) + ' · ' + esc(sktTarihYazisi(k.e || Date.now())) + ' tarihinde eklendi</p>' +
-      '<p style="margin:0 0 10px"><b>' + durum + '</b></p>' +
-      '<label class="aciklama" for="sktTarih" style="display:block"><b>Son kullanma tarihi</b>' + (k.s ? ' (sen girdin)' : kural ? ' (tahmini: ' + esc(kural.not) + ')' : '') + '</label>' +
-      '<input type="date" id="sktTarih" value="' + tarihDegeri + '" style="display:block;width:100%;margin-top:6px">' +
-      (kural && kural.acik ? '<label style="display:flex;gap:8px;align-items:center;margin:4px 0 12px;font-size:15px"><input type="checkbox" id="sktAcildi"' + (k.a ? ' checked' : '') + '> Açıldı' +
+      '<p id="sktDurumYazi" style="margin:0 0 12px"><b>' + durum + '</b></p>' +
+      // Yenisini aldım paneli (düğmeye basınca açılır)
+      '<div class="skt-bolum skt-yeni" id="sktYeniKutu" hidden>' +
+        '<span class="skt-baslik"><b>🛒 Yenisini aldım</b></span>' +
+        '<label class="skt-baslik" for="sktYeniMiktar">Ne kadar aldın? <small>(ör. 1 kg, 3 adet, yarım kutu)</small></label>' +
+        '<input type="text" id="sktYeniMiktar" value="' + esc(miktar) + '" placeholder="ör. 2 adet" autocomplete="off">' +
+        '<div class="skt-cipler" role="group" aria-label="Eski ürün ne oldu?">' +
+          '<button type="button" class="skt-cip secili" data-skt-yeni-tur="ekle" aria-pressed="true">➕ Eskisine ekle</button>' +
+          '<button type="button" class="skt-cip" data-skt-yeni-tur="yerine" aria-pressed="false">🔄 Eskisi bitti, yerine koy</button>' +
+        '</div>' +
+        '<p class="skt-onizleme" id="sktYeniOnizleme"></p>' +
+      '</div>' +
+      '<div class="skt-bolum" id="sktMiktarKutu">' +
+        '<label for="sktMiktar"><b>Miktar</b> <small>(ör. 1 kg, 3 adet, yarım kutu)</small></label>' +
+        '<div class="skt-miktar">' +
+          '<button type="button" class="skt-adim" data-skt-adim="-1" aria-label="Azalt">−</button>' +
+          '<input type="text" id="sktMiktar" value="' + esc(miktar) + '" placeholder="Miktar yaz" autocomplete="off">' +
+          '<button type="button" class="skt-adim" data-skt-adim="1" aria-label="Artır">+</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="skt-bolum">' +
+        '<label for="sktTarih"><b>Son kullanma tarihi</b> <small id="sktTarihNot">' + (k.s ? '(sen girdin)' : kural ? '(tahmini: ' + esc(kural.not) + ')' : '') + '</small></label>' +
+        '<input type="date" id="sktTarih" value="' + tarihDegeri + '">' +
+        '<div class="skt-cipler"><span>Bugünden:</span>' + gunCipleri + '</div>' +
+      '</div>' +
+      (kural && kural.acik ? '<label class="skt-acildi" id="sktAcildiSatir"><input type="checkbox" id="sktAcildi"' + (k.a ? ' checked' : '') + ' style="width:20px;height:20px;margin:0"> Açıldı' +
         (k.a ? ' <small class="aciklama">(' + esc(sktTarihYazisi(k.a)) + ')</small>' : '') + '</label>' : '') +
-      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-        '<button class="btn" data-skt-kaydet="1">Kaydet</button>' +
+      '<div class="skt-dugmeler" id="sktAnaDugmeler">' +
+        '<button class="btn ana-is" data-skt-kaydet="1">💾 Kaydet</button>' +
+        '<button class="btn yesil" data-skt-yeni-ac="1">🛒 Yenisini aldım</button>' +
         '<button class="btn ikincil" data-skt-bitti="' + esc(key) + '">🧺 Bitti, listeden kaldır</button>' +
+      '</div>' +
+      '<div class="skt-dugmeler" id="sktYeniDugmeler" hidden>' +
+        '<button class="btn yesil ana-is" data-skt-yeni-onay="1">✔ Tamam, yenile</button>' +
+        '<button class="btn ikincil" data-skt-yeni-vazgec="1">Vazgeç</button>' +
       '</div>';
+    document.getElementById("sktYeniMiktar").oninput = sktYeniOnizle;
     menudenAc("sktPerdesi");
   }
   function sktKaydet() {
     var key = sktAcikAnahtar, k = sktKayit[key], b = sktUrunuBul(key);
     if (!k || !b) { perdeKapat("sktPerdesi"); return; }
+    var yeniMiktar = document.getElementById("sktMiktar").value.trim();
+    if (yeniMiktar !== (b.u.miktar || "").trim()) {
+      if (!sktMiktariYaz(b, yeniMiktar)) return;
+      k = sktKayit[key]; b = sktUrunuBul(key);
+      if (!k || !b) { perdeKapat("sktPerdesi"); return; }
+    }
     var acildiKutu = document.getElementById("sktAcildi"), girilen = document.getElementById("sktTarih").value;
     if (acildiKutu && acildiKutu.checked && !k.a) { k.a = Date.now(); k.s = null; }   // yeni açıldı: süre baştan hesaplanır
     else {
@@ -2098,6 +2390,113 @@
     mesaj("📅 " + basHarfBuyuk(b.u.ad) + " kaydedildi");
   }
   function isoGun(t) { var d = new Date(t); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+
+  // ---- Ürün penceresi: miktar ve "Yenisini aldım" ----
+  var sktPencere = null;
+  var BIRIM_ES = { kilo: "kg", kilogram: "kg", kg: "kg", gram: "gr", gr: "gr", g: "gr", litre: "lt", lt: "lt", l: "lt", tane: "adet", adet: "adet", pk: "paket", paket: "paket" };
+  function miktarCoz(m) {
+    m = (m || "").trim();
+    if (!m) return { sayi: null, birim: "" };
+    var r = m.match(/^(\d+(?:[.,]\d+)?)\s*(.*)$/);
+    if (r) return { sayi: parseFloat(r[1].replace(",", ".")), birim: r[2].trim() };
+    var k = m.split(" ")[0];
+    if (SAYI_KELIME[k] !== undefined) return { sayi: SAYI_KELIME[k], birim: m.slice(k.length).trim() };
+    return { sayi: null, birim: m };
+  }
+  function birimEs(b) { return BIRIM_ES[(b || "").toLocaleLowerCase("tr")] || (b || "").toLocaleLowerCase("tr"); }
+  function sayiMetni(x) { return x === 0.5 ? "yarım" : String(Math.round(x * 100) / 100).replace(".", ","); }
+  // İki miktarı topla: "1 kg" + "yarım kilo" → "1,5 kg". Toplanamıyorsa null.
+  function miktarTopla(a, b) {
+    var x = miktarCoz(a), y = miktarCoz(b);
+    if (!b.trim()) return a;
+    if (!a.trim()) return null;
+    if (x.sayi === null || y.sayi === null) return null;
+    if (birimEs(x.birim) !== birimEs(y.birim)) return null;
+    return sayiMetni(x.sayi + y.sayi) + (x.birim ? " " + x.birim : "");
+  }
+  // − / + düğmeleri
+  function sktMiktarAdim(yon) {
+    var kutu = document.getElementById("sktMiktar"), c = miktarCoz(kutu.value), x = c.sayi;
+    if (x === null) { if (yon > 0) kutu.value = ("1 " + c.birim).trim(); return; }
+    if (yon > 0) x = x < 1 ? 1 : Math.floor(x) + 1;
+    else x = x > 1 ? Math.ceil(x) - 1 : x === 1 ? 0.5 : 0.5;
+    kutu.value = sayiMetni(x) + (c.birim ? " " + c.birim : "");
+  }
+  // Notlardaki satırı yeni miktarla yaz. Ürün adı değişecekse (miktar alanına başka kelime yazıldıysa) yazmaz.
+  function sktMiktariYaz(b, yeniMiktar) {
+    var ad = basHarfBuyuk(b.u.ad), yeniSatir = (ad + (yeniMiktar ? " " + yeniMiktar : "")).trim();
+    var kontrol = notuAnla(yeniSatir);
+    if (kontrol.length !== 1 || normalIsim(kontrol[0].ad) !== normalIsim(b.u.ad)) {
+      mesaj("⚠️ Miktarı sayı ve ölçüyle yaz: 2 kg, 3 adet, yarım kutu gibi");
+      var kutu = document.getElementById("sktMiktar"); if (kutu && !kutu.closest("[hidden]")) kutu.focus();
+      return false;
+    }
+    var key = sktAnahtar(b.alanId, b.u.ad);
+    notlar[b.alanId] = notuAnla(notlar[b.alanId] || "").map(function (x) {
+      return sktAnahtar(b.alanId, x.ad) === key ? yeniSatir : x.ham.trim();
+    }).join(", ");
+    var not = document.getElementById("not-" + b.alanId); if (not) not.value = notlar[b.alanId];
+    hepsiniKaydet(); urunDegisiklikleriniKaydet();
+    return true;
+  }
+  function sktYeniMiktarHesapla() {
+    var b = sktUrunuBul(sktPencere.key); if (!b) return null;
+    var eski = (b.u.miktar || "").trim(), alinan = document.getElementById("sktYeniMiktar").value.trim();
+    if (sktPencere.yeniTur === "yerine") return { miktar: alinan, toplandi: false };
+    var t = miktarTopla(eski, alinan);
+    return t === null ? { miktar: alinan, toplandi: false, toplanamadi: true } : { miktar: t, toplandi: !!eski && !!alinan };
+  }
+  function sktYeniOnizle() {
+    var h = sktYeniMiktarHesapla(), el = document.getElementById("sktYeniOnizleme");
+    if (!h || !el) return;
+    var b = sktUrunuBul(sktPencere.key), eski = (b.u.miktar || "").trim();
+    el.innerHTML = h.toplanamadi
+      ? '⚠️ ' + esc(eski) + ' ile ' + esc(h.miktar || "bu") + ' toplanamadı. Yeni miktar <b>' + esc(h.miktar || "(boş)") + '</b> olacak. İstersen kendin düzelt.'
+      : 'Yeni miktar: <b>' + esc(h.miktar || "(yazılmadı)") + '</b>' + (h.toplandi ? ' <small class="aciklama">(' + esc(eski) + ' + ' + esc(document.getElementById("sktYeniMiktar").value.trim()) + ')</small>' : '');
+  }
+  function sktYeniModu(acik) {
+    var b = sktUrunuBul(sktPencere.key); if (!b) return;
+    document.getElementById("sktYeniKutu").hidden = !acik;
+    document.getElementById("sktMiktarKutu").hidden = acik;
+    document.getElementById("sktAnaDugmeler").hidden = acik;
+    document.getElementById("sktYeniDugmeler").hidden = !acik;
+    var acildi = document.getElementById("sktAcildiSatir"); if (acildi) acildi.hidden = acik;
+    var tarih = document.getElementById("sktTarih"), not = document.getElementById("sktTarihNot"), kural = sktKurali(b.alanId, b.u);
+    if (acik) {
+      tarih.value = kural ? isoGun(gunBasi(Date.now()) + kural.kapali * GUN) : "";
+      not.textContent = kural ? "(bugünden yeni tahmin: " + kural.not + ". İstersen değiştir)" : "(yeni ürünün tarihini gir)";
+      var m = document.getElementById("sktYeniMiktar");
+      m.value = (b.u.miktar || "").trim();
+      sktYeniTurSec("ekle");
+      setTimeout(function () { m.focus(); m.select(); }, 50);
+    } else {
+      var k = sktKayit[sktPencere.key] || {};
+      tarih.value = sktPencere.eskiTarih;
+      not.textContent = k.s ? "(sen girdin)" : kural ? "(tahmini: " + kural.not + ")" : "";
+    }
+  }
+  function sktYeniTurSec(tur) {
+    sktPencere.yeniTur = tur;
+    document.querySelectorAll("#sktYeniKutu [data-skt-yeni-tur]").forEach(function (el) {
+      var s = el.dataset.sktYeniTur === tur; el.classList.toggle("secili", s); el.setAttribute("aria-pressed", s ? "true" : "false");
+    });
+    sktYeniOnizle();
+  }
+  function sktYeniOnay() {
+    var key = sktPencere.key, b = sktUrunuBul(key); if (!b) { perdeKapat("sktPerdesi"); return; }
+    var h = sktYeniMiktarHesapla(), girilen = document.getElementById("sktTarih").value;
+    if (h.miktar !== (b.u.miktar || "").trim() && !sktMiktariYaz(b, h.miktar)) { document.getElementById("sktYeniMiktar").focus(); return; }
+    b = sktUrunuBul(key);
+    var simdi = Date.now(), k = sktKayit[key] || (sktKayit[key] = { e: simdi, d: simdi, t: b ? b.u.ham.trim() : "" });
+    k.e = simdi; k.d = simdi; k.a = null; k.h = null; k.s = null;
+    var kural = b ? sktKurali(b.alanId, b.u) : null;
+    if (girilen && (!kural || girilen !== isoGun(gunBasi(simdi) + kural.kapali * GUN))) k.s = girilen;
+    yaz("ma_skt", sktKayit);
+    perdeKapat("sktPerdesi");
+    if (b) { alaniGoster(b.alanId); hareketEkle("🛒", basHarfBuyuk(b.u.ad) + " yenisi alındı" + (h.miktar ? " · " + h.miktar : "") + " · " + ALAN_ADLARI[b.alanId]); }
+    sktKartlariniGoster();
+    mesaj("🛒 " + basHarfBuyuk(b ? b.u.ad : "") + " yenilendi" + (h.miktar ? " · " + h.miktar : ""));
+  }
   // Ürünü notlardan çıkar
   function sktBitti(key) {
     var b = sktUrunuBul(key); if (!b) return;
@@ -2314,8 +2713,8 @@
   // =====================================================================
   // Ürünlerim: buzdolabı (buzdolabı + derin dondurucu), ahşap kiler, mutfak çekmeceleri (ekipman, temizlik)
   function alanIcerigi(a, notBasligi) {
+    // Ekleme alanı en üstte, ürün listesi onun altında
     return '<h3>' + a.baslik + '</h3>' +
-      '<div id="anlasilan-' + a.id + '" class="raflar"></div>' +
       '<div class="dolap-not">' +
         (notBasligi ? '<p class="dolap-not-baslik">' + notBasligi + '</p>' : '') +
         '<p class="aciklama">' + a.aciklama + '</p>' +
@@ -2324,7 +2723,8 @@
           '<button class="btn ikincil" data-ses="' + a.id + '">🎤 Sesle ekle</button>' +
           '<span class="sayac" id="sayac-' + a.id + '"></span>' +
         '</div>' +
-      '</div>';
+      '</div>' +
+      '<div id="anlasilan-' + a.id + '" class="raflar"></div>';
   }
   var cekmeceDurumu = oku("ma_cekmece", {});
   function alanKartlariniCiz(alanlar, hedefId) {
@@ -2340,19 +2740,21 @@
         '<div class="dolap-ayaklar" aria-hidden="true"><span></span><span></span></div>' +
         '<div class="dolap-kapagi" aria-hidden="true"></div>' +
       '</div>' +
-      kiler.map(function (a) { return '<div class="kiler"><div class="kiler-ic">' + alanIcerigi(a, "✏️ Kilere ekle ya da düzelt") + '</div></div>'; }).join("");
+      kiler.map(function (a) { return cekmeceHtml(a, "✏️ Kilere ekle ya da düzelt", " kiler-cekmece", true); }).join("");
       return;
     }
     // Ekipman ve temizlik: dokununca kayarak açılan mutfak çekmeceleri
-    hedef.innerHTML = alanlar.map(function (a) {
-      var acik = !!cekmeceDurumu[a.id];
-      return '<div class="cekmece' + (acik ? ' acik' : '') + '" id="cekmece-' + a.id + '">' +
-        '<button class="cekmece-on" data-cekmece="' + a.id + '" aria-expanded="' + acik + '">' +
-          '<span class="cekmece-ad">' + a.baslik + '</span><span class="cekmece-sayi" id="cs-' + a.id + '"></span>' +
-          '<span class="cekmece-ok" aria-hidden="true">▼</span><span class="cekmece-kulp" aria-hidden="true"></span></button>' +
-        '<div class="cekmece-ic"><div><div class="cekmece-icerik">' + alanIcerigi(a, "") + '</div></div></div>' +
-      '</div>';
-    }).join("");
+    hedef.innerHTML = alanlar.map(function (a) { return cekmeceHtml(a, "", "", false); }).join("");
+  }
+  // Başlığına dokununca açılıp kapanan çekmece (Kilerim ilk açılışta açık gelir)
+  function cekmeceHtml(a, notBasligi, ekSinif, varsayilanAcik) {
+    var acik = cekmeceDurumu[a.id] === undefined ? varsayilanAcik : !!cekmeceDurumu[a.id];
+    return '<div class="cekmece' + ekSinif + (acik ? ' acik' : '') + '" id="cekmece-' + a.id + '">' +
+      '<button class="cekmece-on" data-cekmece="' + a.id + '" aria-expanded="' + acik + '">' +
+        '<span class="cekmece-ad">' + a.baslik + '</span><span class="cekmece-sayi" id="cs-' + a.id + '"></span>' +
+        '<span class="cekmece-ok" aria-hidden="true">▼</span><span class="cekmece-kulp" aria-hidden="true"></span></button>' +
+      '<div class="cekmece-ic"><div><div class="cekmece-icerik">' + alanIcerigi(a, notBasligi) + '</div></div></div>' +
+    '</div>';
   }
   function cekmeceAcKapa(id) {
     var c = document.getElementById("cekmece-" + id);
@@ -2390,7 +2792,7 @@
     if (cs) cs.textContent = urunler.length ? urunler.length + " kalem" : "boş";
     var rafli = !ekipmanAlaniMi(alanId) && !temizlikAlaniMi(alanId);
     if (rafli && !urunler.length) {
-      document.getElementById("anlasilan-" + alanId).innerHTML = '<div class="raf bos-raf"><span>Bu raf boş. Aşağıya yaz, ürünler buraya dizilsin.</span></div>';
+      document.getElementById("anlasilan-" + alanId).innerHTML = '<div class="raf bos-raf"><span>Bu raf boş. Yukarıya yaz, ürünler buraya dizilsin.</span></div>';
       return;
     }
     document.getElementById("anlasilan-" + alanId).innerHTML = reyonlaraAyir(urunler, reyonAdi, alanTuru(alanId)).map(function (g) {
@@ -4509,7 +4911,7 @@
     if (sicakVar) liste.push({ id: "pisir", metin: "🔥 <b>Misafirlerden 2 saat önce:</b> Ana yemeği ve fırında pişecekleri hazırla." });
     liste.push({ id: "sofra", metin: "🍽️ <b>1 saat önce:</b> Sofrayı kur: " + sofraTakimi + "." });
     liste.push({ id: "son", metin: "♨️ <b>30 dakika önce:</b> Sıcakları ocağa al, salatayı son anda sosla, buzdolabındakileri servis tabaklarına aktar." });
-    liste.push({ id: "keyif", metin: "🎶 <b>Misafirler gelince:</b> Müziği aç, ışıkları ayarla ve keyfini çıkar. Asistanın her şeyi hatırlıyor 😊" });
+    liste.push({ id: "keyif", metin: "🎶 <b>Misafirler gelince:</b> Işıkları ayarla, sevdiğin bir müzik aç ve keyfini çıkar. Asistanın her şeyi hatırlıyor 😊" });
     return liste;
   }
 
@@ -4785,6 +5187,12 @@
     else if (d.planPaylas) planPaylas();
     else if (d.planSil) { plan = null; sil("ma_plan"); planKartiniGoster(); bolumAc("anasayfa"); mesaj("Menü silindi"); }
     else if (d.sktKaydet !== undefined) sktKaydet();
+    else if (d.sktAdim) sktMiktarAdim(+d.sktAdim);
+    else if (d.sktGun) { var tk = document.getElementById("sktTarih"); if (tk) { tk.value = isoGun(gunBasi(Date.now()) + (+d.sktGun) * GUN); var tn = document.getElementById("sktTarihNot"); if (tn) tn.textContent = "(bugünden " + b.textContent.replace("+", "") + " sonra)"; } }
+    else if (d.sktYeniAc) sktYeniModu(true);
+    else if (d.sktYeniVazgec) sktYeniModu(false);
+    else if (d.sktYeniTur) sktYeniTurSec(d.sktYeniTur);
+    else if (d.sktYeniOnay) sktYeniOnay();
     else if (d.sktBitti) sktBitti(d.sktBitti);
     else if (d.unutHalaVar) unutulanHalaVar(d.unutHalaVar, d.tarif);
     else if (d.unutBitti) { sktBitti(d.unutBitti); }
@@ -4846,198 +5254,6 @@
   baglantiKontrolEt();
   acilisTamam = true;   // bundan sonraki kayıtlar kullanıcının kendi hareketidir
 
-  // =====================================================================
-  //  MÜZİK: elektro gitar soloları (blues, jazz, rock)
-  //  Hiçbir şarkı dosyası yok: solo, telefonda o an rastgele çalınır (Web Audio).
-  //  Telif derdi yok, internet gerekmez, uygulamayı ağırlaştırmaz.
-  //  Müzik kapalı başlar. 🎵 ilk basışta açılır, sonra bastıkça tür değişir.
-  // =====================================================================
-  var MUZIK_TURLERI = [
-    { ad: "Blues", kisa: "BLUES", dizi: [0, 3, 5, 6, 7, 10], tonlar: [40, 45, 43, 47], tempo: [68, 92], swing: .66, buk: .35, titresim: .8,
-      surus: 9, filtre: 2600, ses: ["sawtooth", "square"], sureler: [[1, 3], [.5, 4], [.33, 3], [2, 1], [1.5, 1]], ekoSure: .38, eko: .28, ara: [1, 2.5] },
-    { ad: "Jazz", kisa: "JAZZ", dizi: [0, 2, 3, 5, 7, 9, 10, 11], tonlar: [41, 46, 48, 43], tempo: [104, 142], swing: .64, buk: .05, titresim: .35,
-      surus: 1.6, filtre: 1500, ses: ["triangle", "sawtooth"], sureler: [[.5, 7], [1, 2], [.25, 2], [1.5, 1]], ekoSure: .3, eko: .14, ara: [.5, 1.5], kromatik: .25 },
-    { ad: "Rock", kisa: "ROCK", dizi: [0, 3, 5, 7, 10, 2, 8], tonlar: [40, 45, 38, 42], tempo: [118, 150], swing: .5, buk: .3, titresim: 1,
-      surus: 26, filtre: 3400, ses: ["sawtooth", "sawtooth"], sureler: [[.25, 5], [.5, 4], [1, 2], [2, 1]], ekoSure: .32, eko: .22, ara: [.5, 1.5] }
-  ];
-  var muzik = oku("ma_muzik", { acik: false, tur: 0 });
-  if (!(muzik.tur >= 0 && muzik.tur < MUZIK_TURLERI.length)) muzik.tur = 0;
-  var ses = null;   // { ctx, ana, giris, sekil, filtre, ... }
-  var muzikZaman = null, muzikDurum = null;
-
-  function rastgele(a, b) { return a + Math.random() * (b - a); }
-  function birini(dizi) { return dizi[Math.floor(Math.random() * dizi.length)]; }
-  function agirlikliSec(liste) {
-    var top = liste.reduce(function (t, x) { return t + x[1]; }, 0), r = Math.random() * top;
-    for (var i = 0; i < liste.length; i++) { r -= liste[i][1]; if (r <= 0) return liste[i][0]; }
-    return liste[0][0];
-  }
-  function bozulmaEgrisi(miktar) {
-    var n = 2048, e = new Float32Array(n);
-    for (var i = 0; i < n; i++) { var x = i * 2 / n - 1; e[i] = Math.tanh(x * miktar) / Math.tanh(miktar); }
-    return e;
-  }
-  function sesKur() {
-    if (ses) return ses;
-    var C = window.AudioContext || window.webkitAudioContext;
-    if (!C) return null;
-    var ctx = new C(), s = { ctx: ctx };
-    s.ana = ctx.createGain(); s.ana.gain.value = 0;
-    s.giris = ctx.createGain(); s.giris.gain.value = 1;
-    s.sekil = ctx.createWaveShaper(); s.sekil.oversample = "4x";
-    s.alcak = ctx.createBiquadFilter(); s.alcak.type = "lowpass"; s.alcak.Q.value = .8;
-    s.gogus = ctx.createBiquadFilter(); s.gogus.type = "peaking"; s.gogus.frequency.value = 900; s.gogus.gain.value = 4;
-    s.yuksek = ctx.createBiquadFilter(); s.yuksek.type = "highpass"; s.yuksek.frequency.value = 90;
-    s.cikis = ctx.createGain();
-    s.eko = ctx.createDelay(1.5); s.ekoGeri = ctx.createGain(); s.ekoSus = ctx.createBiquadFilter(); s.ekoSus.type = "lowpass"; s.ekoSus.frequency.value = 2200;
-    s.giris.connect(s.sekil); s.sekil.connect(s.yuksek); s.yuksek.connect(s.gogus); s.gogus.connect(s.alcak); s.alcak.connect(s.cikis);
-    s.cikis.connect(s.ana);
-    s.cikis.connect(s.eko); s.eko.connect(s.ekoSus); s.ekoSus.connect(s.ekoGeri); s.ekoGeri.connect(s.eko); s.ekoGeri.connect(s.ana);
-    s.ana.connect(ctx.destination);
-    ses = s; return s;
-  }
-  function tonAyarla(t) {
-    var s = ses, z = s.ctx.currentTime;
-    s.sekil.curve = bozulmaEgrisi(t.surus);
-    s.giris.gain.setValueAtTime(t.surus > 5 ? .9 : .7, z);
-    s.cikis.gain.setValueAtTime(t.surus > 20 ? .32 : t.surus > 5 ? .45 : .8, z);
-    s.alcak.frequency.setValueAtTime(t.filtre, z);
-    s.eko.delayTime.setValueAtTime(t.ekoSure, z); s.ekoGeri.gain.setValueAtTime(t.eko, z);
-  }
-  function midiHz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
-  // Tek bir gitar notası: pena vuruşu, istersen bükme (bend), titreşim (vibrato) ve kaydırma (slide)
-  function notaCal(t, m, sure, o) {
-    var ctx = ses.ctx, f = midiHz(m), bitis = t + sure;
-    var zarf = ctx.createGain(); zarf.gain.setValueAtTime(0, t);
-    var g = o.guc || .5;
-    zarf.gain.linearRampToValueAtTime(g, t + .006);
-    zarf.gain.exponentialRampToValueAtTime(g * .55, t + Math.min(.35, sure * .6) + .01);
-    zarf.gain.setValueAtTime(g * .55, Math.max(t + .02, bitis - .06));
-    zarf.gain.linearRampToValueAtTime(0.0001, bitis + .05);
-    zarf.connect(ses.giris);
-    var oscs = [];
-    o.tur.ses.forEach(function (dalga, i) {
-      var osc = ctx.createOscillator(); osc.type = dalga;
-      osc.detune.value = i ? -7 : 4;
-      var bas = o.kaydir ? midiHz(m + o.kaydir) : f;
-      osc.frequency.setValueAtTime(bas, t);
-      if (o.kaydir) osc.frequency.exponentialRampToValueAtTime(f, t + Math.min(.09, sure * .4));
-      if (o.buk) {
-        osc.frequency.setValueAtTime(f, t + sure * .25);
-        osc.frequency.exponentialRampToValueAtTime(midiHz(m + o.buk), t + sure * .25 + Math.min(.16, sure * .4));
-      }
-      var kg = ctx.createGain(); kg.gain.value = i ? .5 : .75;
-      osc.connect(kg); kg.connect(zarf);
-      osc.start(t); osc.stop(bitis + .1);
-      oscs.push(osc);
-    });
-    if (o.titre && sure > .3) {
-      var lfo = ctx.createOscillator(), lg = ctx.createGain();
-      lfo.frequency.value = rastgele(5, 6.3);
-      lg.gain.setValueAtTime(0, t); lg.gain.linearRampToValueAtTime(f * (o.buk ? 1.12 : 1) * .014 * o.titre, t + Math.min(.4, sure * .6));
-      lfo.connect(lg); oscs.forEach(function (x) { lg.connect(x.frequency); });
-      lfo.start(t); lfo.stop(bitis + .1);
-    }
-  }
-  // Rastgele bir solo "parçası" kur: ton, tempo ve ilk motif her seferinde farklı
-  function yeniParca() {
-    var t = MUZIK_TURLERI[muzik.tur];
-    muzikDurum = { tur: t, kok: birini(t.tonlar) + 12, tempo: rastgele(t.tempo[0], t.tempo[1]), sonraki: ses.ctx.currentTime + .15,
-      derece: 0, motif: null, tekrar: 0, bitis: ses.ctx.currentTime + rastgele(50, 80) };
-    tonAyarla(t);
-  }
-  function dereceNota(d) {
-    var t = muzikDurum.tur, n = t.dizi.length, oktav = Math.floor(d / n), i = ((d % n) + n) % n;
-    var sirali = t.dizi.slice().sort(function (a, b) { return a - b; });
-    return muzikDurum.kok + oktav * 12 + sirali[i];
-  }
-  function motifUret() {
-    var t = muzikDurum.tur, uz = Math.floor(rastgele(3, 8)), m = [], d = muzikDurum.derece;
-    for (var i = 0; i < uz; i++) {
-      var adim = birini([-2, -1, -1, 1, 1, 2, 0, 3, -3]);
-      d = Math.max(0, Math.min(t.dizi.length * 2 + 2, d + adim));
-      var son = i === uz - 1;
-      m.push({ d: son ? birini([0, t.dizi.length, Math.round(t.dizi.length / 2)]) + (d > t.dizi.length ? t.dizi.length : 0) : d,
-        sure: son ? agirlikliSec([[1.5, 2], [2, 2], [1, 1]]) : agirlikliSec(t.sureler),
-        buk: Math.random() < t.buk ? birini([1, 2, 2]) : 0, kaydir: Math.random() < .12 ? birini([-2, -1]) : 0 });
-    }
-    muzikDurum.derece = d;
-    return m;
-  }
-  function muzikPlanla() {
-    if (!ses || !muzik.acik) return;
-    var ctx = ses.ctx;
-    if (ctx.currentTime > muzikDurum.bitis) yeniParca();   // aynı türde sıradaki solo da rastgele
-    var dur = muzikDurum, t = dur.tur, vurus = 60 / dur.tempo;
-    while (dur.sonraki < ctx.currentTime + .6) {
-      if (!dur.motif || dur.tekrar <= 0) { dur.motif = motifUret(); dur.tekrar = Math.random() < .45 ? 2 : 1; }
-      var motif = dur.motif, z = dur.sonraki;
-      motif.forEach(function (n, i) {
-        var s = n.sure * vurus;
-        if (n.sure === .5 && t.swing > .5) s = vurus * (i % 2 ? 1 - t.swing : t.swing) * 1;   // swing
-        var nota = dereceNota(n.d);
-        if (t.kromatik && Math.random() < t.kromatik && i < motif.length - 1) nota += birini([-1, 1]);
-        if (dur.tekrar === 1 && motif.length > 3 && i === motif.length - 2 && Math.random() < .5) nota = dereceNota(n.d + 1);   // ufak değişiklik
-        notaCal(z, Math.min(88, nota), Math.max(.09, s * .95), { tur: t, buk: n.buk, kaydir: n.kaydir, titre: t.titresim, guc: rastgele(.38, .55) });
-        z += s;
-      });
-      dur.tekrar--;
-      dur.sonraki = z + vurus * rastgele(t.ara[0], t.ara[1]);   // nefes payı
-    }
-  }
-  function muzikBaslat() {
-    if (!sesKur()) { mesaj("Bu tarayıcı müzik çalamıyor 😔"); return; }
-    var ctx = ses.ctx;
-    if (ctx.state === "suspended") ctx.resume();
-    if (!muzikZaman) muzikZaman = setInterval(muzikPlanla, 120);
-    ses.ana.gain.cancelScheduledValues(ctx.currentTime);
-    ses.ana.gain.setValueAtTime(ses.ana.gain.value, ctx.currentTime);
-    ses.ana.gain.linearRampToValueAtTime(.3, ctx.currentTime + .4);
-    yeniParca(); muzikPlanla();
-  }
-  function muzikDurdur() {
-    if (muzikZaman) { clearInterval(muzikZaman); muzikZaman = null; }
-    if (ses) {
-      var z = ses.ctx.currentTime;
-      ses.ana.gain.cancelScheduledValues(z); ses.ana.gain.setValueAtTime(ses.ana.gain.value, z); ses.ana.gain.linearRampToValueAtTime(0, z + .25);
-      setTimeout(function () { if (!muzik.acik && ses) ses.ctx.suspend(); }, 400);
-    }
-  }
-  function muzikDugmeleriniGuncelle() {
-    var b = document.getElementById("muzikBtn"), k = document.getElementById("muzikKapat");
-    if (!b) return;
-    var t = MUZIK_TURLERI[muzik.tur];
-    b.classList.toggle("caliyor", muzik.acik);
-    document.getElementById("muzikTur").textContent = muzik.acik ? t.kisa : "";
-    b.title = muzik.acik ? t.ad + " çalıyor. Bas: tür değişsin" : "Müziği aç (blues, jazz, rock gitar soloları)";
-    k.classList.toggle("sonuk", !muzik.acik);
-  }
-  function muzikDugmesi() {
-    if (muzik.acik) muzik.tur = (muzik.tur + 1) % MUZIK_TURLERI.length;
-    muzik.acik = true; yaz("ma_muzik", muzik);
-    muzikBaslat(); muzikDugmeleriniGuncelle();
-    mesaj("🎸 " + MUZIK_TURLERI[muzik.tur].ad + " gitar solosu çalıyor. Tür değiştirmek için 🎵'ya bas.");
-  }
-  function muzikSustur() {
-    muzik.acik = false; yaz("ma_muzik", muzik);
-    muzikDurdur(); muzikDugmeleriniGuncelle();
-  }
-  document.getElementById("muzikBtn").addEventListener("click", function (e) { e.stopPropagation(); muzikDugmesi(); });
-  document.getElementById("muzikKapat").addEventListener("click", function (e) { e.stopPropagation(); if (muzik.acik) { muzikSustur(); mesaj("🔇 Müzik sustu"); } });
-  // Müziği seven kişide: bir sonraki açılışta ekrana ilk dokunuşta kendiliğinden başlar
-  if (muzik.acik) {
-    var ilkDokunus = function (e) {
-      document.removeEventListener("pointerup", ilkDokunus, true);
-      if (!muzik.acik || (e.target.closest && e.target.closest("#muzikBtn, #muzikKapat"))) return;
-      muzikBaslat();
-    };
-    document.addEventListener("pointerup", ilkDokunus, true);
-  }
-  document.addEventListener("visibilitychange", function () {
-    if (!ses || !muzik.acik) return;
-    if (document.hidden) ses.ctx.suspend(); else { ses.ctx.resume(); muzikDurum.sonraki = Math.max(muzikDurum.sonraki, ses.ctx.currentTime + .1); }
-  });
-  muzikDugmeleriniGuncelle();
   </script>
 <script>
   // PWA: service worker'ı kaydet (çevrimdışı çalışma için)
