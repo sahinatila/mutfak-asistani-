@@ -187,12 +187,11 @@ var MUZIK_LISTESI = [
     else if (simdiki >= 0) {
       var m = MUZIK_LISTESI[simdiki];
       simdi = '<div class="muzik-simdi"><span>' + (durum === "yukleniyor" ? "Yükleniyor…" : (caliyor ? "Şimdi çalıyor" : "Durdu")) + "</span><b>" + kacis(m[1]) + "</b><small>" + kacis(m[2]) + " · " + sure(m[3]) + "</small></div>";
-    } else simdi = '<div class="muzik-simdi"><span>Müzik kapalı</span><small>Bir türe dokun ya da ▶ ile başlat. Ayar yapmazsan 80 şarkı karışık çalar.</small></div>';
+    } else simdi = '<div class="muzik-simdi"><span>Müzik kapalı</span><small>Bir türe dokun ya da ▶ ile başlat. Ayar yapmazsan bütün şarkılar karışık çalar.</small></div>';
     menu.innerHTML = "<b>🎵 Arka plan müziği</b>" + simdi +
       TURLER.map(function (t) {
-        var n = grup(t.id).length;
         return '<div class="muzik-satir' + (t.id === tur ? " aktif" : "") + '">' +
-          '<button class="muzik-tur" data-muzik-tur="' + t.id + '"><span>' + t.simge + "</span>" + t.ad + " <small>" + n + " şarkı</small></button>" +
+          '<button class="muzik-tur" data-muzik-tur="' + t.id + '"><span>' + t.simge + "</span>" + t.ad + "</button>" +
           '<button class="muzik-degistir" data-muzik-degistir="' + t.id + '" title="' + t.ad + ': başka bir şarkı" aria-label="' + t.ad + ': başka bir şarkı">🔀</button></div>';
       }).join("") +
       '<label class="muzik-ses">🔈<input type="range" id="muzikSes" min="0" max="1" step="0.05" value="' + ses.volume + '" aria-label="Ses seviyesi">🔊</label>' +
