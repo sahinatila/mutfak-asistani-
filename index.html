@@ -127,6 +127,10 @@
   .etiket { display: inline-block; padding: 4px 10px; border-radius: 14px; font-size: 13px; margin: 3px 3px 3px 0; }
   .etiket small { opacity: .75; }
   .etiket.sktli { cursor: pointer; }
+  .raf-urunler .etiket { position: relative; }
+  .urun-sil { position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; padding: 0; border: 0; border-radius: 50%;
+    background: #c0392b; color: #fff; font-size: 11px; line-height: 16px; text-align: center; cursor: pointer; opacity: .85; z-index: 2; }
+  .urun-sil:hover, .urun-sil:focus-visible { opacity: 1; transform: scale(1.15); }
   .skt-rozet { font-size: 11px; font-weight: 700; margin-left: 4px; padding: 1px 6px; border-radius: 8px; background: var(--az-zemin); color: var(--az-yazi); }
   .skt-rozet.gecti { background: var(--yok-zemin); color: var(--yok-yazi); }
   .skt-kart { border-left: 4px solid var(--turuncu); }
@@ -165,6 +169,50 @@
   .plan-tarif { cursor: pointer; flex: 1; }
   .plan-tarif:hover { color: var(--ana); }
   .plan-degistir { background: var(--temel-zemin); border: none; border-radius: 8px; padding: 4px 8px; cursor: pointer; font-size: 15px; }
+  /* Menü takvim görünümü */
+  .plan-gorunum { display: inline-flex; background: var(--temel-zemin); border-radius: 12px; padding: 3px; margin: 0 0 12px; gap: 2px; }
+  .plan-gorunum button { border: none; background: transparent; color: var(--yazi); padding: 7px 14px; border-radius: 9px; cursor: pointer; font: inherit; font-size: 14px; font-weight: 600; }
+  .plan-gorunum button.aktif { background: var(--kart); color: var(--ana); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+  .takvim-hafta { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin: 0 0 14px; }
+  .takvim-sutun { background: var(--kart); border: 1px solid var(--cizgi); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+  .takvim-sutun.bugun { border: 2px solid var(--ana); }
+  .takvim-sutun-bas { background: var(--temel-zemin); text-align: center; padding: 8px 4px; line-height: 1.2; }
+  .takvim-sutun.bugun .takvim-sutun-bas { background: var(--ana); color: #fff; }
+  .takvim-sutun-bas small { display: block; font-size: 11px; opacity: .8; text-transform: uppercase; letter-spacing: .5px; }
+  .takvim-sutun-bas b { font-size: 20px; }
+  .takvim-yemek { padding: 8px; border-top: 1px solid var(--cizgi); font-size: 13px; line-height: 1.3; display: flex; flex-direction: column; gap: 4px; }
+  .takvim-sutun-bas + .takvim-yemek { border-top: none; }
+  .takvim-yemek .plan-tarif { word-break: break-word; }
+  .takvim-yemek-alt { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+  .takvim-yemek-alt .rozet { font-size: 11px; padding: 1px 6px; }
+  .takvim-yemek-alt .plan-degistir { padding: 2px 6px; font-size: 13px; }
+  .takvim-ay { background: var(--kart); border: 1px solid var(--cizgi); border-radius: 14px; padding: 10px; margin: 0 0 14px; }
+  .takvim-ay-baslik { text-align: center; font-weight: 700; font-size: 16px; margin: 2px 0 10px; }
+  .takvim-izgara { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+  .takvim-gunadi { text-align: center; font-size: 11px; font-weight: 700; color: var(--soluk); text-transform: uppercase; padding: 2px 0 4px; }
+  .takvim-hucre { background: var(--kutu); border: 1px solid var(--cizgi); border-radius: 10px; min-height: 92px; padding: 5px; text-align: left; cursor: pointer; font: inherit; color: var(--yazi); display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow: hidden; }
+  .takvim-hucre:hover { border-color: var(--ana); }
+  .takvim-hucre.bos-gun { background: transparent; border-style: dashed; opacity: .45; cursor: default; }
+  .takvim-hucre.bugun { border: 2px solid var(--ana); }
+  .takvim-hucre.secili { background: var(--ana); border-color: var(--ana); color: #fff; }
+  .takvim-hucre.gecmis:not(.secili) { opacity: .6; }
+  .takvim-no { font-weight: 700; font-size: 13px; }
+  .takvim-no small { font-weight: 600; font-size: 10px; opacity: .75; margin-left: 2px; }
+  .takvim-mini { font-size: 11px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .takvim-ikonlar { display: none; font-size: 10px; letter-spacing: -1px; white-space: nowrap; }
+  .takvim-secili-bas { font-weight: 700; margin: 0 4px 8px; }
+  @media (max-width: 760px) {
+    .takvim-hafta { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 46%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+    .takvim-sutun { scroll-snap-align: start; }
+  }
+  @media (max-width: 600px) {
+    .takvim-ay { padding: 6px; }
+    .takvim-izgara { gap: 3px; }
+    .takvim-hucre { min-height: 52px; padding: 4px 2px; align-items: center; border-radius: 8px; }
+    .takvim-mini { display: none; }
+    .takvim-ikonlar { display: block; }
+    .takvim-no small { display: block; margin: 0; }
+  }
   .reyon-baslik { font-size: 12px; font-weight: 700; color: var(--soluk); margin: 10px 0 2px; text-transform: uppercase; letter-spacing: .03em; }
   .reyon-baslik:first-child { margin-top: 4px; }
   .var { background: var(--var-zemin); color: var(--var-yazi); }
@@ -414,6 +462,13 @@
   .mod-kart .ikon { font-size: 34px; }
   .mod-kart b { display: block; font-size: 17px; margin: 8px 0 4px; }
   .mod-kart span { color: var(--soluk); font-size: 13px; line-height: 1.45; }
+  .rozet.afr { background: #fde2e7; color: #b8324f; white-space: normal; }
+  body.koyu .rozet.afr { background: #4a2330; color: #ffb3c2; }
+  .afr-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-top: 10px; }
+  .afr-besin { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--cizgi); border-radius: 12px; padding: 10px 12px; }
+  .afr-besin .ikon { font-size: 24px; line-height: 1; }
+  .afr-besin b { display: block; font-size: 14px; margin-bottom: 2px; }
+  .afr-besin span { color: var(--soluk); font-size: 13px; line-height: 1.45; }
   .kisi-secim { display: flex; align-items: center; justify-content: center; gap: 22px; margin: 20px 0; }
   .kisi-secim .sayi { font-size: 64px; font-weight: bold; color: var(--ana); min-width: 110px; text-align: center; }
   .kisi-secim button { width: 56px; height: 56px; border-radius: 50%; font-size: 28px; border: none; background: var(--temel-zemin); color: var(--yazi); cursor: pointer; }
@@ -944,6 +999,11 @@
   .sss-ozet a { font-size: 13px; padding: 5px 11px; border-radius: 99px; background: var(--kart); color: var(--yazi); text-decoration: none; border: 1px solid var(--cizgi); }
   .sss-ozet a:hover { border-color: var(--ana); color: var(--ana); }
   .sss-grup { scroll-margin-top: 80px; }
+  /* SSS: Saklama Önerileri & Besin Türleri (uzun listeli rehber maddeleri) */
+  .sss-oge.sss-rehber.acik .sss-cevap { max-height: 9000px; }
+  .sss-liste { margin: 0; padding-left: 18px; }
+  .sss-liste li { margin: 0 0 7px; line-height: 1.5; }
+  .sss-liste li:last-child { margin-bottom: 0; }
 
   /* ---------- Geniş ekranda menü, üst şeridin ortasında ---------- */
   header.menulu { position: sticky; top: 0; z-index: 6; padding-top: 12px; padding-bottom: 12px; }
@@ -1649,9 +1709,9 @@
     <div class="sss-ust">
       <div class="balon">🤔💬</div>
       <h2 class="buyuk">Sık Sorulan Sorular</h2>
-      <p class="aciklama">Uygulamaya dair merak ettiklerin, şaşırtıcı mutfak hileleri ve lezzet sırları: <b>50 soru</b>, kısa ve dürüst cevaplarla. Bir soruya dokun, açılsın. 👇</p>
+      <p class="aciklama">Uygulamaya dair merak ettiklerin, şaşırtıcı mutfak hileleri ve lezzet sırları: <b>50 soru</b>, kısa ve dürüst cevaplarla. En altta da <b>saklama önerileri</b> ve <b>besin türleri</b> rehberi var. Bir soruya dokun, açılsın. 👇</p>
     </div>
-    <div class="sss-ozet"><a href="#sss-gizlilik" onclick="return sssGit('sss-gizlilik')">🔒 Gizlilik & Verilerin</a><a href="#sss-ipucu" onclick="return sssGit('sss-ipucu')">🍳 Mutfak İpuçları</a><a href="#sss-hile" onclick="return sssGit('sss-hile')">💡 Mutfak Hileleri</a><a href="#sss-lezzet" onclick="return sssGit('sss-lezzet')">✨ Lezzet Sırları</a><a href="#sss-dogru" onclick="return sssGit('sss-dogru')">🔍 Doğru mu? Mitler & Gerçekler</a><a href="#sss-hijyen" onclick="return sssGit('sss-hijyen')">🧼 Hijyen & Güvenli Mutfak</a><a href="#sss-tasarruf" onclick="return sssGit('sss-tasarruf')">♻️ Tasarruf & Saklama</a></div>
+    <div class="sss-ozet"><a href="#sss-gizlilik" onclick="return sssGit('sss-gizlilik')">🔒 Gizlilik & Verilerin</a><a href="#sss-ipucu" onclick="return sssGit('sss-ipucu')">🍳 Mutfak İpuçları</a><a href="#sss-hile" onclick="return sssGit('sss-hile')">💡 Mutfak Hileleri</a><a href="#sss-lezzet" onclick="return sssGit('sss-lezzet')">✨ Lezzet Sırları</a><a href="#sss-dogru" onclick="return sssGit('sss-dogru')">🔍 Doğru mu? Mitler & Gerçekler</a><a href="#sss-hijyen" onclick="return sssGit('sss-hijyen')">🧼 Hijyen & Güvenli Mutfak</a><a href="#sss-tasarruf" onclick="return sssGit('sss-tasarruf')">♻️ Tasarruf & Saklama</a><a href="#sss-saklama" onclick="return sssGit('sss-saklama')">🧊 Saklama Önerileri</a><a href="#sss-besin" onclick="return sssGit('sss-besin')">📚 Besin Türleri</a></div>
 
     <div class="sss-grup" id="sss-gizlilik">🔒 Gizlilik & Verilerin</div>
 
@@ -1816,6 +1876,139 @@
 
     <div class="sss-oge"><button class="sss-soru" data-sss="50"><span class="sss-simge">🌿</span><span class="sss-metin">Maydanoz, dereotu çabuk soluyor</span><span class="sss-ok">▾</span></button>
       <div class="sss-cevap"><div class="sss-cevap-ic">Yeşillikleri bir çiçek gibi sakla: saplarının ucunu biraz kes, <b>içinde az su olan bir bardağa</b> koy, üstüne gevşekçe bir poşet geçir ve buzdolabına kaldır. Günlerce taze kalır. Fesleğen ise soğukta karardığı için tezgâhta, bardakta durmayı sever.</div></div></div>
+
+    <div class="sss-grup" id="sss-saklama">🧊 Saklama Önerileri</div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="51"><span class="sss-simge">🥚</span><span class="sss-metin">Yumurta</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Yumurtayı kendi kolisinde, sivri ucu aşağıda olacak şekilde buzdolabının iç rafında tut; kapak rafında ısı sık değiştiği için çabuk bayatlar, yıkamayı da kırmadan hemen önceye bırak.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="52"><span class="sss-simge">🥕</span><span class="sss-metin">Sebzeler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Sebzeleri yıkamadan, nemini çekecek bir kâğıt havluya sarıp sebzelik çekmecesinde sakla; domates, patlıcan ve kabak gibi soğuğu sevmeyenler ise birkaç gün serin tezgâhta daha lezzetli kalır.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="53"><span class="sss-simge">🧀</span><span class="sss-metin">Peynirler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Beyaz peynir:</b> Kendi salamurasında ya da üstünü örtecek kadar hafif tuzlu suda, kapalı kapta tutarsan haftalarca yumuşak kalır.</li><li><b>Ezine:</b> Salamurasından çıkarmadan, üstü hep suyla örtülü olarak buzdolabında beklet ki kuruyup ufalanmasın.</li><li><b>Kaşar:</b> Kesilen yüzü kurumasın diye streç filme ya da yağlı kâğıda sarıp buzdolabının alt rafına koy.</li><li><b>Eski kaşar:</b> Zaten olgun ve kuru olduğu için yağlı kâğıda sarılı hâlde buzdolabında uzun süre dayanır.</li><li><b>Tulum:</b> Hava almayan bir kapta, ağzı sıkıca kapalı tutulursa kurumadan aylarca saklanır.</li><li><b>Lor:</b> Çok çabuk ekşidiği için kapalı kapta buzdolabında tut ve 2-3 gün içinde bitir.</li><li><b>Çökelek:</b> Tazesini kapalı kapta buzdolabında, kurutulmuşunu ise bez torbada serin ve kuru bir yerde sakla.</li><li><b>Çeçil (civil):</b> Tellerinin kurumaması için streçe sarıp buzdolabında tut; kuruduysa birkaç dakika ılık suda bekletmek yumuşatır.</li><li><b>Örgü ve dil peyniri:</b> Açıldıktan sonra streçe sarılı ya da kapalı kapta buzdolabında bir hafta içinde tüketilmeli.</li><li><b>Otlu peynir:</b> Olgunlaştığı tuzlu suyun içinde, ağzı kapalı kavanozda buzdolabında saklanır.</li><li><b>Mihaliç:</b> Sert ve tuzlu yapısı sayesinde yağlı kâğıda sarılıp buzdolabında aylarca bekleyebilir.</li><li><b>Kars gravyeri:</b> Kesik yüzünü yağlı kâğıtla kapatıp buzdolabının en az soğuk rafında sakla, nefes alması yeterli.</li><li><b>Hellim:</b> Paketi açıldıysa tuzlu suda kapalı kapta tut; istersen dilimleyip dondurabilir, sonra doğrudan tavaya atabilirsin.</li><li><b>Sürk:</b> Kuru kalması için bez ya da kâğıda sarılı olarak serin yerde, uzun süre için zeytinyağı dolu kavanozda sakla.</li><li><b>Divle obruk ve diğer küflü peynirler:</b> Nefes alabilmeleri için yağlı kâğıda sar, kokusu başka yiyeceklere geçmesin diye ayrı bir kapta tut.</li><li><b>Mozzarella:</b> Kendi suyunda, kapalı kapta buzdolabında bekletip açtıktan sonra 2-3 gün içinde tüket.</li><li><b>Krem peynir ve labne:</b> Kapağını sıkıca kapat ve her seferinde temiz kaşık kullan, böylece küf tutmaz.</li><li><b>Parmesan, cheddar gibi sert peynirler:</b> Yağlı kâğıda sarılı hâlde buzdolabında haftalarca dayanır, rendelenmişini küçük kaplarda dondurabilirsin.</li><li><b>Brie ve camembert:</b> Kendi kutusunda saklayıp yemeden yarım saat önce dışarı çıkarırsan kokusu ve kıvamı açılır.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="54"><span class="sss-simge">🌾</span><span class="sss-metin">Un</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Unu ağzı sıkı kapanan bir kapta, serin, kuru ve karanlık bir dolapta tutarsan böceklenmez; kabın içine birkaç defne yaprağı koymak da işe yarar.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="55"><span class="sss-simge">🍯</span><span class="sss-metin">Bal</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Balı cam kavanozda, kapağı kapalı olarak oda sıcaklığında sakla; buzdolabı şekerlenmesini hızlandırır, şekerlenirse kavanozu ılık suda bekletmen yeter.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="56"><span class="sss-simge">🥩</span><span class="sss-metin">Etler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Tavuk:</b> Çiğ tavuğu suyu başka yiyeceklere damlamasın diye kapalı kapta en alt rafta tut ve 1-2 gün içinde pişir.</li><li><b>Balık:</b> Temizlenmiş balığı buzdolabının en soğuk yerinde, mümkünse buz dolu bir kabın üstünde tutup aynı gün ya da ertesi gün pişir.</li><li><b>Dana eti ve kıyma:</b> Kıymayı 1 gün, parça eti 2-3 gün buzdolabında tut; dondururken kıymayı ince ve yassı poşetlere yayarsan çabuk çözülür.</li><li><b>Hindi:</b> Tavuk gibi en alt rafta, kapalı kapta saklanır; bütün hindiyi buzdolabında 1-2 günde yavaşça çözdür.</li><li><b>Sakatat:</b> Ciğer, yürek, böbrek gibi sakatatlar çok çabuk bozulduğu için alındığı gün pişirilmeli ya da hemen dondurulmalı.</li><li><b>Pastırma:</b> Dilimleri kurumasın diye yağlı kâğıda sarıp hava almayan bir kapta buzdolabında sakla.</li><li><b>Sucuk:</b> Kesilen ucunu streçle kapatıp buzdolabında tut, kangalı bütün hâlde dondurabilirsin.</li><li><b>Sosis:</b> Paketi açıldıktan sonra kapalı kapta buzdolabında 3-4 gün içinde bitir, kalanını dondur.</li><li><b>Unutma:</b> Buzdolabında çözülen eti yeniden dondurmadan önce mutlaka pişirmelisin.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="57"><span class="sss-simge">🧅</span><span class="sss-metin">Kuru soğan</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Kuru soğanı file ya da hasır sepette serin, kuru ve havadar bir köşede tut; patatesin yanına koyma, ikisi birbirini çabuk bozar.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="58"><span class="sss-simge">🥔</span><span class="sss-metin">Patates</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Patatesi ışık görmeyen serin bir yerde, kâğıt torbada ya da kasada sakla; ışıkta yeşeren kısımları pişirmeden önce mutlaka kes.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="59"><span class="sss-simge">🍎</span><span class="sss-metin">Meyveler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Elma, muz ve armut gibi olgunlaştırıcı gaz salan meyveleri diğerlerinden ayrı tut; olgunlaşmamışları tezgâhta bekletip olgunlaşanları buzdolabına al.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="60"><span class="sss-simge">🍞</span><span class="sss-metin">Ekmek</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">1-2 günde bitecek ekmeği bez torbada oda sıcaklığında tut, fazlasını dilimleyip dondur; buzdolabı ekmeği tezgâhtan çok daha hızlı bayatlatır.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="61"><span class="sss-simge">🥫</span><span class="sss-metin">Salça</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Açılan salçanın üstüne ince bir kat zeytinyağı gezdirip kapağını kapat ve buzdolabına kaldır, küf tutmasını büyük ölçüde önler.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="62"><span class="sss-simge">☕</span><span class="sss-metin">Kahve</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Kahveyi ışık ve nem almayan, hava geçirmez opak bir kapta oda sıcaklığında sakla; buzdolabında nem ve koku çeker, en tazesi için çekirdek alıp az az çek.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="63"><span class="sss-simge">🌿</span><span class="sss-metin">Yeşillikler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Yeşillikleri yıkayıp iyice kuruttuktan sonra hafif nemli bir kâğıt havluya sarar, kapalı kapta buzdolabına koyarsan bir haftaya yakın diri kalır.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="64"><span class="sss-simge">🥜</span><span class="sss-metin">Kuruyemiş</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Kuruyemişleri hava almayan kavanozda serin ve karanlık yerde tut; yağlı oldukları için uzun süre saklayacaksan buzdolabı ya da dondurucu acılaşmayı önler.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="65"><span class="sss-simge">🥣</span><span class="sss-metin">Tahin</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Tahini ağzı sıkı kapalı kavanozda oda sıcaklığında sakla; üstüne yağ çıkması doğaldır, kullanmadan önce iyice karıştır.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="66"><span class="sss-simge">🍇</span><span class="sss-metin">Pekmez</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Pekmezi kapağı sıkı şişede serin ve karanlık bir dolapta tut; dibine şeker çökerse şişeyi ılık suda bekletince eski kıvamına döner.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="67"><span class="sss-simge">🍓</span><span class="sss-metin">Reçel</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Açılmamış reçel kilerde uzun süre dayanır; açtıktan sonra buzdolabına koy ve kavanoza hep temiz, kuru kaşıkla gir.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="68"><span class="sss-simge">🍄</span><span class="sss-metin">Mantar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Mantarı yıkamadan kâğıt torbada buzdolabında tut; naylon poşette terleyip hemen yumuşar, yıkamayı pişirmeden hemen önce yap.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="69"><span class="sss-simge">🍬</span><span class="sss-metin">Helva</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Tahin helvasını kapalı kapta serin bir yerde sakla, sıcakta yağ salar; irmik ve un helvasını ise kapalı kapta buzdolabında 2-3 gün içinde bitir.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="70"><span class="sss-simge">🍰</span><span class="sss-metin">Tatlılar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Şerbetli tatlıları kapağı kapalı olarak oda sıcaklığında, sütlü ve kremalı tatlıları ise hemen buzdolabında tut ve 2-3 gün içinde tüket.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="71"><span class="sss-simge">🍲</span><span class="sss-metin">Tencere</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Tencereleri büyükten küçüğe iç içe yerleştir, aralarına kâğıt havlu ya da keçe koyarak yapışmaz yüzeyleri çizilmekten koru; kapakları ayrı dikey bir rafta tut.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="72"><span class="sss-simge">🍽️</span><span class="sss-metin">Tepsi ve fırın kapları</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Tepsileri, fırın kaplarını ve kesme tahtalarını üst üste yığmak yerine dikey ayırıcılarla kitap gibi diz, böylece istediğini diğerlerini indirmeden çekersin.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="73"><span class="sss-simge">🥄</span><span class="sss-metin">Mutfak gereçleri</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Kaşık, spatula, kepçe gibi her gün kullandıklarını ocağın yanında bir kapta, bıçakları ise ağızları korunsun diye bıçaklıkta ya da mıknatıslı çubukta sakla.</div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="74"><span class="sss-simge">📐</span><span class="sss-metin">Kullanım sıklığına göre alan planlama</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic">Her gün kullandığın eşyaları göz ile bel hizası arasına, haftada birkaç kez kullandıklarını alt dolaplara, yılda birkaç kez çıkanları ise en üst raflara yerleştir. Her eşyayı kullanıldığı yere en yakın dolaba koy: tencereler ocağın, bardaklar evyenin, saklama kapları buzdolabının yanında dursun.</div></div></div>
+
+    <div class="sss-grup" id="sss-besin">📚 Besin Türleri</div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="75"><span class="sss-simge">🫘</span><span class="sss-metin">Bakliyatlar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Kırmızı mercimek:</b> Kabuğu soyulmuş olduğu için çabucak pişip dağılır, çorbanın ve mercimek köftesinin baş tacıdır.</li><li><b>Nohut:</b> Haşlanınca yumuşacık olan iri taneli bakliyat; humustan etli nohuta kadar pek çok yemeğin temelidir.</li><li><b>Kuru fasulye:</b> Bir gece suda bekletilip pişirilen, pilavla birlikte sofraların klasiği olan beyaz fasulye.</li><li><b>Yeşil mercimek:</b> Pişince şeklini koruyan kabuklu mercimek; salataya da sulu yemeğe de yakışır.</li><li><b>Barbunya:</b> Pembe benekli kabuğuyla tanınır, en çok zeytinyağlısı ve pilakisi yapılır.</li><li><b>Börülce:</b> Ortasındaki siyah benekle tanınan küçük fasulye; kurusu da tazesi de zeytinyağıyla sevilir.</li><li><b>Kuru bakla:</b> İri ve yassı taneleri Ege'nin meşhur fava ezmesinin ana malzemesidir.</li><li><b>Kuru bezelye:</b> Kurutulup ikiye ayrılmış bezelyedir, koyu ve doyurucu çorbalar için birebirdir.</li><li><b>Maş fasulyesi:</b> Çabuk pişen küçük yeşil taneli fasulye; filizi salatalarda da kullanılır.</li><li><b>Soya fasulyesi:</b> Proteini en yüksek bakliyattır; süt, sos ve tofuya da dönüştürülür.</li><li><b>Siyah fasulye:</b> Kremsi dokulu, koyu renkli küçük fasulye; Latin Amerika mutfağının gözdesidir.</li><li><b>Acıbakla (termiye):</b> Acılığı günlerce suda bekletilerek alınan, tuzlanıp çerez gibi yenen sarı taneli bakla.</li><li><b>Keçiboynuzu:</b> Bakliyat ailesinden bir ağacın tatlımsı kabuğudur; pekmezi ve unu yapılır.</li><li><b>Demirhindi:</b> Bakliyat ailesinden tropik bir ağacın ekşi-tatlı kabuğudur, şerbeti ve sosu yapılır.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="76"><span class="sss-simge">🧀</span><span class="sss-metin">Peynirler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Beyaz peynir:</b> Salamurada olgunlaşan yumuşak ve tuzlu peynir; kahvaltının ilk akla gelenidir.</li><li><b>Kaşar:</b> Isınınca güzelce eriyen yarı sert sarı peynir; tostların ve pidelerin vazgeçilmezidir.</li><li><b>Tulum:</b> Deri ya da torbada olgunlaşan, ufalanan yapılı, aroması yoğun peynir; en ünlüsü Erzincan şavak tulumudur.</li><li><b>Hellim:</b> Kıbrıs'ın ızgarada ya da tavada erimeden kızaran, nane kokulu peyniri.</li><li><b>Lor:</b> Peynir altı suyundan yapılan tuzsuz ve hafif peynir; börekte de tatlıda da kullanılır.</li><li><b>Ezine:</b> Çanakkale'de inek, koyun ve keçi sütünün harmanlanmasıyla yapılan tam yağlı beyaz peynir.</li><li><b>Çeçil (civil):</b> Erzurum'un tel tel ayrılan, yağı az ve tuzu hafif peyniri.</li><li><b>Örgü peyniri:</b> Diyarbakır'ın çörek otlu, örgü gibi bükülmüş tuzlu peyniri.</li><li><b>Dil peyniri:</b> Uzun şeritler hâlinde soyulan, eriyince uzayan hafif tuzlu yumuşak peynir.</li><li><b>Otlu peynir:</b> Van ve çevresinde yabani otlarla karıştırılıp salamurada olgunlaştırılan kokulu peynir.</li><li><b>Eski kaşar:</b> Aylarca bekletilerek kuru bir doku ve keskin bir tat kazanan kaşar.</li><li><b>Mihaliç:</b> Bursa Karacabey yöresinin sert, delikli ve tuzlu peyniri; rendelenip makarnaya serpilir.</li><li><b>Kars gravyeri:</b> Kars yaylalarının sütünden yapılan, iri delikli ve tatlımsı sert peynir.</li><li><b>Çökelek:</b> Ayranın kaynatılıp süzülmesiyle elde edilen ufalanan köy peyniri.</li><li><b>Sürk:</b> Hatay'da çökeleğin baharat ve pul biberle yoğrulup top hâlinde kurutulmasıyla yapılan peynir.</li><li><b>Divle obruk:</b> Karaman'da mağarada olgunlaşan, doğal küflü tulum peyniri.</li><li><b>Testi peyniri:</b> Toprak testilerde olgunlaştırılan, İç Anadolu'nun keskin tatlı tulum peyniri.</li><li><b>Feta:</b> Yunanistan'ın koyun ve keçi sütünden yapılan salamura beyaz peyniri.</li><li><b>Mozzarella:</b> Pizzada uzayıp eriyen taze ve sütlü İtalyan peyniri.</li><li><b>Parmesan:</b> Uzun süre olgunlaştırılan çok sert İtalyan peyniri; rendesi makarnaları tatlandırır.</li><li><b>Ricotta:</b> Peynir altı suyundan yapılan, lora benzeyen kremsi İtalyan peyniri.</li><li><b>Mascarpone:</b> Kaymak kıvamındaki yağlı İtalyan peyniri; tiramisunun ana malzemesidir.</li><li><b>Cheddar:</b> Olgunlaştıkça sertleşip keskinleşen, krem ya da turuncu renkli İngiliz peyniri.</li><li><b>Cheshire:</b> Ufalanan yapılı, hafif ekşimsi ve tuzlu, İngiltere'nin en eski peynirlerinden biri.</li><li><b>Gouda:</b> Bekledikçe karamelimsi bir tat kazanan yarı sert Hollanda peyniri.</li><li><b>Edam:</b> Kırmızı mumla kaplı top şeklindeki hafif tatlı Hollanda peyniri.</li><li><b>Emmental:</b> İri delikleri ve fındıksı tadıyla tanınan İsviçre peyniri.</li><li><b>Brie:</b> Beyaz kadifemsi kabuğunun altı akışkan olan yumuşak Fransız peyniri.</li><li><b>Camembert:</b> Brie'ye benzeyen ama daha küçük ve daha yoğun kokulu Normandiya peyniri.</li><li><b>Gorgonzola:</b> Mavi-yeşil damarlı, kremsi ve keskin İtalyan küflü peyniri.</li><li><b>Rokfor:</b> Koyun sütünden yapılıp Fransa'da mağarada olgunlaşan sert tatlı mavi küflü peynir.</li><li><b>Krem peynir:</b> Ekmeğe sürülen yumuşak ve hafif ekşi peynir; cheesecake'in de temelidir.</li><li><b>Labne:</b> Süzme yoğurt kıvamında, sürülebilen hafif ekşimsi peynir.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="77"><span class="sss-simge">🌶️</span><span class="sss-metin">Baharatlar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Pul biber:</b> Kurutulup iri çekilmiş kırmızı biber; yemeklere hem renk hem hafif acı katar.</li><li><b>Kimyon:</b> Köfteyle, kuru fasulyeyle ve nohutla çok iyi anlaşan sıcak kokulu tohum.</li><li><b>Karabiber:</b> Neredeyse her tuzlu yemeğe giren keskin ve hafif acı baharat.</li><li><b>Kuru nane:</b> Çorbaların ve yoğurtlu yemeklerin üstüne serpilen ferah kokulu yaprak.</li><li><b>Sumak:</b> Ekşimsi mor rengiyle soğan salatasına ve kebaplara eşlik eder.</li><li><b>İsot:</b> Urfa'nın güneşte ve örtü altında kurutulan, isli tatlı, koyu renkli biberi.</li><li><b>Kekik:</b> Et, ızgara ve zeytinyağıyla çok yakışan kokusu güçlü kurutulmuş ot.</li><li><b>Tarçın:</b> Sütlaçtan elmalı tatlılara kadar sıcak ve tatlımsı koku veren ağaç kabuğu.</li><li><b>Kırmızı toz biber:</b> Tatlısı da acısı da olan, yağda kavrulunca yemeğe parlak renk veren toz biber.</li><li><b>Yenibahar:</b> İç pilavda ve dolmada kullanılan, karanfille tarçının karışımını andıran tane baharat.</li><li><b>Zerdeçal:</b> Yemeklere sarı renk veren, topraksı tatlı kök baharat.</li><li><b>Zencefil:</b> Çaya, çorbaya ve Uzak Doğu yemeklerine canlı bir acılık katan kök.</li><li><b>Çörek otu:</b> Poğaçaların ve peynirlerin üstüne serpilen hafif acımsı siyah tohum.</li><li><b>Karanfil:</b> Az miktarı bile kendini belli eden, komposto ve tatlılarda sevilen çivi biçimli tomurcuk.</li><li><b>Defne yaprağı:</b> Kuru fasulye ve et haşlanırken tencereye atılıp sonra çıkarılan kokulu yaprak.</li><li><b>Muskat:</b> Beşamel sosa ve patates püresine birkaç rende yeten sıcak kokulu baharat.</li><li><b>Kakule:</b> Kahveye ve tatlılara ferah bir koku veren yeşil kapsüllü baharat.</li><li><b>Safran:</b> Zerdeye sarı rengini veren, dünyanın en pahalı baharatı.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="78"><span class="sss-simge">🫒</span><span class="sss-metin">Zeytinler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Gemlik:</b> Bursa'nın küçük, yağlı ve parlak siyah zeytini; kahvaltı sofralarının en bilinenidir.</li><li><b>Trilye:</b> Mudanya'nın ince kabuklu, yumuşak ve lezzetli siyah zeytini.</li><li><b>Ayvalık (Edremit):</b> Kuzey Ege'nin hem sofralık yeşil zeytin hem de zeytinyağı için kullanılan yağlı zeytini.</li><li><b>Domat:</b> Akhisar'ın iri ve etli yeşil zeytini; içi doldurulup da satılır.</li><li><b>Memecik:</b> Aydın ve Muğla yöresinin hem çizik yeşil zeytin hem de yağ için kullanılan zeytini.</li><li><b>Uslu:</b> Manisa yöresinin genellikle siyah sofralık olarak işlenen zeytini.</li><li><b>Halhalı:</b> Hatay ve Mardin yöresinin küçük taneli, kırma ve sele zeytini olarak sevilen zeytini.</li><li><b>Nizip yağlık:</b> Gaziantep'in yağ oranı yüksek, en çok zeytinyağı için işlenen zeytini.</li><li><b>Hurma zeytin:</b> Karaburun'da dalında acılığını kendiliğinden kaybeden, tatlımsı olgun zeytin.</li><li><b>Kırma zeytin:</b> Taşla kırılıp limon, biber ve kekikle tatlandırılan taze yeşil zeytin.</li><li><b>Sele zeytini:</b> Sepetlerde tuzla kurutulan, buruşuk görünüşlü ve az tuzlu siyah zeytin.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="79"><span class="sss-simge">🥦</span><span class="sss-metin">Sebzeler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Patlıcan:</b> Közde, kızartmada ya da yemekte kendini gösteren, Türk mutfağının sebze sultanı.</li><li><b>Domates:</b> Salatadan çorbaya, sosa kadar neredeyse her yemeğe giren sulu sebze.</li><li><b>Biber:</b> Sivrisi, dolmalığı, çarlistonu ve kapyasıyla hem çiğ hem pişmiş sevilen sebze.</li><li><b>Kabak:</b> Mücver, dolma ve zeytinyağlısıyla yazın en çok pişen hafif sebze.</li><li><b>Ispanak:</b> Yumurtalısı, böreği ve kavurmasıyla kışın sofralara gelen yeşil yapraklı sebze.</li><li><b>Pırasa:</b> Zeytinyağlısı ve böreğiyle sevilen, tatlımsı ve hafif soğanımsı kış sebzesi.</li><li><b>Havuç:</b> Çiğ de pişmiş de yenen, salatalara renk katan tatlımsı kök sebze.</li><li><b>Salatalık:</b> Cacıkta ve salatalarda serinlik veren, sulu ve çıtır sebze.</li><li><b>Taze fasulye:</b> Zeytinyağlısı yaz sofralarının en sevilen yemeklerinden olan yeşil fasulye.</li><li><b>Lahana:</b> Sarması, turşusu ve salatasıyla kışın her eve giren yapraklı sebze.</li><li><b>Karnabahar:</b> Kızartması, graten ve kavurması yapılan beyaz başlı kış sebzesi.</li><li><b>Brokoli:</b> Karnabaharın yeşil akrabası; buharda kısa sürede pişirilince en lezzetlisidir.</li><li><b>Kereviz:</b> Kökü zeytinyağlıya, sapı ve yaprağı salataya ve çorbaya giren sebze.</li><li><b>Enginar:</b> Ege'nin bahar sebzesi; en çok zeytinyağlı ve iç baklalı olarak pişer.</li><li><b>Bamya:</b> Ekşili ve etli yemeği sevilen, küçük ve tüylü yeşil sebze.</li><li><b>Bezelye:</b> Tatlımsı küçük taneleriyle et yemeklerine ve pilavlara karışan sebze.</li><li><b>Pancar:</b> Kökü haşlanıp salata ya da turşu yapılan, koyu kırmızı renkli sebze.</li><li><b>Soğan ve sarımsak:</b> Neredeyse her tuzlu yemeğin lezzet temeli olan iki kök sebze.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="80"><span class="sss-simge">🍢</span><span class="sss-metin">Kebaplar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>İskender:</b> Bursa'nın pide üstüne dizilen ince yaprak döneri; domates sosu, tereyağı ve yoğurtla gelir.</li><li><b>Adana kebap:</b> Zırhla çekilen kuzu etinin kuyruk yağıyla yoğrulup geniş şişte közlendiği acılı kebap.</li><li><b>Urfa kebap:</b> Adana'ya benzer ama acısızdır, isotun hafif tadıyla hazırlanır.</li><li><b>Beyti:</b> Şişte pişen kıymanın lavaşa sarılıp dilimlendiği, üstüne yoğurt ve tereyağlı sos dökülen kebap.</li><li><b>Ali Nazik:</b> Közlenmiş patlıcanlı yoğurdun üstüne tereyağında çevrilmiş et konan Antep kebabı.</li><li><b>Patlıcan kebabı:</b> Köfte ve patlıcan dilimlerinin aynı şişe sırayla dizilip közlendiği kebap.</li><li><b>Tokat kebabı:</b> Kuzu, patlıcan, patates ve domatesin fırında birlikte piştiği Tokat'ın meşhur kebabı.</li><li><b>Cağ kebabı:</b> Erzurum'un yatay şişte döndürülerek pişen, küçük şişlerle kesilip yenen kuzu kebabı.</li><li><b>Testi kebabı:</b> Etli sebzeli harcın toprak testide pişirilip masada kırıldığı Kapadokya kebabı.</li><li><b>Büryan kebabı:</b> Siirt'te kuzunun toprağa kazılmış kuyuda bütün olarak pişirildiği yumuşacık kebap.</li><li><b>Tandır kebabı:</b> Taş ya da toprak tandırda saatlerce pişip kemiğinden ayrılan kuzu eti.</li><li><b>Şiş kebap:</b> Marine edilmiş kuşbaşı etin şişe dizilip mangalda pişirildiği klasik kebap.</li><li><b>Çöp şiş:</b> Küçük et parçalarının ince şişlerde pişirildiği, Ege'nin hafif ve pratik kebabı.</li><li><b>Fıstıklı kebap:</b> Antep fıstığıyla yoğrulan kıymanın şişte pişirildiği Gaziantep kebabı.</li><li><b>Simit kebabı:</b> İnce bulgurla yoğrulmuş kıymadan yapılan Gaziantep kebabı.</li><li><b>Çökertme:</b> Kibrit patatesin üstüne yoğurt ve sotelenmiş et konan Bodrum kebabı.</li><li><b>Tas kebabı:</b> Kuşbaşı etin soğan ve salçayla tencerede uzun süre pişirildiği, pilavla sunulan kebap.</li><li><b>Orman kebabı:</b> Etin bezelye, havuç ve patatesle tencerede yavaşça piştiği sulu kebap.</li><li><b>Kâğıt kebabı:</b> Etin sebzelerle yağlı kâğıda sarılıp fırında kendi buharında piştiği kebap.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="81"><span class="sss-simge">☕</span><span class="sss-metin">Kahveler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Türk kahvesi:</b> Çok ince çekilmiş kahvenin cezvede kaynatılıp telvesiyle fincana döküldüğü köpüklü kahve.</li><li><b>Dibek kahvesi:</b> Taş dibekte dövülerek çekilen, daha yumuşak içimli geleneksel kahve.</li><li><b>Menengiç kahvesi:</b> Aslında kahve değil, kavrulmuş yabani fıstık meyvesinden yapılan kafeinsiz ve sütlü bir içecek.</li><li><b>Espresso:</b> Sıcak suyun basınçla ince kahveden geçirildiği, yoğun ve kremalı küçük kahve.</li><li><b>Ristretto:</b> Espressonun daha az suyla çekilen, daha yoğun ve tatlımsı hâli.</li><li><b>Lungo:</b> Espressonun daha fazla suyla, daha uzun sürede çekilen hafif hâli.</li><li><b>Doppio:</b> Tek fincanda iki shot espresso, yani çift espresso.</li><li><b>Americano:</b> Espressonun sıcak suyla uzatılmasıyla elde edilen sade kahve.</li><li><b>Filtre kahve:</b> Sıcak suyun kâğıt filtredeki kahveden yavaşça süzülmesiyle hazırlanan hafif kahve.</li><li><b>Soğuk demleme (cold brew):</b> Kahvenin saatlerce soğuk suda bekletilmesiyle elde edilen, az asitli ve yumuşak kahve.</li><li><b>Macchiato:</b> Espressonun üstüne bir kaşık süt köpüğü konarak hazırlanan kahve.</li><li><b>Cortado:</b> Espressonun eşit miktarda ılık sütle yumuşatıldığı İspanyol kahvesi.</li><li><b>Cappuccino:</b> Espresso, buharla ısıtılmış süt ve kalın süt köpüğünden eşit oranda oluşan kahve.</li><li><b>Latte:</b> Bol sütlü, ince köpüklü ve yumuşak içimli espresso bazlı kahve.</li><li><b>Flat white:</b> Latteden daha az sütlü, ince ve kadifemsi köpüklü, kahve tadı öne çıkan içecek.</li><li><b>Mocha:</b> Espresso, sıcak süt ve çikolatanın buluştuğu tatlı kahve.</li><li><b>Espressino:</b> Espresso, süt köpüğü ve kakao ya da çikolatanın küçük bardakta katmanlandığı kahve.</li><li><b>Cafe crema:</b> Espressoya göre daha uzun çekilen, üstü kremalı köpüklü sade kahve.</li><li><b>Vienna:</b> Espresso ya da sert kahvenin üstüne bolca çırpılmış krema konan Viyana kahvesi.</li><li><b>Affogato:</b> Bir top vanilyalı dondurmanın üstüne sıcak espresso dökülerek hazırlanan tatlı kahve.</li><li><b>Frappe:</b> Hazır kahvenin şeker ve buzla çalkalanıp köpürtüldüğü soğuk kahve.</li><li><b>Irish coffee:</b> Sıcak kahvenin viski ve şekerle karıştırılıp üstüne krema konduğu İrlanda kahvesi.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="82"><span class="sss-simge">🌱</span><span class="sss-metin">Yeşillikler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Maydanoz:</b> Salatadan köfteye her yere giren, ferah kokulu en yaygın yeşillik.</li><li><b>Dereotu:</b> Zeytinyağlılara, cacığa ve börek içlerine yakışan ince yapraklı yeşillik.</li><li><b>Taze nane:</b> Salatalara, limonataya ve çaya serinlik veren kokulu yaprak.</li><li><b>Roka:</b> Hafif acımsı tadıyla salatalara ve peynirli tabaklara canlılık katar.</li><li><b>Tere:</b> Acımsı ve çıtır yapraklarıyla salatalara ve sandviçlere yakışır.</li><li><b>Marul:</b> Çıtır yapraklarıyla salataların temelidir.</li><li><b>Kıvırcık:</b> Kıvrımlı yaprakları daha yumuşak olan, salatalık marul türü.</li><li><b>Taze soğan:</b> Salatalara ve yumurtaya hafif soğan tadı veren yeşil saplı soğan.</li><li><b>Semizotu:</b> Yoğurtlusu ve salatası sevilen, etli yapraklı yaz yeşilliği.</li><li><b>Fesleğen:</b> Domatesle ve zeytinyağıyla mükemmel anlaşan tatlı kokulu yaprak.</li><li><b>Kişniş:</b> Uzak Doğu ve Meksika yemeklerinde sevilen, kokusu çok belirgin yeşillik.</li><li><b>Biberiye:</b> İğne gibi yaprakları fırın patatese ve kuzu etine güçlü koku veren ot.</li><li><b>Pazı:</b> Sarması ve kavurması yapılan, geniş yapraklı ve kalın saplı yeşillik.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="83"><span class="sss-simge">🌭</span><span class="sss-metin">Sucuklar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Afyon sucuğu:</b> Avrupa Birliği'nden de coğrafi işaret alan, bol sarımsaklı ünlü Afyonkarahisar sucuğu.</li><li><b>Kayseri sucuğu:</b> Pastırmanın memleketinin, kimyonu ve sarımsağı bol, kuru ve aromalı sucuğu.</li><li><b>Kangal sucuk:</b> At nalı biçiminde bükülmüş, kahvaltıda tavada pişirilen en yaygın sucuk.</li><li><b>Parmak sucuk:</b> İnce ve kısa yapıldığı için ızgarada çabucak pişen sucuk.</li><li><b>Kasap sucuğu:</b> Mahalle kasaplarının kendi baharat karışımıyla taze olarak yaptığı sucuk.</li><li><b>Fermente sucuk:</b> Günlerce kurutulup olgunlaştırılarak keskin ve ekşimsi bir tat kazanan geleneksel sucuk.</li><li><b>Isıl işlem görmüş sucuk:</b> Olgunlaştırılmak yerine pişirilerek hazırlanan, daha yumuşak tatlı fabrika sucuğu.</li><li><b>Hindi sucuğu:</b> Kırmızı et yemeyenlerin seçtiği, daha az yağlı hindi etinden sucuk.</li><li><b>Cevizli sucuk:</b> Adı sucuk olsa da cevizin üzüm pekmezine batırılıp kurutulmasıyla yapılan meyveli tatlı.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="84"><span class="sss-simge">🥗</span><span class="sss-metin">Mezeler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Haydari:</b> Süzme yoğurdun sarımsak, dereotu ve naneyle karıştırıldığı koyu kıvamlı meze.</li><li><b>Acılı ezme:</b> İnce kıyılmış domates, biber ve soğanın nar ekşisiyle buluştuğu acılı meze.</li><li><b>Humus:</b> Nohutun tahin, limon ve sarımsakla püre yapıldığı kadife kıvamlı meze.</li><li><b>Fava:</b> Kuru baklanın zeytinyağıyla ezilip dereotuyla süslendiği Ege mezesi.</li><li><b>Közlenmiş patlıcan salatası:</b> Közde yumuşayan patlıcanın sarımsak ve zeytinyağıyla ezildiği meze.</li><li><b>Babagannuş:</b> Közlenmiş patlıcanın domates, biber ve nar ekşisiyle karıştırıldığı Güneydoğu mezesi.</li><li><b>Muhammara:</b> Közlenmiş biber, ceviz ve galeta ununun nar ekşisiyle harmanlandığı acımsı meze.</li><li><b>Cacık:</b> Yoğurdun salatalık, sarımsak ve naneyle sulandırıldığı serinletici meze.</li><li><b>Şakşuka:</b> Kızarmış patlıcan ve sebzelerin sarımsaklı domates sosuyla buluştuğu meze.</li><li><b>Atom:</b> Süzme yoğurdun üstüne tereyağında kızdırılmış kuru acı biber dökülen yakıcı meze.</li><li><b>Girit ezmesi:</b> Beyaz peynirin ceviz, fesleğen ve zeytinyağıyla ezildiği İzmir mezesi.</li><li><b>Çerkez tavuğu:</b> Didiklenmiş tavuğun cevizli ve sarımsaklı bir sosla karıştırıldığı meze.</li><li><b>Yaprak sarma:</b> Asma yaprağına sarılmış pirinçli için zeytinyağıyla piştiği soğuk meze.</li><li><b>Deniz börülcesi:</b> Haşlanıp sarımsaklı zeytinyağıyla sunulan tuzlu, çıtır deniz otu.</li><li><b>Piyaz:</b> Kuru fasulyenin soğan, maydanoz ve sirkeyle hazırlandığı salata mezesi.</li><li><b>Topik:</b> Nohut, patates ve soğandan yapılan, tahinli ve tarçınlı Ermeni mutfağı mezesi.</li><li><b>Tarama:</b> Balık yumurtasının ekmek içi ve zeytinyağıyla çırpıldığı pembe meze.</li><li><b>Köpoğlu:</b> Kızarmış patlıcan ve biberin sarımsaklı yoğurtla buluştuğu meze.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="85"><span class="sss-simge">🍖</span><span class="sss-metin">Etler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Kuzu eti:</b> Yumuşak ve kendine has kokulu et; tandırda, kapamada ve kebaplarda çok sevilir.</li><li><b>Dana eti:</b> Kıymadan bonfileye en çok tüketilen kırmızı et.</li><li><b>Koyun eti:</b> Kuzudan daha koyu renkli ve yağlı, uzun pişirmeyle lezzetlenen et.</li><li><b>Oğlak eti:</b> Yağı az, hafif tatlı keçi yavrusu eti; bazı yörelerde kapama ve tandırı yapılır.</li><li><b>Tavuk:</b> Hafif, çabuk pişen ve her mutfağa uyum sağlayan beyaz et.</li><li><b>Hindi:</b> Tavuktan iri, yağı az, fırında bütün olarak pişirilmesiyle bilinen kanatlı eti.</li><li><b>Ördek ve kaz:</b> Yağlı ve koyu renkli, kış aylarında fırında pişirilen kanatlı etleri.</li><li><b>Kıyma:</b> Köfte, kebap ve dolmaların temeli olan çekilmiş et.</li><li><b>Kuşbaşı:</b> Kavurma, sote ve güveç için küp küp doğranmış et.</li><li><b>Bonfile:</b> Belin iç kısmından çıkan, en yumuşak ve en değerli et parçası.</li><li><b>Antrikot:</b> Kaburganın üstünden çıkan, yağ damarlı ve lezzetli biftek parçası.</li><li><b>Kontrfile:</b> Bonfileye komşu, biraz daha sıkı dokulu lezzetli bel eti.</li><li><b>Pirzola:</b> Kaburga kemiğiyle birlikte kesilen, ızgarada pişirilen kuzu eti.</li><li><b>İncik:</b> Kemiğiyle uzun süre pişirildiğinde lokum gibi olan bacak eti.</li><li><b>Kaburga:</b> Kemikli ve yağlı, fırında ya da tencerede uzun pişirmeyle lezzetlenen göğüs kafesi eti.</li><li><b>Sakatat:</b> Ciğer, böbrek, yürek, işkembe gibi iç organlar; tavası ve çorbası yapılır.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="86"><span class="sss-simge">🍑</span><span class="sss-metin">Meyveler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Elma:</b> Yıl boyu bulunan, çiğ de tatlıda da sevilen çıtır meyve.</li><li><b>Portakal:</b> Sulu ve C vitamini zengini kış meyvesi; suyu sıkılarak da içilir.</li><li><b>Muz:</b> Pratik, enerji veren ve tatlılara yumuşaklık katan tropik meyve.</li><li><b>Çilek:</b> İlkbaharın kırmızı, kokulu ve tatlı müjdecisi.</li><li><b>Karpuz:</b> Yazın serinleten, bol sulu dev meyve.</li><li><b>Kavun:</b> Kokusu ve balı bol, peynirle de yakışan yaz meyvesi.</li><li><b>Kiraz:</b> Yaz başında gelen, dalından yemesi en keyifli kırmızı meyve.</li><li><b>Vişne:</b> Ekşimsi tadıyla reçel, şerbet ve tatlılara giren kırmızı meyve.</li><li><b>Kayısı:</b> Tazesi kadar kurusu da sevilen, Malatya ile özdeşleşmiş turuncu meyve.</li><li><b>Şeftali:</b> Tüylü kabuğunun altı bal gibi sulu yaz meyvesi.</li><li><b>Erik:</b> Yeşilken ekşi, olgunlaşınca tatlı olan yaz meyvesi.</li><li><b>Üzüm:</b> Tazesi, kurusu, pekmezi ve sirkesiyle Anadolu'nun en köklü meyvesi.</li><li><b>İncir:</b> Ege'nin bal tadındaki yumuşak meyvesi; kurusu da çok sevilir.</li><li><b>Armut:</b> Sulu ve yumuşak, olgunlaşınca kokusu yayılan meyve.</li><li><b>Mandalina:</b> Kolay soyulan, kışın en sevilen narenciye.</li><li><b>Limon:</b> Yemeklerden içeceklere ekşiliğiyle her yere giren narenciye.</li><li><b>Nar:</b> Taneleri salatalara, ekşisi yemeklere giren sonbahar meyvesi.</li><li><b>Ayva:</b> Kokusu harika, tatlısı ve reçeli yapılan sert sonbahar meyvesi.</li><li><b>Kivi:</b> Yeşil, ekşi-tatlı içi C vitamini dolu tüylü meyve.</li><li><b>Trabzon hurması:</b> Tam olgunlaşınca kaşıkla yenecek kadar yumuşayan turuncu kış meyvesi.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="87"><span class="sss-simge">🍮</span><span class="sss-metin">Helvalar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Tahin helvası:</b> Tahin ve şekerin çöven ile çırpılmasıyla yapılan lifli helva; sade, kakaolu ve fıstıklısı vardır.</li><li><b>İrmik helvası:</b> İrmiğin tereyağında kavrulup şerbet ya da sütle demlendiği, çam fıstıklı helva.</li><li><b>Un helvası:</b> Unun tereyağında uzun uzun kavrulup şekerli suyla pişirildiği geleneksel helva.</li><li><b>Pişmaniye:</b> Kocaeli'nin un ve şekerin çekilerek ince iplikler hâline getirildiği pamuk gibi helvası.</li><li><b>Koz helva:</b> Bolu Mengen yöresinin cevizli, sert ve parlak beyaz helvası.</li><li><b>Kâğıt helva:</b> İki ince yaprak gofret arasına şeker konarak yapılan, çıtır çıtır panayır helvası.</li><li><b>Peynir helvası:</b> Tuzsuz peynirin irmik ya da un ve şekerle pişirildiği Marmara ve Trakya helvası.</li><li><b>Yaz helvası:</b> Edirne'nin badem ve irmikle yapılan, tahin kullanılmayan yumuşak helvası.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="88"><span class="sss-simge">🐟</span><span class="sss-metin">Balıklar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Hamsi:</b> Karadeniz'in kış balığı; tavası, buğulaması ve pilavı yapılır.</li><li><b>Levrek:</b> Eti beyaz ve yumuşak, ızgarada ve buğulamada en çok sevilen balıklardan biri.</li><li><b>Çipura:</b> Levreğin sofra arkadaşı, ızgarası en lezzetli beyaz etli balık.</li><li><b>Palamut:</b> Sonbaharda bollaşan, ızgarası ve tavası sevilen lezzetli göçmen balık.</li><li><b>Lüfer:</b> İstanbul Boğazı'nın gözdesi, eti lezzetli bir avcı balık.</li><li><b>Uskumru:</b> Yağlı ve lezzetli eti ızgaraya ve dolmaya çok uygun balık.</li><li><b>İstavrit:</b> Küçük boyuyla bol bulunan, tavası ucuz ve lezzetli balık.</li><li><b>Sardalya:</b> Ege'nin yağlı, küçük balığı; ızgarası ve konservesi bilinir.</li><li><b>Alabalık:</b> Tatlı sularda yetişen, yıl boyu bulunan narin etli balık.</li><li><b>Somon:</b> Turuncu etli, yağlı ve besleyici; fırında ve tütsülenmiş olarak sevilen balık.</li><li><b>Mezgit:</b> Yumuşak ve kılçığı az eti nedeniyle çocukların bile sevdiği kış balığı.</li><li><b>Barbun:</b> Pembe rengi ve ince lezzetiyle tavası meşhur küçük balık.</li><li><b>Kalkan:</b> Yassı gövdeli, eti beyaz ve değerli Karadeniz balığı.</li><li><b>Kefal:</b> Her mevsim bulunan, buğulaması ve ızgarası yapılan balık.</li><li><b>Çinekop:</b> Lüferin küçüğüdür; ızgarası ve tavası sonbaharda çok sevilir.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="89"><span class="sss-simge">🍪</span><span class="sss-metin">Kurabiyeler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Un kurabiyesi:</b> Ağızda dağılan, pudra şekerine bulanmış tereyağlı klasik kurabiye.</li><li><b>Acıbadem kurabiyesi:</b> Badem ve yumurta akıyla yapılan, dışı çıtır içi yumuşak kurabiye.</li><li><b>Tuzlu kurabiye:</b> Üstü çörek otu ya da susamla süslenen, çayın yanına yakışan kurabiye.</li><li><b>Damla çikolatalı kurabiye:</b> İçinde eriyen çikolata parçacıkları olan, dışı kıtır içi yumuşak kurabiye.</li><li><b>Fındıklı kurabiye:</b> Bol kavrulmuş fındıkla yapılan, kokusu fırından taşan kurabiye.</li><li><b>Hindistan cevizli kurabiye:</b> Hindistan cevizinin tatlı aromasını taşıyan çıtır kurabiye.</li><li><b>Marmelatlı kurabiye:</b> Ortası reçel ya da marmelatla doldurulmuş, iki katlı kurabiye.</li><li><b>Kakaolu-vanilyalı dama kurabiye:</b> İki rengin dama tahtası gibi dizildiği göz alıcı kurabiye.</li><li><b>Mahlepli kurabiye:</b> Mahlebin hafif acımsı kokusunu taşıyan, eski usul pastane kurabiyesi.</li><li><b>Kandil simidi:</b> Susamlı ve mahlepli, kandil gecelerinde dağıtılan küçük halka kurabiye.</li><li><b>Beze:</b> Yumurta akı ve şekerin çırpılıp düşük ısıda kurutulduğu hafif ve çıtır tatlı.</li><li><b>Portakallı kurabiye:</b> Portakal kabuğu rendesiyle mis gibi kokan yumuşak kurabiye.</li><li><b>Cevizli kurabiye:</b> Bol cevizli, yumuşak dokulu ve hafif tarçın kokulu kurabiye.</li><li><b>Kahve çekirdeği kurabiye:</b> Kahve aromalı hamurun çekirdek biçiminde şekillendirildiği küçük kurabiye.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="90"><span class="sss-simge">🌰</span><span class="sss-metin">Kuruyemişler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Fındık:</b> Karadeniz'in altın tanesi; çiğ, kavrulmuş ya da tatlı ve ezme olarak tüketilir.</li><li><b>Antep fıstığı:</b> Gaziantep'in yeşil incisi; baklava ve kebabın vazgeçilmezi.</li><li><b>Ceviz:</b> Beyni andıran şekliyle bilinen, tatlıdan salataya her yere giren yağlı kuruyemiş.</li><li><b>Badem:</b> Çiğ, kavrulmuş ya da şekerli; sütü ve ezmesi de yapılan kuruyemiş.</li><li><b>Yer fıstığı:</b> Toprak altında yetişen, tuzlu çerezi ve ezmesi en çok bilinen kuruyemiş.</li><li><b>Leblebi:</b> Nohudun kavrulmasıyla yapılan, sarı ve beyaz çeşitleri olan çerez.</li><li><b>Kaju:</b> Böbrek biçimli, tatlımsı ve yumuşak dokulu tropik kuruyemiş.</li><li><b>Çam fıstığı:</b> Dolma ve iç pilava giren, küçük taneli ama pahalı kuruyemiş.</li><li><b>Kabak çekirdeği:</b> Kavrulup tuzlanarak çerez olarak çitlenen yassı çekirdek.</li><li><b>Ay çekirdeği:</b> Maçların ve sohbetlerin vazgeçilmezi, kabuklu ayçiçeği tohumu.</li><li><b>Pikan cevizi:</b> Cevize benzeyen ama daha tatlı ve yumuşak, Amerika kökenli kuruyemiş.</li><li><b>Makademya:</b> Tereyağımsı tadıyla en yağlı kuruyemişlerden biri olan Avustralya fındığı.</li><li><b>Brezilya cevizi:</b> İri taneli, selenyumu çok yüksek, Amazon ormanlarından gelen kuruyemiş.</li><li><b>Kestane:</b> Kışın közde ya da şekerlemesi yapılarak yenen nişastalı kuruyemiş.</li><li><b>Hindistan cevizi:</b> Rendesi tatlılara, sütü yemeklere giren sert kabuklu tropik meyve.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="91"><span class="sss-simge">🥤</span><span class="sss-metin">Şerbetler</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Gül şerbeti:</b> Gül yapraklarından yapılan, kokusu ferahlatıcı pembe şerbet.</li><li><b>Demirhindi şerbeti:</b> Demirhindinin ekşi-tatlı özünden yapılan, Ramazan sofralarının serinletici içeceği.</li><li><b>Meyan şerbeti:</b> Meyan kökünden hazırlanan, Güneydoğu'da sokaklarda satılan köpüklü şerbet.</li><li><b>Lohusa şerbeti:</b> Kırmızı rengi karanfil ve tarçınla kaynatılan, doğumdan sonra ikram edilen şerbet.</li><li><b>Osmanlı şerbeti:</b> Tarçın, karanfil ve meyvelerle kaynatılan, saray mutfağından kalma baharatlı şerbet.</li><li><b>Sirkencübin:</b> Sirke ve balın birleştiği, eski hekimlerin de önerdiği ekşi-tatlı şerbet.</li><li><b>Vişne şerbeti:</b> Vişnenin şekerle kaynatılıp süzülmesiyle yapılan koyu kırmızı serinletici.</li><li><b>Kızılcık şerbeti:</b> Ekşimsi kızılcık meyvesinden yapılan, rengi ve tadı canlı şerbet.</li><li><b>Nar şerbeti:</b> Nar suyunun hafif şekerle buluştuğu sonbahar şerbeti.</li><li><b>Limon şerbeti:</b> Limon kabuğu ve suyuyla yapılan, ev limonatasının ata hâli.</li><li><b>Hurma şerbeti:</b> Hurmanın doğal tatlılığıyla hazırlanan, iftarlarda içilen şerbet.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="92"><span class="sss-simge">🛢️</span><span class="sss-metin">Yağlar</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Natürel sızma zeytinyağı:</b> Zeytinden yalnızca sıkılarak elde edilen, salatalara ve zeytinyağlılara en yakışan yağ.</li><li><b>Riviera zeytinyağı:</b> Rafine ve sızma zeytinyağının karışımı; tadı daha hafif, kızartmaya uygun.</li><li><b>Ayçiçek yağı:</b> Kokusu ve tadı nötr olduğu için mutfağın günlük kızartma ve pişirme yağı.</li><li><b>Mısırözü yağı:</b> Yüksek ısıya dayanıklı, hamur işlerine ve kızartmaya uygun yağ.</li><li><b>Fındık yağı:</b> Karadeniz'in hafif fındık kokulu, kızartmaya da uygun yağı.</li><li><b>Kanola yağı:</b> Kolza tohumundan elde edilen, tadı hafif bitkisel yağ.</li><li><b>Tereyağı:</b> Sütün kaymağından yapılan, yemeğe ve hamura eşsiz koku veren hayvansal yağ.</li><li><b>Sade yağ:</b> Tereyağının suyu ve süt kalıntısı alınmış hâli; yanmadan yüksek ısıya dayanır.</li><li><b>Kuyruk yağı:</b> Kuzunun kuyruğundan çıkan, kebaplara lezzet veren hayvansal yağ.</li><li><b>Susam yağı:</b> Kavrulmuş susamdan elde edilen, Uzak Doğu yemeklerine koku veren yağ.</li><li><b>Hindistan cevizi yağı:</b> Oda sıcaklığında katılaşan, tatlılarda ve tropik yemeklerde kullanılan yağ.</li><li><b>Margarin:</b> Bitkisel yağların katılaştırılmasıyla yapılan, hamur işlerinde kullanılan yağ.</li></ul></div></div></div>
+
+    <div class="sss-oge sss-rehber"><button class="sss-soru" data-sss="93"><span class="sss-simge">🥒</span><span class="sss-metin">Turşular</span><span class="sss-ok">▾</span></button>
+      <div class="sss-cevap"><div class="sss-cevap-ic"><ul class="sss-liste"><li><b>Lahana turşusu:</b> Karadeniz'in kışlık turşusu; kavurması ve sarması da yapılır.</li><li><b>Karışık turşu:</b> Lahana, havuç, biber ve salatalığın aynı kavanozda buluştuğu klasik turşu.</li><li><b>Kornişon turşusu:</b> Minik salatalıklardan yapılan, çıtır çıtır ve hafif ekşi turşu.</li><li><b>Biber turşusu:</b> Çarliston ya da sivri biberle yapılan, sofraların acılı eşlikçisi.</li><li><b>Pancar turşusu:</b> Koyu kırmızı rengiyle göz dolduran, suyu da içilen turşu.</li><li><b>Şalgam:</b> Mor havuç ve bulgurla mayalanan, Adana ve Mersin'in turşu suyu kıvamındaki içeceği.</li><li><b>Fasulye turşusu:</b> Karadeniz'de taze fasulyenin kurulup kavurmasının yapıldığı turşusu.</li><li><b>Yeşil domates turşusu:</b> Olgunlaşmamış domateslerden yapılan, mayhoş ve çıtır turşu.</li><li><b>Sarımsak turşusu:</b> Bütün dişlerin sirkede yumuşayıp tatlandığı keskin turşu.</li><li><b>Havuç turşusu:</b> Tatlımsı ve çıtır yapısıyla rengini kavanoza veren turşu.</li><li><b>Patlıcan turşusu:</b> Küçük patlıcanların sarımsaklı içle doldurulup bağlanarak kurulduğu turşu.</li><li><b>Kırmızı lahana turşusu:</b> Mor rengiyle tabaklara canlılık katan, hafif tatlı turşu.</li></ul></div></div></div>
 
     <p class="aciklama" style="text-align:center;margin-top:24px">Başka sorun mu var? <a href="https://wa.me/905541939113?text=Merhaba%2C%20Mutfak%20Asistan%C4%B1%20hakk%C4%B1nda%20bir%20sorum%20var." target="_blank" rel="noopener" style="color:var(--ana)">WhatsApp'tan bize yaz 💬</a></p>
   </section>
@@ -2525,6 +2718,16 @@
     sktKartlariniGoster();
     mesaj("🛒 " + basHarfBuyuk(b ? b.u.ad : "") + " yenilendi" + (h.miktar ? " · " + h.miktar : ""));
   }
+  // Çarpıya basılınca ürünü sormadan siler (kiler, dolap, ekipman, temizlik: hepsi)
+  function urunSil(key) {
+    var alanId = key.slice(0, key.indexOf("|")), once = notuAnla(notlar[alanId] || ""), silinen = null;
+    var kalan = once.filter(function (x) { if (sktAnahtar(alanId, x.ad) === key) { silinen = x; return false; } return true; });
+    if (!silinen) return;
+    notlar[alanId] = kalan.map(function (x) { return x.ham.trim(); }).join(", ");
+    var kutu = document.getElementById("not-" + alanId); if (kutu) kutu.value = notlar[alanId];
+    hepsiniKaydet(); alaniGoster(alanId); urunDegisiklikleriniKaydet(); sktKartlariniGoster();
+    mesaj("🗑️ " + basHarfBuyuk(silinen.ad) + " silindi");
+  }
   // Ürünü notlardan çıkar
   function sktBitti(key) {
     var b = sktUrunuBul(key); if (!b) return;
@@ -2829,7 +3032,8 @@
           var ekip = ekipmanAlaniMi(alanId) || temizlikAlaniMi(alanId), d = ekip ? null : sktDurumu(alanId, u);
           return '<span class="etiket ' + (u.az ? "az" : "notr") + (ekip ? '' : ' sktli') + '"' +
             (ekip ? '' : ' data-skt="' + esc(sktAnahtar(alanId, u.ad)) + '" title="Son kullanma tarihini gör"') + '>' + esc(basHarfBuyuk(u.ad)) +
-            (u.miktar ? ' <small>· ' + esc(u.miktar) + '</small>' : '') + (u.az ? ' ⚠️' : '') + (d ? sktRozeti(d) : '') + '</span>';
+            (u.miktar ? ' <small>· ' + esc(u.miktar) + '</small>' : '') + (u.az ? ' ⚠️' : '') + (d ? sktRozeti(d) : '') +
+            '<button type="button" class="urun-sil" data-urun-sil="' + esc(sktAnahtar(alanId, u.ad)) + '" aria-label="' + esc(basHarfBuyuk(u.ad)) + ' sil" title="Sil">×</button></span>';
         }).join("") + '</div></div>';
     }).join("");
   }
@@ -3138,6 +3342,7 @@
   //  ma_plan = { tur: "hafta"|"ay", kisi, bas: "YYYY-AA-GG", gunler: [{ corba, ana, yan }] }
   // =====================================================================
   var plan = oku("ma_plan", null);
+  var planGorunum = oku("ma_plan_gorunum", "takvim"), planSeciliGun = null;
   var PLAN_YERLERI = [
     { id: "corba", ad: "Çorba", ikon: "🥣", kat: ["Çorba"] },
     { id: "ana", ad: "Ana yemek", ikon: "🍲", kat: ["Ana Yemek", "Deniz Mahsulleri"] },
@@ -3167,6 +3372,7 @@
     mod = mod === "serbest" ? "serbest" : "az";
     var gunSayisi = tur === "ay" ? 30 : 7, kullanilan = {}, havuz = {}, sayac = {};
     plan = { tur: tur, kisi: kisi, mod: mod, bas: isoGun(Date.now()), gunler: [] };
+    planSeciliGun = null;
     PLAN_YERLERI.forEach(function (y) { havuz[y.id] = planAdaylari(y, {}, true, mod); });
     for (var i = 0; i < gunSayisi; i++) {
       var gun = {};
@@ -3231,7 +3437,14 @@
       (eksikler.length ? '<details class="plan-alinacak"' + (plan.mod === "serbest" ? ' open' : '') + '><summary><b>🛒 Alışveriş önerisi: bu menü için ' + eksikler.length + ' malzeme alınmalı</b></summary>' +
         '<p style="margin:8px 0 0">' + eksikler.map(function (x) { return esc(x.metin); }).join(" · ") + '</p></details>'
         : '<div class="plan-alinacak">🎉 Bu menüdeki her şey evinde var.</div>') +
-      plan.gunler.map(function (g, i) {
+      planGorunumSecici() +
+      (planGorunum === "takvim" ? (plan.tur === "ay" ? planAyTakvimi(evdekiler, ekipmanlar, bugunIso) : planHaftaTakvimi(evdekiler, ekipmanlar, bugunIso))
+        : plan.gunler.map(function (g, i) { return planGunKarti(i, evdekiler, ekipmanlar, bugunIso); }).join(""));
+  }
+
+  // Liste görünümündeki tek günün kartı (aylık takvimde seçilen gün de bununla gösterilir)
+  function planGunKarti(i, evdekiler, ekipmanlar, bugunIso) {
+    var g = plan.gunler[i];
         var bugun = isoGun(planGunTarihi(i)) === bugunIso;
         return '<div class="kart plan-gun' + (bugun ? ' bugun' : '') + '"><div class="plan-gun-baslik">' + (bugun ? '⭐ Bugün · ' : '') + esc(planGunYazisi(i)) + '</div>' +
           PLAN_YERLERI.map(function (y) {
@@ -3242,7 +3455,52 @@
             return '<div class="plan-satir"><span class="plan-tarif" data-tarif-detay="' + esc(t.ad) + '">' + y.ikon + ' ' + esc(t.ad) + '</span>' +
               '<span style="display:flex;align-items:center;gap:6px">' + rozet + '<button class="plan-degistir" data-plan-degistir="' + i + '|' + y.id + '" title="Değiştir">🔄</button></span></div>';
           }).join("") + '</div>';
-      }).join("");
+  }
+
+  // Görünüm: takvim (varsayılan) ya da liste
+  function planGorunumSecici() {
+    return '<div class="plan-gorunum">' +
+      '<button class="' + (planGorunum === "takvim" ? 'aktif' : '') + '" data-plan-gorunum="takvim">🗓️ Takvim</button>' +
+      '<button class="' + (planGorunum === "liste" ? 'aktif' : '') + '" data-plan-gorunum="liste">📋 Liste</button></div>';
+  }
+  function planBugunIndex() { return Math.round((new Date(isoGun(Date.now()) + "T12:00:00") - new Date(plan.bas + "T12:00:00")) / GUN); }
+  var GUN_KISA = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
+
+  // Haftalık: her gün bir sütun
+  function planHaftaTakvimi(evdekiler, ekipmanlar, bugunIso) {
+    return '<div class="takvim-hafta">' + plan.gunler.map(function (g, i) {
+      var d = planGunTarihi(i), bugun = isoGun(d) === bugunIso;
+      return '<div class="takvim-sutun' + (bugun ? ' bugun' : '') + '"><div class="takvim-sutun-bas"><small>' + (bugun ? 'Bugün' : GUN_KISA[d.getDay()]) + '</small><b>' + d.getDate() + '</b> <small>' + AYLAR[d.getMonth()] + '</small></div>' +
+        PLAN_YERLERI.map(function (y) {
+          var t = g[y.id] && tarifBul(g[y.id]);
+          var degistir = '<button class="plan-degistir" data-plan-degistir="' + i + '|' + y.id + '" title="Değiştir">🔄</button>';
+          if (!t) return '<div class="takvim-yemek"><span class="aciklama">' + y.ikon + ' ' + y.ad + ' yok</span><div class="takvim-yemek-alt"><span></span>' + degistir + '</div></div>';
+          var dr = tarifDurumu(t, evdekiler, ekipmanlar);
+          var rozet = dr.eksikler.length === 0 ? '<span class="rozet var">✅</span>' : '<span class="rozet ' + (dr.eksikler.length <= 2 ? 'az' : 'yok') + '">' + dr.eksikler.length + ' eksik</span>';
+          return '<div class="takvim-yemek"><span class="plan-tarif" data-tarif-detay="' + esc(t.ad) + '">' + y.ikon + ' ' + esc(t.ad) + '</span><div class="takvim-yemek-alt">' + rozet + degistir + '</div></div>';
+        }).join("") + '</div>';
+    }).join("") + '</div>';
+  }
+
+  // Aylık: Pazartesi başlayan ay takvimi ızgarası; bir güne dokununca altında o günün yemekleri açılır
+  function planAyTakvimi(evdekiler, ekipmanlar, bugunIso) {
+    var n = plan.gunler.length, bi = planBugunIndex();
+    if (planSeciliGun === null || planSeciliGun < 0 || planSeciliGun >= n) planSeciliGun = bi >= 0 && bi < n ? bi : 0;
+    var ilk = planGunTarihi(0), son = planGunTarihi(n - 1);
+    var bosBas = (ilk.getDay() + 6) % 7, bosSon = 6 - (son.getDay() + 6) % 7;
+    var baslik = AYLAR[ilk.getMonth()] + (ilk.getMonth() !== son.getMonth() ? ' – ' + AYLAR[son.getMonth()] : '') + ' ' + son.getFullYear();
+    var h = '<div class="takvim-ay"><div class="takvim-ay-baslik">📆 ' + baslik + '</div><div class="takvim-izgara">' +
+      ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"].map(function (a) { return '<div class="takvim-gunadi">' + a + '</div>'; }).join("");
+    for (var k = -bosBas; k < n + bosSon; k++) {
+      var d = planGunTarihi(k);
+      if (k < 0 || k >= n) { h += '<div class="takvim-hucre bos-gun"><span class="takvim-no">' + d.getDate() + '</span></div>'; continue; }
+      var g = plan.gunler[k], ayYaz = (k === 0 || d.getDate() === 1) ? '<small>' + AYLAR[d.getMonth()].slice(0, 3) + '</small>' : '';
+      var sinif = (isoGun(d) === bugunIso ? ' bugun' : '') + (k === planSeciliGun ? ' secili' : '') + (k < bi ? ' gecmis' : '');
+      h += '<button class="takvim-hucre' + sinif + '" data-plan-gun-sec="' + k + '" title="' + esc(planGunYazisi(k)) + '"><span class="takvim-no">' + d.getDate() + ayYaz + '</span>' +
+        PLAN_YERLERI.map(function (y) { return g[y.id] ? '<span class="takvim-mini">' + y.ikon + ' ' + esc(g[y.id]) + '</span>' : ''; }).join("") +
+        '<span class="takvim-ikonlar">' + PLAN_YERLERI.map(function (y) { return g[y.id] ? y.ikon : ''; }).join("") + '</span></button>';
+    }
+    return h + '</div></div><div id="planSeciliGunKart">' + planGunKarti(planSeciliGun, evdekiler, ekipmanlar, bugunIso) + '</div>';
   }
 
   // 🔄: o güne başka tarif seç (öneriler + arama)
@@ -4673,6 +4931,35 @@
     { ad: "Et", ikon: "🥩" }, { ad: "Köfte", ikon: "🍖" }, { ad: "Tavuk", ikon: "🍗" }, { ad: "Balık", ikon: "🐟" },
     { ad: "Zeytinyağlı", ikon: "🍆" }, { ad: "Meze", ikon: "🧀" }, { ad: "Hamur İşi", ikon: "🥐" }, { ad: "Diyet", ikon: "🥗" }, { ad: "Vejetaryen", ikon: "🥦" }
   ];
+  // Sadece belli sofra modlarında görünen favoriler (listenin başına eklenir)
+  var MOD_FAVORILERI = [
+    { ad: "Sulu Yemek", ikon: "🍲", modlar: ["aile"], hazir: true },
+    { ad: "Ara Sıcak", ikon: "🥟", modlar: ["aile"], hazir: true },
+    { ad: "Afrodizyak etkili yemekler", ikon: "❤️", modlar: ["romantik"] }
+  ];
+  function modFavorileri(modId) {
+    return MOD_FAVORILERI.filter(function (f) { return f.modlar.indexOf(modId) >= 0; }).concat(FAVORILER);
+  }
+
+  // ---------- Afrodizyak etkili bilinen besinler (liste tarifler.js'de) ----------
+  function afrodizyakKelimeVar(metin, kelime) {
+    // Kısa kelimelerde (bal, nar, muz) "balık", "narenciye" gibi yanlış eşleşmeyi önle: sadece ek alabilir
+    var ek = kelime.length <= 3 ? "(lı|li|lu|lü|ı|i|u|ü|ın|in|un|ün|ını|ini|lar|ler|ekşisi)?(?![a-zçğıöşüâî])" : "";
+    return new RegExp("(^|[^a-zçğıöşüâî])" + kelime + ek).test(metin);
+  }
+  function tarifAfrodizyaklari(t) {
+    if (t._afr) return t._afr;
+    if (typeof AFRODIZYAK_BESINLER === "undefined") return (t._afr = []);
+    var metin = (t.ad + " | " + ((t.ham && t.ham.m) || []).join(" | ")).toLocaleLowerCase("tr")
+      .replace(/kahve fincanı|çay bardağı|su bardağı/g, " ");   // ölçü birimleri besin sayılmasın
+    t._afr = AFRODIZYAK_BESINLER.filter(function (b) {
+      return b.ara.some(function (k) { return afrodizyakKelimeVar(metin, k); });
+    });
+    return t._afr;
+  }
+  function afrodizyakPuani(t) {
+    return tarifAfrodizyaklari(t).reduce(function (p, b) { return p + (b.yaygin ? 1 : 10); }, 0);
+  }
   // Favori listelerini tarif arşivinden tamamla (yeni tarif eklendikçe kendiliğinden büyür)
   (function favorileriTamamla() {
     var ET = /(^| )(et|eti|kıyma|kıymalı|kuşbaşı|kuzu|dana|biftek|bonfile|antrikot|pirzola|kavurma|kebap|kebabı|sucuk|pastırma|ciğer|ciğeri|tavuk|piliç|hindi|balık|somon|levrek|hamsi|karides|kalamar|midye|ton)( |$)/;
@@ -4686,7 +4973,23 @@
       "Zeytinyağlı": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Zeytinyağlı"; }),
       "Meze": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Meze"; }),
       "Hamur İşi": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Hamur İşi"; }),
-      "Vejetaryen": HAZIR_TARIFLER.filter(function (t) { return ["Ana Yemek", "Zeytinyağlı", "Meze", "Salata", "Pilav & Makarna", "Ara Sıcak"].indexOf(t.kat) >= 0 && !etliMi(t); })
+      "Vejetaryen": HAZIR_TARIFLER.filter(function (t) { return ["Ana Yemek", "Zeytinyağlı", "Meze", "Salata", "Pilav & Makarna", "Ara Sıcak"].indexOf(t.kat) >= 0 && !etliMi(t); }),
+      // Geniş aile sofrası: tencerede pişen sulu yemekler ve ara sıcaklar
+      "Sulu Yemek": HAZIR_TARIFLER.filter(function (t) {
+        var a = normalIsim(t.ad);
+        return t.kat === "Ana Yemek" && /(kuru fasulye|nohut|bezelye|türlü|taze fasulye|ıspanak yemeği|bamya|sulu köfte|ekşili köfte|tas kebab|yahni|kapama|haşlama|mercimek|patates yemeği|sülbiye|gelin fasulyesi|tencere kebab|keşkek|pırasa|sebze yemeği|meftune|tiritli)/.test(a) &&
+          !/(fırın|graten|kızart|şinitzel|ızgara|^etsiz)/.test(a);
+      }),
+      "Ara Sıcak": HAZIR_TARIFLER.filter(function (t) { return t.kat === "Ara Sıcak"; }),
+      // Romantik akşam: makalelerden esinlenen tarifler önce, sonra en çok afrodizyak besin içerenler
+      "Afrodizyak etkili yemekler": (function () {
+        var romantik = SOFRA_MODLARI.find(function (m) { return m.id === "romantik"; });
+        var secme = [];
+        if (romantik) romantik.kurslar.forEach(function (k) { secme = secme.concat(k.adaylar); });
+        return HAZIR_TARIFLER.filter(function (t) { return t.kat !== "Çorba" && afrodizyakPuani(t) >= 10; })
+          .map(function (t) { return { t: t, p: afrodizyakPuani(t) + (secme.indexOf(t.ad) >= 0 ? 50 : 0) }; })
+          .sort(function (a, b) { return b.p - a.p; }).map(function (x) { return x.t; });
+      })()
     };
     Object.keys(ekle).forEach(function (k) {
       var liste = (FAVORI_ETIKETLERI[k] || []).slice();
@@ -4715,13 +5018,29 @@
   function tarifBul(ad) { ad = ESKI_TARIF_ADLARI[ad] || ad; return HAZIR_TARIFLER.find(function (t) { return t.ad === ad; }); }
   function sofraModu() { return SOFRA_MODLARI.find(function (m) { return m.id === sofra.mod; }); }
 
+  // Sofra modunu seç: romantik akşamda kişi sayısı 2'ye sabitlenir, aile sofrasında sulu yemek ve ara sıcak öne çıkar
+  function sofraModSec(id) {
+    var eski = sofraModu();
+    sofra.mod = id; sofra.adim = 2; sofra.secimler = {}; sofra.yapildi = {};
+    var mod = sofraModu();
+    if (mod && mod.sabitKisi) { sofra.kisi = mod.sabitKisi; sofra.aralik = null; }
+    else if (eski && eski.sabitKisi && sofra.kisi === eski.sabitKisi) { sofra.kisi = 8; sofra.aralik = null; }
+    // Bu modda görünmeyen favorileri bırak, modun hazır favorilerini işaretle
+    var gecerli = modFavorileri(id).map(function (f) { return f.ad; });
+    sofra.favoriler = sofra.favoriler.filter(function (f) { return gecerli.indexOf(f) >= 0; });
+    MOD_FAVORILERI.forEach(function (f) { if (f.hazir && f.modlar.indexOf(id) >= 0 && sofra.favoriler.indexOf(f.ad) < 0) sofra.favoriler.push(f.ad); });
+  }
+
   // Modun kursları + favori seçildiyse "Favorilerinden" kursu
   function sofraKurslari() {
     var mod = sofraModu();
     var kurslar = mod.kurslar.slice();
     // Her favori için ayrı bir "⭐ Favorin" bölümü (ör. Balık seçtiysen bir balık daha öneririz)
     sofra.favoriler.forEach(function (f) {
-      kurslar.push({ ad: "⭐ Favorin: " + f, sayi: 1, adaylar: (FAVORI_ETIKETLERI[f] || []).slice(), favori: true });
+      var adaylar = (FAVORI_ETIKETLERI[f] || []).slice();
+      // Pratik masada favoriler de kısa sürede hazırlananlardan seçilir
+      if (mod.maxDk) adaylar = adaylar.filter(function (ad) { var t = tarifBul(ad); return t && sureDakika(t.sure) <= mod.maxDk; });
+      kurslar.push({ ad: "⭐ Favorin: " + f, sayi: 1, adaylar: adaylar, favori: true });
     });
     return kurslar;
   }
@@ -4733,7 +5052,7 @@
     return kurs.adaylar.map(function (ad, sira) {
       var t = tarifBul(ad);
       var d = tarifDurumu(t, evdekiler, []);
-      var puan = (favoriTarifler.indexOf(ad) >= 0 ? 100 : 0) - d.eksikler.length * 8 - sira;
+      var puan = kurs.siraKorunsun ? -sira : (favoriTarifler.indexOf(ad) >= 0 ? 100 : 0) - d.eksikler.length * 8 - sira;   // siraKorunsun: listedeki sıra aynen kalır
       return { ad: ad, puan: puan };
     }).sort(function (a, b) { return b.puan - a.puan; }).map(function (x) { return x.ad; });
   }
@@ -4784,6 +5103,13 @@
             '<div class="ikon">' + m.ikon + '</div><b>' + esc(m.ad) + '</b><span>' + esc(m.aciklama) + '</span></button>';
         }).join("") + '</div></div>';
     }
+    else if (sofra.adim === 2 && sofraModu().sabitKisi) {
+      sofra.kisi = sofraModu().sabitKisi; sofra.aralik = null;
+      icerik = '<div class="kart" style="text-align:center"><h3>' + sofraModu().ikon + ' ' + sofra.kisi + ' kişi olduğunu biliyoruz.</h3>' +
+        '<p class="aciklama" style="font-size:16px">Hadi favorilere geçelim ❤️</p>' +
+        '<div class="arac" style="justify-content:center;margin-top:18px"><button class="btn ikincil" data-sofra-adim="1">← Geri</button>' +
+        '<button class="btn" data-sofra-adim="3">Favorilere geç →</button></div></div>';
+    }
     else if (sofra.adim === 2) {
       icerik = '<div class="kart" style="text-align:center"><h3>' + sofraModu().ikon + ' Kaç kişi olacaksınız?</h3>' +
         '<div class="kisi-secim"><button data-kisi-degis="-1">−</button><div class="sayi">' + (sofra.aralik || sofra.kisi) + '</div><button data-kisi-degis="1">+</button></div>' +
@@ -4801,7 +5127,7 @@
     else if (sofra.adim === 3) {
       icerik = '<div class="kart" style="text-align:center"><h3>Misafirlerin en çok neyi sever?</h3>' +
         '<p class="aciklama">Birden fazla seçebilirsin. Seçtiklerini menüde öne çıkarırız.</p>' +
-        '<div class="mod-izgara" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr))">' + FAVORILER.map(function (f) {
+        '<div class="mod-izgara" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr))">' + modFavorileri(sofra.mod).map(function (f) {
           return '<button class="mod-kart ' + (sofra.favoriler.indexOf(f.ad) >= 0 ? "secili" : "") + '" data-favori="' + f.ad + '" style="text-align:center">' +
             '<div class="ikon">' + f.ikon + '</div><b>' + f.ad + '</b></button>';
         }).join("") + '</div>' +
@@ -4880,6 +5206,10 @@
         var rozet = d.eksikler.length === 0 ? '<span class="rozet var">✅ Evde var</span>'
           : '<span class="rozet ' + (d.eksikler.length <= 2 ? "az" : "yok") + '">' + d.eksikler.length + ' eksik</span>';
         var acik = !!sofraAcik[t.ad];
+        if (mod.id === "romantik") {
+          var afr = tarifAfrodizyaklari(t).filter(function (b) { return !b.yaygin; });
+          if (afr.length) rozet += ' <span class="rozet afr" title="Afrodizyak etkili bilinen besinler">❤️ ' + esc(afr.map(function (b) { return b.ad; }).join(", ")) + '</span>';
+        }
         return '<div class="secim' + (acik ? ' acik' : '') + '"><div class="secim-ust"><div><b>' + esc(t.ad) + '</b> ' + rozet +
           '<span class="kaynak">' + esc(t.kat) + ' · ⏱️ ' + esc(t.sure) + ' · ' + t.kisi + ' kişilik' + olcek + '</span></div>' +
           '<div class="arac" style="margin:0;flex-wrap:nowrap">' +
@@ -4902,9 +5232,10 @@
         '<div class="arac">' +
           '<button class="btn" data-sofra-eksik="">🛒 Eksikleri alışveriş listesine ekle' + (toplamEksik ? ' (' + toplamEksik + ')' : '') + '</button>' +
           '<button class="btn ikincil" data-sofra-menu="">🍽️ Menüme aktar</button>' +
-          '<button class="btn whatsapp-renk" data-sofra-paylas="">💬 Menüyü arkadaşlarına gönder</button>' +
+          '<button class="btn whatsapp-renk" data-sofra-paylas="">💬 Menüyü ' + (mod.id === "romantik" ? 'paylaş' : 'arkadaşlarına gönder') + '</button>' +
         '</div>' +
       '</div>' +
+      (mod.id === "romantik" ? afrodizyakRehberiHtml() : '') +
       '<div class="kart"><h3>🗓️ Adım adım hazırlık planı</h3>' +
         '<p class="aciklama">' + bitenSayisi + ' / ' + adimlar.length + ' adım tamam. Yaptıkça işaretle.</p>' +
         adimlar.map(function (a) {
@@ -4916,6 +5247,17 @@
       '</div>';
   }
 
+  // Romantik akşam için afrodizyak etkili bilinen besinler listesi (açılır kapanır)
+  function afrodizyakRehberiHtml() {
+    if (typeof AFRODIZYAK_BESINLER === "undefined") return "";
+    return '<div class="kart"><details><summary style="cursor:pointer"><h3 style="display:inline">❤️ Afrodizyak etkili bilinen besinler</h3></summary>' +
+      '<p class="aciklama" style="margin-top:10px">Menüdeki yemekleri seçerken bu besinleri öne çıkardık. Bunlar geleneksel olarak bilinen ve genel beslenme bilgisine dayanan notlardır; ' +
+      'hiçbir yiyecek ilaç gibi etki etmez. Bir sağlık sorunun varsa ya da takviye kullanmayı düşünüyorsan doktoruna danış.</p>' +
+      '<div class="afr-liste">' + AFRODIZYAK_BESINLER.map(function (b) {
+        return '<div class="afr-besin"><span class="ikon">' + b.ikon + '</span><div><b>' + esc(b.ad) + '</b><span>' + esc(b.aciklama) + '</span></div></div>';
+      }).join("") + '</div></details></div>';
+  }
+
   function sofraHazirlikAdimlari(plan) {
     var n = sofra.kisi;
     var kurslar = plan.map(function (p) { return p.kurs.ad.toLocaleLowerCase("tr"); }).join(" ");
@@ -4925,8 +5267,31 @@
     var sofraTakimi;
     if (sofra.mod === "altin") sofraTakimi = n + " çay bardağı ve tabağı, " + n + " pasta tabağı, " + n + " çatal, kahve fincanları ve bol peçete";
     else if (sofra.mod === "atistirmalik") sofraTakimi = "küçük kaseler, kürdanlar, " + n + " küçük tabak, " + n + " bardak ve bol peçete";
+    else if (sofra.mod === "romantik") sofraTakimi = "2 servis tabağı, 2 tatlı tabağı, 2 çatal-bıçak, 2 kadeh, 2 su bardağı ve kumaş peçeteler";
     else sofraTakimi = n + " servis tabağı, " + n + " tatlı tabağı, " + n + " çatal-bıçak, " + n + " su bardağı ve peçeteler" +
       (sofra.mod === "felekten" ? "; mezeler için 6-8 küçük kase" : "");
+    if (sofra.mod === "romantik") return romantikHazirlikAdimlari(sofraTakimi, tatliVar);
+    if (sofra.mod === "pratik") return [
+      { id: "onay", metin: "📝 <b>Bugün:</b> Menüyü onayla, eksikleri alışveriş listene ekle. Eve dönerken markete uğrayabilirsin." },
+      { id: "hazirlik", metin: "🧊 <b>Sabah işe çıkmadan (isteğe bağlı):</b> Dondurucudan çıkacak bir şey varsa buzdolabına al, makarna ya da salata malzemelerinin yerini kontrol et." },
+      { id: "ocak", metin: "🔥 <b>Eve gelince ilk iş:</b> Makarna suyunu ya da tavayı ocağa koy, fırın gerekiyorsa ısıtmaya başla." },
+      { id: "salata", metin: "🥗 <b>Su kaynarken:</b> Salatayı ve yanındakileri hazırla. Kızartmalık patatesi doğra." },
+      { id: "pisir", metin: "🍝 <b>10-15 dakika:</b> Ana yemeği ve kızartmayı pişir. Bulaşıkları pişerken makineye at, sonrası kolay olsun." },
+      { id: "sofra", metin: "🍽️ <b>Son 5 dakika:</b> Sofrayı kur: " + sofraTakimi + ". Salatayı son anda sosla." },
+      { id: "keyif", metin: "😌 <b>Afiyet olsun:</b> Günün yorgunluğunu at; tatlıyı yemekten sonra 5 dakikada hazırlarsın." }
+    ];
+    if (sofra.mod === "iftar") return [
+      { id: "onay", metin: "📝 <b>Bugün:</b> Menüyü onayla, eksikleri alışveriş listene ekle. İftar saatini takvimden kontrol et." },
+      { id: "alisveris", metin: "🛒 <b>1 gün önce:</b> Alışverişi yap; hurma, zeytin, peynir ve pastırma gibi iftariyelikleri unutma." },
+      { id: "onceden", metin: "🍮 <b>1 gün önce:</b> Tatlıyı, kompostoyu ya da hoşafı hazırla" + (mezeVar ? ", zeytinyağlıları ve mezeleri yap" : "") + ". Bir gece dolapta dinlenince daha lezzetli olurlar." },
+      { id: "serbet", metin: "🍹 <b>Aynı gün öğlen:</b> Şerbeti hazırlayıp buzdolabına koy, iyice soğusun." },
+      { id: "sabah", metin: "🔪 <b>İkindiden sonra:</b> Sebzeleri yıka ve doğra, ara sıcakları pişmeye hazır hale getir." },
+      { id: "pisir", metin: "🔥 <b>İftardan 2 saat önce:</b> Ana yemeği ve çorbayı pişir. Pideyi evde pişireceksen hamurunu mayalamaya bırak; fırından alacaksan sıra uzamadan al." },
+      { id: "sofra", metin: "🍽️ <b>1 saat önce:</b> Sofrayı kur: " + sofraTakimi + "; ayrıca çorba kâseleri, şerbet bardakları ve iftariyelik için küçük tabaklar." },
+      { id: "son", metin: "♨️ <b>15 dakika önce:</b> Ara sıcakları kızart ya da fırına ver, çorbayı ısıt, pideyi ısıtıp bezle ört. İftariyelik tabağını ve şerbeti masaya koy." },
+      { id: "keyif", metin: "🌙 <b>Ezanla birlikte:</b> Su ve hurmayla başlayın, ardından çorba gelsin; ana yemeği birkaç dakika sonra servis et. Hayırlı iftarlar 🤲" },
+      { id: "sahur", metin: "🥣 <b>Sofra kalkınca:</b> Artanları sahur için ayrı kaplara ayırıp dolaba kaldır." }
+    ];
 
     var liste = [
       { id: "onay", metin: "📝 <b>Bugün:</b> Menüyü onayla, eksikleri alışveriş listene ekle." },
@@ -4941,6 +5306,26 @@
     liste.push({ id: "son", metin: "♨️ <b>30 dakika önce:</b> Sıcakları ocağa al, salatayı son anda sosla, buzdolabındakileri servis tabaklarına aktar." });
     liste.push({ id: "keyif", metin: "🎶 <b>Misafirler gelince:</b> Işıkları ayarla, sevdiğin bir müzik aç ve keyfini çıkar. Asistanın her şeyi hatırlıyor 😊" });
     return liste;
+  }
+
+  // Romantik akşam: yemek hazırlığı + masayı romantik hale getirecek öneriler
+  function romantikHazirlikAdimlari(sofraTakimi, tatliVar) {
+    return [
+      { id: "onay", metin: "📝 <b>Bugün:</b> Menüyü onayla, eksikleri alışveriş listene ekle." },
+      { id: "alisveris", metin: "🛒 <b>1 gün önce:</b> Alışverişi yap. Sepete küçük bir buket ya da tek bir gül, birkaç mum ve kibrit eklemeyi unutma 🌹" },
+      { id: "onceden", metin: "🍮 <b>1 gün önce:</b> " + (tatliVar ? "Tatlıyı hazırla, buzdolabında beklesin. " : "") +
+        "O akşam mutfakta değil masada olmak için yapılabilecek her şeyi önceden hazırla." },
+      { id: "muzik", metin: "🎶 <b>1 gün önce:</b> İkinizin de sevdiği şarkılardan yumuşak, sözleri sohbeti bölmeyecek bir müzik listesi hazırla. Ortak bir anınızı hatırlatan bir şarkı da ekle." },
+      { id: "sabah", metin: "🔪 <b>Aynı gün:</b> Sebzeleri yıka ve doğra, salata malzemelerini hazırlayıp dolaba koy. İçecekleri soğumaya bırak." },
+      { id: "pisir", metin: "🔥 <b>Yemekten 1,5 saat önce:</b> Ana yemeği hazırla. Ağır kokulu kızartmaları erken bitir ve evi havalandır." },
+      { id: "sofra", metin: "🍽️ <b>1 saat önce:</b> Sofrayı kur: " + sofraTakimi + ". Sandalyeleri karşılıklı ya da köşe köşe, birbirinize yakın yerleştir." },
+      { id: "ortu", metin: "🕯️ <b>Masayı süsle:</b> Düz, açık renkli ya da bordo bir masa örtüsü ser. Ortaya alçak mumlar koy ki birbirinizi rahatça görebilin; kokulu mum yerine kokusuz olanı seç, yemeğin kokusuyla karışmasın." },
+      { id: "cicek", metin: "🌹 <b>Çiçek ve küçük dokunuşlar:</b> Ortaya küçük bir vazoda çiçek koy, masaya birkaç gül yaprağı serp. Peçeteleri kalp ya da yelpaze şeklinde katla." },
+      { id: "not", metin: "💌 <b>Sürpriz bir not:</b> Tabağın yanına el yazınla kısa bir not bırak. Birkaç cümle bile o akşamı unutulmaz yapar." },
+      { id: "isik", metin: "💡 <b>30 dakika önce:</b> Tavan ışığını kapat; abajur, ışık zinciri ya da mum ışığıyla loş ve sıcak bir ortam kur. Müziği kısık sesle başlat." },
+      { id: "son", metin: "♨️ <b>15 dakika önce:</b> Sıcakları ocağa al, salatayı son anda sosla. Kadehleri doldur, soğuk içecekleri masaya getir." },
+      { id: "keyif", metin: "📵 <b>Yemek başlarken:</b> Telefonları sessize alıp bir kenara koyun. Bu akşam sadece ikinizin ❤️ Asistanın her şeyi hatırlıyor 😊" }
+    ];
   }
 
   function sofraEksikleriEkle() {
@@ -5133,11 +5518,11 @@
     if (b.id === "kullaniciBtn") { if (aktifKullanici()) kMenu.classList.toggle("acik"); else uyelikAc(); }
     else if (b.id === "anaButon") { if (aktifKullanici()) bolumAc("urunler"); else uyelikAc(); }
     else if (d.sofraBasla !== undefined) {
-      if (d.sofraBasla) { sofra.mod = d.sofraBasla; sofra.adim = 2; sofra.secimler = {}; sofra.yapildi = {}; }
+      if (d.sofraBasla) sofraModSec(d.sofraBasla);
       else if (!sofra.mod) sofra.adim = 1;
       sofraKaydet(); bolumAc("sofra");
     }
-    else if (d.sofraMod) { sofra.mod = d.sofraMod; sofra.adim = 2; sofra.secimler = {}; sofra.yapildi = {}; sofraKaydet(); sofraGoster(); }
+    else if (d.sofraMod) { sofraModSec(d.sofraMod); sofraKaydet(); sofraGoster(); }
     else if (d.sofraAdim) { sofra.adim = +d.sofraAdim; if (sofra.adim === 4) sofra.secimler = {}; sofraKaydet(); sofraGoster(); window.scrollTo(0, 0); }
     else if (d.kisiDegis) { sofra.aralik = null; sofra.kisi = Math.max(1, Math.min(100, sofra.kisi + (+d.kisiDegis))); sofraKaydet(); sofraGoster(); }
     else if (d.kisiAralik) { sofra.aralik = d.kisiAralik; sofra.kisi = +d.kisiAralik.split("-")[1]; sofraKaydet(); sofraGoster(); }   // en kalabalık hâline göre hazırlanır
@@ -5210,6 +5595,11 @@
     else if (d.planOlustur) { var po = d.planOlustur.split("|"); planOlustur(po[0], planKisiSecim, po[1] || (plan && plan.mod)); }
     else if (d.planKisi) { planKisiSecim = +d.planKisi; planKartiniGoster(); }
     else if (d.planDegistir) planDegistirAc(d.planDegistir);
+    else if (d.planGorunum) { planGorunum = d.planGorunum; yaz("ma_plan_gorunum", planGorunum); planGoster(); }
+    else if (d.planGunSec !== undefined) {
+      planSeciliGun = +d.planGunSec; planGoster();
+      var sk = document.getElementById("planSeciliGunKart"); if (sk && window.innerWidth < 760) sk.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
     else if (d.planSec) planSec(d.planSec);
     else if (d.planEksik) planEksikleriEkle();
     else if (d.planPaylas) planPaylas();
@@ -5222,6 +5612,7 @@
     else if (d.sktYeniTur) sktYeniTurSec(d.sktYeniTur);
     else if (d.sktYeniOnay) sktYeniOnay();
     else if (d.sktBitti) sktBitti(d.sktBitti);
+    else if (d.urunSil) urunSil(d.urunSil);
     else if (d.unutHalaVar) unutulanHalaVar(d.unutHalaVar, d.tarif);
     else if (d.unutBitti) { sktBitti(d.unutBitti); }
     else if (d.tavsiyeYenile) { tavsiyeSayfa++; tavsiyeleriGoster(); }

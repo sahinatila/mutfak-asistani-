@@ -4,7 +4,7 @@
 //  Dosyaları güncellediğinde aşağıdaki SURUM numarasını 1 artır
 //  (ör. "v1" → "v2"), yoksa telefonlar eski hali göstermeye devam eder.
 // =====================================================================
-var SURUM = "mutfak-v82";
+var SURUM = "mutfak-v87";
 var DOSYALAR = [
   "./",
   "./index.html",
