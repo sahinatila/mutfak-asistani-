@@ -7819,7 +7819,112 @@ var TARIFLER = [
     y: ["Tavuk parçalarını tuzlayıp geniş tavada zeytinyağında her yüzü kızarana kadar pişir.",
         "Soğan, sarımsak ve biberi ekleyip yumuşat; rendelenmiş domatesi ilave et.",
         "Pirinci ekleyip çevir, zerdeçallı sıcak tavuk suyunu dök ve karıştırmadan kısık ateşte 20 dakika pişir.",
-        "Bezelyeyi serpip 5 dakika dinlendir, limon dilimleriyle servis et."] }
+        "Bezelyeyi serpip 5 dakika dinlendir, limon dilimleriyle servis et."] },
+
+  // ------------- ROMANTİK AKŞAM YEMEĞİ (afrodizyak besinlerden esinlenildi) -------------
+  { ad: "Zencefilli Sarımsaklı Karides", kat: "Deniz Mahsulleri", kisi: 2, sure: "20 dk",
+    m: ["300 gr temizlenmiş karides|karides", "3 diş sarımsak", "1 parmak boyu taze zencefil|zencefil", "1 tane taze acı biber|acı biber",
+        "2 yemek kaşığı tereyağı", "1 yemek kaşığı zeytinyağı", "Yarım limonun suyu|limon", "Maydanoz", "Tuz"],
+    y: ["Sarımsağı ince doğra, zencefili rendele, acı biberi halka halka kes.",
+        "Tavada tereyağı ile zeytinyağını ısıt, sarımsak, zencefil ve biberi 1 dakika çevir.",
+        "Karidesleri ekle, renkleri pembeleşene kadar 3-4 dakika sote et; fazla pişirme, sertleşir.",
+        "Limon suyunu gezdir, tuzla, maydanoz serpip sıcak servis et."] },
+
+  { ad: "Tereyağlı Sarımsaklı Kuşkonmaz", kat: "Ara Sıcak", kisi: 2, sure: "15 dk",
+    m: ["1 demet kuşkonmaz", "2 yemek kaşığı tereyağı", "2 diş sarımsak", "1 yemek kaşığı rendelenmiş parmesan ya da eski kaşar|kaşar",
+        "Yarım limonun kabuğu rendesi|limon", "Tuz", "Karabiber"],
+    y: ["Kuşkonmazların sert alt uçlarını kır, yıka.",
+        "Kaynar tuzlu suda 2 dakika haşla, hemen soğuk suya al.",
+        "Tavada tereyağını erit, ince doğranmış sarımsağı ekle, kuşkonmazları 3 dakika çevir.",
+        "Tuz, karabiber, limon kabuğu ve rendelenmiş peynirle servis et."] },
+
+  { ad: "Naneli Karpuz Salatası", kat: "Salata", kisi: 2, sure: "10 dk",
+    m: ["2 dilim karpuz", "100 gr beyaz peynir", "Birkaç dal taze nane|nane", "1 yemek kaşığı zeytinyağı", "Yarım limonun suyu|limon", "Karabiber"],
+    y: ["Karpuzu çekirdeklerini ayıklayıp küp küp doğra.",
+        "Beyaz peyniri ufala, nane yapraklarını elle kopar.",
+        "Hepsini bir kaseye al, zeytinyağı ve limon suyunu gezdir.",
+        "Üzerine az karabiber çekip soğuk servis et."] },
+
+  { ad: "Trüf Yağlı Mantarlı Makarna", kat: "İtalyan Mutfağı", kisi: 2, sure: "25 dk",
+    m: ["200 gr tagliatelle ya da spagetti|makarna", "250 gr kültür mantarı|mantar", "1 diş sarımsak", "1 su bardağı krema",
+        "2 yemek kaşığı rendelenmiş parmesan|parmesan", "1 tatlı kaşığı trüf yağı (bulamazsan zeytinyağı)|trüf yağı/zeytinyağı",
+        "1 yemek kaşığı tereyağı", "Tuz", "Karabiber"],
+    y: ["Makarnayı bol tuzlu suda haşla, yarım çay bardağı haşlama suyunu ayır.",
+        "Mantarları dilimle, tereyağında suyunu salıp çekene kadar sote et; sarımsağı ekle.",
+        "Kremayı ekleyip 2 dakika kaynat, makarnayı ve biraz haşlama suyunu ilave et.",
+        "Ocaktan alınca parmesanı ve birkaç damla trüf yağını ekle; yağı pişirme, kokusu uçar."] },
+
+  { ad: "Çikolatalı Chia Puding", kat: "Tatlı", kisi: 2, sure: "10 dk + 4 saat bekleme",
+    m: ["4 yemek kaşığı chia tohumu|chia", "1,5 su bardağı süt ya da hindistan cevizi sütü|süt", "2 yemek kaşığı kakao",
+        "1,5 yemek kaşığı bal", "Yarım çay kaşığı vanilya", "Bir avuç çilek ya da ahududu|çilek"],
+    y: ["Süt, kakao, bal ve vanilyayı iyice çırp.",
+        "Chia tohumunu ekleyip karıştır, 10 dakika sonra bir kez daha karıştır ki topaklanmasın.",
+        "Kaselere paylaştırıp buzdolabında en az 4 saat (ya da bir gece) beklet.",
+        "Servis ederken üzerine çilek ya da ahududu koy."] },
+
+  { ad: "Affogato", kat: "Tatlı", kisi: 2, sure: "5 dk",
+    m: ["2 top vanilyalı dondurma|dondurma", "2 fincan sıcak espresso ya da koyu demlenmiş kahve|kahve", "1 yemek kaşığı bitter çikolata rendesi|bitter çikolata"],
+    y: ["Dondurmayı iki küçük kâse ya da bardağa koy.",
+        "Kahveyi taze demle, sıcakken dondurmanın üzerine dök.",
+        "Çikolata rendesini serpip hemen, dondurma erimeden servis et."] },
+
+  { ad: "Çikolatalı Çilek ve Muz", kat: "Tatlı", kisi: 2, sure: "15 dk + 15 dk soğuma",
+    m: ["10 tane iri çilek|çilek", "1 tane muz", "100 gr bitter çikolata", "1 yemek kaşığı süt", "1 yemek kaşığı çekilmiş fındık ya da antep fıstığı|fındık"],
+    y: ["Çilekleri yıka ve iyice kurula; muzu kalın halkalar halinde doğra.",
+        "Çikolatayı sütle birlikte benmari usulü erit.",
+        "Meyveleri kürdan ya da çatalla çikolataya batır, üzerine fındık serp.",
+        "Yağlı kâğıda dizip buzdolabında 15 dakika beklet, çikolata donunca servis et."] },
+
+  { ad: "Ballı Bademli İncir Tatlısı", kat: "Tatlı", kisi: 2, sure: "20 dk",
+    m: ["6 tane kuru ya da taze incir|incir", "2 yemek kaşığı bal", "10 tane badem", "Yarım çay kaşığı tarçın", "4 yemek kaşığı süzme yoğurt|yoğurt"],
+    y: ["Kuru incir kullanıyorsan 10 dakika ılık suda yumuşat.",
+        "İncirlerin tepesine çapraz kesik at, her birinin içine bir badem yerleştir.",
+        "Bal ve tarçınla birlikte küçük bir tencerede kısık ateşte 5 dakika çevir.",
+        "Süzme yoğurdun yanında, kalan bademleri üzerine serpip ılık servis et."] },
+
+  { ad: "Zencefilli Kek", kat: "Tatlı", kisi: 6, sure: "50 dk",
+    m: ["2 su bardağı un", "1 su bardağı esmer şeker|şeker", "3 tane yumurta", "Yarım su bardağı sıvı yağ|yağ", "1 su bardağı süt",
+        "1 tatlı kaşığı toz zencefil|zencefil", "1 tatlı kaşığı tarçın", "1 paket kabartma tozu", "1 paket vanilya",
+        "#Yanına", "1 su bardağı süzme yoğurt|yoğurt", "Bir avuç çilek"],
+    y: ["Yumurta ve şekeri köpürene kadar çırp, yağ ve sütü ekle.",
+        "Un, zencefil, tarçın, kabartma tozu ve vanilyayı eleyerek karıştır.",
+        "Yağlanmış kalıba dök, 175 derece fırında 35-40 dakika pişir.",
+        "Dilimleri, birkaç damla vanilya eklenmiş yoğurt ve çileklerle servis et."],
+    e: ["fırın"] },
+
+  { ad: "Taze Nar Suyu", kat: "İçecekler", kisi: 2, sure: "10 dk",
+    m: ["2 tane iri nar|nar", "Yarım portakalın suyu|portakal", "Buz"],
+    y: ["Narları ortadan kesip tanelerini bir kaseye çıkar (kaşığın arkasıyla vurmak işini kolaylaştırır).",
+        "Taneleri blenderda birkaç saniye çek, ince süzgeçten süz; çekirdekleri çok ezme, acılaşır.",
+        "Portakal suyunu ekleyip karıştır.",
+        "Buzlu kadehlerde servis et."],
+    e: ["blender"] },
+
+  // ------------------------- İFTAR SOFRASI -------------------------
+  { ad: "Ramazan Pidesi", kat: "Hamur İşi", kisi: 6, sure: "1 saat 30 dk (mayalanma dahil)",
+    m: ["4 su bardağı un", "1 paket instant maya|maya", "1,5 su bardağı ılık su|su", "1 tatlı kaşığı şeker", "1 tatlı kaşığı tuz", "2 yemek kaşığı sıvı yağ|yağ",
+        "#Üzeri için", "1 tane yumurta sarısı|yumurta", "1 yemek kaşığı yoğurt", "1 yemek kaşığı çörek otu", "1 yemek kaşığı susam"],
+    y: ["Maya, şeker ve ılık suyu karıştır; un, tuz ve yağı ekleyip yumuşak bir hamur yoğur.",
+        "Üzerini örtüp ılık yerde iki katına çıkana kadar yaklaşık 45 dakika mayalandır.",
+        "Hamuru yağlı kâğıt serili tepside elinle yuvarlak ve yassı aç, ıslak parmak uçlarınla kareli desen yap.",
+        "Yumurta sarısı ve yoğurdu karıştırıp üzerine sür, çörek otu ve susam serp.",
+        "220 derece fırında üzeri kızarana kadar 15-18 dakika pişir; sıcakken bezle örtersen yumuşak kalır."],
+    e: ["fırın"] },
+
+  { ad: "İftariyelik Tabağı", kat: "Meze", kisi: 6, sure: "15 dk",
+    m: ["12 tane hurma", "1 kase siyah zeytin|zeytin", "1 kase yeşil zeytin|zeytin", "200 gr beyaz peynir", "150 gr kaşar peyniri|kaşar",
+        "100 gr pastırma", "1 kase ceviz içi|ceviz", "2 tane domates", "2 tane salatalık", "Birkaç dal maydanoz|maydanoz"],
+    y: ["Peynirleri küp ya da dilim halinde kes, domates ve salatalığı doğra.",
+        "Geniş bir tabağın ortasına hurmaları, etrafına zeytin, peynir ve pastırmayı yerleştir.",
+        "Cevizi küçük bir kâseye koy, sebzeleri ve maydanozu kenarlara diz.",
+        "Ezan okunmadan hemen önce masaya getir; oruç hurma ve suyla açılabilir."] },
+
+  { ad: "Demirhindi Şerbeti", kat: "İçecekler", kisi: 6, sure: "20 dk + 3 saat bekleme",
+    m: ["150 gr demirhindi (Hint hurması)|demirhindi", "1 su bardağı şeker", "6 su bardağı su", "3-4 tane karanfil", "1 çubuk tarçın", "Yarım limonun suyu|limon"],
+    y: ["Demirhindiyi 2 su bardağı ılık suda 1 saat ıslat, elinle ezip süz.",
+        "Kalan su, şeker, karanfil ve tarçını kaynat, şeker eriyince ocaktan al.",
+        "Demirhindi suyunu ve limonu ekle, karıştır.",
+        "Soğuyunca buzdolabında en az 2 saat beklet, soğuk servis et."] }
 ];
 
 // =====================================================================
@@ -7867,6 +7972,58 @@ var SOFRA_MODLARI = [
       { ad: "Ana yemek", sayi: 1, adaylar: ["Fırında Levrek", "Hamsi Tava", "Fırında Somon", "Izgara Köfte"] },
       { ad: "Salata", sayi: 1, adaylar: ["Çoban Salata", "Kinoalı Salata"] },
       { ad: "Tatlı", sayi: 1, adaylar: ["İrmik Helvası", "Kabak Tatlısı"] }
+    ] },
+  { id: "aile", ad: "Geniş Aile Sofrası", ikon: "👪", aciklama: "Büyükler, küçükler, kuzenler; tencere tencere sulu yemek ve bol ara sıcak.",
+    ipucu: "Kalabalık aile sofrasında sulu yemekler büyük tencerede pişer, ısıtması kolaydır. Ara sıcakları önceden hazırlayıp son anda fırına ya da tavaya ver. Çocuklar için birkaç sade porsiyon ayırmayı unutma.",
+    kurslar: [
+      { ad: "Çorba", sayi: 1, adaylar: ["Mercimek Çorbası", "Ezogelin Çorbası", "Yayla Çorbası", "Tarhana Çorbası", "Domates Çorbası"] },
+      { ad: "Sulu yemekler", sayi: 2, adaylar: ["Etli Kuru Fasulye", "Etli Nohut Yemeği", "Etli Türlü", "Sulu Köfte", "Ekşili Köfte", "Etli Bezelye Yemeği", "Tas Kebabı",
+        "Ispanak Yemeği", "Minik Köfteli Bamya", "Yeşil Mercimek Yemeği", "Gelin Fasulyesi", "Sülbiye", "Papaz Yahnisi", "İzmir Köfteli Taze Fasulye",
+        "Domates Sulu Tencere Kebabı", "Yeşil Soğanlı Kuzu Kapama"] },
+      { ad: "Yanında", sayi: 1, adaylar: ["Pirinç Pilavı", "Bulgur Pilavı"] },
+      { ad: "Ara sıcak", sayi: 3, adaylar: ["İçli Köfte", "Sigara Böreği", "Paçanga Böreği", "Mücver", "Arnavut Ciğeri", "Kaşarlı Mantar", "Patates Köftesi",
+        "Peynirli Patates Kroket", "Güveçte Peynirli Mantar", "Peynirli Ispanak Köftesi", "Kaşarlı Kabak Köftesi", "Falafel", "Karnabahar Kızartması"] },
+      { ad: "Zeytinyağlı & salata", sayi: 2, adaylar: ["Zeytinyağlı Taze Fasulye", "Yaprak Sarma", "Çoban Salata", "Cacık", "Kısır", "Piyaz", "Zeytinyağlı Pırasa"] },
+      { ad: "Tatlı", sayi: 1, adaylar: ["Sütlaç", "Revani", "İrmik Helvası", "Kabak Tatlısı", "Islak Kek"] }
+    ] },
+  { id: "romantik", ad: "Romantik Bir Akşam Yemeği", ikon: "🕯️", aciklama: "Sadece ikiniz; mum ışığı, hafif ve özenli bir menü.",
+    ipucu: "Az ama özenli: hafif bir başlangıç, bir ana yemek ve paylaşılacak bir tatlı yeter. Çok ağır ve yağlı yemekler akşamın sonunda yorar; porsiyonları küçük tut.",
+    sabitKisi: 2,
+    kurslar: [
+      { ad: "Başlangıç", sayi: 1, adaylar: ["Avokadolu Karidesli Aşk Salatası", "Naneli Karpuz Salatası", "Kuşkonmazlı Somonlu Makarna Salatası", "Pancarlı Armutlu Salata",
+        "Gavurdağı Salatası", "Ahtapot Salatası", "Somon Mus", "Avokadolu Füme Somonlu Krep"] },
+      { ad: "Ara sıcak & meze", sayi: 1, adaylar: ["Tereyağlı Sarımsaklı Kuşkonmaz", "Taratorlu Midye Tava", "Muhammara", "Ev Usulü Midye Dolma", "Humus",
+        "Kaşarlı Enginar Köftesi", "Ispanaklı Tarator"] },
+      { ad: "Ana yemek", sayi: 1, adaylar: ["Zencefilli Sarımsaklı Karides", "Marine Somon Izgara", "Trüf Yağlı Mantarlı Makarna", "Fırında Somon", "Kanton Usulü Karides",
+        "Deniz Ürünlü Spagetti", "Zencefilli Çin Usulü Alabalık", "Levrek Amandine", "Ispanaklı Somon Florantin", "Narlı Tavuk Kavurma", "Karides Güveç"] },
+      { ad: "Tatlı", sayi: 1, adaylar: ["Çikolatalı Çilek ve Muz", "Çikolatalı Chia Puding", "Affogato", "Ballı Bademli İncir Tatlısı", "Zencefilli Kek",
+        "Çikolatalı Sufle", "Meyveli Kakaolu Puding", "Tiramisu", "Çilekli Milföy (Mille-Feuille)"] },
+      { ad: "İçecek", sayi: 1, adaylar: ["Taze Nar Suyu", "Zencefilli Ballı Limonata", "Osmanlı Şerbeti"] }
+    ] },
+  { id: "pratik", ad: "Çalışanlar için Pratik Tarifler", ikon: "⏱️", aciklama: "İşten yorgun mu geldin? 10-25 dakikada sofrada.",
+    ipucu: "Önce makarna suyunu ya da tavayı ocağa koy; o ısınırken salatayı doğra. Hafta sonu haşlanmış nohut, rendelenmiş peynir ve doğranmış soğanı dolapta hazır tutarsan hafta içi her şey daha da hızlanır.",
+    maxDk: 25,
+    kurslar: [
+      { ad: "Pratik ana yemek", sayi: 1, adaylar: ["Sarımsaklı Karidesli Spagetti", "Domates Soslu Makarna", "Akdeniz Usulü Peynirli Makarna", "Ton Balıklı Kremalı Penne", "Spagetti Carbonara",
+        "Cevizli Tereyağlı Erişte", "Kıymalı Makarna", "Mantı (Hıngel)", "Menemen", "Tereyağında Somon", "Uskumru Izgara", "Sarımsaklı Maydanozlu Karides",
+        "Mısırlı Brokolili Biftek", "Sebzeli Soya Soslu Piliç"] },
+      { ad: "Kızartma", sayi: 1, adaylar: ["Patates Kızartması", "Airfryer Baharatlı Patates", "Mısır Unlu Peynir Kızartması", "Hamsi Tava", "Kalamar Tava", "Bademli Alabalık Tava", "Kaygana"] },
+      { ad: "Salata", sayi: 1, adaylar: ["Çoban Salata", "Gavurdağı Salatası", "Peynirli Salata", "Izgara Tavuk Salatası", "Aşçı Salatası", "Bahar Dalı (Peynirli Roka Salatası)",
+        "Yumurtalı Kıvırcık Salata", "Sezar Salata", "Naneli Karpuz Salatası"] },
+      { ad: "Yanında", sayi: 1, adaylar: ["Cacık", "Haydari", "Atom", "Ezme", "Humus", "Yoğurtlu Semizotu", "Ayran"] },
+      { ad: "Tatlı (5-15 dk)", sayi: 1, adaylar: ["Ballı Yoğurtlu Meyve Salatası", "Kavunlu Naneli Meyve Salatası", "Çikolatalı Dondurma Kupu", "Affogato"] }
+    ] },
+  { id: "iftar", ad: "İftar Sofrası", ikon: "🌙", aciklama: "Hurma, pide, şerbet, çorba ve yöresel lezzetlerle bereketli bir iftar.",
+    ipucu: "Oruç hafif açılır: su, hurma ve iftariyelikle başla, ardından sıcak çorba gelsin. Ana yemeği birkaç dakika sonra servis etmek hem mideyi yormaz hem sohbeti uzatır. Pideyi iftara yakın al ya da fırından sıcak çıkar.",
+    kurslar: [
+      { ad: "İftariyelik & pide", sayi: 2, siraKorunsun: true, adaylar: ["İftariyelik Tabağı", "Ramazan Pidesi", "Cevizli Hurma Topları", "Peynir ve Kavun Tabağı"] },
+      { ad: "Şerbet & komposto", sayi: 2, adaylar: ["Demirhindi Şerbeti", "Gül Şerbeti", "Vişne Şerbeti", "Osmanlı Şerbeti", "Karışık Meyve Kompostosu", "Üzüm Hoşafı", "Kuru Kayısı Hoşafı"] },
+      { ad: "Çorba", sayi: 1, adaylar: ["Mercimek Çorbası", "Ezogelin Çorbası", "Tarhana Çorbası", "Yayla Çorbası", "Doğaba (Buğdaylı Köfteli Yoğurt Çorbası)"] },
+      { ad: "Yöresel ana yemek", sayi: 1, adaylar: ["Kıymalı Ali Nazik", "Hünkâr Beğendi", "Tas Kebabı", "Karnıyarık", "Elbasan Tava", "Kilis Kebabı", "Urfa Kebabı", "Etli Kuru Fasulye", "Hamsili Pilav"] },
+      { ad: "Yanında", sayi: 1, adaylar: ["Pirinç Pilavı", "Bulgur Pilavı"] },
+      { ad: "Ara sıcak", sayi: 1, adaylar: ["İçli Köfte", "Sigara Böreği", "Paçanga Böreği", "Mücver"] },
+      { ad: "Meze", sayi: 2, adaylar: ["Yaprak Sarma", "Muhammara", "Haydari", "Humus", "Kısır", "Abagannuş", "Fava", "Cacık"] },
+      { ad: "Tatlı", sayi: 1, adaylar: ["Güllaç", "Ev Yapımı Cevizli Baklava", "Sütlü Kadayıf Tatlısı", "Gül Sulu Zerde", "Kabak Tatlısı", "Sütlaç", "Revani"] }
     ] }
 ];
 
@@ -7878,3 +8035,72 @@ var FAVORI_ETIKETLERI = {
             "Zeytinyağlı Pırasa", "Çoban Salata", "Cacık", "Tavuk Sote"],
   "Hamur İşi": ["Tuzlu Kurabiye", "Susamlı Çubuk Kraker", "İçli Köfte", "Peynirli Poğaça", "Sigara Böreği", "Paçanga Böreği", "Kıymalı Gözleme", "Pişi", "Sucuklu Mini Pizza", "Mantı (Hıngel)"]
 };
+
+// =====================================================================
+//  AFRODİZYAK ETKİLİ BİLİNEN BESİNLER — "Romantik Bir Akşam Yemeği" için
+//  Açıklamalar sağlık sitelerindeki yazılardan esinlenerek kendi cümlelerimizle yazıldı.
+//  Bunlar geleneksel olarak bilinen ve genel beslenme bilgisine dayanan notlardır;
+//  hiçbir yiyecek ilaç gibi etki etmez.
+//  "ara": tarifin adında ya da malzemelerinde bu kelimeler geçerse tarif bu besini içeriyor sayılır.
+//  "yaygin: true": çok tarifte geçtiği için tek başına tarifi öne çıkarmaz (sadece listede görünür).
+// =====================================================================
+var AFRODIZYAK_BESINLER = [
+  { ad: "İstiridye ve midye", ikon: "🐚", ara: ["istiridye", "midye"],
+    aciklama: "Çinko bakımından zengin oldukları için yüzyıllardır aşk yemeklerinin başında sayılırlar." },
+  { ad: "Karides ve deniz ürünleri", ikon: "🦐", ara: ["karides", "kalamar", "ahtapot"],
+    aciklama: "Hafif, proteini bol ve iyot içerir; romantik sofraların klasik ana yemeklerindendir." },
+  { ad: "Yağlı balıklar", ikon: "🐟", ara: ["somon", "uskumru", "alabalık", "sardalya", "hamsi", "palamut", "levrek"],
+    aciklama: "Somon, uskumru, alabalık ve sardalyadaki omega-3'ün kalp ve damar sağlığını desteklediği bilinir." },
+  { ad: "Bitter çikolata", ikon: "🍫", ara: ["çikolata", "kakao"],
+    aciklama: "Keyif verdiği için sevilen bir tatlıdır; yüksek kakaolu olanı tercih etmek daha iyi bir seçimdir." },
+  { ad: "Nar", ikon: "🍎", ara: ["nar", "nar ekşisi", "nar taneleri"],
+    aciklama: "En eski aşk meyvelerinden biri sayılır; antioksidanlarıyla bilinir. Suyu şık bir aperatif olur." },
+  { ad: "Çilek ve orman meyveleri", ikon: "🍓", ara: ["çilek", "ahududu", "böğürtlen", "yaban mersini", "frambuaz"],
+    aciklama: "C vitamini ve antioksidan içerirler; çikolatayla buluşunca romantik tatlıların vazgeçilmezidir." },
+  { ad: "Karpuz", ikon: "🍉", ara: ["karpuz"],
+    aciklama: "İçindeki sitrülin denen maddenin kan akışına yardımcı olduğu düşünülür; serinletici bir başlangıçtır." },
+  { ad: "Muz", ikon: "🍌", ara: ["muz"],
+    aciklama: "Potasyum ve B vitaminleriyle enerji verir; erimiş çikolatayla birlikte sevilen bir ikilidir." },
+  { ad: "İncir", ikon: "🍇", ara: ["incir"],
+    aciklama: "Kurusu da tazesi de enerji kaynağıdır; eski çağlardan beri bereket ve aşk meyvesi olarak anılır." },
+  { ad: "Avokado", ikon: "🥑", ara: ["avokado"],
+    aciklama: "Sağlıklı yağlar, B6 vitamini ve folik asit içerir; salatalara kremsi bir doku katar." },
+  { ad: "Kuşkonmaz", ikon: "🌱", ara: ["kuşkonmaz"],
+    aciklama: "Folat ve E vitamini içerir; yorgunluğa iyi geldiği ve dolaşımı desteklediği bilinir." },
+  { ad: "Enginar", ikon: "🍃", ara: ["enginar"],
+    aciklama: "Antioksidanlarıyla tanınır; Akdeniz mutfağında aşk sofralarına yakıştırılır." },
+  { ad: "Pancar", ikon: "🥕", ara: ["pancar"],
+    aciklama: "İçerdiği doğal nitratların damar sağlığını desteklediği düşünülür." },
+  { ad: "Ispanak ve yeşil yapraklılar", ikon: "🥗", ara: ["ıspanak", "pazı", "lahana"],
+    aciklama: "Magnezyum ve folat kaynağıdır; damarların rahatlamasına yardımcı olduğu bilinir." },
+  { ad: "Zencefil", ikon: "🌿", ara: ["zencefil"],
+    aciklama: "Isıtıcı ve canlandırıcı bir baharattır; dolaşımı desteklediği geleneksel olarak bilinir. Az miktarda yeterlidir." },
+  { ad: "Safran", ikon: "🌼", ara: ["safran"],
+    aciklama: "Ruh halini iyileştirdiği düşünülen değerli bir baharattır; birkaç tel bile yemeğe renk katar." },
+  { ad: "Tarçın ve vanilya", ikon: "🍮", ara: ["tarçın", "vanilya"],
+    aciklama: "Kokularıyla sofrayı ısıtırlar; tatlılarda ve sıcak içeceklerde gönül rahatlığıyla kullanılır." },
+  { ad: "Bal", ikon: "🍯", ara: ["bal"],
+    aciklama: "B vitaminleri ve bor minerali içerir; enerji veren, eski çağlardan beri aşkla anılan bir besindir." },
+  { ad: "Keçiboynuzu", ikon: "🍂", ara: ["keçiboynuzu", "harnup"],
+    aciklama: "Doğal bir enerji kaynağı olarak bilinir; pekmezi tatlılara ve kahvaltıya yakışır." },
+  { ad: "Kahve", ikon: "☕", ara: ["espresso", "türk kahvesi", "kahve"],
+    aciklama: "Kalbi biraz hızlandırır ve canlandırır; yemek sonrası küçük bir fincan yeterlidir." },
+  { ad: "Kuruyemişler", ikon: "🌰", ara: ["fındık", "badem", "ceviz", "çam fıstığı", "antep fıstığı"],
+    aciklama: "Fındık, badem, ceviz, çam fıstığı ve antep fıstığı arginin ile E vitamini içerir; bir avuç yeterlidir." },
+  { ad: "Kabak çekirdeği", ikon: "🎃", ara: ["kabak çekirdeği"],
+    aciklama: "Çinko kaynağıdır; salataların üzerine serpmek için idealdir." },
+  { ad: "Ananas", ikon: "🍍", ara: ["ananas"],
+    aciklama: "C vitamini ve manganez içerir; tatlılara ferahlık katar." },
+  { ad: "Acı biber", ikon: "🌶️", ara: ["acı biber", "acı sos"], yaygin: true,
+    aciklama: "İçindeki kapsaisin vücudu ısıtır, yanakları kızartır; az miktarda heyecan katar." },
+  { ad: "Sarımsak ve soğan", ikon: "🍲", ara: ["sarımsak", "soğan"], yaygin: true,
+    aciklama: "Damar sağlığına iyi geldiği bilinir; yalnız romantik bir akşamda miktarını ölçülü tutmak iyi fikir 🙂" },
+  { ad: "Yumurta", ikon: "🥚", ara: ["yumurta"], yaygin: true,
+    aciklama: "Kaliteli protein ve B vitaminleri içeren, eski bir enerji kaynağıdır." },
+  { ad: "Nohut", ikon: "🥣", ara: ["nohut"], yaygin: true,
+    aciklama: "Baklagiller bitkisel protein ve mineral sağlar; humus romantik bir mezeye dönüşebilir." },
+  { ad: "Mesir macunu", ikon: "🏺", ara: ["mesir"],
+    aciklama: "Manisa'nın meşhur baharatlı macunu; içindeki baharatların canlandırıcı olduğuna inanılır." },
+  { ad: "Ginseng ve maka kökü", ikon: "🌾", ara: ["ginseng", "maka kökü", "maca"],
+    aciklama: "Geleneksel tıpta sık anılan köklerdir; takviye olarak kullanmadan önce mutlaka doktora danış." }
+];
